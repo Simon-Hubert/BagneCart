@@ -1,15 +1,12 @@
 class_name TraceryLoader extends RefCounted
 
-##create a grammar dictionary from a json file, with the categories
-static func createGrammarDictionary(path : String, categories : PackedStringArray) -> Dictionary:
-	if categories.is_empty():
-		push_error("No categories entered")
-		
+##create a grammar dictionary from a json file
+static func createGrammarDictionary(path : String) -> Dictionary:	
 	var grammarData = _get_json_from_file(path)	
 	#Populate the grammar dictionary from json data	
 	var grammar_dictionary = Dictionary()
-	for cat in categories:
-		grammar_dictionary[cat] = grammarData.get(cat)
+	for categories in grammarData :
+		grammar_dictionary[categories] = grammarData.get(categories)
 		
 	return grammar_dictionary
 
@@ -17,18 +14,22 @@ static func createGrammarDictionary(path : String, categories : PackedStringArra
 
 ##Returns a sentance based on the dictionary
 ##origin state the beginning of the sentence construction
-##If sevral "origins" have been defined, use "index" to cycle through it
-static func getSentenceFromGrammar(_dictionary : Dictionary, origin : String, index : int = 0) -> String:
-	if !_dictionary:
+##If "origin" isn't override, it defaults to "origin" (logic)
+##If sevral "origins" have been defined, use "index" to specify one of them
+static func getSentenceFromGrammarDictionary(dictionary : Dictionary, origin : String = "origin" , index : int = -1) -> String:
+	if !dictionary:
 		push_error("dictionary is null")
-	if !_dictionary.find_key(origin):
-		push_error("Origin " + origin + " doesn't correspond to any key in the dictionnary")
 		
 	#Create new grammar from dictionary
-	var new_grammar = Tracery.Grammar.new( _dictionary )
-	new_grammar.rng = RandomNumberGenerator.new()
+	var new_grammar = Tracery.Grammar.new( dictionary )
+	var rng =  RandomNumberGenerator.new()
+	new_grammar.rng = rng
 	new_grammar.add_modifiers(Tracery.UniversalModifiers.get_modifiers())
-	return new_grammar.flatten(_dictionary[origin][index])
+	
+	var baseIndex : int = index;
+	if baseIndex <= -1:
+		baseIndex = rng.randi_range(0, dictionary[origin].size() - 1)
+	return new_grammar.flatten(dictionary[origin][baseIndex])
 
 
 

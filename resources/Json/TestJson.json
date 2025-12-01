@@ -9,7 +9,25 @@
 		"wizard",
 		"soldier"
 	],
+	"adj": [
+		"great",
+		"bald",
+		"strong",
+		"weak",
+		"stupid",
+		"weird",
+		"#occupation#"
+	],
+	"weapon": [
+		"sword",
+		"axe",
+		"bow",
+ 		"#name#"
+	],
 	"origin": [
-		"#name# the #occupation#"
+		"#name# the #adj# #occupation# with #adj# #weapon#",
+		"#name# the #occupation# with #adj# #weapon#",
+		"#name# the #occupation# with #weapon#",
+		"#name# the #occupation# with #weapon#"
 	]
 }
