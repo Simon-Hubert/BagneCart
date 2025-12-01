@@ -245,6 +245,10 @@ class Grammar extends RefCounted:
 		#Reset list if every possible output where chosen
 		if selected_rule.size() <= _already_showed[match_name].size():
 			_already_showed.erase(match_name)
+			#Recreate array to take into account the last chosen
+			_already_showed[match_name] = []
+			_already_showed[match_name].append(chosen)
+			
 		return chosen
 		
 		
