@@ -18,5 +18,3 @@ func _physics_process(delta: float) -> void:
 
 func get_input() -> void:
 	_input = Input.get_vector("Left", "Right", "Up", "Down")
-	print(_input)
-
