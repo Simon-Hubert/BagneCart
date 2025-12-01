@@ -15,14 +15,12 @@
 		"strong",
 		"weak",
 		"stupid",
-		"weird",
-		"#occupation#"
+		"weird"
 	],
 	"weapon": [
 		"sword",
 		"axe",
-		"bow",
- 		"#name#"
+		"bow"
 	],
 	"origin": [
 		"#name# the #adj# #occupation# with #adj# #weapon#",

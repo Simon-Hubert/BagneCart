@@ -220,11 +220,11 @@ class Grammar extends RefCounted:
 				var chosen = _find_unique_chosen(selected_rule, match_name)
 				var resolved = flatten( chosen )
 				resolved = _apply_modifiers( resolved, modifiers )
-				rule = rule.replace( match_value, resolved )
+				rule = _replace_first(rule, match_value, resolved)
 			else:
 				var resolved = flatten( selected_rule )
 				resolved = _apply_modifiers( resolved, modifiers )
-				rule = rule.replace( match_value, resolved )
+				rule = _replace_first(rule, match_value, resolved)
 				
 		# Done
 		return rule
@@ -251,6 +251,14 @@ class Grammar extends RefCounted:
 			
 		return chosen
 		
+	##Replace the FIRST INSTANCE of the word "match_value" with "resolved" inside "rule"
+	##Better than replace, which replace EVERY OCCURANCES
+	func _replace_first(rule: String, match_value: String, resolved: String) -> String:
+		var index : int = rule.find(match_value)
+		if index == -1:
+			push_warning("Could not find " + match_value + " inside : " + rule)
+			return rule
+		return rule.substr(0, index) + resolved + rule.substr(index + match_value.length())
 		
 	func _resolve_save_symbols( rule : String ) -> void:
 		var save_matches = _save_symbol_regex.search_all( rule )
