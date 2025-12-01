@@ -184,7 +184,7 @@ class Grammar extends RefCounted:
 	func flatten( rule : String ) -> String:
 		var expansion_matches = _expansion_regex.search_all( rule )
 		
-		if expansion_matches.empty():
+		if expansion_matches.is_empty():
 			_resolve_save_symbols( rule )
 			
 		for match_result in expansion_matches:
@@ -256,7 +256,7 @@ class Grammar extends RefCounted:
 				
 	func _get_modifiers( symbol : String ) -> Array:
 		var modifiers = symbol.replace( "#", "" ).split( "." )
-		modifiers.remove( 0 )
+		modifiers.remove_at(0)
 		return modifiers
 		
 		

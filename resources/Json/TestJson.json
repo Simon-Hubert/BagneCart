@@ -1,0 +1,15 @@
+{
+	"name": [
+		"Bertram",
+		"Arabella",
+		"Cecil"
+	],
+	"occupation": [
+		"baker",
+		"wizard",
+		"soldier"
+	],
+	"origin": [
+		"#name# the #occupation#"
+	]
+}
