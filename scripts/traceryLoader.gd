@@ -11,11 +11,20 @@ static func createGrammarDictionary(path : String) -> Dictionary:
 	return grammar_dictionary
 
 
+##Returns a Tracery grammar based on a dictionary
+static func CreateGrammar(dictionary : Dictionary) -> Tracery.Grammar:
+	#Create new grammar from dictionary
+	var new_grammar = Tracery.Grammar.new( dictionary )
+	new_grammar.rng = RandomNumberGenerator.new()
+	new_grammar.add_modifiers(Tracery.UniversalModifiers.get_modifiers())
+	return new_grammar
+
 
 ##Returns a sentance based on the dictionary
+##This override create a grammar by default and should be used for spare sentence generation
 ##origin state the beginning of the sentence construction
 ##If "origin" isn't override, it defaults to "origin" (logic)
-##If sevral "origins" have been defined, use "index" to specify one of them
+##If sevral "origin"s have been defined, use "index" to specify one of them
 static func getSentenceFromGrammarDictionary(dictionary : Dictionary, origin : String = "origin" , index : int = -1) -> String:
 	if !dictionary:
 		push_error("dictionary is null")
@@ -26,11 +35,27 @@ static func getSentenceFromGrammarDictionary(dictionary : Dictionary, origin : S
 	new_grammar.rng = rng
 	new_grammar.add_modifiers(Tracery.UniversalModifiers.get_modifiers())
 	
+	#Get a (random) index from the origin
 	var baseIndex : int = index;
 	if baseIndex <= -1:
-		baseIndex = rng.randi_range(0, dictionary[origin].size() - 1)
+		baseIndex = rng.randi() % dictionary[origin].size()
 	return new_grammar.flatten(dictionary[origin][baseIndex])
 
+
+##Returns a sentance based on the dictionary
+##This override doesn't create a grammar by default and should be used when sorting a lot of times
+##origin state the beginning of the sentence construction
+##If "origin" isn't override, it defaults to "origin" (logic)
+##If sevral "origin"s have been defined, use "index" to specify one of them
+static func getSentenceFromGrammar(dictionary : Dictionary, grammar : Tracery.Grammar, origin : String = "origin" , index : int = -1) -> String:
+	if !dictionary:
+		push_error("dictionary is null")
+		
+	#Get a (random) index from the origin
+	var baseIndex : int = index;
+	if baseIndex <= -1:
+		baseIndex = grammar.rng.randi() % dictionary[origin].size()
+	return grammar.flatten(dictionary[origin][baseIndex])
 
 
 ##load a json file

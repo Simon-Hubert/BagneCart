@@ -151,7 +151,7 @@ class Grammar extends RefCounted:
 	var _save_data : Dictionary = {} # The saved data
 	var _expansion_regex : RegEx = null # The expansion regex
 	var _save_symbol_regex : RegEx = null # The save symbol regex
-	
+	var _already_showed : Dictionary[String, Array] = {} # The already showed outputs
 	
 	func _init( rules : Dictionary ):
 		# Expansion regex
@@ -217,22 +217,35 @@ class Grammar extends RefCounted:
 				
 			# A rule is either an array or a single entry/string
 			if typeof( selected_rule ) == TYPE_ARRAY:
-				var rand_index  = rng.randi() % selected_rule.size()
-				var chosen = selected_rule[ rand_index ] as String
+				var chosen = _find_unique_chosen(selected_rule, match_name)
 				var resolved = flatten( chosen )
-				
 				resolved = _apply_modifiers( resolved, modifiers )
-				
 				rule = rule.replace( match_value, resolved )
 			else:
 				var resolved = flatten( selected_rule )
-				
 				resolved = _apply_modifiers( resolved, modifiers )
-				
 				rule = rule.replace( match_value, resolved )
 				
 		# Done
 		return rule
+	
+	
+	##Prevent to return the same output if sentence is reacreated sevral times
+	func _find_unique_chosen(selected_rule : Array, match_name : String) -> String:		
+		var chosen = selected_rule[ rng.randi() % selected_rule.size() ] as String
+		
+		#Get new output (that isn't in the _already_showed list)
+		if _already_showed.has(match_name):
+			while _already_showed[match_name].has(chosen):
+				chosen = selected_rule[ rng.randi() % selected_rule.size() ] as String
+		else :
+			_already_showed[match_name] = []
+		_already_showed[match_name].append(chosen)
+		
+		#Reset list if every possible output where chosen
+		if selected_rule.size() <= _already_showed[match_name].size():
+			_already_showed.erase(match_name)
+		return chosen
 		
 		
 	func _resolve_save_symbols( rule : String ) -> void:
