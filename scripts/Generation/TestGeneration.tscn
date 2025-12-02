@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://btm22glgx8wme"]
+
+[ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="1_lp6jl"]
+[ext_resource type="PackedScene" uid="uid://wx1d3cdd6ci2" path="res://scenes/rooms/room_1.tscn" id="2_syn2b"]
+[ext_resource type="PackedScene" uid="uid://buuwp4chbvml5" path="res://scenes/rooms/room_2.tscn" id="3_7io6k"]
+[ext_resource type="PackedScene" uid="uid://d2bd4nrdruls4" path="res://scenes/rooms/room_4.tscn" id="4_580vu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lp6jl")
+_rooms = Dictionary[String, PackedScene]({
+"0001": ExtResource("2_syn2b"),
+"0010": ExtResource("4_580vu"),
+"0100": ExtResource("3_7io6k"),
+"1001": ExtResource("2_syn2b")
+})
+ROOMSIZE = 350
+
+[node name="Camera2D" type="Camera2D" parent="."]
