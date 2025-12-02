@@ -1,9 +1,8 @@
 class_name quest_manager extends Node
 
-static var Instance : quest_manager = null
+enum QUEST_TYPE { DELIVER_ITEM, GET_PEOPLE_TO_PLACE }
 
-@export_category("Graphics")
-@export var NPC_graphics_list : Array[Texture2D]
+static var Instance : quest_manager = null
 
 @export_category("Tracery")
 @export var quest_tracery_json_path : String = ""
@@ -12,6 +11,8 @@ static var Instance : quest_manager = null
 @export var quest_finished_input : String = "quest_finished"
 @export var quest_not_finished_input : String = "quest_not_finished"
 @export var wrong_NPC_input : String = "wrong_NPC"
+
+@export var quest_item_input : String = "#weapon#"
 
 @export var finishQuest : bool = false #Temporaire, pour le debug
 
@@ -37,17 +38,13 @@ func _ready() -> void:
 ##Give info about the quest to a new NPC
 func create_NPC_data() -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
-	_quest_tracery_grammar.set_save_data("questItem", "#weapon#") #define new quest item
+	_quest_tracery_grammar.set_save_data("questItem", quest_item_input) #define new quest item
 	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_input)
-	newData.quest_type = 0 #Temporaire, a remplacer par une enum + autres info de quete
+	var rng = RandomNumberGenerator.new()
+	newData.quest_type = rng.randi() % quest_manager.QUEST_TYPE.size() as quest_manager.QUEST_TYPE
 	newData.quest_item = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item") #Save quest item into data 
 	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_input)
 	return newData
-
-##Give a new PNJ sprite from database
-func get_random_PNJ_Texture() -> Texture2D:
-	var rng = RandomNumberGenerator.new()
-	return NPC_graphics_list[rng.randi() % NPC_graphics_list.size()]
 
 ##Accpet a quest from an NPC
 func accept_new_quest(data : NPC_data) -> void:
