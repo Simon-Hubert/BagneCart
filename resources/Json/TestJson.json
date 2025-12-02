@@ -26,7 +26,6 @@
 		"#name# the #adj# #occupation#",
 		"#name# the #occupation#"
 	],
-	"new_quest_item" : [ "[questItem:#weapon#]" ],
 	"quest_item" : [ "#questItem#" ],
 	"quest": [
 		"Hey ! I need #questItem#, can you get that ?"
