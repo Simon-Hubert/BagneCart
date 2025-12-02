@@ -1,23 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxfpm7j2xqoel"]
 
-[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="1_8wowo"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_su2bb"]
 [ext_resource type="Script" uid="uid://dy0oue4bemaco" path="res://scripts/Quest/NPC.gd" id="2_wvomn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wowo"]
-size = Vector2(129, 128)
+size = Vector2(18, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvomn"]
-size = Vector2(200, 200)
+size = Vector2(50, 50)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_wvomn")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8wowo")
+texture = ExtResource("2_su2bb")
+region_enabled = true
+region_rect = Rect2(0, 112, 16, 16)
 script = ExtResource("2_wvomn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8wowo")
 
 [node name="TriggerArea" type="Area2D" parent="."]

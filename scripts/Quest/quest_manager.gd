@@ -2,6 +2,10 @@ class_name quest_manager extends Node
 
 static var Instance : quest_manager = null
 
+@export_category("Graphics")
+@export var NPC_graphics_list : Array[Texture2D]
+
+@export_category("Tracery")
 @export var quest_tracery_json_path : String = ""
 @export var name_input : String = "name"
 @export var quest_dialog_input : String = "quest"
@@ -39,6 +43,11 @@ func create_NPC_data() -> NPC_data:
 	newData.quest_item = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item") #Save quest item into data 
 	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_input)
 	return newData
+
+##Give a new PNJ sprite from database
+func get_random_PNJ_Texture() -> Texture2D:
+	var rng = RandomNumberGenerator.new()
+	return NPC_graphics_list[rng.randi() % NPC_graphics_list.size()]
 
 ##Accpet a quest from an NPC
 func accept_new_quest(data : NPC_data) -> void:

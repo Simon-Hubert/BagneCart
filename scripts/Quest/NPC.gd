@@ -1,9 +1,17 @@
 class_name NPC extends Node
 
+const SPRITE_SIZE : int = 16
+const SPRITE_OFFSET_Y : int = 112
+
+@export var sprite : Sprite2D
 @export var data : NPC_data
 
 func _init_NPC() -> void:
 	data = quest_manager.Instance.create_NPC_data()
+	var rng = RandomNumberGenerator.new()
+	var region_x : int = SPRITE_SIZE * (rng.randi() % 5)
+	var region_y : int = SPRITE_SIZE * (rng.randi() % 1) + SPRITE_OFFSET_Y
+	sprite.set_region_rect(Rect2(region_x, region_y, SPRITE_SIZE, SPRITE_SIZE))
 
 func _on_player_entered(_body: Node2D) -> void:
 	if _body.name != "Player":

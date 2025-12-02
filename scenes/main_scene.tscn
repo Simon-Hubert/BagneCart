@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://db5cfan2a3vjb"]
+[gd_scene load_steps=11 format=3 uid="uid://db5cfan2a3vjb"]
 
 [ext_resource type="PackedScene" uid="uid://wx1d3cdd6ci2" path="res://scenes/rooms/room_1.tscn" id="1_fekva"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="1_qspk8"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://s6ah3dc0wqxd" path="res://scenes/rooms/room_3.tscn" id="5_8ykb7"]
 [ext_resource type="PackedScene" uid="uid://d2bd4nrdruls4" path="res://scenes/rooms/room_4.tscn" id="6_jg4hf"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/hud.tscn" id="7_i43eg"]
+[ext_resource type="PackedScene" uid="uid://dxfpm7j2xqoel" path="res://scenes/Quest/NPC.tscn" id="8_6wevv"]
+[ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
+[ext_resource type="Script" uid="uid://c8odra86kn2v6" path="res://scripts/Quest/quest_manager.gd" id="10_mngbo"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -45,3 +48,20 @@ script = ExtResource("2_liovv")
 position = Vector2(47, -63)
 
 [node name="hud" parent="." instance=ExtResource("7_i43eg")]
+
+[node name="DialogUI" parent="hud" instance=ExtResource("10_6wevv")]
+
+[node name="QuestManager" type="Node2D" parent="."]
+script = ExtResource("10_mngbo")
+quest_tracery_json_path = "res://resources/Json/TestJson.json"
+name_input = "origin"
+finishQuest = true
+
+[node name="NPC test" parent="." instance=ExtResource("8_6wevv")]
+position = Vector2(241, -123)
+
+[node name="NPC test2" parent="." instance=ExtResource("8_6wevv")]
+position = Vector2(48.000015, -240)
+
+[connection signal="on_quest_manager_init" from="QuestManager" to="NPC test" method="_init_NPC"]
+[connection signal="on_quest_manager_init" from="QuestManager" to="NPC test2" method="_init_NPC"]
