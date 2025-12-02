@@ -7,14 +7,15 @@ static var Instance : quest_manager = null
 @export var quest_dialog_input : String = "quest"
 @export var quest_finished_input : String = "quest_finished"
 @export var quest_not_finished_input : String = "quest_not_finished"
+@export var wrong_NPC_input : String = "wrong_NPC"
 
 @export var finishQuest : bool = false #Temporaire, pour le debug
 
 var has_quest : bool = false
+var current_quest_giver_name : String = ""
 
 var _quest_tracery_dictionary : Dictionary
 var _quest_tracery_grammar : Tracery.Grammar
-
 signal on_quest_manager_init
 signal on_quest_recieved
 signal on_quest_finished
@@ -39,9 +40,10 @@ func create_NPC_data() -> NPC_data:
 	return newData
 
 ##Accpet a quest from an NPC
-func accept_new_quest(_data : NPC_data) -> void:
+func accept_new_quest(data : NPC_data) -> void:
 	if !has_quest:
 		has_quest = true
+		current_quest_giver_name = data.name
 		on_quest_recieved.emit()
 
 ##Look if the current quest is validated
@@ -53,9 +55,13 @@ func check_validate_quest() -> bool:
 		
 	return false;
 	
-##Get a random line when the quest is finished
+##Get a random line when the wrong NPC is interacted
 func get_quest_finished_line() -> String:
 	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_finished_input)
+	
+##Get a random line when the quest is finished
+func get_wrong_NPC_line() -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, wrong_NPC_input)
 
 ##Get a random line when ask the NPC but quest is not finished	
 func get_quest_not_finished_line() -> String:

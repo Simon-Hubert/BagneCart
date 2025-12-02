@@ -37,5 +37,8 @@
 	],
 	"quest_not_finished": [
 		"Finish the job first !"	
+	],
+	"wrong_NPC": [
+		"Don't you have another quest to finish"	
 	]
 }

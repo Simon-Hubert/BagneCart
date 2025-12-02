@@ -21,7 +21,7 @@ func display_dialog(character_name : String, dialog : String):
 	dialog_text_label.text = dialog
 	animtion_player.play(animation_name)
 	animation_timer.start()
-
+	
 ##Hide animation when ends
 func _on_timer_timeout() -> void:
-	animtion_player.play(animation_name, -1, -1)
+	animtion_player.play_backwards(animation_name)
