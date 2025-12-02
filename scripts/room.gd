@@ -11,7 +11,7 @@ static var all_rooms : Array[Room]
 
 var doors : Array[Door]
 
-@onready var _cam : CameraFollow = $/root/MainScene/Camera2D
+#@onready var _cam : CameraFollow = $/root/MainScene/Camera2D
 
 
 func _ready() -> void:
@@ -47,7 +47,7 @@ func contains(point : Vector2) -> bool:
 
 func on_enter_room(from : Room) -> void:
 	var camera_bounds = get_world_bounds()
-	_cam.set_bounds(camera_bounds)
+	#_cam.set_bounds(camera_bounds)
 
 
 func get_adjacent_room(orientation : Utils.ORIENTATION, from : Vector2) -> Room:

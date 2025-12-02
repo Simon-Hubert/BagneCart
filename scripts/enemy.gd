@@ -27,14 +27,16 @@ func _exit_tree() -> void:
 
 
 func update_AI() -> void:
-	if _can_move() && Player.Instance._room == _room:
-		var enemy_to_player = Player.Instance.global_position - global_position
-		if enemy_to_player.length() < attack_distance:
-			_attack()
-		else:
-			_direction = enemy_to_player.normalized()
-	else:
-		_direction = Vector2.ZERO
+	if _room == null:
+		return
+	#if _can_move() && Player.Instance._room == _room:
+		#var enemy_to_player = Player.Instance.global_position - global_position
+		#if enemy_to_player.length() < attack_distance:
+		#	_attack()
+		#else:
+		#	_direction = enemy_to_player.normalized()
+	#else:
+	#	_direction = Vector2.ZERO
 
 
 func _set_state(state : STATE) -> void:
