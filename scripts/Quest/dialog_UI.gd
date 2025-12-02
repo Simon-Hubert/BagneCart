@@ -1,5 +1,7 @@
 class_name dialog_UI extends Node
 
+static var Instance : dialog_UI = null
+
 const animation_name = "show_hide_dialog"
 
 @export var animtion_player : AnimationPlayer
@@ -7,6 +9,12 @@ const animation_name = "show_hide_dialog"
 @export var character_text_label : RichTextLabel
 @export var dialog_text_label : RichTextLabel
  
+func _ready() -> void:
+	if Instance != null:
+		push_error("dialog UI instance already exists")
+		return
+	Instance = self
+
 ##Display inforamtion and show animation
 func display_dialog(character_name : String, dialog : String):
 	character_text_label.text = character_name

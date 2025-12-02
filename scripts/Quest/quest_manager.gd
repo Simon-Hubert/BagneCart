@@ -1,6 +1,6 @@
-class_name QuestManager extends Node
+class_name quest_manager extends Node
 
-static var Instance : QuestManager = null
+static var Instance : quest_manager = null
 
 @export var quest_tracery_json_path : String = ""
 @export var nameInput : String = "name"
