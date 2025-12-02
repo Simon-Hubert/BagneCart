@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://w8kt0e7fu7cw"]
+
+[ext_resource type="Theme" uid="uid://cqp6s2yqay6hu" path="res://resources/Theme/UI_theme.tres" id="1_ihf71"]
+[ext_resource type="Script" uid="uid://dxpula0g05k03" path="res://scripts/Quest/dialog_UI.gd" id="1_otvh6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o36gf"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.65882355)
+
+[sub_resource type="Animation" id="Animation_otvh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fullrect/DialogParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 508)]
+}
+
+[sub_resource type="Animation" id="Animation_hebjp"]
+resource_name = "show_hide_dialog"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fullrect/DialogParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 700), Vector2(0, 508)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6c78k"]
+_data = {
+&"RESET": SubResource("Animation_otvh6"),
+&"show_hide_dialog": SubResource("Animation_hebjp")
+}
+
+[node name="DialogUI" type="Control" node_paths=PackedStringArray("animtion_player", "character_text_label", "dialog_text_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_otvh6")
+animtion_player = NodePath("AnimationPlayer")
+character_text_label = NodePath("Fullrect/DialogParent/NameBackground/RichTextLabel")
+dialog_text_label = NodePath("Fullrect/DialogParent/DialogMargin/DialogBackground/MarginContainer/RichTextLabel")
+
+[node name="Fullrect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogParent" type="Control" parent="Fullrect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+offset_bottom = 0.00024414063
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogMargin" type="MarginContainer" parent="Fullrect/DialogParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_right = -202.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogBackground" type="Panel" parent="Fullrect/DialogParent/DialogMargin"]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o36gf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Fullrect/DialogParent/DialogMargin/DialogBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -92.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Fullrect/DialogParent/DialogMargin/DialogBackground/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_ihf71")
+text = "Text par defaut"
+
+[node name="NameBackground" type="Panel" parent="Fullrect/DialogParent"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 200.0
+offset_top = -30.0
+offset_right = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o36gf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Fullrect/DialogParent/NameBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ihf71")
+text = "Bernoulli le grand
+"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6c78k")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

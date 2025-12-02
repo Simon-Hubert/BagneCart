@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxfpm7j2xqoel"]
+
+[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="1_8wowo"]
+[ext_resource type="Script" uid="uid://dy0oue4bemaco" path="res://scripts/Quest/NPC.gd" id="2_wvomn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wowo"]
+size = Vector2(129, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvomn"]
+size = Vector2(200, 200)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_wvomn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8wowo")
+script = ExtResource("2_wvomn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_8wowo")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wvomn")
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_player_entered"]

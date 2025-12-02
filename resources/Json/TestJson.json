@@ -27,5 +27,8 @@
 		"#name# the #occupation# with #adj# #weapon#",
 		"#name# the #occupation# with #weapon#",
 		"#name# the #occupation# with #weapon#"
+	],
+	"quest": [
+		"Hey ! I need #weapon#, can you get that ?"
 	]
 }
