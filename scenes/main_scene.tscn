@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/hud.tscn" id="7_i43eg"]
 [ext_resource type="PackedScene" uid="uid://dxfpm7j2xqoel" path="res://scenes/Quest/NPC.tscn" id="8_6wevv"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
-[ext_resource type="Script" uid="uid://c8odra86kn2v6" path="res://scripts/Quest/quest_manager.gd" id="10_mngbo"]
+[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="10_e1cbu"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -51,17 +51,13 @@ position = Vector2(47, -63)
 
 [node name="DialogUI" parent="hud" instance=ExtResource("10_6wevv")]
 
-[node name="QuestManager" type="Node2D" parent="."]
-script = ExtResource("10_mngbo")
-quest_tracery_json_path = "res://resources/Json/TestJson.json"
-name_input = "origin"
-finishQuest = true
-
 [node name="NPC test" parent="." instance=ExtResource("8_6wevv")]
 position = Vector2(241, -123)
 
 [node name="NPC test2" parent="." instance=ExtResource("8_6wevv")]
 position = Vector2(48.000015, -240)
+
+[node name="QuestManager" parent="." instance=ExtResource("10_e1cbu")]
 
 [connection signal="on_quest_manager_init" from="QuestManager" to="NPC test" method="_init_NPC"]
 [connection signal="on_quest_manager_init" from="QuestManager" to="NPC test2" method="_init_NPC"]

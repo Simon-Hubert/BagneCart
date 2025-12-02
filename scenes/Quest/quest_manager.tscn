@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://18v80rexo1ur"]
+
+[ext_resource type="Script" uid="uid://c8odra86kn2v6" path="res://scripts/Quest/quest_manager.gd" id="1_v4nlo"]
+
+[node name="QuestManager" type="Node2D"]
+script = ExtResource("1_v4nlo")
+quest_tracery_json_path = "res://resources/Json/TestJson.json"
+quest_dialog_symbol = Dictionary[int, String]({
+0: "quest",
+1: "quest"
+})
+quest_finished_symbol = Dictionary[int, String]({
+0: "quest_finished",
+1: "quest_finished"
+})
+quest_not_finished_symbol = Dictionary[int, String]({
+0: "quest_not_finished",
+1: "quest_not_finished"
+})
+wrong_NPC_symbol = Dictionary[int, String]({
+0: "wrong_NPC",
+1: "wrong_NPC"
+})
+quest_item_symbol = Dictionary[int, String]({
+0: "#weapon#",
+1: "#name#"
+})
+finishQuest = true
