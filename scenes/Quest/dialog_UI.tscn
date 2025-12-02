@@ -2,9 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cqp6s2yqay6hu" path="res://resources/Theme/UI_theme.tres" id="1_ihf71"]
 [ext_resource type="Script" uid="uid://dxpula0g05k03" path="res://scripts/Quest/dialog_UI.gd" id="1_otvh6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o36gf"]
-bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.65882355)
+[ext_resource type="Texture2D" uid="uid://5qnk4gpdp4wn" path="res://sprites/UI_rect.png" id="2_hebjp"]
 
 [sub_resource type="Animation" id="Animation_otvh6"]
 length = 0.001
@@ -100,10 +98,14 @@ offset_right = -202.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DialogBackground" type="Panel" parent="Fullrect/DialogParent/DialogMargin"]
+[node name="DialogBackground" type="NinePatchRect" parent="Fullrect/DialogParent/DialogMargin"]
 texture_filter = 1
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o36gf")
+texture = ExtResource("2_hebjp")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Fullrect/DialogParent/DialogMargin/DialogBackground"]
 layout_mode = 1
@@ -120,24 +122,31 @@ grow_vertical = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="Fullrect/DialogParent/DialogMargin/DialogBackground/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_ihf71")
+theme_override_colors/default_color = Color(0.069611505, 0.069611505, 0.0696115, 1)
 text = "Text par defaut"
 
-[node name="NameBackground" type="Panel" parent="Fullrect/DialogParent"]
+[node name="NameBackground" type="NinePatchRect" parent="Fullrect/DialogParent"]
 texture_filter = 1
 layout_mode = 1
 offset_left = 200.0
 offset_top = -30.0
 offset_right = 500.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_o36gf")
+texture = ExtResource("2_hebjp")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Fullrect/DialogParent/NameBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ihf71")
+theme_override_colors/default_color = Color(0.04212162, 0.042121626, 0.04212162, 1)
 text = "Bernoulli le grand
 "
 vertical_alignment = 1
