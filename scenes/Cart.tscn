@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc4lylmivfdtp"]
+[gd_scene load_steps=5 format=3 uid="uid://cyr3l4epyskld"]
 
 [ext_resource type="Script" uid="uid://8q4ngh3uox7e" path="res://scripts/Cart.gd" id="1_2136m"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_mfx0n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2136m"]
 
-[node name="Cart" type="CharacterBody2D"]
-motion_mode = 1
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2136m"]
+size = Vector2(8, 8)
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_2136m")
-metadata/_custom_type_script = "uid://8q4ngh3uox7e"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mfx0n")
@@ -19,3 +20,8 @@ region_rect = Rect2(112, 64, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
 shape = SubResource("CircleShape2D_2136m")
+
+[node name="AnimatableBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_2136m")

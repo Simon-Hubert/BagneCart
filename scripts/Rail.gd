@@ -1,30 +1,20 @@
 class_name Rail extends Area2D
 
-@export var _up : bool
-@export var _down : bool
-@export var _left : bool
-@export var _right : bool
+@export var dir : Vector2
+@export var size := 16.0
+@export var is_turning : bool
+@export var flip_normal: bool
 
-var dir : Vector2
+func get_side_force(other_position: Vector2) -> Vector2:
+	var center := position
+	var normal := Vector2(-dir.y, dir.x)
 
-## [b]Protected[/b]: Sets the rail direction assuming positive travel is upwards.[br]
-## 
-## the [code]x[/code] component reflects if there is vertical movement or not (0 or -1).[br]
-## The [code]y[/code] component is the horizontal movement (-1, 0 or 1).
-func _setDir() -> void:
-	if (_up && _down):
-		dir = Vector2(0,-1)
-		return
+	if (is_turning):
+		center = position + size/4 * normal if (not flip_normal) else position - size/4 * normal
 
-	if (_left && _right):
-		dir = Vector2(1,0)
-		return
+	var to_other := other_position - center
+	return -to_other.dot(normal) * 0.1 *normal
 
-	var h = (_right as int)-(_left as int)
-	var v = -1
-	if (_up):
-		h = -h
-	dir = Vector2(h,v)
 
 func _ready():
-	_setDir()
+	get_side_force(position)

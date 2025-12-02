@@ -9,8 +9,7 @@ size = Vector2(16, 16)
 [node name="Area2D" type="Area2D"]
 monitoring = false
 script = ExtResource("1_m3kf8")
-_up = true
-_down = true
+dir = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3rqgk")

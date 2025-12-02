@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdr8rcp4d3abu"]
+[gd_scene load_steps=4 format=3 uid="uid://8npyicd1iw1n"]
 
 [ext_resource type="Script" uid="uid://c0m8leljkyyhw" path="res://scripts/Character/player_character.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_3li8b"]
@@ -7,6 +7,8 @@
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v6fml")
+_maxSpeed = 500.0
+_maxAccel = 750.0
 metadata/_custom_type_script = "uid://c0m8leljkyyhw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
