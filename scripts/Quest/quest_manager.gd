@@ -33,9 +33,10 @@ func _ready() -> void:
 ##Give info about the quest to a new NPC
 func create_NPC_data() -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
-	TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "new_quest_item")
+	_quest_tracery_grammar.set_save_data("questItem", "#weapon#") #define new quest item
 	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_input)
 	newData.quest_type = 0 #Temporaire, a remplacer par une enum + autres info de quete
+	newData.quest_item = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item") #Save quest item into data 
 	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_input)
 	return newData
 
@@ -44,6 +45,7 @@ func accept_new_quest(data : NPC_data) -> void:
 	if !has_quest:
 		has_quest = true
 		current_quest_giver_name = data.name
+		_quest_tracery_grammar.set_save_data("questItem", data.quest_item) #get quest item from data
 		on_quest_recieved.emit()
 
 ##Look if the current quest is validated

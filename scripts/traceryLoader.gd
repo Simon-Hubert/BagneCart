@@ -57,6 +57,9 @@ static func getSentenceFromGrammar(dictionary : Dictionary, grammar : Tracery.Gr
 		baseIndex = grammar.rng.randi() % dictionary[origin].size()
 	return grammar.flatten(dictionary[origin][baseIndex])
 
+##Save a key / value data to a grammar
+static func save_data_in_grammar(grammar : Tracery.Grammar, key : String, value : String):
+	grammar.set_save_data(key, value)
 
 ##load a json file
 static func _get_json_from_file(path : String) -> Dictionary: 

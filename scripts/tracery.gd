@@ -260,6 +260,11 @@ class Grammar extends RefCounted:
 			return rule
 		return rule.substr(0, index) + resolved + rule.substr(index + match_value.length())
 		
+	##Allow to set manually a save data
+	##Value can be a tag " #whatever# "
+	func set_save_data(key : String, value : String):
+		_save_data[ key ] = flatten(value)
+		
 	func _resolve_save_symbols( rule : String ) -> void:
 		var save_matches = _save_symbol_regex.search_all( rule )
 		for match_result in save_matches:
