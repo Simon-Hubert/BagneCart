@@ -3,8 +3,10 @@ class_name quest_manager extends Node
 static var Instance : quest_manager = null
 
 @export var quest_tracery_json_path : String = ""
-@export var nameInput : String = "name"
-@export var questDialogInput : String = "quest"
+@export var name_input : String = "name"
+@export var quest_dialog_input : String = "quest"
+@export var quest_finished_input : String = "quest_finished"
+@export var quest_not_finished_input : String = "quest_not_finished"
 
 @export var finishQuest : bool = false #Temporaire, pour le debug
 
@@ -30,9 +32,10 @@ func _ready() -> void:
 ##Give info about the quest to a new NPC
 func create_NPC_data() -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
-	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, nameInput)
+	TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "new_quest_item")
+	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_input)
 	newData.quest_type = 0 #Temporaire, a remplacer par une enum + autres info de quete
-	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, questDialogInput)
+	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_input)
 	return newData
 
 ##Accpet a quest from an NPC
@@ -49,3 +52,11 @@ func check_validate_quest() -> bool:
 		return true;
 		
 	return false;
+	
+##Get a random line when the quest is finished
+func get_quest_finished_line() -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_finished_input)
+
+##Get a random line when ask the NPC but quest is not finished	
+func get_quest_not_finished_line() -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_not_finished_input)

@@ -28,7 +28,14 @@
 		"#name# the #occupation# with #weapon#",
 		"#name# the #occupation# with #weapon#"
 	],
+	"new_quest_item" : [ "[questItem:#weapon#]" ],
 	"quest": [
-		"Hey ! I need #weapon#, can you get that ?"
+		"Hey ! I need #questItem#, can you get that ?"
+	],
+	"quest_finished": [
+		"Thanks dude ! I needed my #questItem#"
+	],
+	"quest_not_finished": [
+		"Finish the job first !"	
 	]
 }
