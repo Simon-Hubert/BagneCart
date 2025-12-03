@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://h7w0rg4ygusl"]
+
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_7waic"]
+[ext_resource type="Script" uid="uid://c1gg0istwpkjr" path="res://scripts/Character/Enemy/enemy.gd" id="1_614tr"]
+[ext_resource type="Script" uid="uid://b36ypy26k4yad" path="res://scripts/Character/Enemy/enemy_data.gd" id="2_rsyu2"]
+
+[sub_resource type="Resource" id="Resource_n4lfa"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(0, 144)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_rsyu2"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(16, 144)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_batjq"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(32, 144)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_hkdl5"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(48, 144)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_bxvsj"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(64, 144)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_40eh0"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(0, 160)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_svqgc"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(16, 160)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="Resource" id="Resource_gm5vn"]
+script = ExtResource("2_rsyu2")
+tilemap_offset = Vector2(32, 160)
+metadata/_custom_type_script = "uid://b36ypy26k4yad"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_614tr"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsyu2"]
+radius = 14.0
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_614tr")
+enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_n4lfa"), SubResource("Resource_rsyu2"), SubResource("Resource_batjq"), SubResource("Resource_hkdl5"), SubResource("Resource_bxvsj"), SubResource("Resource_40eh0"), SubResource("Resource_svqgc"), SubResource("Resource_gm5vn")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7waic")
+region_enabled = true
+region_rect = Rect2(16, 144, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_614tr")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_rsyu2")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
