@@ -2,7 +2,9 @@ class_name Player extends CharacterBody2D
 
 @onready var knockback_timer = $KnockbackTimer
 
+@export_category("Health")
 @export var _health : int = 3
+@export var _max_health : int = 5
 
 @export_category("Movement")
 @export var _maxSpeed : float
@@ -47,6 +49,12 @@ func _interact() -> void:
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
 
+##Restore one health point
+func restore_health():
+	_health = mini(_health + 1, _max_health)
+	on_player_update_health.emit(_health)
+
+##Remove one health point
 ##dir = hit direction
 func hit(dir : Vector2) -> void:
 	_health -= 1
