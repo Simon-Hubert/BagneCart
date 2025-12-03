@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3ysk1k353fwi"]
-
-[ext_resource type="Script" uid="uid://5pnv86fgpod3" path="res://scenes/Test/test_tracery.gd" id="1_7oqdg"]
-
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_7oqdg")
