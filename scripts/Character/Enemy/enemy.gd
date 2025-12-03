@@ -35,6 +35,7 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	_setup(enemies_type[rng.randi() % enemies_type.size()])
 
+##Setup enemy data from an enemy_data resource
 func _setup(data : enemy_data):
 	sprite.texture = data.sprite_texture
 	speed = data.speed
@@ -45,6 +46,10 @@ func _setup(data : enemy_data):
 	attack_timer.wait_time = data.attack_cooldown_timer
 
 func _process(_delta: float) -> void:
+	#Check references
+	if !player_ref || cart_ref:
+		return
+	
 	#Check which is closer
 	var distance_to_player : float = player_ref.global_position.distance_to(global_position)
 	var distance_to_cart : float = cart_ref.global_position.distance_to(global_position)
@@ -79,13 +84,17 @@ func _process(_delta: float) -> void:
 		
 			
 func _physics_process(delta: float) -> void:
+	#Check references
+	if !player_ref || cart_ref:
+		return
+	
 	var targetVelocity = direction * speed
 	var maxSpeedChange = max_accel * delta
 	velocity.x = move_toward(velocity.x, targetVelocity.x, maxSpeedChange)
 	velocity.y = move_toward(velocity.y, targetVelocity.y, maxSpeedChange)
 	move_and_slide()
 
-#Reset attack when timer ends
+##Reset attack when timer ends
 func _reset_attack() -> void:
 	can_attack = true
 	
