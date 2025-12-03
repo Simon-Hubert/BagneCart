@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://b3j3k00t7a2pk"]
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://b3j3k00t7a2pk"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_vchkl"]
 [ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="2_3t3au"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://t14d5y1xj6ya" path="res://scenes/Rails/Rail3.tscn" id="5_3t3au"]
 [ext_resource type="PackedScene" uid="uid://wypt5b2awxjk" path="res://scenes/Rails/Rail7bis.tscn" id="5_aogfk"]
 [ext_resource type="PackedScene" uid="uid://durbjpkfss5lg" path="res://scenes/Rails/Rail4.tscn" id="6_uu5i5"]
+[ext_resource type="PackedScene" uid="uid://efhjf10tu561" path="res://scenes/Rails/rail_switch0.tscn" id="7_g12dk"]
 [ext_resource type="PackedScene" uid="uid://byy7t5vfk1tr6" path="res://scenes/Rails/Rail5.tscn" id="7_rvbbi"]
 [ext_resource type="PackedScene" uid="uid://delg4ih0i2e02" path="res://scenes/Rails/Rail6.tscn" id="8_3wm5y"]
 [ext_resource type="PackedScene" uid="uid://jnuu6gt17yqg" path="res://scenes/Rails/Rail7.tscn" id="9_vvwo8"]
@@ -154,6 +155,7 @@ scenes/14/scene = ExtResource("13_6rdsc")
 scenes/15/scene = ExtResource("3_vvwo8")
 scenes/16/scene = ExtResource("4_g12dk")
 scenes/17/scene = ExtResource("5_aogfk")
+scenes/18/scene = ExtResource("7_g12dk")
 
 [resource]
 terrain_set_0/mode = 0
