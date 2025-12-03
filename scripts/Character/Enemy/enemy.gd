@@ -46,12 +46,12 @@ func _setup(data : enemy_data):
 
 func _process(_delta: float) -> void:
 	#Check which is closer
-	var distance_to_player : float = player_ref.position.distance_to(position)
-	var distance_to_cart : float = cart_ref.position.distance_to(position)
+	var distance_to_player : float = player_ref.global_position.distance_to(global_position)
+	var distance_to_cart : float = cart_ref.global_position.distance_to(global_position)
 	
 	#move to closest
-	var dir_to_player : Vector2 = (player_ref.position - position).normalized()
-	var dir_to_cart: Vector2 = (cart_ref.position - position).normalized()
+	var dir_to_player : Vector2 = (player_ref.global_position - global_position).normalized()
+	var dir_to_cart: Vector2 = (cart_ref.global_position - global_position).normalized()
 	direction = dir_to_player if distance_to_player < distance_to_cart else dir_to_cart
 
 	if can_attack:
