@@ -44,6 +44,10 @@ position = Vector2(241, -123)
 position = Vector2(48.000015, -240)
 
 [node name="QuestManager" parent="." instance=ExtResource("10_e1cbu")]
+wrong_NPC_symbol = Dictionary[int, String]({
+0: "wrong_NPC_origin",
+1: "wrong_NPC_origin"
+})
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

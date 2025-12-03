@@ -16,7 +16,6 @@ static func create_grammar(dictionary : Dictionary) -> Tracery.Grammar:
 	#Create new grammar from dictionary
 	var new_grammar = Tracery.Grammar.new( dictionary )
 	new_grammar.rng = RandomNumberGenerator.new()
-	new_grammar.add_modifiers(Tracery.UniversalModifiers.get_modifiers())
 	return new_grammar
 
 

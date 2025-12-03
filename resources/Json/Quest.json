@@ -1,0 +1,179 @@
+{
+	"wrong_NPC_origin": [
+        "#wrong_NPC_header# you #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
+	],
+	"wrong_NPC_header": [
+		"Hey",
+		"Man",
+		"Stay focus,",
+		"Do not get away,",
+        "Yo"
+	],
+	"wrong_NPC_verb": [
+		"have to",
+		"shall",
+		"need to",
+        "should"
+	],
+	"wrong_NPC_finish": [
+		"finish",
+		"complete",
+		"conclude",
+		"fulfill",
+        "get through"
+	],
+	"wrong_NPC_quest": [
+		"your quest.",
+		"the request.",
+		"your mission.",
+		"your task !",
+        "what they order you."
+	],
+	"wrong_NPC_comeback": [
+		"Come back later.",
+		"Stop by later.",
+		"We'll talk after.",
+		"I have some work for you.",
+		"I need someone fully available.",
+		"I have things to do before.",
+        "You can't do two things at the same time."
+	],
+	
+	
+	"quest_not_finished_origin": [
+        "#quest_not_finished_header# #quest_not_finished_verb# that #quest_not_finished_it# #quest_not_finished_finish#"
+	],
+	"quest_not_finished_header": [
+		"Mmmh",
+		"Hum",
+		"Really ?",
+		"Huh",
+        "No, it can't be."
+	],
+	"quest_not_finished_verb": [
+		"I'm not sure",
+		"I can't see",
+		"I'm not convince",
+        "I don't think"
+	],
+	"quest_not_finished_finish": [
+		"what I wanted.",
+		"what I needed",
+		"what I've asked you !",
+		"what we've talked about !",
+		"what we agreed on.",
+		"#questItem#"
+	],
+	"quest_not_finished_it": [
+		"it is",
+        "it's"
+	],
+	"quest_finished_origin": [
+        "#quest_finished_header# #quest_finished_thank# You #quest_finished_verb# #quest_finished_finish#"
+	],
+	"quest_finished_header": [
+		"Oh !",
+		"Really ?",
+		"Nice !",
+		"Ah !",
+        "Yes !!"
+	],
+	"quest_finished_thank": [
+		"Thank you !",
+		"Thank you so much !!",
+		"I owe you one.",
+		"My man, you really did it !",
+        "I'm glad that you've succeed !"
+	],
+	"quest_finished_verb": [
+		"are a killer at it !",
+		"may be one of my friends now.",
+		"are the most efficient intern here.",
+		"are the G.O.A.T !",
+		"really are the best !",
+        "found #questItem# !"
+	],
+	"quest_finished_finish": [
+		"Take care.",
+		"See ya.",
+		"See you soon.",
+		"Bye !",
+		"Ciao !",
+        "The next one is on me."
+	],
+	"quest_person_origin": [
+        "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
+	],
+	"quest_person_header": [
+		"What's up man !",
+		"Hey.",
+		"Dude, come here !",
+		"Watch out !",
+        "Come on pal !!"
+	],
+	"quest_person_verb": [
+		"Can you search for",
+		"Can you check on",
+		"Go watch over",
+		"Go find",
+        "Would you search for"
+	],
+	"quest_person_quest": [
+		"and bring him to me ?",
+		"and catch him for me ?",
+		", he need to answer some questions.",
+        ", he's really bothering me"
+	],
+	"quest_person_finish": [
+		"Like, please, I really need him.",
+		"If I can't find him, I'm a dead man.",
+		"And I'll spare you.",
+		"You'll be granted a nice reward.",
+		"Come on, and hurry up !",
+        "Good luck."
+	],
+	"quest_object_origin": [
+        "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
+	],
+	"quest_object_header": [
+		"What's up man !",
+		"Hey.",
+		"Dude, come here !",
+		"Watch out !",
+        "Come on pal !!"
+	],
+	"quest_object_verb": [
+		"Can you search for",
+		"Can you check on",
+		"Go watch over",
+		"Go find",
+        "Would you search for"
+	],
+	"quest_object_quest": [
+		"and bring it to me ?",
+		"and catch it for me ?",
+		", I lost it last night during the riot.",
+        ", it's really bothering me"
+	],
+	"quest_object_finish": [
+		"Like, please, I really need it.",
+		"If I can't find it, I'm a dead man.",
+		"And I'll spare you.",
+		"You'll be granted a nice reward.",
+		"Come on, and hurry up !",
+        "Good luck."
+	],
+	
+	"quest_item" : [ "#questItem#" ],
+	"origin": 
+	[ 
+		"Bertram",
+		"Arabella",
+		"Cecil"
+	],
+	"weapon": [
+		"sword",
+		"axe",
+		"bow"
+	]
+}

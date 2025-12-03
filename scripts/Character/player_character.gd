@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @onready var knockback_timer = $KnockbackTimer
-
+@onready var sprite = $Sprite2D
 @export_category("Health")
 @export var _health : int = 3
 @export var _max_health : int = 5
@@ -36,6 +36,10 @@ func _physics_process(delta: float) -> void:
 
 func get_input() -> void:
 	_input = Input.get_vector("Left", "Right", "Up", "Down")
+	#flip the sprite relative to the direction
+	if _input.x != 0 && _can_move:
+		sprite.flip_h = _input.x < 0
+	#interact key
 	if(Input.is_action_just_pressed("Interact")):
 		_interact()
 

@@ -5,7 +5,7 @@ enum QUEST_TYPE { DELIVER_ITEM, GET_PEOPLE_TO_PLACE }
 static var Instance : quest_manager = null
 
 @export_category("Tracery")
-@export var quest_tracery_json_path : String = ""
+@export_file var quest_tracery_json_path : String = ""
 @export var name_symbol : String = "origin"
 @export var quest_dialog_symbol : Dictionary[QUEST_TYPE, String]
 @export var quest_finished_symbol : Dictionary[QUEST_TYPE, String]
