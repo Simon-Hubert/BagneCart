@@ -18,69 +18,21 @@ func _generate_dungeon(count: int) -> Array[RoomData]:
 	for i in range(count):
 		var room := RoomData.new()
 		room.grid_pos = current_pos
+		room.doors = [true,true,true,true]
 		dungeon.append(room)
 		occupied[current_pos] = room
 
 		if i < count - 1:
-			var possible_dirs := []
+			var available_dirs : Array[Vector2i] = _get_available_dirs_for_room(room.doors)
 
-			for dir in 4:
-				var offset = Vector2i.ZERO
-				match dir:
-					0: offset = Vector2i(0, -1)
-					1: offset = Vector2i(0, 1)
-					2: offset = Vector2i(-1, 0)
-					3: offset = Vector2i(1, 0)
-					_: offset = Vector2i.ZERO
-
-				var new_pos = current_pos + offset
-				if occupied.has(new_pos):
-					continue
-
-				var key_current_ok := false
-				for key in available_keys:
-					if key[dir] == "1":
-						key_current_ok = true
-						break
-
-				var opposite_dir = (dir + 1) if dir % 2 == 0 else (dir - 1)
-
-				var key_next_ok := false
-				for key in available_keys:
-					if key[opposite_dir] == "1":
-						key_next_ok = true
-						break
-
-				if key_current_ok and key_next_ok:
-					possible_dirs.append(dir)
-
-			if possible_dirs.is_empty():
-				print("⚠️ Plus aucune direction possible, fin du donjon.")
-				return dungeon
-
-			var chosen_dir = possible_dirs.pick_random()
-
-			room.add_door(chosen_dir)
-
-			var next_room := RoomData.new()
-			var offset = Vector2i.ZERO
-			match chosen_dir:
-				0: offset = Vector2i(0, -1)
-				1: offset = Vector2i(0, 1)
-				2: offset = Vector2i(-1, 0)
-				3: offset = Vector2i(1, 0)
-				_: offset = Vector2i.ZERO
-
-			var next_pos = current_pos + offset
-			next_room.grid_pos = next_pos
-
-			var opposite = (chosen_dir + 1) if chosen_dir % 2 == 0 else (chosen_dir - 1)
-			next_room.add_door(opposite)
-
-			dungeon.append(next_room)
-			occupied[next_pos] = next_room
-			current_pos = next_pos
-
+			var selected_dir = available_dirs[randi_range(0, available_dirs.size() - 1)]
+			var next_room = _random_next_room_from_dir(selected_dir)
+			next_room.grid_pos = current_pos + selected_dir
+			
+			room = next_room
+			current_pos = room.grid_pos
+			dungeon.append(room)
+		
 	return dungeon
 
 func _generate_map(dungeon: Array[RoomData]):
@@ -98,6 +50,19 @@ func _generate_map(dungeon: Array[RoomData]):
 		add_child(instance)	
 		print("Valide room scene for key: %s" % key)
 		
+func _get_available_dirs_for_room(doors: Array[bool]) -> Array[Vector2i]:
+	var dirs : Array[Vector2i] = []
+	if(doors[0]):
+		dirs.append(Vector2i(0, 1)) #bottom
+	if(doors[1]):
+		dirs.append(Vector2i(0, -1)) #top
+	if(doors[2]):
+		dirs.append(Vector2i(-1, 0)) #left
+	if(doors[3]):
+		dirs.append(Vector2i(1, 0)) #right
+	
+	return dirs
+
 			
 func _get_room_key_from_doors(doors: Array) -> String:
 	return "%d%d%d%d" % [ 
@@ -105,4 +70,43 @@ func _get_room_key_from_doors(doors: Array) -> String:
 		int(doors[1]),
 		int(doors[2]),
 		int(doors[3]),]
+func _get_room_keys_from_dir(dir: Vector2i) -> Array[String]:
+	var valid_keys: Array[String] = []
+	
+	var required_index := -1
+	
+	if dir == Vector2i(0, 1):
+		required_index = 1
+	elif dir == Vector2i(0, -1):
+		required_index = 0
+	elif dir == Vector2i(-1, 0):
+		required_index = 3
+	elif dir == Vector2i(1, 0):
+		required_index = 2
+		
+	for key in _rooms.keys():
+		if key[required_index] == "1":
+			valid_keys.append(key)
+	
+	return valid_keys
+	
+
+func _random_next_room_from_dir(dir: Vector2i) -> RoomData:
+	var possible_keys = _get_room_keys_from_dir(dir)
+	
+	if possible_keys.is_empty():
+		print("Aucune salle possible pour la direction ", dir)
+		return null
+	
+	var selected_key = possible_keys[randi_range(0, possible_keys.size() - 1)]
+	
+	var room := RoomData.new()
+	room.doors = [
+		selected_key[0] == "1",
+		selected_key[1] == "1",
+		selected_key[2] == "1",
+		selected_key[3] == "1"
+	]
+	
+	return room
 	

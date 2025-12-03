@@ -1,18 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://btm22glgx8wme"]
+[gd_scene load_steps=16 format=3 uid="uid://btm22glgx8wme"]
 
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="1_lp6jl"]
-[ext_resource type="PackedScene" uid="uid://wx1d3cdd6ci2" path="res://scenes/rooms/room_1.tscn" id="2_syn2b"]
-[ext_resource type="PackedScene" uid="uid://buuwp4chbvml5" path="res://scenes/rooms/room_2.tscn" id="3_7io6k"]
-[ext_resource type="PackedScene" uid="uid://d2bd4nrdruls4" path="res://scenes/rooms/room_4.tscn" id="4_580vu"]
+[ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="2_qhrk0"]
+[ext_resource type="PackedScene" uid="uid://wmpcy5d8qmwt" path="res://scenes/RoomTest/Left.tscn" id="3_4efwd"]
+[ext_resource type="PackedScene" uid="uid://cquytq2ql140g" path="res://scenes/RoomTest/Horizontal.tscn" id="4_1yf5s"]
+[ext_resource type="PackedScene" uid="uid://dox68r0se2ig1" path="res://scenes/RoomTest/Top.tscn" id="5_ocyvq"]
+[ext_resource type="PackedScene" uid="uid://j251lx6olbcu" path="res://scenes/RoomTest/RightTop.tscn" id="6_jptqu"]
+[ext_resource type="PackedScene" uid="uid://darq3wmdm48vp" path="res://scenes/RoomTest/LeftTop.tscn" id="7_pnuut"]
+[ext_resource type="PackedScene" uid="uid://bwvqhbrs3ii0g" path="res://scenes/RoomTest/TopHorizontal.tscn" id="8_8tthn"]
+[ext_resource type="PackedScene" uid="uid://b8i78tp7c6hs7" path="res://scenes/RoomTest/Bottom.tscn" id="9_8ralk"]
+[ext_resource type="PackedScene" uid="uid://llcpyu6xoonj" path="res://scenes/RoomTest/RightBottom.tscn" id="10_owapw"]
+[ext_resource type="PackedScene" uid="uid://da7ar0hnooib0" path="res://scenes/RoomTest/LeftBottom.tscn" id="11_k5aj4"]
+[ext_resource type="PackedScene" uid="uid://cautijrhju3ue" path="res://scenes/RoomTest/BotoomHorizontal.tscn" id="12_uvlo7"]
+[ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="13_p6o8i"]
+[ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="14_pmdra"]
+[ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="15_mmhl1"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lp6jl")
 _rooms = Dictionary[String, PackedScene]({
-"0001": ExtResource("2_syn2b"),
-"0010": ExtResource("4_580vu"),
-"0100": ExtResource("3_7io6k"),
-"1001": ExtResource("2_syn2b")
+"0001": ExtResource("2_qhrk0"),
+"0010": ExtResource("3_4efwd"),
+"0011": ExtResource("4_1yf5s"),
+"0100": ExtResource("5_ocyvq"),
+"0101": ExtResource("6_jptqu"),
+"0110": ExtResource("7_pnuut"),
+"0111": ExtResource("8_8tthn"),
+"1000": ExtResource("9_8ralk"),
+"1001": ExtResource("10_owapw"),
+"1010": ExtResource("11_k5aj4"),
+"1011": ExtResource("12_uvlo7"),
+"1100": ExtResource("13_p6o8i"),
+"1101": ExtResource("14_pmdra"),
+"1110": ExtResource("15_mmhl1")
 })
-ROOMSIZE = 350
+ROOMSIZE = 241
 
 [node name="Camera2D" type="Camera2D" parent="."]
