@@ -7,9 +7,12 @@ var _area : Area2D
 @export var _max_accel: float
 @export var _friction: float
 var _lin_speed: float
+var _no_friction := false
 
 func _ready():
 	_area = $area
+	$CartInteraction.player_hopped_in.connect(_on_player_hopped_in)
+	$CartInteraction.player_hopped_out.connect(_on_player_hopped_out)
 
 
 func _physics_process(delta: float) -> void:
@@ -31,17 +34,17 @@ func _physics_process(delta: float) -> void:
 	var toPlayer := _player.position - position
 	var p := inverse_lerp(_radius, 0, (toPlayer).length()) # la puissance normalisée de l'impac
 	p = clamp(p, 0, 1)
-	print(p)
 
-	_lin_speed += p * (-toPlayer).normalized().dot(rail_dir) *_max_accel*delta
-	_lin_speed -= (_friction*_lin_speed)*delta
+	if(not _no_friction):
+		_lin_speed += p * (-toPlayer).normalized().dot(rail_dir) *_max_accel*delta
+		_lin_speed -= (_friction*_lin_speed)*delta
+	
 	var speed :=  _lin_speed  * rail_dir #
 	position += speed*delta
 	position += centered
 
-	
+func _on_player_hopped_in() -> void:
+	_no_friction = true
 
-	
-
-
-	
+func _on_player_hopped_out() -> void:
+	_no_friction = false
