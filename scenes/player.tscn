@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://8npyicd1iw1n"]
 
 [ext_resource type="Script" uid="uid://c0m8leljkyyhw" path="res://scripts/Character/player_character.gd" id="1_v6fml"]
-[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_3li8b"]
+[ext_resource type="Texture2D" uid="uid://dth7tg3o1eeha" path="res://sprites/Characters/Perso.png" id="2_g2els"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdl7e"]
 
@@ -20,8 +20,7 @@ metadata/_custom_type_script = "uid://c0m8leljkyyhw"
 shape = SubResource("CircleShape2D_mdl7e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3li8b")
-region_enabled = true
+texture = ExtResource("2_g2els")
 region_rect = Rect2(16, 112, 16, 16)
 
 [node name="InteractionArea" type="Area2D" parent="."]
