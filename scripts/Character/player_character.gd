@@ -11,9 +11,14 @@ class_name Player extends CharacterBody2D
 
 var _can_move := true
 var _is_knockbacked := false
-
 var _input : Vector2 = Vector2(0,0)
 var key_count := 0
+
+signal on_player_setup_health(defaultHealth : int)
+signal on_player_update_health(newHealth : int)
+
+func _ready() -> void:
+	on_player_setup_health.emit(_health)
 
 func _process(_delta: float) -> void:
 	get_input()
@@ -45,13 +50,16 @@ func set_can_move(can_move: bool)->void:
 ##dir = hit direction
 func hit(dir : Vector2) -> void:
 	_health -= 1
+	on_player_update_health.emit(_health)
+	#Knockback the player
 	_is_knockbacked = true
 	velocity = dir * _knockback_intensity
-	knockback_timer.start()
+	knockback_timer.start()	
+	#Check player death
 	if _health <= 0:
 		print("Death")
 		_can_move = false
 
-
+##Event when timer ended
 func _on_knockback_ended() -> void:
 	_is_knockbacked = false
