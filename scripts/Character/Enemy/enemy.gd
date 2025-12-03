@@ -19,7 +19,7 @@ const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 @export var enemies_type : Array[enemy_data]
 
 @export_category("Parameter")
-@export var enemy_cart_push : float = 500
+@export var enemy_cart_push : float = 100
 
 var speed : float = 500
 var max_accel : float = 750
@@ -54,11 +54,9 @@ func _process(_delta: float) -> void:
 	var dir_to_cart: Vector2 = (cart_ref.position - position).normalized()
 	direction = dir_to_player if distance_to_player < distance_to_cart else dir_to_cart
 
-	print(is_cart_in_range)
 	if can_attack:
 		if is_cart_in_range:
 			cart_ref.push(dir_to_cart, enemy_cart_push)
-			is_player_in_range = false
 			attack_timer.start()
 			can_attack = false
 			return
@@ -67,11 +65,10 @@ func _process(_delta: float) -> void:
 			if is_shooting:
 				#range attack (spawn new projectile)
 				var newProjectile := PROJECTILE_SCENE.instantiate() as ennemy_projectile
-				get_tree().root.add_child(newProjectile)
+				get_tree().current_scene.add_child(newProjectile)
 				newProjectile.position = global_position
-				newProjectile.projectile_owner = self
-				newProjectile.linear_velocity = dir_to_player
-				
+				newProjectile.set_velocity(dir_to_player)
+				attack_timer.start()
 				can_attack = false
 				return
 				
