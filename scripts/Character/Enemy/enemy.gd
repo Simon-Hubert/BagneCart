@@ -4,6 +4,7 @@ const TILE_SIZE : int = 16
 
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
+@onready var attack_timer = $AttackTimer
 
 @export_category("References")
 @export var player_ref : Player
@@ -16,7 +17,8 @@ var speed : float = 500
 var max_accel : float = 750
 var is_shooting : bool = false
 var direction : Vector2 = Vector2(0,0)
-#Ennemis vise le chariot ou joueur -> en fonction de la proximité
+var can_attack : bool = true
+
 #Ennemis qui lance des projectiles
 
 
@@ -31,7 +33,7 @@ func _setup(data : enemy_data):
 	max_accel = data.max_accel
 	is_shooting = data.is_shooting
 	attack_shape.shape.radius = data.attack_ange
-		
+	attack_timer.wait_time = data.attack_cooldown_timer
 
 func _process(_delta: float) -> void:
 	#Check which is closer
@@ -52,9 +54,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
+	if !can_attack:
+		return
+	
 	match body.name:
 		"Player":
-			player_ref.hit()
-			
+			var dir_to_player = (player_ref.position - position).normalized()
+			player_ref.hit(dir_to_player)
+			attack_timer.start()
+			can_attack = false
 		"Cart":
-			pass
+			push_warning("Demander a simon comment mather")
+			attack_timer.start()
+			can_attack = false
+
+func _reset_attack() -> void:
+	can_attack = true

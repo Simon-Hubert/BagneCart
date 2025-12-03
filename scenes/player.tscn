@@ -12,6 +12,7 @@ radius = 20.0
 script = ExtResource("1_v6fml")
 _maxSpeed = 500.0
 _maxAccel = 750.0
+_knockback_intensity = 100.0
 metadata/_custom_type_script = "uid://c0m8leljkyyhw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,3 +27,9 @@ region_rect = Rect2(16, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_v6fml")
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_ended"]
