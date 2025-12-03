@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://db5cfan2a3vjb"]
+[gd_scene load_steps=10 format=4 uid="uid://db5cfan2a3vjb"]
 
 [ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="1_pw63i"]
 [ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="2_liovv"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://h7w0rg4ygusl" path="res://scenes/enemy.tscn" id="8_18nlu"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="9_c1pb6"]
-[ext_resource type="PackedScene" uid="uid://bhghkqow2jbej" path="res://scenes/Quest/NPC_spawn.tscn" id="10_4w45t"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
 [ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="10_e1cbu"]
 [ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="10_mngbo"]
@@ -53,18 +52,5 @@ cart_ref = NodePath("../Cart")
 [node name="Sprite2D" parent="." instance=ExtResource("10_mngbo")]
 position = Vector2(-129, -29)
 
-[node name="NPC_Spawn" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(47, -242)
-
-[node name="NPC_Spawn2" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(149, -211)
-
-[node name="NPC_Spawn3" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(208, -152)
-
-[node name="NPC_Spawn4" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(240, -111)
-
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
-[connection signal="on_quest_manager_init" from="QuestManager" to="NPC_Spawn" method="spawn_npc"]

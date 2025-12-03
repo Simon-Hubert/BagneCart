@@ -8,7 +8,6 @@ func _on_lifetime_ended() -> void:
 
 ##Destroy on collision (and give damage to player)
 func _on_body_entered(body: Node) -> void:
-	print(body.name)
 	if body is Player:
 		body.hit(linear_velocity.normalized())
 		
