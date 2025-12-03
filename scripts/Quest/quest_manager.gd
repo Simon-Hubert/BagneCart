@@ -14,6 +14,7 @@ static var Instance : quest_manager = null
 
 @export var quest_item_symbol : Dictionary[QUEST_TYPE, String]
 
+@export_category("Quest")
 @export var finishQuest : bool = false #Temporaire, pour le debug
 
 var has_quest : bool = false
