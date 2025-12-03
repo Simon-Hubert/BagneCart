@@ -8,7 +8,7 @@ class_name NPC extends Node
 @export var sprite_list : Array[Texture2D]
 
 ##Init the data and sprite
-func _init_NPC() -> void:
+func init_NPC() -> void:
 	data = quest_manager.Instance.create_NPC_data()
 	sprite.texture = sprite_list[quest_manager.Instance.get_rng().randi() % sprite_list.size()]
 
