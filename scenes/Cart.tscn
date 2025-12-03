@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8q4ngh3uox7e" path="res://scripts/Cart.gd" id="1_2136m"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_mfx0n"]
-[ext_resource type="Script" uid="uid://fbjdrav1kx6g" path="res://scripts/CartInteraction.gd" id="3_mfx0n"]
+[ext_resource type="Script" path="res://scripts/CartInteraction.gd" id="3_mfx0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2136m"]
 size = Vector2(8, 8)
@@ -25,7 +25,6 @@ shape = SubResource("RectangleShape2D_2136m")
 
 [node name="CartInteraction" type="Area2D" parent="."]
 script = ExtResource("3_mfx0n")
-metadata/_custom_type_script = "uid://fbjdrav1kx6g"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CartInteraction"]
 shape = SubResource("CircleShape2D_bq08c")

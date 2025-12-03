@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	match body.name:
 		"Player":
-			pass
+			player_ref.hit()
 			
 		"Cart":
 			pass

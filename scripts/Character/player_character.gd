@@ -1,5 +1,8 @@
 class_name Player extends CharacterBody2D
 
+@export var _health : int = 3
+
+@export_category("Movement")
 @export var _maxSpeed : float
 @export var _maxAccel : float
 
@@ -33,3 +36,9 @@ func _interact() -> void:
 
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
+
+func hit() -> void:
+	_health -= 1
+	if _health <= 0:
+		print("Death")
+		_can_move = false
