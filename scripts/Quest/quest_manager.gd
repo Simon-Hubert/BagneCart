@@ -39,6 +39,12 @@ func _ready() -> void:
 	_quest_tracery_grammar = TraceryLoader.create_grammar(_quest_tracery_dictionary)
 	on_quest_manager_init.emit()
 	
+##Give a reference to the random number generator
+##Allows for one instance of the rng
+func get_rng() -> RandomNumberGenerator:
+	rng.randomize()
+	return rng
+	
 ##Give info about the quest to a new NPC
 func create_NPC_data() -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
