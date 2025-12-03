@@ -49,5 +49,5 @@ func _on_player_hopped_out() -> void:
 ## To push the cart with a force
 ##
 ## @experimental not tested
-func push(force: Vector2) -> void:
-	_lin_speed += (force).normalized().dot(_rail_dir)
+func push(force: Vector2, strengh : float) -> void:
+	_lin_speed += (force).normalized().dot(_rail_dir) * strengh

@@ -15,7 +15,7 @@ func _ready() -> void:
 		return
 	Instance = self
 
-##Display inforamtion and show animation
+##Display inforamtion and start animation
 func display_dialog(character_name : String, dialog : String):
 	character_text_label.text = character_name
 	dialog_text_label.text = dialog
