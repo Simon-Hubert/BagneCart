@@ -13,10 +13,7 @@ func _init_NPC() -> void:
 	var region_y : int = SPRITE_SIZE * (rng.randi() % 1) + SPRITE_OFFSET_Y
 	sprite.set_region_rect(Rect2(region_x, region_y, SPRITE_SIZE, SPRITE_SIZE))
 
-func _on_player_entered(_body: Node2D) -> void:
-	if _body.name != "Player":
-		return
-		
+func _on_trigger_area_player_interact() -> void:
 	#Give new quest
 	if !quest_manager.Instance.has_quest:
 		quest_manager.Instance.accept_new_quest(data)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxfpm7j2xqoel"]
+[gd_scene load_steps=6 format=3 uid="uid://dxfpm7j2xqoel"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_su2bb"]
 [ext_resource type="Script" uid="uid://dy0oue4bemaco" path="res://scripts/Quest/NPC.gd" id="2_wvomn"]
+[ext_resource type="Script" uid="uid://p5nqout6exbw" path="res://scripts/Quest/NPC_interaction.gd" id="3_su2bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wowo"]
 size = Vector2(18, 16)
@@ -24,9 +25,10 @@ shape = SubResource("RectangleShape2D_8wowo")
 
 [node name="TriggerArea" type="Area2D" parent="."]
 disable_mode = 1
+script = ExtResource("3_su2bb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_wvomn")
 
-[connection signal="body_entered" from="TriggerArea" to="." method="_on_player_entered"]
+[connection signal="player_interact" from="TriggerArea" to="." method="_on_trigger_area_player_interact"]

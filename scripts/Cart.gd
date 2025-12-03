@@ -1,7 +1,5 @@
 class_name Cart extends Node2D
 
-var _area : Area2D
-
 @export var _player: Player
 @export var _radius: float
 @export var _max_accel: float
@@ -10,7 +8,6 @@ var _lin_speed: float
 var _no_friction := false
 
 func _ready():
-	_area = $area
 	$CartInteraction.player_hopped_in.connect(_on_player_hopped_in)
 	$CartInteraction.player_hopped_out.connect(_on_player_hopped_out)
 
@@ -22,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	var point := PhysicsPointQueryParameters2D.new()
 	point.collide_with_areas = true
 	point.position = position
-	point.exclude = [$area]
+	point.exclude = [$CartInteraction]
 	var result = space_state.intersect_point(point)
 
 	for collider in result:
