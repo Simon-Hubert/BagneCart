@@ -1,6 +1,7 @@
 class_name enemy extends CharacterBody2D
 
 const TILE_SIZE : int = 16
+const CART_AREA_NAME = "CartInteraction"
 
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
@@ -21,8 +22,6 @@ var can_attack : bool = true
 
 var is_player_in_range : bool = false
 var is_cart_in_range : bool = false
-#Ennemis qui lance des projectiles
-
 
 func _ready():
 	#Choose random enemy
@@ -41,22 +40,20 @@ func _process(_delta: float) -> void:
 	#Check which is closer
 	var distance_to_player : float = player_ref.position.distance_to(position)
 	var distance_to_cart : float = cart_ref.position.distance_to(position)
-	if distance_to_player < distance_to_cart :
-		#move to player
-		direction = (player_ref.position - position).normalized()
-	else :
-		direction = (cart_ref.position - position).normalized()
-		pass
+	
+	#move to closest
+	var dir_to_player : Vector2 = (player_ref.position - position).normalized()
+	var dir_to_cart: Vector2 = (cart_ref.position - position).normalized()
+	direction = dir_to_player if distance_to_player < distance_to_cart else dir_to_cart
 
 	#Check if can hit, and to who
 	if can_attack:
 		if is_player_in_range:
-			var dir_to_player = (player_ref.position - position).normalized()
 			player_ref.hit(dir_to_player)
 			attack_timer.start()
 			can_attack = false
 		elif is_cart_in_range:
-			push_warning("Demander a simon comment mather")
+			cart_ref.push(dir_to_cart * 10)
 			attack_timer.start()
 			can_attack = false
 			
@@ -68,18 +65,27 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	match body.name:
-		"Player":
-			is_player_in_range = true
-		"Cart":
-			is_cart_in_range = true
+	if body is Player:
+		is_player_in_range = true
+		
+	if body is Cart:
+		print("detect cart")
+		is_cart_in_range = true
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
-	match body.name:
-		"Player":
-			is_player_in_range = false
-		"Cart":
-			is_cart_in_range = false
+	if body is Player:
+		is_player_in_range = false
 
 func _reset_attack() -> void:
 	can_attack = true
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area.name == CART_AREA_NAME:
+		print("detect cart")
+		is_cart_in_range = true
+
+func _on_attack_area_area_exited(area: Area2D) -> void:
+	if area.name == CART_AREA_NAME:
+		print("detect cart")
+		is_cart_in_range = false

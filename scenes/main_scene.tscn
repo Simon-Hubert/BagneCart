@@ -48,32 +48,7 @@ position = Vector2(48.000015, -240)
 [node name="DialogUI" parent="CanvasLayer" instance=ExtResource("10_6wevv")]
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-47, -52)
-player_ref = NodePath("../Player")
-cart_ref = NodePath("../Cart")
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-81, -36)
-player_ref = NodePath("../Player")
-cart_ref = NodePath("../Cart")
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-80, -11)
-player_ref = NodePath("../Player")
-cart_ref = NodePath("../Cart")
-
-[node name="Enemy4" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-90, 15)
-player_ref = NodePath("../Player")
-cart_ref = NodePath("../Cart")
-
-[node name="Enemy5" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-67, 37)
-player_ref = NodePath("../Player")
-cart_ref = NodePath("../Cart")
-
-[node name="Enemy6" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
-position = Vector2(-30, 39)
+position = Vector2(43, -7)
 player_ref = NodePath("../Player")
 cart_ref = NodePath("../Cart")
 
