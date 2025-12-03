@@ -1,47 +1,43 @@
-[gd_scene load_steps=15 format=3 uid="uid://h7w0rg4ygusl"]
+[gd_scene load_steps=19 format=3 uid="uid://h7w0rg4ygusl"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_7waic"]
 [ext_resource type="Script" uid="uid://c1gg0istwpkjr" path="res://scripts/Character/Enemy/enemy.gd" id="1_614tr"]
 [ext_resource type="Script" uid="uid://b36ypy26k4yad" path="res://scripts/Character/Enemy/enemy_data.gd" id="2_rsyu2"]
+[ext_resource type="Texture2D" uid="uid://cd0p5bxov0kjm" path="res://sprites/Characters/Prisonnier1.png" id="3_ipns3"]
+[ext_resource type="Texture2D" uid="uid://c8rnllpi83t11" path="res://sprites/Characters/Prisonnier2.png" id="4_8qclf"]
+[ext_resource type="Texture2D" uid="uid://b8071n36erhky" path="res://sprites/Characters/Prisonnier3.png" id="5_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://bd5caa122aiek" path="res://sprites/Characters/Prisonnier4.png" id="6_otmr2"]
+[ext_resource type="Texture2D" uid="uid://dwn2b3pq4do8c" path="res://sprites/Characters/Prisonnier5.png" id="7_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://dbqcgx3amy22u" path="res://sprites/Characters/Prisonnier6.png" id="8_j0cyh"]
 
 [sub_resource type="Resource" id="Resource_n4lfa"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(0, 144)
+sprite_texture = ExtResource("3_ipns3")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_rsyu2"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(16, 144)
+sprite_texture = ExtResource("4_8qclf")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_batjq"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(32, 144)
+sprite_texture = ExtResource("5_w8i8w")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_hkdl5"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(48, 144)
+sprite_texture = ExtResource("6_otmr2")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_bxvsj"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(64, 144)
+sprite_texture = ExtResource("7_wtq4b")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_40eh0"]
 script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(0, 160)
-metadata/_custom_type_script = "uid://b36ypy26k4yad"
-
-[sub_resource type="Resource" id="Resource_svqgc"]
-script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(16, 160)
-metadata/_custom_type_script = "uid://b36ypy26k4yad"
-
-[sub_resource type="Resource" id="Resource_gm5vn"]
-script = ExtResource("2_rsyu2")
-tilemap_offset = Vector2(32, 160)
+sprite_texture = ExtResource("8_j0cyh")
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_614tr"]
@@ -53,9 +49,9 @@ radius = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 80.0
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_614tr")
-enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_n4lfa"), SubResource("Resource_rsyu2"), SubResource("Resource_batjq"), SubResource("Resource_hkdl5"), SubResource("Resource_bxvsj"), SubResource("Resource_40eh0"), SubResource("Resource_svqgc"), SubResource("Resource_gm5vn")])
+enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_n4lfa"), SubResource("Resource_rsyu2"), SubResource("Resource_batjq"), SubResource("Resource_hkdl5"), SubResource("Resource_bxvsj"), SubResource("Resource_40eh0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7waic")

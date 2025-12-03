@@ -36,7 +36,7 @@ func _ready():
 	_setup(enemies_type[rng.randi() % enemies_type.size()])
 
 func _setup(data : enemy_data):
-	sprite.region_rect = Rect2(data.tilemap_offset.x, data.tilemap_offset.y, TILE_SIZE, TILE_SIZE)
+	sprite.texture = data.sprite_texture
 	speed = data.speed
 	max_accel = data.max_accel
 	is_shooting = data.is_shooting

@@ -1,6 +1,6 @@
 class_name enemy_data extends Resource
 
-@export var tilemap_offset : Vector2
+@export var sprite_texture : Texture2D
 @export var speed : float = 10.0
 @export var max_accel : float = 20.0
 @export var is_shooting : bool = true
