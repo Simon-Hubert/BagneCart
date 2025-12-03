@@ -19,6 +19,8 @@ var is_shooting : bool = false
 var direction : Vector2 = Vector2(0,0)
 var can_attack : bool = true
 
+var is_player_in_range : bool = false
+var is_cart_in_range : bool = false
 #Ennemis qui lance des projectiles
 
 
@@ -46,6 +48,18 @@ func _process(_delta: float) -> void:
 		direction = (cart_ref.position - position).normalized()
 		pass
 
+	#Check if can hit, and to who
+	if can_attack:
+		if is_player_in_range:
+			var dir_to_player = (player_ref.position - position).normalized()
+			player_ref.hit(dir_to_player)
+			attack_timer.start()
+			can_attack = false
+		elif is_cart_in_range:
+			push_warning("Demander a simon comment mather")
+			attack_timer.start()
+			can_attack = false
+			
 func _physics_process(delta: float) -> void:
 	var targetVelocity = direction * speed
 	var maxSpeedChange = max_accel * delta
@@ -54,19 +68,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if !can_attack:
-		return
-	
 	match body.name:
 		"Player":
-			var dir_to_player = (player_ref.position - position).normalized()
-			player_ref.hit(dir_to_player)
-			attack_timer.start()
-			can_attack = false
+			is_player_in_range = true
 		"Cart":
-			push_warning("Demander a simon comment mather")
-			attack_timer.start()
-			can_attack = false
+			is_cart_in_range = true
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	match body.name:
+		"Player":
+			is_player_in_range = false
+		"Cart":
+			is_cart_in_range = false
 
 func _reset_attack() -> void:
 	can_attack = true
