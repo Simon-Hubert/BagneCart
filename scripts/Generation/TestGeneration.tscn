@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://btm22glgx8wme"]
+[gd_scene load_steps=17 format=3 uid="uid://btm22glgx8wme"]
 
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="1_lp6jl"]
 [ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="2_qhrk0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="13_p6o8i"]
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="14_pmdra"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="15_mmhl1"]
+[ext_resource type="PackedScene" uid="uid://c8amxjugcsslc" path="res://scenes/RoomTest/FullDoors.tscn" id="16_8ralk"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lp6jl")
@@ -32,8 +33,10 @@ _rooms = Dictionary[String, PackedScene]({
 "1011": ExtResource("12_uvlo7"),
 "1100": ExtResource("13_p6o8i"),
 "1101": ExtResource("14_pmdra"),
-"1110": ExtResource("15_mmhl1")
+"1110": ExtResource("15_mmhl1"),
+"1111": ExtResource("16_8ralk")
 })
 ROOMSIZE = 241
+NumberOfRooms = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]

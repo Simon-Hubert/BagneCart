@@ -2,36 +2,44 @@ class_name DungeonGenerator extends Node
 
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : int
+@export var NumberOfRooms : int
 
 
 func _ready():
-	var dungeon = _generate_dungeon(10)
+	var dungeon = _generate_dungeon(NumberOfRooms)
 	_generate_map(dungeon)
 	
 func _generate_dungeon(count: int) -> Array[RoomData]:
 	var dungeon: Array[RoomData] = []
 	var occupied := {}
-	var current_pos := Vector2i.ZERO
+	var current_room := RoomData.new()
+	current_room.grid_pos = Vector2i.ZERO
+	current_room.doors = [true, true, true, true]
+	dungeon.append(current_room)
+	occupied[current_room.grid_pos] = current_room
 
-	var available_keys: Array[String] = _rooms.keys()
+	for i in range(1, count):
+		var available_dirs = _get_available_dirs_for_room(current_room.doors)
 
-	for i in range(count):
-		var room := RoomData.new()
-		room.grid_pos = current_pos
-		room.doors = [true,true,true,true]
-		dungeon.append(room)
-		occupied[current_pos] = room
+		if available_dirs.is_empty():
+			break
 
-		if i < count - 1:
-			var available_dirs : Array[Vector2i] = _get_available_dirs_for_room(room.doors)
+		var dir = available_dirs[randi_range(0, available_dirs.size() - 1)]
+		
+		var next_room = _random_next_room_from_dir(dir)
+		next_room.grid_pos = current_room.grid_pos + dir
 
-			var selected_dir = available_dirs[randi_range(0, available_dirs.size() - 1)]
-			var next_room = _random_next_room_from_dir(selected_dir)
-			next_room.grid_pos = current_pos + selected_dir
-			
-			room = next_room
-			current_pos = room.grid_pos
-			dungeon.append(room)
+		var opposite_index = _get_opposite_door_index(dir)
+		next_room.doors[opposite_index] = true
+
+		for j in range(4):
+			if j != opposite_index and randf() < 0.3:
+				next_room.doors[j] = true
+
+		dungeon.append(next_room)
+		occupied[next_room.grid_pos] = next_room
+
+		current_room = next_room
 		
 	return dungeon
 
@@ -109,4 +117,9 @@ func _random_next_room_from_dir(dir: Vector2i) -> RoomData:
 	]
 	
 	return room
-	
+func _get_opposite_door_index(dir: Vector2i) -> int:
+	if dir == Vector2i(0, 1): return 1 # top
+	if dir == Vector2i(0, -1): return 0 # bottom
+	if dir == Vector2i(-1, 0): return 3 # right
+	if dir == Vector2i(1, 0): return 2 # left
+	return -1
