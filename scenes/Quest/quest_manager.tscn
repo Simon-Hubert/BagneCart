@@ -23,6 +23,6 @@ wrong_NPC_symbol = Dictionary[int, String]({
 })
 quest_item_symbol = Dictionary[int, String]({
 0: "#weapon#",
-1: "#name#"
+1: "#origin#"
 })
 finishQuest = true

@@ -55,7 +55,6 @@ enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_n4lfa"), Sub
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7waic")
-region_enabled = true
 region_rect = Rect2(16, 144, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
