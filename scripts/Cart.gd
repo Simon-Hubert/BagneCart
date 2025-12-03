@@ -8,6 +8,7 @@ var _area : Area2D
 @export var _friction: float
 var _lin_speed: float
 var _no_friction := false
+var _rail_dir : Vector2
 
 func _ready():
 	_area = $area
@@ -16,7 +17,6 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	var rail_dir : Vector2
 	var centered : Vector2
 	var space_state = get_world_2d().direct_space_state
 	var point := PhysicsPointQueryParameters2D.new()
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 	for collider in result:
 		if(collider.collider is Rail):
-			rail_dir = collider.collider.dir
+			_rail_dir = collider.collider.dir
 			centered = collider.collider.get_side_force(position)/2
 			break
 	
@@ -36,10 +36,10 @@ func _physics_process(delta: float) -> void:
 	p = clamp(p, 0, 1)
 
 	if(not _no_friction):
-		_lin_speed += p * (-toPlayer).normalized().dot(rail_dir) *_max_accel*delta
+		_lin_speed += p * (-toPlayer).normalized().dot(_rail_dir) * _max_accel * delta
 		_lin_speed -= (_friction*_lin_speed)*delta
 	
-	var speed :=  _lin_speed  * rail_dir #
+	var speed :=  _lin_speed  * _rail_dir #
 	position += speed*delta
 	position += centered
 
@@ -48,3 +48,9 @@ func _on_player_hopped_in() -> void:
 
 func _on_player_hopped_out() -> void:
 	_no_friction = false
+
+## To push the cart with a force
+##
+## @experimental not tested
+func push(force: Vector2) -> void:
+	_lin_speed += (force).normalized().dot(_rail_dir)
