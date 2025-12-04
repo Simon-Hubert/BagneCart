@@ -12,17 +12,24 @@ func _ready():
 func _generate_dungeon(count: int) -> Array[RoomData]:
 	var dungeon: Array[RoomData] = []
 	var occupied := {}
+	var visited := []
 	var current_room := RoomData.new()
 	current_room.grid_pos = Vector2i.ZERO
 	current_room.doors = [true, true, true, true]
 	dungeon.append(current_room)
-	occupied[current_room.grid_pos] = current_room
+	visited.append(current_room)
+	occupied[current_room.grid_pos] = true
 
 	for i in range(1, count):
 		var available_dirs = _get_available_dirs_for_room(current_room.doors)
+		
+		available_dirs = available_dirs.filter(func(direction): return !occupied.has(current_room.grid_pos + direction))
 
 		if available_dirs.is_empty():
-			break
+			print("Dead end at ", current_room.grid_pos)
+			current_room = visited[randi() % visited.size()]
+			i -= 1
+			continue
 
 		var dir = available_dirs[randi_range(0, available_dirs.size() - 1)]
 		
@@ -37,7 +44,8 @@ func _generate_dungeon(count: int) -> Array[RoomData]:
 				next_room.doors[j] = true
 
 		dungeon.append(next_room)
-		occupied[next_room.grid_pos] = next_room
+		visited.append(next_room)
+		occupied[next_room.grid_pos] = true
 
 		current_room = next_room
 		
