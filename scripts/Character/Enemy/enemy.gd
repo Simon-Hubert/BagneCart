@@ -10,6 +10,7 @@ const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
 @onready var attack_timer = $AttackTimer
+@onready var animation_player = $AnimationPlayer
 
 @export_category("References")
 @export var player_ref : Player
@@ -46,8 +47,10 @@ func _setup(data : enemy_data):
 	attack_timer.wait_time = data.attack_cooldown_timer
 
 func _process(_delta: float) -> void:
-	#Check references
-	if !player_ref || cart_ref:
+	#Check references (and if player didn't died)
+	if !player_ref || !cart_ref:
+		return
+	if player_ref.is_dead:
 		return
 	
 	#Check which is closer
@@ -67,27 +70,28 @@ func _process(_delta: float) -> void:
 			return
 		
 		if is_player_in_range:
+			animation_player.play("Attack")
+			attack_timer.start()
+			can_attack = false
 			if is_shooting:
 				#range attack (spawn new projectile)
 				var newProjectile := PROJECTILE_SCENE.instantiate() as ennemy_projectile
 				get_tree().current_scene.add_child(newProjectile)
 				newProjectile.position = global_position
 				newProjectile.set_velocity(dir_to_player)
-				attack_timer.start()
-				can_attack = false
 				return
 				
 			#close attack
 			player_ref.hit(dir_to_player)
-			attack_timer.start()
-			can_attack = false
 		
 			
 func _physics_process(delta: float) -> void:
 	#Check references
-	if !player_ref || cart_ref:
+	if !player_ref || !cart_ref:
 		return
-	
+	if player_ref.is_dead:
+		return
+			
 	var targetVelocity = direction * speed
 	var maxSpeedChange = max_accel * delta
 	velocity.x = move_toward(velocity.x, targetVelocity.x, maxSpeedChange)

@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 @onready var knockback_timer = $KnockbackTimer
 @onready var sprite = $Sprite2D
+@onready var animation_player = $AnimationPlayer
+
 @export_category("Health")
 @export var _health : int = 3
 @export var _max_health : int = 5
@@ -14,7 +16,9 @@ class_name Player extends CharacterBody2D
 var _can_move := true
 var _is_knockbacked := false
 var _input : Vector2 = Vector2(0,0)
+
 var key_count := 0
+var is_dead := false
 
 signal on_player_setup_health(defaultHealth : int)
 signal on_player_update_health(newHealth : int)
@@ -69,8 +73,11 @@ func hit(dir : Vector2) -> void:
 	knockback_timer.start()	
 	#Check player death
 	if _health <= 0:
-		print("Death")
+		animation_player.play("Death")
 		_can_move = false
+		is_dead = true
+	else:
+		animation_player.play("Hit")
 
 ##Event when timer ended
 func _on_knockback_ended() -> void:
