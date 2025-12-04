@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4l87gmia43dl"]
+
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_ipyuv"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_mfqof"]
+[ext_resource type="Script" path="res://scripts/rail_switch.gd" id="3_od2h5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6he8"]
+radius = 19.026299
+
+[node name="RailSwitch" type="Area2D"]
+monitoring = false
+script = ExtResource("1_ipyuv")
+dir = Vector2(-1, 1)
+is_turning = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3rqgk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mfqof")
+region_enabled = true
+region_rect = Rect2(176, 112, 16, 16)
+
+[node name="RailSwitch" type="Area2D" parent="." node_paths=PackedStringArray("rail", "sprite")]
+script = ExtResource("3_od2h5")
+horizontal = false
+default_region_coordinates = Vector2(176, 112)
+other_region_coordinates = Vector2(176, 80)
+rail = NodePath("..")
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailSwitch"]
+shape = SubResource("CircleShape2D_g6he8")
