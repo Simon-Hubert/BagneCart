@@ -70,8 +70,7 @@ position = Vector2(-179, -23)
 position = Vector2(-152, -65)
 
 [node name="Lever" parent="." instance=ExtResource("11_e1cbu")]
-z_index = -2
-position = Vector2(-90, -31)
+position = Vector2(-93, -35)
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]

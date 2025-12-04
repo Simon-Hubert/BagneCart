@@ -1,16 +1,16 @@
 class_name lever extends Sprite2D
 
-@onready var sprite : Sprite2D = $"."
-
-@export_category("Sprites")
-@export var open_sprite : Texture2D
-@export var closed_sprite : Texture2D
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 var is_interacted : bool = false
 
-signal on_interacted(bool)
+signal on_interacted
 
 func _on_interactable_player_interact() -> void:
+	on_interacted.emit()
+	#Play corresponding animation
 	is_interacted = !is_interacted
-	on_interacted.emit(is_interacted)
-	sprite.texture = closed_sprite if is_interacted else open_sprite
+	if is_interacted:
+		animation_player.play("Switch")
+	else:
+		animation_player.play_backwards("Switch")

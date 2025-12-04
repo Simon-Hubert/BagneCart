@@ -1,19 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpnttjm8gbjcm"]
+[gd_scene load_steps=10 format=3 uid="uid://bpnttjm8gbjcm"]
 
-[ext_resource type="Texture2D" uid="uid://j52pr5v7f5rh" path="res://sprites/Levier1.png" id="1_qmoel"]
+[ext_resource type="Texture2D" uid="uid://ccekuaj8ex1p1" path="res://sprites/Lever/Levier_0.png" id="1_qmoel"]
 [ext_resource type="Script" uid="uid://dwakpp3bxbd6v" path="res://scripts/lever.gd" id="2_tmonj"]
-[ext_resource type="Texture2D" uid="uid://c0t120t83b64v" path="res://sprites/Levier2.png" id="3_88hkj"]
+[ext_resource type="Texture2D" uid="uid://ce0ou2p7nybtu" path="res://sprites/Lever/Levier_1.png" id="3_88hkj"]
 [ext_resource type="Script" uid="uid://md84t7gmw7wx" path="res://scripts/lever_interactable.gd" id="3_tmonj"]
+[ext_resource type="Texture2D" uid="uid://bytjmguwolltt" path="res://sprites/Lever/Levier_2.png" id="5_0buwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88hkj"]
 size = Vector2(19, 19)
+
+[sub_resource type="Animation" id="Animation_88hkj"]
+resource_name = "Switch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_qmoel"), ExtResource("3_88hkj"), ExtResource("5_0buwj")]
+}
+
+[sub_resource type="Animation" id="Animation_0buwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_qmoel")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37cy7"]
+_data = {
+&"RESET": SubResource("Animation_0buwj"),
+&"Switch": SubResource("Animation_88hkj")
+}
 
 [node name="Lever" type="Sprite2D"]
 z_index = -1
 texture = ExtResource("1_qmoel")
 script = ExtResource("2_tmonj")
-open_sprite = ExtResource("1_qmoel")
-closed_sprite = ExtResource("3_88hkj")
 
 [node name="Interactable" type="Area2D" parent="."]
 script = ExtResource("3_tmonj")
@@ -22,5 +58,10 @@ metadata/_custom_type_script = "uid://73myl6uvq21p"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_88hkj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_37cy7")
+}
 
 [connection signal="player_interact" from="Interactable" to="." method="_on_interactable_player_interact"]

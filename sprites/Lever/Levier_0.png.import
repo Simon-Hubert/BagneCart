@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j52pr5v7f5rh"
-path="res://.godot/imported/Levier1.png-f57b41702454147072939ab5462ac9c7.ctex"
+uid="uid://ccekuaj8ex1p1"
+path="res://.godot/imported/Levier_0.png-f7637695c1fba714c1aaf20a9ac0a923.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Levier1.png"
-dest_files=["res://.godot/imported/Levier1.png-f57b41702454147072939ab5462ac9c7.ctex"]
+source_file="res://sprites/Lever/Levier_0.png"
+dest_files=["res://.godot/imported/Levier_0.png-f7637695c1fba714c1aaf20a9ac0a923.ctex"]
 
 [params]
 
