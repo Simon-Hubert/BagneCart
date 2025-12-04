@@ -22,6 +22,7 @@ wrong_NPC_symbol = Dictionary[int, String]({
 0: "wrong_NPC_origin",
 1: "wrong_NPC_origin"
 })
+quest_already_finished = "idle_origin"
 quest_item_symbol = Dictionary[int, String]({
 0: "#weapon#",
 1: "#Name_origin#"
