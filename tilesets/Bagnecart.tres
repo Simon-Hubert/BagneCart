@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://t14d5y1xj6ya" path="res://scenes/Rails/Rail3.tscn" id="5_3t3au"]
 [ext_resource type="PackedScene" uid="uid://wypt5b2awxjk" path="res://scenes/Rails/Rail7bis.tscn" id="5_aogfk"]
 [ext_resource type="PackedScene" uid="uid://durbjpkfss5lg" path="res://scenes/Rails/Rail4.tscn" id="6_uu5i5"]
-[ext_resource type="PackedScene" uid="uid://efhjf10tu561" path="res://scenes/Rails/rail_switch0.tscn" id="7_g12dk"]
+[ext_resource type="PackedScene" uid="uid://b1k565ctu48tc" path="res://scenes/Rails/rail_switch0.tscn" id="7_g12dk"]
 [ext_resource type="PackedScene" uid="uid://byy7t5vfk1tr6" path="res://scenes/Rails/Rail5.tscn" id="7_rvbbi"]
 [ext_resource type="PackedScene" uid="uid://delg4ih0i2e02" path="res://scenes/Rails/Rail6.tscn" id="8_3wm5y"]
 [ext_resource type="PackedScene" uid="uid://jnuu6gt17yqg" path="res://scenes/Rails/Rail7.tscn" id="9_vvwo8"]

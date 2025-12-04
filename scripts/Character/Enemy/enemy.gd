@@ -10,6 +10,7 @@ const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
 @onready var attack_timer = $AttackTimer
+@onready var cart_cooldown_timer : Timer = $CartCooldownTimer
 @onready var animation_player = $AnimationPlayer
 
 @export_category("References")
@@ -27,7 +28,7 @@ var max_accel : float = 750
 var is_shooting : bool = false
 var direction : Vector2 = Vector2(0,0)
 var can_attack : bool = true
-
+var can_focus_cart : bool = true
 var is_player_in_range : bool = false
 var is_cart_in_range : bool = false
 
@@ -60,12 +61,14 @@ func _process(_delta: float) -> void:
 	#move to closest
 	var dir_to_player : Vector2 = (player_ref.global_position - global_position).normalized()
 	var dir_to_cart: Vector2 = (cart_ref.global_position - global_position).normalized()
-	direction = dir_to_player if distance_to_player < distance_to_cart else dir_to_cart
+	direction = dir_to_player if distance_to_player < distance_to_cart || !can_focus_cart else dir_to_cart
 
 	if can_attack:
-		if is_cart_in_range:
+		if is_cart_in_range && !can_focus_cart:
 			cart_ref.push(dir_to_cart, enemy_cart_push)
+			cart_cooldown_timer.start()
 			attack_timer.start()
+			can_focus_cart = false
 			can_attack = false
 			return
 		
@@ -128,3 +131,7 @@ func _on_range_attack_area_body_entered(body: Node2D) -> void:
 func _on_range_attack_area_body_exited(body: Node2D) -> void:
 	if body is Player && is_shooting:
 		is_player_in_range = false
+		
+##Reset focus on cart
+func _on_cart_cooldown_timer_timeout() -> void:
+	can_focus_cart = true
