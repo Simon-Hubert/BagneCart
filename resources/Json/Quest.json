@@ -160,11 +160,42 @@
 	],
 	
 	"quest_item" : [ "#questItem#" ],
-	"origin": 
-	[ 
-		"Bertram",
-		"Arabella",
-		"Cecil"
+	"Name_origin": [
+        "#Prenom# #Nom#"
+	],
+	"Nom": [
+		"Blanc",
+		"Nicolet",
+		"Audo",
+		"Paris",
+		"Thavaud",
+		"Bossé",
+		"Brizé-Chopin",
+		"Cabero",
+		"Hubert",
+		"Kirk",
+		"Larbaletrier",
+		"Verstaen",
+		"Sarkozy",
+		"Le Pen",
+        "Parmentier-Ridgway"
+	],
+	"Prenom": [
+		"Fred",
+		"Rémi",
+		"Thomas",
+		"Jérôme",
+		"Norman",
+		"Enzo",
+		"Ferdinand",
+		"Victor",
+		"Simon",
+		"Charlie",
+		"Lou",
+		"Baptiste",
+		"Nicolas",
+		"Jean-Marie",
+        "Adrian"
 	],
 	"weapon": [
 		"sword",

@@ -5,6 +5,7 @@
 [node name="QuestManager" type="Node2D"]
 script = ExtResource("1_v4nlo")
 quest_tracery_json_path = "res://resources/Json/Quest.json"
+name_symbol = "Name_origin"
 quest_dialog_symbol = Dictionary[int, String]({
 0: "quest_object_origin",
 1: "quest_person_origin"
@@ -23,7 +24,7 @@ wrong_NPC_symbol = Dictionary[int, String]({
 })
 quest_item_symbol = Dictionary[int, String]({
 0: "#weapon#",
-1: "#origin#"
+1: "#Name_origin#"
 })
 finishQuest = true
 
