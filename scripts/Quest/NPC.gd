@@ -1,5 +1,7 @@
 class_name NPC extends Node
 
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+
 @export_category("Reference & Data")
 @export var sprite : Sprite2D
 @export var data : NPC_data
@@ -19,6 +21,8 @@ func init_NPC() -> void:
 
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
+	animation_player.play("Talk")
+	
 	#already finished quest
 	if is_quest_finished:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_already_finished_line())

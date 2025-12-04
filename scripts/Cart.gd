@@ -6,6 +6,7 @@ const _tile_set_diagonal_offset : float = 128.0
 
 @onready var _cart_interaction = $CartInteraction
 @onready var _sprite : Sprite2D = $Sprite2D
+@onready var _animation_player : AnimationPlayer = $AnimationPlayer
 
 @export var _player: Player
 @export var _radius: float
@@ -68,6 +69,7 @@ func _on_player_hopped_out() -> void:
 ## @experimental not tested
 func push(force: Vector2, strengh : float) -> void:
 	_lin_speed += (force).normalized().dot(_rail_dir) * strengh
+	_animation_player.play("Push")
 
 ##Set the X value in the region rect
 func set_tile_set_X_offset(x_offset : float) -> void:
