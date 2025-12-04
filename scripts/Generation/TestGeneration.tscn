@@ -37,6 +37,7 @@ _rooms = Dictionary[String, PackedScene]({
 "1111": ExtResource("16_8ralk")
 })
 ROOMSIZE = 241
-NumberOfRooms = 20
+NumberOfRooms = 50
+extra_doors_probability = 30.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
