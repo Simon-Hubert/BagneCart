@@ -10,6 +10,7 @@ func _ready():
 	_generate_map(dungeon)
 	
 func _generate_dungeon(count: int) -> Array[RoomData]:
+	var countRoomsInstantiated = 0
 	var dungeon: Array[RoomData] = []
 	var occupied := {}
 	var visited := []
@@ -25,7 +26,7 @@ func _generate_dungeon(count: int) -> Array[RoomData]:
 		
 		available_dirs = available_dirs.filter(func(direction): return !occupied.has(current_room.grid_pos + direction))
 
-		if available_dirs.is_empty():
+		while available_dirs.is_empty():
 			print("Dead end at ", current_room.grid_pos)
 			current_room = visited[randi() % visited.size()]
 			i -= 1
@@ -44,6 +45,7 @@ func _generate_dungeon(count: int) -> Array[RoomData]:
 				next_room.doors[j] = true
 
 		dungeon.append(next_room)
+		print(countRoomsInstantiated)
 		visited.append(next_room)
 		occupied[next_room.grid_pos] = true
 
