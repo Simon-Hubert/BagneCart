@@ -21,6 +21,9 @@ func init_NPC() -> void:
 	
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
+	#Don't play if a dialog is already shown
+	if dialog_UI.Instance.is_displayed:
+		return
 	animation_player.play("Talk")
 	
 	#already finished quest

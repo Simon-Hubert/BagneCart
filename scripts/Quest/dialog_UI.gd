@@ -9,6 +9,8 @@ const animation_name = "show_hide_dialog"
 @export var character_text_label : RichTextLabel
 @export var dialog_text_label : RichTextLabel
  
+var is_displayed : bool = false
+
 func _ready() -> void:
 	if Instance != null:
 		push_error("dialog UI instance already exists")
@@ -21,7 +23,9 @@ func display_dialog(character_name : String, dialog : String):
 	dialog_text_label.text = dialog
 	animtion_player.play(animation_name)
 	animation_timer.start()
+	is_displayed = true
 	
 ##Hide animation when ends
 func _on_timer_timeout() -> void:
 	animtion_player.play_backwards(animation_name)
+	is_displayed = false
