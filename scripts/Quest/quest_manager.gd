@@ -14,7 +14,7 @@ const NPC_SCENE : PackedScene = preload(NPC_SCENE_PATH)
 @export var quest_finished_symbol : Dictionary[QUEST_TYPE, String]
 @export var quest_not_finished_symbol : Dictionary[QUEST_TYPE, String]
 @export var wrong_NPC_symbol : Dictionary[QUEST_TYPE, String]
-
+@export var quest_already_finished : String = "quest_finished_thank"
 @export var quest_item_symbol : Dictionary[QUEST_TYPE, String]
 
 @export_category("Quest")
@@ -56,10 +56,13 @@ func spawn_NPC() -> void:
 	if npc_spawn_point_list.size() <= 0:
 		push_error("No spawn point added !")
 		return
+		
 	for i in range(npc_number):
 		var newNPC : NPC = NPC_SCENE.instantiate()
 		add_child(newNPC)
-		newNPC.global_position = npc_spawn_point_list[rng.randi() % npc_spawn_point_list.size()]
+		var position_index := rng.randi() % npc_spawn_point_list.size()
+		newNPC.global_position = npc_spawn_point_list[position_index]
+		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
 	
 ##Give info about the quest to a new NPC
@@ -104,3 +107,7 @@ func get_wrong_NPC_line() -> String:
 ##Get a random line when ask the NPC but quest is not finished	
 func get_quest_not_finished_line() -> String:
 	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_not_finished_symbol[current_quest_type])
+
+##Get a random line when ask the NPC but quest is already finished
+func get_quest_already_finished_line() -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_already_finished)

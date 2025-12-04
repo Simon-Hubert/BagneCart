@@ -1,167 +1,162 @@
 {
 	"wrong_NPC_origin": [
-        "#wrong_NPC_header# you #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
+        "#wrong_NPC_header# tu #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
 	],
 	"wrong_NPC_header": [
-		"Hey",
-		"Man",
-		"Stay focus,",
-		"Do not get away,",
-        "Yo"
+		"Hopopop",
+		"Allô",
+		"Reste concentré,",
+		"Ne te dissipe pas,",
+        "Eh oh"
 	],
 	"wrong_NPC_verb": [
-		"have to",
-		"shall",
-		"need to",
-        "should"
+		"devrais d'abord",
+		"dois actuellement",
+		"dois",
+        "devrais"
 	],
 	"wrong_NPC_finish": [
-		"finish",
-		"complete",
-		"conclude",
-		"fulfill",
-        "get through"
+		"finir",
+		"terminer",
+		"conclure",
+        "remplir"
 	],
 	"wrong_NPC_quest": [
-		"your quest.",
-		"the request.",
-		"your mission.",
-		"your task !",
-        "what they order you."
+		"ta quête.",
+		"la requête.",
+		"ta mission.",
+		"ta tâche !",
+        "ce qu'on t'a ordonné de faire."
 	],
 	"wrong_NPC_comeback": [
-		"Come back later.",
-		"Stop by later.",
-		"We'll talk after.",
-		"I have some work for you.",
-		"I need someone fully available.",
-		"I have things to do before.",
-        "You can't do two things at the same time."
+		"Reviens plus tard.",
+		"Fais moi signe ensuite.",
+		"On parlera après.",
+		"J'aurais du travail pour toi.",
+		"Il me faut quelqu'un de pleinement disponible.",
+		"J'ai à faire avant.",
+        "Tu ne peux pas faire deux choses à la fois."
 	],
 	
 	
 	"quest_not_finished_origin": [
-        "#quest_not_finished_header# #quest_not_finished_verb# that #quest_not_finished_it# #quest_not_finished_finish#"
+        "#quest_not_finished_header# #quest_not_finished_verb# c'est #quest_not_finished_finish#"
 	],
 	"quest_not_finished_header": [
-		"Mmmh",
-		"Hum",
-		"Really ?",
-		"Huh",
-        "No, it can't be."
+		"Mmmh.",
+		"Hum.",
+		"Vraiment ?",
+		"Huh.",
+        "Non, ce n'est pas possible !"
 	],
 	"quest_not_finished_verb": [
-		"I'm not sure",
-		"I can't see",
-		"I'm not convince",
-        "I don't think"
+		"Je ne suis pas sûr que",
+		"Je ne vois pas en quoi",
+		"Je ne suis pas convaincu que",
+        "Je ne pense pas que"
 	],
 	"quest_not_finished_finish": [
-		"what I wanted.",
-		"what I needed",
-		"what I've asked you !",
-		"what we've talked about !",
-		"what we agreed on.",
-		"#questItem#"
-	],
-	"quest_not_finished_it": [
-		"it is",
-        "it's"
+		"ce que je voulais.",
+		"ce dont j'ai besoin.",
+		"ce que je t'ai demandé !",
+		"ce dont on avait parlé !",
+		"ce sur quoi on s'était mis d'accord.",
+        "#questitem#."
 	],
 	"quest_finished_origin": [
-        "#quest_finished_header# #quest_finished_thank# You #quest_finished_verb# #quest_finished_finish#"
+        "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
 	],
 	"quest_finished_header": [
 		"Oh !",
-		"Really ?",
-		"Nice !",
+		"Vraiment?",
+		"Super !",
 		"Ah !",
-        "Yes !!"
+        "Oui !!"
 	],
 	"quest_finished_thank": [
-		"Thank you !",
-		"Thank you so much !!",
-		"I owe you one.",
-		"My man, you really did it !",
-        "I'm glad that you've succeed !"
+		"Merci !",
+		"Merci beaucoup !!",
+		"Je t'en dois une.",
+		"Tu l'as vraiment fait !",
+        "Je suis refait que tu aies réussi !"
 	],
 	"quest_finished_verb": [
-		"are a killer at it !",
-		"may be one of my friends now.",
-		"are the most efficient intern here.",
-		"are the G.O.A.T !",
-		"really are the best !",
-        "found #questItem# !"
+		"es vraiment le meilleur !",
+		"es désormais mon ami.",
+		"es l'employé du mois dans mon coeur.",
+		"et le MEILLEUR DE TOUT LES TEMPS !",
+		"es super efficace dis donc !",
+        "as retrouvé #questItem# !"
 	],
 	"quest_finished_finish": [
-		"Take care.",
-		"See ya.",
-		"See you soon.",
+		"Prends soin de toi.",
+		"A +.",
+		"On se recroise bientôt.",
 		"Bye !",
 		"Ciao !",
-        "The next one is on me."
+        "La prochaine fois, compte sur moi."
 	],
 	"quest_person_origin": [
         "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
 	],
 	"quest_person_header": [
-		"What's up man !",
+		"Yo, ça va ?",
 		"Hey.",
-		"Dude, come here !",
-		"Watch out !",
-        "Come on pal !!"
+		"Mec, viens par là !",
+		"Mon gars  !",
+        "Viens par ici mon ami !!"
 	],
 	"quest_person_verb": [
-		"Can you search for",
-		"Can you check on",
-		"Go watch over",
-		"Go find",
-        "Would you search for"
+		"Tu peux aller me chercher",
+		"Peux-tu vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Pourrais-tu chercher"
 	],
 	"quest_person_quest": [
-		"and bring him to me ?",
-		"and catch him for me ?",
-		", he need to answer some questions.",
-        ", he's really bothering me"
+		"et me le ramener ?",
+		"et l'attraper pour moi ?",
+		", il doit répondre à quelques questions.",
+        ", il me fait vraiment chier."
 	],
 	"quest_person_finish": [
-		"Like, please, I really need him.",
-		"If I can't find him, I'm a dead man.",
-		"And I'll spare you.",
-		"You'll be granted a nice reward.",
-		"Come on, and hurry up !",
-        "Good luck."
+		"Genre, s'il te plaît, j'en ai vraiment besoin.",
+		"Si je ne le retrouve pas, je suis un homme mort.",
+		"Et je t'épargnerai.",
+		"Tu auras une superbe récompense à la clé.",
+		"Allez ! Dépêche toi !",
+        "Bonne chance."
 	],
 	"quest_object_origin": [
         "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
 	],
 	"quest_object_header": [
-		"What's up man !",
+		"Yo, ça va ?",
 		"Hey.",
-		"Dude, come here !",
-		"Watch out !",
-        "Come on pal !!"
+		"Mec, viens par là !",
+		"Mon gars  !",
+        "Viens par ici mon ami !!"
 	],
 	"quest_object_verb": [
-		"Can you search for",
-		"Can you check on",
-		"Go watch over",
-		"Go find",
-        "Would you search for"
+		"Tu peux aller me chercher",
+		"Peux-tu vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Pourrais-tu chercher"
 	],
 	"quest_object_quest": [
-		"and bring it to me ?",
-		"and catch it for me ?",
-		", I lost it last night during the riot.",
-        ", it's really bothering me"
+		"et me le ramener ?",
+		"et l'attraper pour moi ?",
+		", je l'ai perdu hier soir pendant la mutinerie.",
+        ", il me fait vraiment chier."
 	],
 	"quest_object_finish": [
-		"Like, please, I really need it.",
-		"If I can't find it, I'm a dead man.",
-		"And I'll spare you.",
-		"You'll be granted a nice reward.",
-		"Come on, and hurry up !",
-        "Good luck."
+		"Genre, s'il te plaît, j'en ai vraiment besoin.",
+		"Si je ne le retrouve pas, je suis un homme mort.",
+		"Et je t'épargnerai.",
+		"Tu auras une superbe récompense à la clé.",
+		"Allez ! Dépêche toi !",
+        "Bonne chance."
 	],
 	
 	"quest_item" : [ "#questItem#" ],

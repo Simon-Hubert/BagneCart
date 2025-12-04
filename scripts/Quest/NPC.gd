@@ -7,6 +7,8 @@ class_name NPC extends Node
 @export_category("Graphics")
 @export var sprite_list : Array[Texture2D]
 
+var is_quest_finished : bool = false
+
 ##Init the data and sprite
 func init_NPC() -> void:
 	if !quest_manager.Instance:
@@ -17,17 +19,25 @@ func init_NPC() -> void:
 
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
+	#already finished quest
+	if is_quest_finished:
+		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_already_finished_line())
+		return
+	
 	#Give new quest
 	if !quest_manager.Instance.has_quest:
 		quest_manager.Instance.accept_new_quest(data)
 		dialog_UI.Instance.display_dialog(data.name, data.quest_dialog)
 		return	
+	
 	#Can't take two quest at same time
 	if quest_manager.Instance.current_quest_giver_name != data.name:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_wrong_NPC_line())
 		return
+		
 	#Check if quest completed
 	if quest_manager.Instance.check_validate_quest():
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_finished_line())
+		is_quest_finished = true
 	else:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line())
