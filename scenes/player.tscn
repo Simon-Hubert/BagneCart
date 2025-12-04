@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://8npyicd1iw1n"]
+[gd_scene load_steps=6 format=3 uid="uid://8npyicd1iw1n"]
 
 [ext_resource type="Script" uid="uid://c0m8leljkyyhw" path="res://scripts/Character/player_character.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_3li8b"]
+[ext_resource type="Script" uid="uid://q3x1c5svdo83" path="res://scripts/Character/picked_item.gd" id="3_3li8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdl7e"]
 
@@ -26,3 +27,8 @@ region_rect = Rect2(16, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_v6fml")
+
+[node name="PickedItem" type="Node2D" parent="."]
+position = Vector2(0, -13)
+script = ExtResource("3_3li8b")
+metadata/_custom_type_script = "uid://q3x1c5svdo83"

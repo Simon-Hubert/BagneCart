@@ -21,15 +21,23 @@ func _physics_process(delta: float) -> void:
 
 func get_input() -> void:
 	_input = Input.get_vector("Left", "Right", "Up", "Down")
-	if(Input.is_action_just_pressed("Interact")):
+	if(Input.is_action_just_pressed("Interact")): 
 		_interact()
 
 func _interact() -> void:
 	var areas = $InteractionArea.get_overlapping_areas()
-	print("interacted")
+	areas = areas.filter(func(ar):return (ar is Interactable))
+	areas.sort_custom(func(a,b): return (a.interaction_priority < b.interaction_priority))
 	for area in areas:
-		if (area is Interactable):
-			area.interact(self)
+		area.interact(self)
+		break
 
+	if not $PickedItem.empty:
+		$PickedItem.drop_item()
+	
+	
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
+
+func pick_item(item: Pickupable) -> void:
+	$PickedItem.pick_item(item)
