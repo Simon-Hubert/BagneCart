@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://db5cfan2a3vjb"]
+[gd_scene load_steps=12 format=4 uid="uid://db5cfan2a3vjb"]
 
 [ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="1_pw63i"]
 [ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="2_liovv"]
@@ -10,12 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
 [ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="10_e1cbu"]
 [ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="10_mngbo"]
+[ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="11_e1cbu"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(1, 1)
-tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgABAP3/AQAAAAAAEgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwA=")
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwABAP3/AQAAAAAAEgA=")
 tile_set = ExtResource("3_7ykc4")
 
 [node name="Cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_gubc5")]
@@ -67,6 +68,9 @@ position = Vector2(-179, -23)
 
 [node name="HealthPickup2" parent="." instance=ExtResource("10_mngbo")]
 position = Vector2(-152, -65)
+
+[node name="Lever" parent="." instance=ExtResource("11_e1cbu")]
+position = Vector2(-90, -32)
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]

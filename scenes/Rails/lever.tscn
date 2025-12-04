@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpnttjm8gbjcm"]
+
+[ext_resource type="Texture2D" uid="uid://j52pr5v7f5rh" path="res://sprites/Levier1.png" id="1_qmoel"]
+[ext_resource type="Script" uid="uid://dwakpp3bxbd6v" path="res://scripts/lever.gd" id="2_tmonj"]
+[ext_resource type="Texture2D" uid="uid://c0t120t83b64v" path="res://sprites/Levier2.png" id="3_88hkj"]
+[ext_resource type="Script" uid="uid://md84t7gmw7wx" path="res://scripts/lever_interactable.gd" id="3_tmonj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88hkj"]
+size = Vector2(19, 19)
+
+[node name="Lever" type="Sprite2D"]
+texture = ExtResource("1_qmoel")
+script = ExtResource("2_tmonj")
+open_sprite = ExtResource("1_qmoel")
+closed_sprite = ExtResource("3_88hkj")
+
+[node name="Interactable" type="Area2D" parent="."]
+script = ExtResource("3_tmonj")
+metadata/_custom_type_script = "uid://73myl6uvq21p"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_88hkj")
+
+[connection signal="player_interact" from="Interactable" to="." method="_on_interactable_player_interact"]

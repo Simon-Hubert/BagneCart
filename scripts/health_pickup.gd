@@ -1,9 +1,5 @@
 class_name health_pickup extends Sprite2D
 
-##Play idle animation
-func _ready():
-	$AnimationPlayer.play("Idle")
-
 ##Check if player walked on health, then give it one health point
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
