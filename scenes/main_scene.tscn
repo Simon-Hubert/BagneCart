@@ -52,16 +52,16 @@ cart_ref = NodePath("../Cart")
 [node name="hud" parent="." instance=ExtResource("9_c1pb6")]
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(-98, -107)
+position = Vector2(-222, -112)
 
 [node name="NPC_spawn_point2" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(-59, -126)
+position = Vector2(0, -145)
 
 [node name="NPC_spawn_point3" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(-19, -132)
+position = Vector2(-96, -184)
 
 [node name="NPC_spawn_point4" parent="." instance=ExtResource("10_4w45t")]
-position = Vector2(26, -130)
+position = Vector2(-83, -108)
 
 [node name="HealthPickup" parent="." instance=ExtResource("10_mngbo")]
 position = Vector2(-179, -23)
@@ -70,7 +70,8 @@ position = Vector2(-179, -23)
 position = Vector2(-152, -65)
 
 [node name="Lever" parent="." instance=ExtResource("11_e1cbu")]
-position = Vector2(-90, -32)
+z_index = -2
+position = Vector2(-90, -31)
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]

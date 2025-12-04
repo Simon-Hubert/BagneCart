@@ -1,9 +1,9 @@
 class_name NPC extends Node
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var sprite : Sprite2D = $Sprite
 
 @export_category("Reference & Data")
-@export var sprite : Sprite2D
 @export var data : NPC_data
 
 @export_category("Graphics")
@@ -18,7 +18,7 @@ func init_NPC() -> void:
 		return
 	data = quest_manager.Instance.create_NPC_data()
 	sprite.texture = sprite_list[quest_manager.Instance.get_rng().randi() % sprite_list.size()]
-
+	
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
 	animation_player.play("Talk")

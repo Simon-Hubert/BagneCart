@@ -25,11 +25,12 @@ wrong_NPC_symbol = Dictionary[int, String]({
 quest_already_finished = "idle_origin"
 quest_item_symbol = Dictionary[int, String]({
 0: "#weapon#",
-1: "#Name_origin#"
+1: "#Prenom#"
 })
 finishQuest = true
 
 [node name="TEMPORAIRE" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 autostart = true
 
