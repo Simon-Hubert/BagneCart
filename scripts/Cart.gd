@@ -1,18 +1,35 @@
 class_name Cart extends Node2D
 
+const _tile_set_horizontal_offset : float = 96.0 
+const _tile_set_vertical_offset : float = 112.0 
+const _tile_set_diagonal_offset : float = 128.0 
+
+@onready var _cart_interaction = $CartInteraction
+@onready var _sprite : Sprite2D = $Sprite2D
+
 @export var _player: Player
 @export var _radius: float
 @export var _max_accel: float
 @export var _friction: float
+
 var _lin_speed: float
 var _no_friction := false
 var _rail_dir : Vector2
 
 func _ready():
-	$CartInteraction.player_hopped_in.connect(_on_player_hopped_in)
-	$CartInteraction.player_hopped_out.connect(_on_player_hopped_out)
+	_cart_interaction.player_hopped_in.connect(_on_player_hopped_in)
+	_cart_interaction.player_hopped_out.connect(_on_player_hopped_out)
 
-
+func _process(_delta: float) -> void:
+	#Change tile set in function of rail direction
+	if _rail_dir.y != 0:
+		set_tile_set_X_offset(_tile_set_vertical_offset)
+		if _rail_dir.x != 0:
+			set_tile_set_X_offset(_tile_set_diagonal_offset)
+			_sprite.flip_h = (_rail_dir.x > 0) != (_rail_dir.y > 0)
+	elif _rail_dir.x != 0:
+		set_tile_set_X_offset(_tile_set_horizontal_offset)
+		
 func _physics_process(delta: float) -> void:
 	var centered : Vector2
 	var space_state = get_world_2d().direct_space_state
@@ -51,3 +68,7 @@ func _on_player_hopped_out() -> void:
 ## @experimental not tested
 func push(force: Vector2, strengh : float) -> void:
 	_lin_speed += (force).normalized().dot(_rail_dir) * strengh
+
+##Set the X value in the region rect
+func set_tile_set_X_offset(x_offset : float) -> void:
+	_sprite.region_rect = Rect2(x_offset, 64,16,16)
