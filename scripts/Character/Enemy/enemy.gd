@@ -64,7 +64,7 @@ func _process(_delta: float) -> void:
 	direction = dir_to_player if distance_to_player < distance_to_cart || !can_focus_cart else dir_to_cart
 
 	if can_attack:
-		if is_cart_in_range && !can_focus_cart:
+		if is_cart_in_range && can_focus_cart:
 			cart_ref.push(dir_to_cart, enemy_cart_push)
 			cart_cooldown_timer.start()
 			attack_timer.start()
