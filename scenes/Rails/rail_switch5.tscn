@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1k565ctu48tc"]
+[gd_scene load_steps=6 format=3 uid="uid://c1kbh62ymmhku"]
 
-[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_5mhr1"]
-[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_tbuo2"]
-[ext_resource type="Script" path="res://scripts/rail_switch.gd" id="3_tbuo2"]
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_a3wmr"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_eykv2"]
+[ext_resource type="Script" path="res://scripts/rail_switch.gd" id="3_f8eth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
 size = Vector2(16, 16)
@@ -12,22 +12,23 @@ radius = 19.026299
 
 [node name="RailSwitch" type="Area2D"]
 monitoring = false
-script = ExtResource("1_5mhr1")
-dir = Vector2(1, -1)
+script = ExtResource("1_a3wmr")
+dir = Vector2(-1, -1)
 is_turning = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3rqgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tbuo2")
+texture = ExtResource("2_eykv2")
 region_enabled = true
-region_rect = Rect2(144, 80, 16, 16)
+region_rect = Rect2(144, 112, 16, 16)
 
 [node name="RailSwitch" type="Area2D" parent="." node_paths=PackedStringArray("rail", "sprite")]
-script = ExtResource("3_tbuo2")
-default_region_coordinates = Vector2(144, 80)
-other_region_coordinates = Vector2(176, 80)
+script = ExtResource("3_f8eth")
+horizontal = false
+default_region_coordinates = Vector2(144, 112)
+other_region_coordinates = Vector2(144, 80)
 rail = NodePath("..")
 sprite = NodePath("../Sprite2D")
 

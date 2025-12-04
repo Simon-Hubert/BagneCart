@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RoomInfos" load_steps=2 format=3 uid="uid://i37exklbxu61"]
+
+[ext_resource type="Script" uid="uid://b251c7v0sg6ef" path="res://scripts/Generation/RoomInfos.gd" id="1_5gwjb"]
+
+[resource]
+script = ExtResource("1_5gwjb")
+_doors = Array[bool]([false, false, false, true])
+metadata/_custom_type_script = "uid://b251c7v0sg6ef"
