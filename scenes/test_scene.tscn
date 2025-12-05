@@ -39,6 +39,11 @@ metadata/_custom_type_script = "uid://d4k7dceo0v43b"
 
 [node name="QuestManager" parent="." instance=ExtResource("5_pln1h")]
 
+[node name="Timer" type="Timer" parent="QuestManager"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUI" parent="CanvasLayer" instance=ExtResource("6_8gixj")]
@@ -68,3 +73,4 @@ position = Vector2(-93, -35)
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
+[connection signal="timeout" from="QuestManager/Timer" to="QuestManager" method="spawn_NPC"]

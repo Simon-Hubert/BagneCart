@@ -121,7 +121,6 @@ func check_validate_quest() -> bool:
 			
 			#Remove and destroy item 
 			quest_item_list.erase(item)
-			remove_child(item)
 			item.queue_free()
 			return true;
 	return false;
