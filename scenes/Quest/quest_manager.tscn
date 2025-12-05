@@ -27,7 +27,6 @@ quest_item_symbol = Dictionary[int, String]({
 0: "#items#",
 1: "#Prenom#"
 })
-finishQuest = true
 
 [node name="TEMPORAIRE" type="Timer" parent="."]
 wait_time = 0.1

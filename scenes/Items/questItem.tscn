@@ -16,9 +16,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cvv4"]
 radius = 19.0
 
-[node name="questItem" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="questItem" type="Node2D"]
 script = ExtResource("1_s2hee")
-sprite = NodePath("pickupableArea/Sprite2D")
 item_to_sprite = Dictionary[String, Texture2D]({
 "le Saint Graal": ExtResource("5_c2jpk"),
 "un poster": ExtResource("4_o21cy"),
