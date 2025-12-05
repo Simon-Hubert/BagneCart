@@ -8,12 +8,18 @@ class_name quest_item extends Pickupable
 var _item_name : String = ""
 var _is_on_screen : bool = false
 
+#Used to determine if the item is a person
+#(player is MORE slower when carring a person)
+var is_person : bool = false
+
 ##Initialize the item name and sprite
 func init_item(item_name : String, rng : RandomNumberGenerator):
 	if item_to_sprite.has(item_name):
 		sprite.texture = item_to_sprite[item_name]
+		is_person = false
 	else:
 		sprite.texture = characters_items_sprites[rng.randi() % characters_items_sprites.size()]
+		is_person = true
 	_item_name = item_name
 	
 ##Check whether the item is the required item AND is on screen
