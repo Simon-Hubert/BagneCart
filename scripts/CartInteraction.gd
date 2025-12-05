@@ -9,17 +9,22 @@ var item : Pickupable
 signal player_hopped_in()
 signal player_hopped_out()
 
-func interact(player: Player):
+func _ready():
+	can_fail = true #c'est degeu a cause du language
+
+func try_interact(player: Player) -> bool:
 	if not can_work:
-		return
+		return false
 
 	if try_put_item(player):
 		start_cooldown()
-		return
+		return true
 
 	if not item_in :
 		put_player(player)
 		start_cooldown()
+		return true
+	return false
 
 	
 func try_put_item(player) -> bool:
@@ -27,8 +32,7 @@ func try_put_item(player) -> bool:
 		return false
 	item = player.get_node("PickedItem").transfer_item()
 	if item == null:
-		print("WTF c'est pas censé arriver")
-		return false
+		return true
 	item_in = true
 	item.reparent(self)
 	item.position = Vector2(0,0)

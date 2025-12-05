@@ -50,10 +50,14 @@ func get_input() -> void:
 func _interact() -> void:
 	var areas = $InteractionArea.get_overlapping_areas()
 	areas = areas.filter(func(ar):return (ar is Interactable))
-	areas.sort_custom(func(a,b): return (a.interaction_priority < b.interaction_priority))
+	areas.sort_custom(func(a,b): return (a.interaction_priority > b.interaction_priority))
 	for area in areas:
-		area.interact(self)
-		break
+		if area.can_fail :
+			if area.try_interact(self):
+				break
+		else:
+			area.interact(self)
+			break
 
 	if not $PickedItem.empty:
 		$PickedItem.drop_item()

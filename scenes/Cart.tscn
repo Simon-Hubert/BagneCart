@@ -8,7 +8,7 @@
 size = Vector2(8, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq08c"]
-radius = 14.0
+radius = 17.0
 
 [sub_resource type="Animation" id="Animation_mfx0n"]
 resource_name = "Push"
