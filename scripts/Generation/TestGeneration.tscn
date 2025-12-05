@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btm22glgx8wme"]
+[gd_scene load_steps=18 format=3 uid="uid://btm22glgx8wme"]
 
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="1_lp6jl"]
 [ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="2_qhrk0"]
@@ -16,8 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="14_pmdra"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="15_mmhl1"]
 [ext_resource type="PackedScene" uid="uid://c8amxjugcsslc" path="res://scenes/RoomTest/FullDoors.tscn" id="16_8ralk"]
+[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="17_owapw"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="QuestManager" parent="." instance=ExtResource("17_owapw")]
+npc_number = 10
+
+[node name="Dungeon" type="Node" parent="."]
+process_priority = -1
 script = ExtResource("1_lp6jl")
 _rooms = Dictionary[String, PackedScene]({
 "0001": ExtResource("2_qhrk0"),
@@ -37,6 +46,5 @@ _rooms = Dictionary[String, PackedScene]({
 "1111": ExtResource("16_8ralk")
 })
 ROOMSIZE = 241
-NumberOfRooms = 20
-
-[node name="Camera2D" type="Camera2D" parent="."]
+NumberOfRooms = 25000
+extra_doors_probability = 10.0

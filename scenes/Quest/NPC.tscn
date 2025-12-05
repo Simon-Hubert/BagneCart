@@ -60,6 +60,7 @@ script = ExtResource("2_wvomn")
 sprite_list = Array[Texture2D]([ExtResource("2_b7ihd"), ExtResource("3_d304e"), ExtResource("4_ycfk0"), ExtResource("5_qrj1q"), ExtResource("6_pxjuw"), ExtResource("7_hgd7x"), ExtResource("8_b0gp1"), ExtResource("9_2afgm"), ExtResource("10_ttery")])
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_b7ihd")
 region_rect = Rect2(0, 112, 16, 16)
 

@@ -3,14 +3,18 @@ class_name DungeonGenerator extends Node
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : int
 @export var NumberOfRooms : int
+@export var extra_doors_probability : float
 
 
 func _ready():
-	var dungeon = _generate_dungeon(NumberOfRooms)
+	var result = _generate_dungeon(NumberOfRooms)
+	var dungeon = result.dungeon
+	var occupied = result.occupied
+	_fix_doors(dungeon, occupied)
 	_generate_map(dungeon)
 	
-func _generate_dungeon(count: int) -> Array[RoomData]:
-	var countRoomsInstantiated = 0
+func _generate_dungeon(count: int) -> Dictionary:
+	#var countRoomsInstantiated = 0
 	var dungeon: Array[RoomData] = []
 	var occupied := {}
 	var visited := []
@@ -21,37 +25,47 @@ func _generate_dungeon(count: int) -> Array[RoomData]:
 	visited.append(current_room)
 	occupied[current_room.grid_pos] = true
 
+	var stack : Array[RoomData] = []
+	stack.append(current_room)
+
 	for i in range(1, count):
-		var available_dirs = _get_available_dirs_for_room(current_room.doors)
-		
-		available_dirs = available_dirs.filter(func(direction): return !occupied.has(current_room.grid_pos + direction))
+		var available_dirs = _get_available_dirs_for_room(current_room, occupied)
 
 		while available_dirs.is_empty():
 			print("Dead end at ", current_room.grid_pos)
-			current_room = visited[randi() % visited.size()]
-			i -= 1
-			continue
+
+			stack.pop_back()
+
+			if stack.is_empty():
+				push_error("Plus aucune salle pour backtrack génération impossible.")
+				return {"dungeon": dungeon, "occupied": occupied}
+
+			current_room = stack.back()
+			available_dirs = _get_available_dirs_for_room(current_room, occupied)
 
 		var dir = available_dirs[randi_range(0, available_dirs.size() - 1)]
-		
+
 		var next_room = _random_next_room_from_dir(dir)
 		next_room.grid_pos = current_room.grid_pos + dir
 
-		var opposite_index = _get_opposite_door_index(dir)
-		next_room.doors[opposite_index] = true
+		var next_index = _get_opposite_door_index(dir)
+		var cur_index = _get_opposite_door_index(-dir)
+
+		current_room.doors[cur_index] = true
+		next_room.doors[next_index] = true
 
 		for j in range(4):
-			if j != opposite_index and randf() < 0.3:
+			if j != next_index and randf() < extra_doors_probability / 100:
 				next_room.doors[j] = true
 
 		dungeon.append(next_room)
-		print(countRoomsInstantiated)
 		visited.append(next_room)
 		occupied[next_room.grid_pos] = true
 
 		current_room = next_room
+		stack.append(current_room)
 		
-	return dungeon
+	return {"dungeon": dungeon, "occupied": occupied}
 
 func _generate_map(dungeon: Array[RoomData]):
 	for room in dungeon:
@@ -67,21 +81,24 @@ func _generate_map(dungeon: Array[RoomData]):
 		instance.position = room.grid_pos * ROOMSIZE
 		add_child(instance)	
 		print("Valide room scene for key: %s" % key)
-		
-func _get_available_dirs_for_room(doors: Array[bool]) -> Array[Vector2i]:
-	var dirs : Array[Vector2i] = []
-	if(doors[0]):
-		dirs.append(Vector2i(0, 1)) #bottom
-	if(doors[1]):
-		dirs.append(Vector2i(0, -1)) #top
-	if(doors[2]):
-		dirs.append(Vector2i(-1, 0)) #left
-	if(doors[3]):
-		dirs.append(Vector2i(1, 0)) #right
 	
-	return dirs
+	quest_manager.Instance.spawn_NPC()
+		
+func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
+	var dirs: Array[Vector2i] = []
+	var possible = [
+		Vector2i(0, 1),
+		Vector2i(0, -1),
+		Vector2i(-1, 0),
+		Vector2i(1, 0)
+	]
 
-			
+	for dir in possible:
+		if !occupied.has(room.grid_pos + dir):
+			dirs.append(dir)
+
+	return dirs
+		
 func _get_room_key_from_doors(doors: Array) -> String:
 	return "%d%d%d%d" % [ 
 		int(doors[0]),
@@ -108,7 +125,6 @@ func _get_room_keys_from_dir(dir: Vector2i) -> Array[String]:
 	
 	return valid_keys
 	
-
 func _random_next_room_from_dir(dir: Vector2i) -> RoomData:
 	var possible_keys = _get_room_keys_from_dir(dir)
 	
@@ -133,3 +149,37 @@ func _get_opposite_door_index(dir: Vector2i) -> int:
 	if dir == Vector2i(-1, 0): return 3 # right
 	if dir == Vector2i(1, 0): return 2 # left
 	return -1
+
+func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
+	for room in dungeon:
+		var pos = room.grid_pos
+
+		var neighbors = {
+			0: Vector2i(0, 1),   # bottom
+			1: Vector2i(0, -1),  # top
+			2: Vector2i(-1, 0),  # left
+			3: Vector2i(1, 0)    # right
+		}
+
+		for door_index in neighbors.keys():
+			var dir = neighbors[door_index]
+			var neighbor_pos = pos + dir
+
+			if !occupied.has(neighbor_pos):
+				room.doors[door_index] = false
+				continue
+
+			var neighbor : RoomData = null
+			for r in dungeon:
+				if r.grid_pos == neighbor_pos:
+					neighbor = r
+					break
+
+			if neighbor == null:
+				room.doors[door_index] = false
+				continue
+
+			var opposite = _get_opposite_door_index(dir)
+
+			if !neighbor.doors[opposite]:
+				room.doors[door_index] = false

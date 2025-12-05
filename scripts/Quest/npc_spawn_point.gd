@@ -6,3 +6,4 @@ func _ready():
 		push_warning("quest manager isn't ready yet !")
 		return
 	quest_manager.Instance.npc_spawn_point_list.append(global_position)
+	print(quest_manager.Instance.npc_spawn_point_list.size())
