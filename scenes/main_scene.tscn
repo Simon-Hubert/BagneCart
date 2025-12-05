@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="10_e1cbu"]
 [ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="10_mngbo"]
 [ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="11_e1cbu"]
+[ext_resource type="PackedScene" uid="uid://c27xygxrntrlq" path="res://scenes/Items/testItem.tscn" id="5_gubc5"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -74,3 +75,6 @@ position = Vector2(-93, -35)
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
+
+[node name="TestItem" parent="." instance=ExtResource("5_gubc5")]
+position = Vector2(-64, 13)

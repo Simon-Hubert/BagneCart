@@ -49,11 +49,16 @@ func get_input() -> void:
 
 func _interact() -> void:
 	var areas = $InteractionArea.get_overlapping_areas()
-	print("interacted")
+	areas = areas.filter(func(ar):return (ar is Interactable))
+	areas.sort_custom(func(a,b): return (a.interaction_priority < b.interaction_priority))
 	for area in areas:
-		if (area is Interactable):
-			area.interact(self)
+		area.interact(self)
+		break
 
+	if not $PickedItem.empty:
+		$PickedItem.drop_item()
+	
+	
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
 
@@ -82,3 +87,6 @@ func hit(dir : Vector2) -> void:
 ##Event when timer ended
 func _on_knockback_ended() -> void:
 	_is_knockbacked = false
+
+func pick_item(item: Pickupable) -> void:
+	$PickedItem.pick_item(item)

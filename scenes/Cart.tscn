@@ -62,6 +62,8 @@ shape = SubResource("RectangleShape2D_2136m")
 
 [node name="CartInteraction" type="Area2D" parent="."]
 script = ExtResource("3_mfx0n")
+interaction_priority = 3
+metadata/_custom_type_script = "uid://fbjdrav1kx6g"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CartInteraction"]
 shape = SubResource("CircleShape2D_bq08c")

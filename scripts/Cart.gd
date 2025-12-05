@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 
 	for collider in result:
 		if(collider.collider is Rail):
-			_rail_dir = collider.collider.dir
+			_rail_dir = collider.collider.dir.normalized()
 			centered = collider.collider.get_side_force(position)/2
 			break
 	
