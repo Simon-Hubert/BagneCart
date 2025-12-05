@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7w55ff2i6ewm"]
+[gd_scene load_steps=14 format=3 uid="uid://b7w55ff2i6ewm"]
 
 [ext_resource type="Script" uid="uid://bvbdjmqimwhvw" path="res://scripts/pickupable.gd" id="1_k1ky4"]
 [ext_resource type="Script" uid="uid://5rvty0ex8uva" path="res://scripts/Quest/quest_item.gd" id="1_s2hee"]
 [ext_resource type="Texture2D" uid="uid://d32g8jwcv6arl" path="res://sprites/QuestItem/Item1.png" id="2_cjogr"]
-[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_s2hee"]
 [ext_resource type="Texture2D" uid="uid://bdcyglc3pfofk" path="res://sprites/QuestItem/Item3.png" id="3_4akvw"]
 [ext_resource type="Texture2D" uid="uid://5t220wcxghui" path="res://sprites/QuestItem/Item4.png" id="4_o21cy"]
 [ext_resource type="Texture2D" uid="uid://c6ol61jvrlghi" path="res://sprites/QuestItem/Item2.png" id="5_c2jpk"]
@@ -37,8 +36,6 @@ metadata/_custom_type_script = "uid://bvbdjmqimwhvw"
 shape = SubResource("CircleShape2D_1cvv4")
 
 [node name="Sprite2D" type="Sprite2D" parent="pickupableArea"]
-texture = ExtResource("2_s2hee")
-region_enabled = true
 region_rect = Rect2(112, 144, 16, 16)
 
 [connection signal="area_entered" from="pickupableArea" to="pickupableArea" method="_on_area_entered"]

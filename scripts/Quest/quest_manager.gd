@@ -22,12 +22,13 @@ const QUEST_ITEM_SCENE : PackedScene = preload(QUEST_ITEM_SCENE_PATH)
 
 @export_category("Quest")
 @export var npc_number : int = 2
-@export var finishQuest : bool = false #Temporaire, pour le debug
 
 var has_quest : bool = false
 var current_quest_giver_name : String = ""
 var current_quest_type : QUEST_TYPE
+var current_quest_item : String = ""
 var npc_spawn_point_list : Array[Vector2]
+var quest_item_list : Array[quest_item]
 
 var _quest_tracery_dictionary : Dictionary
 var _quest_tracery_grammar : Tracery.Grammar
@@ -60,7 +61,7 @@ func spawn_NPC() -> void:
 		push_error("No spawn point added !")
 		return
 	
-	var quest_item_list : Array[String]		
+	var quest_item_name_list : Array[String]	
 	#Spawn NPC
 	for i in range(npc_number):
 		var newNPC : NPC = NPC_SCENE.instantiate()
@@ -69,13 +70,13 @@ func spawn_NPC() -> void:
 		newNPC.global_position = npc_spawn_point_list[position_index]
 		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
-		quest_item_list.append(newNPC.data.quest_item_to_get)
+		quest_item_name_list.append(newNPC.data.quest_item_to_get)
 	
 	#Spawn needed quest item
-	for item in quest_item_list:
-		print(item)
+	for item in quest_item_name_list:
 		var newQuestItem : quest_item = QUEST_ITEM_SCENE.instantiate()
 		add_child(newQuestItem)
+		quest_item_list.append(newQuestItem)
 		#Check if there's still NPC spawners (are reused for quest item spawn)
 		var position_index := rng.randi() % npc_spawn_point_list.size()
 		newQuestItem.global_position = npc_spawn_point_list[position_index]
@@ -102,15 +103,17 @@ func accept_new_quest(data : NPC_data) -> void:
 		current_quest_giver_name = data.name
 		_quest_tracery_grammar.set_save_data("questItem", data.quest_item_to_get) #get quest item from data
 		current_quest_type = data.quest_type
+		current_quest_item = data.quest_item_to_get
 		on_quest_recieved.emit()
 
 ##Look if the current quest is validated
 func check_validate_quest() -> bool:
-	if finishQuest:
-		on_quest_finished.emit()
-		has_quest = false
-		return true;
-		
+	#Check every item if one of them is valid
+	for item in quest_item_list:
+		if item.is_correct_item(current_quest_item):
+			on_quest_finished.emit()
+			has_quest = false
+			return true;
 	return false;
 	
 ##Get a random line when the wrong NPC is interacted
