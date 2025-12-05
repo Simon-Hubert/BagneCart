@@ -13,6 +13,14 @@ class_name Player extends CharacterBody2D
 @export var _maxAccel : float
 @export var _knockback_intensity : float
 
+
+@export_category("Attack")
+@export var _attack_cooldown : float
+@export var _attack_offset : float
+var _can_attack := true
+const ATTACK_SCENE_PATH : String = "res://scenes/player_attack.tscn" 
+const ATTACK_SCENE : PackedScene = preload(ATTACK_SCENE_PATH)
+
 var _can_move := true
 var _is_knockbacked := false
 var _input : Vector2 = Vector2(0,0)
@@ -46,6 +54,9 @@ func get_input() -> void:
 	#interact key
 	if(Input.is_action_just_pressed("Interact")):
 		_interact()
+	#attack key
+	if(Input.is_action_just_pressed("Attack")):
+		_attack()
 
 func _interact() -> void:
 	var areas = $InteractionArea.get_overlapping_areas()
@@ -61,7 +72,24 @@ func _interact() -> void:
 
 	if not $PickedItem.empty:
 		$PickedItem.drop_item()
-	
+
+func _attack() -> void :
+	if not _can_attack:
+		return
+	_start_attack_cooldown()
+	var new_attack = ATTACK_SCENE.instantiate() as PlayerAttack
+	add_child(new_attack)
+	var dir = _input if _input != Vector2(0,0) else Vector2.RIGHT
+	new_attack.position = _attack_offset * dir
+	new_attack.direction = dir
+	dir = Vector2(-dir.y, dir.x)
+	new_attack.rotation = atan2(dir.y, dir.x)
+
+
+func _start_attack_cooldown() -> void :
+	_can_attack = false
+	await get_tree().create_timer(_attack_cooldown).timeout
+	_can_attack = true
 	
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move

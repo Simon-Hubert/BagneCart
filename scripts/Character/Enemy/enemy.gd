@@ -13,6 +13,10 @@ const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 @onready var cart_cooldown_timer : Timer = $CartCooldownTimer
 @onready var animation_player = $AnimationPlayer
 
+@export_category("Health")
+@export var _health : int = 3
+var is_dead := false
+
 @export_category("References")
 @export var player_ref : Player
 @export var cart_ref : Cart
@@ -52,6 +56,8 @@ func _process(_delta: float) -> void:
 	if !player_ref || !cart_ref:
 		return
 	if player_ref.is_dead:
+		return
+	if is_dead:
 		return
 	
 	#Check which is closer
@@ -100,6 +106,16 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, targetVelocity.x, maxSpeedChange)
 	velocity.y = move_toward(velocity.y, targetVelocity.y, maxSpeedChange)
 	move_and_slide()
+
+##dir for knockback
+func hit(_dir : Vector2) -> void:
+	_health -= 1
+	#Check death
+	if _health <= 0:
+		animation_player.play("Death")
+		is_dead = true
+	else:
+		animation_player.play("Hit")
 
 ##Reset attack when timer ends
 func _reset_attack() -> void:

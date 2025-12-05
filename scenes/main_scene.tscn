@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://db5cfan2a3vjb"]
+[gd_scene load_steps=13 format=4 uid="uid://db5cfan2a3vjb"]
 
 [ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="1_pw63i"]
 [ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="2_liovv"]
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://c27xygxrntrlq" path="res://scenes/Items/testItem.tscn" id="5_gubc5"]
+[ext_resource type="PackedScene" uid="uid://dlcf2wjcvi7ct" path="res://scenes/enemy.tscn" id="8_18nlu"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="9_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="10_4w45t"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
@@ -27,9 +28,11 @@ _max_accel = 10000.0
 _friction = 2.0
 
 [node name="Player" parent="." instance=ExtResource("1_pw63i")]
-position = Vector2(-90, 21)
+position = Vector2(-91, 20)
 motion_mode = 1
 _maxSpeed = 120.0
+_attack_cooldown = 0.5
+_attack_offset = 10.0
 
 [node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
 zoom = Vector2(4, 4)
@@ -68,8 +71,13 @@ position = Vector2(-152, -65)
 position = Vector2(-93, -35)
 
 [node name="TestItem" parent="." instance=ExtResource("5_gubc5")]
-position = Vector2(-64, 13)
+position = Vector2(-59, 13)
 priority = 2
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
+position = Vector2(185, 10)
+player_ref = NodePath("../Player")
+cart_ref = NodePath("../Cart")
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
