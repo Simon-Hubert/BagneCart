@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c27xygxrntrlq"]
+
+[ext_resource type="Script" uid="uid://bvbdjmqimwhvw" path="res://scripts/pickupable.gd" id="1_byl0a"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_j56b8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1cvv4"]
+radius = 19.0
+
+[node name="TestItem" type="Area2D"]
+script = ExtResource("1_byl0a")
+interaction_priority = 2
+metadata/_custom_type_script = "uid://bvbdjmqimwhvw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1cvv4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j56b8")
+region_enabled = true
+region_rect = Rect2(112, 144, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

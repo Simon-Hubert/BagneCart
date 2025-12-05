@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyr3l4epyskld"]
+
+[ext_resource type="Script" uid="uid://8q4ngh3uox7e" path="res://scripts/Cart.gd" id="1_2136m"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_mfx0n"]
+[ext_resource type="Script" uid="uid://fbjdrav1kx6g" path="res://scripts/CartInteraction.gd" id="3_mfx0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2136m"]
+size = Vector2(8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bq08c"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_mfx0n"]
+resource_name = "Push"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.10471976, -0.10471976, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bq08c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2p3s"]
+_data = {
+&"Push": SubResource("Animation_mfx0n"),
+&"RESET": SubResource("Animation_bq08c")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2136m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mfx0n")
+region_enabled = true
+region_rect = Rect2(112, 64, 16, 16)
+
+[node name="AnimatableBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_2136m")
+
+[node name="CartInteraction" type="Area2D" parent="."]
+script = ExtResource("3_mfx0n")
+interaction_priority = 3
+metadata/_custom_type_script = "uid://fbjdrav1kx6g"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CartInteraction"]
+shape = SubResource("CircleShape2D_bq08c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a2p3s")
+}

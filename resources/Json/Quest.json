@@ -1,0 +1,296 @@
+{
+	"wrong_NPC_origin": [
+        "#wrong_NPC_header# tu #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
+	],
+	"wrong_NPC_header": [
+		"Hopopop",
+		"Allô",
+		"Reste concentré,",
+		"Ne te dissipe pas,",
+        "Eh oh"
+	],
+	"wrong_NPC_verb": [
+		"devrais d'abord",
+		"dois actuellement",
+		"dois",
+        "devrais"
+	],
+	"wrong_NPC_finish": [
+		"finir",
+		"terminer",
+		"conclure",
+        "remplir"
+	],
+	"wrong_NPC_quest": [
+		"ta quête.",
+		"la requête.",
+		"ta mission.",
+		"ta tâche !",
+        "ce qu'on t'a ordonné de faire."
+	],
+	"wrong_NPC_comeback": [
+		"Reviens plus tard.",
+		"Fais moi signe ensuite.",
+		"On parlera après.",
+		"J'aurais du travail pour toi.",
+		"Il me faut quelqu'un de pleinement disponible.",
+		"J'ai à faire avant.",
+        "Tu ne peux pas faire deux choses à la fois."
+	],
+	
+	
+	"quest_not_finished_origin": [
+        "#quest_not_finished_header# #quest_not_finished_verb# c'est #quest_not_finished_finish#"
+	],
+	"quest_not_finished_header": [
+		"Mmmh.",
+		"Hum.",
+		"Vraiment ?",
+		"Huh.",
+        "Non, ce n'est pas possible !"
+	],
+	"quest_not_finished_verb": [
+		"Je ne suis pas sûr que",
+		"Je ne vois pas en quoi",
+		"Je ne suis pas convaincu que",
+        "Je ne pense pas que"
+	],
+	"quest_not_finished_finish": [
+		"ce que je voulais.",
+		"ce dont j'ai besoin.",
+		"ce que je t'ai demandé !",
+		"ce dont on avait parlé !",
+		"ce sur quoi on s'était mis d'accord.",
+        "#questitem#."
+	],
+	"quest_finished_origin": [
+        "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
+	],
+	"quest_finished_header": [
+		"Oh !",
+		"Vraiment?",
+		"Super !",
+		"Ah !",
+        "Oui !!"
+	],
+	"quest_finished_thank": [
+		"Merci !",
+		"Merci beaucoup !!",
+		"Je t'en dois une.",
+		"Tu l'as vraiment fait !",
+        "Je suis refait que tu aies réussi !"
+	],
+	"quest_finished_verb": [
+		"es vraiment le meilleur !",
+		"es désormais mon ami.",
+		"es l'employé du mois dans mon coeur.",
+		"et le MEILLEUR DE TOUT LES TEMPS !",
+		"es super efficace dis donc !",
+        "as retrouvé #questItem# !"
+	],
+	"quest_finished_finish": [
+		"Prends soin de toi.",
+		"A +.",
+		"On se recroise bientôt.",
+		"Bye !",
+		"Ciao !",
+        "La prochaine fois, compte sur moi."
+	],
+	"quest_person_origin": [
+        "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
+	],
+	"quest_person_header": [
+		"Yo, ça va ?",
+		"Hey.",
+		"Mec, viens par là !",
+		"Mon gars  !",
+        "Viens par ici mon ami !!"
+	],
+	"quest_person_verb": [
+		"Tu peux aller me chercher",
+		"Peux-tu vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Pourrais-tu chercher"
+	],
+	"quest_person_quest": [
+		"et me le ramener ?",
+		"et l'attraper pour moi ?",
+		", il doit répondre à quelques questions.",
+        ", il me fait vraiment chier."
+	],
+	"quest_person_finish": [
+		"Genre, s'il te plaît, j'en ai vraiment besoin.",
+		"Si je ne le retrouve pas, je suis un homme mort.",
+		"Et je t'épargnerai.",
+		"Tu auras une superbe récompense à la clé.",
+		"Allez ! Dépêche toi !",
+        "Bonne chance."
+	],
+	"quest_object_origin": [
+        "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
+	],
+	"quest_object_header": [
+		"Yo, ça va ?",
+		"Hey.",
+		"Mec, viens par là !",
+		"Mon gars  !",
+        "Viens par ici mon ami !!"
+	],
+	"quest_object_verb": [
+		"Tu peux aller me chercher",
+		"Peux-tu vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Pourrais-tu chercher"
+	],
+	"quest_object_quest": [
+		"et me le ramener ?",
+		"et l'attraper pour moi ?",
+		", je l'ai perdu hier soir pendant la mutinerie.",
+        ", il me fait vraiment chier."
+	],
+	"quest_object_finish": [
+		"Genre, s'il te plaît, j'en ai vraiment besoin.",
+		"Si je ne le retrouve pas, je suis un homme mort.",
+		"Et je t'épargnerai.",
+		"Tu auras une superbe récompense à la clé.",
+		"Allez ! Dépêche toi !",
+        "Bonne chance."
+	],
+	"idle_header": [
+		"Je suis profondément schizophrène.",
+		"Qu'est-ce qui est jaune et qui attend ?",
+		"Quelle est le point commun entre une pizza et un appartement étudiant de 9m2 ?",
+		"Quelle est la femelle du hamster ?",
+		"Que dit un oignon quand il se cogne ?",
+		"Quel est l'animal le plus heureux ?",
+		"Quelle est le fruit préféré de l'homme ?",
+		"Pourquoi le football c'est rigolo ?",
+		"Quel est le sport le plus fruité ?",
+		"Que se fait un Schtroumpf quand il tombe ?",
+		"Quel est le comble pour un marin ?",
+		"Qu'est ce que les enfants usent le plus à l'école ?",
+		"Quel métier les chiens peuvent-ils exercer ?",
+		"Quel est le point commun entre un pêcheur et un mannequin ?",
+		"Quel est le sport le plus silencieux ?",
+		"Quel est le comble pour un joueur de bowling ?",
+		"Pourquoi ne faut-il jamais raconter d'histoires drôles à un ballon ?",
+		"Que chante le plombier ?",
+		"Quels sont les animaux qui sont souvent fatigués ?",
+		"Quel est l'animal le plus à la mode ?",
+		"Que fait une vache avec une radio ?",
+		"Qu'est ce qu'une carotte au milieu d'une flaque d'eau ?",
+		"De quelle couleur sont les parapluies quand il pleut ?",
+		"Comment appelle t-on une fleur qui prend sa graine à moitié ?",
+		"Quelle est l’étoile la plus sale ?",
+		"Quelle est la blague à deux balles ?",
+		"Un sucre tombe amoureux d’une cuillère. Que propose le sucre à la cuillère ?",
+		"C’est un bol et une tasse qui sont devant un évier :",
+		"A combien rouliez-vous ? demande le gendarme.",
+		"Pourquoi faut-il se méfier des sirènes au volant ?",
+		"Quel est le comble pour un professeur de géographie ?",
+		"Quel animal est sourd ?",
+		"Que disent les plongeur au nouvel an ?",
+		"Quelles sont les lettres que l’on boit au petit déjeuner ?",
+		"Quel est le comble pour un professeur de musique ?",
+		"Ce matin, j’ai voulu faire une blague sur le Super U...",
+		"Pourquoi Michaël ouvre la porte ?",
+		"Quel est le comble d’un juge ?",
+		"Un homme tombe de la Tour Eiffel. Ses cheveux ne tombent que dix minutes plus tard. Pourquoi ?",
+		"Où trouve-t-on des chats marrants ?",
+		"J’ai 3 têtes, 3 jambes, 1 bras et 6 doigts. Qui suis-je ?",
+		"Que dit un vitrier à son fils pour qu’il soit sage ?"
+	],
+	"idle_end": [
+		"Ne m'adresse plus jamais la parole.",
+		"Jonathan !!",
+		"C'est avec ou sans champignons.",
+		"Amsterdam.",
+		"Aïe.",
+		"Le hibou, parce que sa femme est chouette.",
+		"L’ananas.",
+		"Parce que Thierry en rit !",
+		"La boxe, parce que tu te prends des pêches dans la poire et tu tombes dans les pommes.",
+		"un Bleu.",
+		"Avoir le nez qui coule !",
+		"Le professeur !",
+		"Electrichien !",
+		"Ils surveillent leur ligne !",
+		"Le para-chuuuut !",
+		"C’est de perdre la boule !",
+		"Parce qu’il pourrait éclater de rire !",
+		"Un syphon font font les petites clés à molette !",
+		"Le dodo et le paresseux !",
+		"La taupe modèle !",
+		"De la meuhsique !",
+		"Un bonhomme de neige… Au printemps !",
+		"Ils sont tout verts !",
+		"Une migraine !",
+		"L’étoile d’araignée !",
+		"Pan Pan !",
+		"Nous pourrions peut-être nous rencontrer dans un café ?",
+		"« Je n’ai pas envie de plonger, dit le bol, à chaque fois je bois la tasse. », « C’est vrai, répond la tasse, tu n’as jamais eu de bol ! »",
+		"A deux seulement, mais si vous voulez monter, il reste de la place",
+		"Parce qu’elles font des queues de poisson !",
+		"C’est de perdre le nord !",
+		"Le crapaud, car il fait « coâ, coâ » !",
+		"Bonne Apnée !",
+		"K.K.O",
+		"Mettre des mauvaises notes !",
+		"… mais elle n’a pas Supermarché !",
+		"Parce que Jack sonne. (Jackson)",
+		"Manger des avocats.",
+		"Parce qu’il utilise un shampooing qui ralentit la chute des cheveux !",
+		"Dans les livres car il y a des chats pitres !",
+		"Un menteur !",
+		"Tiens-toi à carreaux si tu veux une glace !"
+	],
+	"idle_origin": [
+        "#idle_header# #idle_end#"
+	],
+	
+	"quest_item" : [ "#questItem#" ],
+	"Name_origin": [
+        "#Prenom# #Nom#"
+	],
+	"Nom": [
+		"Blanc",
+		"Nicolet",
+		"Audo",
+		"Paris",
+		"Thavaud",
+		"Bossé",
+		"Brizé-Chopin",
+		"Cabero",
+		"Hubert",
+		"Kirk",
+		"Larbaletrier",
+		"Verstaen",
+		"Sarkozy",
+		"Le Pen",
+        "Parmentier-Ridgway"
+	],
+	"Prenom": [
+		"Fred",
+		"Rémi",
+		"Thomas",
+		"Jérôme",
+		"Norman",
+		"Enzo",
+		"Ferdinand",
+		"Victor",
+		"Simon",
+		"Charlie",
+		"Lou",
+		"Baptiste",
+		"Nicolas",
+		"Jean-Marie",
+        "Adrian"
+	],
+	"weapon": [
+		"sword",
+		"axe",
+		"bow"
+	]
+}
