@@ -28,7 +28,10 @@ var current_quest_giver_name : String = ""
 var current_quest_type : QUEST_TYPE
 var current_quest_item : String = ""
 var npc_spawn_point_list : Array[Vector2]
+
 var quest_item_list : Array[quest_item]
+var spawned_NPC_position_list : PackedVector2Array
+var spawned_quest_item_position_list : PackedVector2Array
 
 var _quest_tracery_dictionary : Dictionary
 var _quest_tracery_grammar : Tracery.Grammar
@@ -71,12 +74,14 @@ func spawn_NPC() -> void:
 		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
 		quest_item_name_list.append(newNPC.data.quest_item_to_get)
-	
+		spawned_NPC_position_list.append(newNPC.global_position)
+		
 	#Spawn needed quest item
 	for item in quest_item_name_list:
 		var newQuestItem : quest_item = QUEST_ITEM_SCENE.instantiate()
 		add_child(newQuestItem)
 		quest_item_list.append(newQuestItem)
+		spawned_quest_item_position_list.append(newQuestItem.global_position)
 		#Check if there's still NPC spawners (are reused for quest item spawn)
 		var position_index := rng.randi() % npc_spawn_point_list.size()
 		newQuestItem.global_position = npc_spawn_point_list[position_index]
@@ -113,6 +118,7 @@ func check_validate_quest() -> bool:
 		if item.is_correct_item(current_quest_item):
 			on_quest_finished.emit()
 			has_quest = false
+			item.destroy()
 			return true;
 	return false;
 	
