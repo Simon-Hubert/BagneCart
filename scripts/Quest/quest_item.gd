@@ -1,7 +1,6 @@
-class_name quest_item extends Node2D
+class_name quest_item extends Pickupable
 
-@onready var sprite : Sprite2D = $pickupableArea/Sprite2D
-@onready var pickupable : Pickupable = $pickupableArea
+@onready var sprite : Sprite2D = $Sprite2D
 
 @export_category("Sprites")
 @export var item_to_sprite : Dictionary[String, Texture2D]
@@ -16,7 +15,4 @@ func init_item(item_name : String, rng : RandomNumberGenerator):
 	_item_name = item_name
 	
 func is_correct_item(item_name : String) -> bool:
-	return _item_name == item_name && pickupable.is_in_cart
-
-func destroy() -> void:
-	call_deferred("queue_free")
+	return _item_name == item_name && is_in_cart

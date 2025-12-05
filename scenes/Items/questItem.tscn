@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7w55ff2i6ewm"]
+[gd_scene load_steps=13 format=3 uid="uid://b7w55ff2i6ewm"]
 
-[ext_resource type="Script" uid="uid://bvbdjmqimwhvw" path="res://scripts/pickupable.gd" id="1_k1ky4"]
 [ext_resource type="Script" uid="uid://5rvty0ex8uva" path="res://scripts/Quest/quest_item.gd" id="1_s2hee"]
 [ext_resource type="Texture2D" uid="uid://d32g8jwcv6arl" path="res://sprites/QuestItem/Item1.png" id="2_cjogr"]
 [ext_resource type="Texture2D" uid="uid://bdcyglc3pfofk" path="res://sprites/QuestItem/Item3.png" id="3_4akvw"]
@@ -16,7 +15,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cvv4"]
 radius = 19.0
 
-[node name="questItem" type="Node2D"]
+[node name="quest_item" type="Area2D"]
 script = ExtResource("1_s2hee")
 item_to_sprite = Dictionary[String, Texture2D]({
 "le Saint Graal": ExtResource("5_c2jpk"),
@@ -25,16 +24,13 @@ item_to_sprite = Dictionary[String, Texture2D]({
 "une canette de soda": ExtResource("2_cjogr")
 })
 characters_items_sprites = Array[Texture2D]([ExtResource("6_q7dh3"), ExtResource("7_2n4ft"), ExtResource("8_7etu7"), ExtResource("9_incbx"), ExtResource("10_qjvkp"), ExtResource("11_fj4is")])
-
-[node name="pickupableArea" type="Area2D" parent="."]
-script = ExtResource("1_k1ky4")
 interaction_priority = 2
 metadata/_custom_type_script = "uid://bvbdjmqimwhvw"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pickupableArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1cvv4")
 
-[node name="Sprite2D" type="Sprite2D" parent="pickupableArea"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 region_rect = Rect2(112, 144, 16, 16)
 
-[connection signal="area_entered" from="pickupableArea" to="pickupableArea" method="_on_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

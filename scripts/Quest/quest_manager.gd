@@ -118,7 +118,11 @@ func check_validate_quest() -> bool:
 		if item.is_correct_item(current_quest_item):
 			on_quest_finished.emit()
 			has_quest = false
-			item.destroy()
+			
+			#Remove and destroy item 
+			quest_item_list.erase(item)
+			remove_child(item)
+			item.queue_free()
 			return true;
 	return false;
 	
