@@ -82,10 +82,8 @@ position = Vector2(-152, -65)
 [node name="Lever" parent="." instance=ExtResource("10_ap2hy")]
 position = Vector2(-93, -35)
 
-[node name="enemy_group" parent="." node_paths=PackedStringArray("_player_ref", "_cart_ref") instance=ExtResource("12_gthg3")]
+[node name="enemy_group" parent="." instance=ExtResource("12_gthg3")]
 position = Vector2(-147, 226)
-_player_ref = NodePath("../Player")
-_cart_ref = NodePath("../Cart")
 _spawn_chance = 100.0
 
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]

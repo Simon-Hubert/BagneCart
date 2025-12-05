@@ -1,6 +1,7 @@
 class_name cart_indicator extends Control
 
 @onready var arrow : TextureRect = $Arrow
+@onready var cart_icon : TextureRect = $Arrow/CartIcon
 
 @export_category("References")
 @export var camera : Camera2D
@@ -35,6 +36,9 @@ func _process(_delta: float) -> void:
 	const margin : Vector2 = Vector2(30.0, 30.0)
 	const end_margin : Vector2 = Vector2(100.0, 100.0)
 	arrow.position = cart_screen_pos.clamp( margin, get_viewport_rect().size - end_margin - arrow.texture.get_size())
+	
+	#Set global cart icon rotation
+	cart_icon.rotation = -arrow.rotation
 	
 func _show_icon():
 	arrow.visible = true
