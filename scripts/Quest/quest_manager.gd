@@ -7,6 +7,9 @@ static var Instance : quest_manager = null
 const NPC_SCENE_PATH : String = "res://scenes/Quest/NPC.tscn" 
 const NPC_SCENE : PackedScene = preload(NPC_SCENE_PATH)
 
+const QUEST_ITEM_SCENE_PATH : String = "res://scenes/Items/questItem.tscn" 
+const QUEST_ITEM_SCENE : PackedScene = preload(QUEST_ITEM_SCENE_PATH)
+
 @export_category("Tracery")
 @export_file var quest_tracery_json_path : String = ""
 @export var name_symbol : String = "origin"
@@ -19,12 +22,13 @@ const NPC_SCENE : PackedScene = preload(NPC_SCENE_PATH)
 
 @export_category("Quest")
 @export var npc_number : int = 2
-@export var finishQuest : bool = false #Temporaire, pour le debug
 
 var has_quest : bool = false
 var current_quest_giver_name : String = ""
 var current_quest_type : QUEST_TYPE
+var current_quest_item : String = ""
 var npc_spawn_point_list : Array[Vector2]
+var quest_item_list : Array[quest_item]
 
 var _quest_tracery_dictionary : Dictionary
 var _quest_tracery_grammar : Tracery.Grammar
@@ -56,7 +60,9 @@ func spawn_NPC() -> void:
 	if npc_spawn_point_list.size() <= 0:
 		push_error("No spawn point added !")
 		return
-		
+	
+	var quest_item_name_list : Array[String]	
+	#Spawn NPC
 	for i in range(npc_number):
 		var newNPC : NPC = NPC_SCENE.instantiate()
 		add_child(newNPC)
@@ -64,7 +70,19 @@ func spawn_NPC() -> void:
 		newNPC.global_position = npc_spawn_point_list[position_index]
 		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
+		quest_item_name_list.append(newNPC.data.quest_item_to_get)
 	
+	#Spawn needed quest item
+	for item in quest_item_name_list:
+		var newQuestItem : quest_item = QUEST_ITEM_SCENE.instantiate()
+		add_child(newQuestItem)
+		quest_item_list.append(newQuestItem)
+		#Check if there's still NPC spawners (are reused for quest item spawn)
+		var position_index := rng.randi() % npc_spawn_point_list.size()
+		newQuestItem.global_position = npc_spawn_point_list[position_index]
+		npc_spawn_point_list.remove_at(position_index)
+		newQuestItem.init_item(item, rng)
+		
 ##Give info about the quest to a new NPC
 func create_NPC_data() -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
@@ -74,7 +92,7 @@ func create_NPC_data() -> NPC_data:
 		push_error("Quest type" + str(newData.quest_type) + "doesn't have any symbol linked")
 		
 	_quest_tracery_grammar.set_save_data("questItem", quest_item_symbol[newData.quest_type]) #define new quest item & save into data
-	newData.quest_item = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item")
+	newData.quest_item_to_get = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item")
 	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_symbol[newData.quest_type])
 	return newData
 
@@ -83,17 +101,19 @@ func accept_new_quest(data : NPC_data) -> void:
 	if !has_quest:
 		has_quest = true
 		current_quest_giver_name = data.name
-		_quest_tracery_grammar.set_save_data("questItem", data.quest_item) #get quest item from data
+		_quest_tracery_grammar.set_save_data("questItem", data.quest_item_to_get) #get quest item from data
 		current_quest_type = data.quest_type
+		current_quest_item = data.quest_item_to_get
 		on_quest_recieved.emit()
 
 ##Look if the current quest is validated
 func check_validate_quest() -> bool:
-	if finishQuest:
-		on_quest_finished.emit()
-		has_quest = false
-		return true;
-		
+	#Check every item if one of them is valid
+	for item in quest_item_list:
+		if item.is_correct_item(current_quest_item):
+			on_quest_finished.emit()
+			has_quest = false
+			return true;
 	return false;
 	
 ##Get a random line when the wrong NPC is interacted

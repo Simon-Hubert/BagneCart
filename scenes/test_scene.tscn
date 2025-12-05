@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=4 uid="uid://2i7imvprbpwm"]
+
+[ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
+[ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
+[ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="3_ntc4i"]
+[ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="4_u0xbq"]
+[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="5_pln1h"]
+[ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
+[ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="7_hf2sn"]
+[ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="8_qq5q4"]
+[ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="9_gah1j"]
+[ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="10_ap2hy"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwABAP3/AQAAAAAAEgA=")
+tile_set = ExtResource("1_6qxox")
+
+[node name="Cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_gthg3")]
+position = Vector2(24, 16)
+_player = NodePath("../Player")
+_radius = 16.0
+_max_accel = 10000.0
+_friction = 2.0
+
+[node name="Player" parent="." instance=ExtResource("3_ntc4i")]
+position = Vector2(-90, 21)
+motion_mode = 1
+_maxSpeed = 120.0
+
+[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
+zoom = Vector2(4, 4)
+script = ExtResource("4_u0xbq")
+_target = NodePath("../Player")
+_decay = 6.5
+metadata/_custom_type_script = "uid://d4k7dceo0v43b"
+
+[node name="QuestManager" parent="." instance=ExtResource("5_pln1h")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUI" parent="CanvasLayer" instance=ExtResource("6_8gixj")]
+
+[node name="hud" parent="." instance=ExtResource("7_hf2sn")]
+
+[node name="NPC_spawn_point" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-245, 26)
+
+[node name="NPC_spawn_point2" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-9, 97)
+
+[node name="NPC_spawn_point3" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-83, 127)
+
+[node name="NPC_spawn_point4" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-189, 99)
+
+[node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
+position = Vector2(-179, -23)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("9_gah1j")]
+position = Vector2(-152, -65)
+
+[node name="Lever" parent="." instance=ExtResource("10_ap2hy")]
+position = Vector2(-93, -35)
+
+[connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
+[connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]

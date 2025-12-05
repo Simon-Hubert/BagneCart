@@ -288,9 +288,10 @@
 		"Jean-Marie",
         "Adrian"
 	],
-	"weapon": [
-		"sword",
-		"axe",
-		"bow"
+	"items": [
+		"une canette de soda",
+		"une canette de boisson gazeuse aromatisée",
+		"un poster",
+		"le Saint Graal"
 	]
 }
