@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://c27xygxrntrlq" path="res://scenes/Items/testItem.tscn" id="5_gubc5"]
-[ext_resource type="PackedScene" uid="uid://dlcf2wjcvi7ct" path="res://scenes/enemy.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://dlcf2wjcvi7ct" path="res://scenes/Enemy/enemy.tscn" id="8_18nlu"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="9_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="10_4w45t"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]

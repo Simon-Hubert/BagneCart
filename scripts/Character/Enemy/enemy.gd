@@ -3,7 +3,7 @@ class_name enemy extends CharacterBody2D
 const TILE_SIZE : int = 16
 const CART_AREA_NAME = "CartInteraction"
 
-const PROJECTILE_SCENE_PATH : String = "res://scenes/enemy_projectile.tscn" 
+const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
 @onready var sprite = $Sprite2D
