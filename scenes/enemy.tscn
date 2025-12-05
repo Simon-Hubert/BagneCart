@@ -207,6 +207,8 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_614tr")
 _health = 1
 enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_ipns3"), SubResource("Resource_8qclf"), SubResource("Resource_w8i8w"), SubResource("Resource_otmr2"), SubResource("Resource_wtq4b"), SubResource("Resource_j0cyh")])
