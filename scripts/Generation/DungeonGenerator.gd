@@ -81,6 +81,8 @@ func _generate_map(dungeon: Array[RoomData]):
 		instance.position = room.grid_pos * ROOMSIZE
 		add_child(instance)	
 		print("Valide room scene for key: %s" % key)
+	
+	quest_manager.Instance.spawn_NPC()
 		
 func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
 	var dirs: Array[Vector2i] = []

@@ -19,6 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="17_owapw"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="QuestManager" parent="." instance=ExtResource("17_owapw")]
+npc_number = 10
+
+[node name="Dungeon" type="Node" parent="."]
+process_priority = -1
 script = ExtResource("1_lp6jl")
 _rooms = Dictionary[String, PackedScene]({
 "0001": ExtResource("2_qhrk0"),
@@ -38,9 +46,5 @@ _rooms = Dictionary[String, PackedScene]({
 "1111": ExtResource("16_8ralk")
 })
 ROOMSIZE = 241
-NumberOfRooms = 50
-extra_doors_probability = 30.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="QuestManager" parent="." instance=ExtResource("17_owapw")]
+NumberOfRooms = 25000
+extra_doors_probability = 10.0
