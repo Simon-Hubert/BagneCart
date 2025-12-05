@@ -64,4 +64,3 @@ func start_cooldown():
 	can_work = false
 	await get_tree().create_timer(cooldown).timeout
 	can_work = true
-

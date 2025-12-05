@@ -61,7 +61,7 @@
 		"ce que je t'ai demandé !",
 		"ce dont on avait parlé !",
 		"ce sur quoi on s'était mis d'accord.",
-        "#questitem#."
+        "#questItem#."
 	],
 	"quest_finished_origin": [
         "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
