@@ -3,6 +3,7 @@ class_name Pickupable extends Interactable
 signal on_picked_up()
 
 var is_picked_up := false
+var is_in_cart := false
 
 func interact(player: Player):
 	if is_picked_up:
