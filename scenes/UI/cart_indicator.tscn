@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://brjtmpmceoxv7"]
+
+[ext_resource type="Script" uid="uid://cknxwmo85telw" path="res://scripts/UI/cart_indicator.gd" id="1_c75a6"]
+[ext_resource type="Texture2D" uid="uid://cyoaa5ug4ij10" path="res://sprites/UI/cart_arrow.png" id="2_i0lr8"]
+
+[node name="Cart_indicator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c75a6")
+
+[node name="Arrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_right = -0.3199997
+offset_bottom = -0.1760025
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_i0lr8")
+
+[node name="Backdrop" type="TextureRect" parent="Arrow"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_i0lr8")

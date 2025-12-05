@@ -17,6 +17,9 @@ var _lin_speed: float
 var _no_friction := false
 var _rail_dir : Vector2
 
+signal on_exit_screen
+signal on_enter_screen
+
 func _ready():
 	_cart_interaction.player_hopped_in.connect(_on_player_hopped_in)
 	_cart_interaction.player_hopped_out.connect(_on_player_hopped_out)
@@ -74,3 +77,11 @@ func push(force: Vector2, strengh : float) -> void:
 ##Set the X value in the region rect
 func set_tile_set_X_offset(x_offset : float) -> void:
 	_sprite.region_rect = Rect2(x_offset, 64,16,16)
+
+##Update if the cart is on screen
+func _on_screen_entered() -> void:
+	on_enter_screen.emit()
+
+##Update if the cart is NOT on screen
+func _on_screen_exited() -> void:
+	on_exit_screen.emit()
