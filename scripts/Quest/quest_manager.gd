@@ -23,6 +23,8 @@ const QUEST_ITEM_SCENE : PackedScene = preload(QUEST_ITEM_SCENE_PATH)
 @export_category("Quest")
 @export var npc_number : int = 2
 
+var number_quest_completed : int = 0
+
 var has_quest : bool = false
 var current_quest_giver_name : String = ""
 var current_quest_type : QUEST_TYPE
@@ -39,6 +41,7 @@ var _quest_tracery_grammar : Tracery.Grammar
 signal on_quest_manager_init
 signal on_quest_recieved
 signal on_quest_finished
+signal on_all_quest_completed
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -122,6 +125,12 @@ func check_validate_quest() -> bool:
 			#Remove and destroy item 
 			quest_item_list.erase(item)
 			item.queue_free()
+			
+			#Check if completed all quest
+			number_quest_completed +=1
+			if number_quest_completed >= npc_number:
+				on_all_quest_completed.emit()
+			
 			return true;
 	return false;
 	

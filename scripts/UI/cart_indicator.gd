@@ -8,8 +8,6 @@ class_name cart_indicator extends Control
 @export var player : Player
 @export var cart : Cart
 
-
-
 func _ready() -> void:
 	#hide arrow by default
 	arrow.visible = false
