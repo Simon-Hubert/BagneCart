@@ -26,6 +26,7 @@ func drop_item() -> void:
 	if empty || not can_put_down:
 		return
 	_current_item.reparent(get_tree().root)
+	_current_item.global_position = get_parent().global_position
 	_current_item.is_picked_up = false
 	_current_item = null
 	empty = true
