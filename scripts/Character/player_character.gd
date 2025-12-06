@@ -30,6 +30,7 @@ var is_dead := false
 
 signal on_player_setup_health(defaultHealth : int)
 signal on_player_update_health(newHealth : int)
+signal on_player_exited_screen
 
 func _ready() -> void:
 	on_player_setup_health.emit(_health)
@@ -120,5 +121,10 @@ func hit(dir : Vector2) -> void:
 func _on_knockback_ended() -> void:
 	_is_knockbacked = false
 
+##Pick an item
 func pick_item(item: Pickupable) -> void:
 	$PickedItem.pick_item(item)
+
+##Signal when the player exited the screen
+func _on_screen_exited() -> void:
+	on_player_exited_screen.emit()

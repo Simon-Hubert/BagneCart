@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
 [ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="3_ntc4i"]
-[ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="4_u0xbq"]
+[ext_resource type="Script" uid="uid://6qjwtqs16eud" path="res://scripts/camera_zelda_style.gd" id="4_gthg3"]
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="5_gthg3"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
 [ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="7_6qxox"]
@@ -32,11 +32,12 @@ position = Vector2(-90, 21)
 motion_mode = 1
 _maxSpeed = 120.0
 
-[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
+[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("player_ref")]
 zoom = Vector2(4, 4)
-script = ExtResource("4_u0xbq")
-_target = NodePath("../Player")
-_decay = 6.5
+script = ExtResource("4_gthg3")
+player_ref = NodePath("../Player")
+_decay = 3.5
+_distance_threshold = 0.01
 metadata/_custom_type_script = "uid://d4k7dceo0v43b"
 
 [node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
