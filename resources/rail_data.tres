@@ -1,7 +1,15 @@
 [gd_resource type="Resource" script_class="RailData" load_steps=2 format=3 uid="uid://cfdyap7wajq6m"]
 
-[ext_resource type="Script" uid="uid://btfg1iep6umkk" path="res://scripts/rail_data.gd" id="1_pkdf0"]
+[ext_resource type="Script" uid="uid://btfg1iep6umkk" path="res://scripts/Rails/rail_data.gd" id="1_pkdf0"]
 
 [resource]
 script = ExtResource("1_pkdf0")
+shape_to_sprite_coord = Dictionary[int, Vector2]({
+0: Vector2(144, 96),
+1: Vector2(176, 112),
+2: Vector2(144, 112),
+3: Vector2(176, 80),
+4: Vector2(144, 80),
+5: Vector2(160, 80)
+})
 metadata/_custom_type_script = "uid://btfg1iep6umkk"

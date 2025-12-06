@@ -24,11 +24,23 @@ func reverse():
 	if is_turning:
 		flip_normal = not flip_normal
 
-func init_rail(c0: Rail, c1: Rail) -> void:
-	$Sprite2D.get_rect().position = rail_data.get_sprite_coords(self, c0, c1)
-	connected = [c0, c1]
-	## calcul le vecteur directeur et le base state de flip_normal
-	pass
+
+
+func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
+	if next_rail != null && previous_rail != null:
+		$Sprite2D.region_rect.position = rail_data.get_sprite_coords(self, next_rail, previous_rail)
+		connected = [next_rail, previous_rail]
+		dir = (next_rail.position - previous_rail.position).normalized()
+		flip_normal = dir.x < -rail_data.error # le vecteur normal doit toujours pointer ver l'exterieur du virage
+	else:
+		print("single connection")
+		var connected_rail = next_rail if next_rail != null else previous_rail
+		if connected_rail == null : return
+		$Sprite2D.region_rect.position = rail_data.get_sprite_coords_single_connection(self, connected_rail)
+		connected = [connected_rail]
+		dir = connected_rail.position - position
+		flip_normal = false
+	
 
 func propagate_orientation(constraint: Vector2):
 	if dir.dot(constraint) < 0:

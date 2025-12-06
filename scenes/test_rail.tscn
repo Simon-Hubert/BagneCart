@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://c43sq8xy5ej35"]
+[gd_scene load_steps=3 format=3 uid="uid://c43sq8xy5ej35"]
+
+[ext_resource type="Script" uid="uid://kiviwp4rwpi4" path="res://scripts/Rails/rail_manager.gd" id="1_11cpi"]
+[ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="2_86mkn"]
 
 [node name="TestRail" type="Node2D"]
+
+[node name="RailManager" type="Node2D" parent="."]
+script = ExtResource("1_11cpi")
+metadata/_custom_type_script = "uid://kiviwp4rwpi4"
+
+[node name="Area2D" parent="RailManager" instance=ExtResource("2_86mkn")]
+position = Vector2(-16, 0)
+
+[node name="Area2D2" parent="RailManager" instance=ExtResource("2_86mkn")]
+
+[node name="Area2D3" parent="RailManager" instance=ExtResource("2_86mkn")]
+position = Vector2(0, 16)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
