@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RailData" load_steps=2 format=3 uid="uid://cfdyap7wajq6m"]
+
+[ext_resource type="Script" uid="uid://btfg1iep6umkk" path="res://scripts/rail_data.gd" id="1_pkdf0"]
+
+[resource]
+script = ExtResource("1_pkdf0")
+metadata/_custom_type_script = "uid://btfg1iep6umkk"

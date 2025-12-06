@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://10nrnuidk8ux"]
+
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_gf58x"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_vupsr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcoup"]
+
+[node name="GenericRail" type="Area2D"]
+script = ExtResource("1_gf58x")
+metadata/_custom_type_script = "uid://ck0vokuhjlovk"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vupsr")
+region_enabled = true
+region_rect = Rect2(144, 96, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dcoup")
