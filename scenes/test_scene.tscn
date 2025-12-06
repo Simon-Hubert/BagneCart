@@ -66,13 +66,13 @@ cart = NodePath("../../Cart")
 position = Vector2(-245, 26)
 
 [node name="NPC_spawn_point2" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-9, 97)
+position = Vector2(-32, 49)
 
 [node name="NPC_spawn_point3" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-83, 127)
+position = Vector2(-36, 161)
 
 [node name="NPC_spawn_point4" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-189, 99)
+position = Vector2(-258, 152)
 
 [node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
 position = Vector2(-179, -23)
