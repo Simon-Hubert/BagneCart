@@ -8,6 +8,7 @@ class_name Rail extends Area2D
 
 var connected: Array[Rail] = [null, null]
 var is_aligned := false
+var is_end_of_line := false
 
 func get_side_force(other_position: Vector2) -> Vector2:
 	var center := position
@@ -42,12 +43,15 @@ func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords_single_connection(self, connected_rail)
 		dir = connected_rail.position - position
 		flip_normal = false
+		is_end_of_line = true
 	
 
 func propagate_orientation(constraint: Vector2):
+	#check for end of line
 	if dir.dot(constraint) < 0:
 		reverse()
 	is_aligned = true
 	for connected_rail in connected:
+		if connected_rail == null : continue
 		if not connected_rail.is_aligned:
 			connected_rail.propagate_orientation(dir)

@@ -13,7 +13,7 @@ rail2 = NodePath("Area2D3")
 metadata/_custom_type_script = "uid://kiviwp4rwpi4"
 
 [node name="Area2D" parent="RailManager" instance=ExtResource("2_86mkn")]
-position = Vector2(17, 0)
+position = Vector2(16, 0)
 
 [node name="Area2D2" parent="RailManager" instance=ExtResource("2_86mkn")]
 
