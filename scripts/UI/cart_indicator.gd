@@ -30,10 +30,11 @@ func _process(_delta: float) -> void:
 	arrow.rotation = diff.angle() + 90
 	
 	#Set clamped position
-	var cart_screen_pos: Vector2 = cart.get_canvas_transform().get_origin()
+	var cart_screen_pos: Vector2 = ((cart.global_position - camera.global_position).normalized() * get_viewport_rect().size) + (get_viewport_rect().size / 2)
 	const margin : Vector2 = Vector2(30.0, 30.0)
 	const end_margin : Vector2 = Vector2(100.0, 100.0)
 	arrow.position = cart_screen_pos.clamp( margin, get_viewport_rect().size - end_margin - arrow.texture.get_size())
+	print(arrow.position)
 	
 	#Set global cart icon rotation
 	cart_icon.rotation = -arrow.rotation
