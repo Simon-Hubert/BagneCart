@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://2uf5ac8ft38x"]
+[gd_scene load_steps=5 format=3 uid="uid://2uf5ac8ft38x"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_1dq18"]
-[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_m3kf8"]
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rails/Rail.gd" id="1_m3kf8"]
+[ext_resource type="Resource" uid="uid://cfdyap7wajq6m" path="res://resources/rail_data.tres" id="2_wb4p7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
 size = Vector2(16, 16)
@@ -10,6 +11,7 @@ size = Vector2(16, 16)
 monitoring = false
 script = ExtResource("1_m3kf8")
 dir = Vector2(0, -1)
+rail_data = ExtResource("2_wb4p7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3rqgk")

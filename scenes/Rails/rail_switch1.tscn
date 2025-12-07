@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7tav5gu7t8ao"]
 
-[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_th6e1"]
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rails/Rail.gd" id="1_th6e1"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_o4put"]
-[ext_resource type="Script" path="res://scripts/rail_switch.gd" id="3_wyhj6"]
+[ext_resource type="Script" uid="uid://dsu1qqakf8glh" path="res://scripts/Rails/rail_switch.gd" id="3_wyhj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
 size = Vector2(16, 16)

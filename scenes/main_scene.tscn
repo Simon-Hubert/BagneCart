@@ -5,13 +5,13 @@
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://c27xygxrntrlq" path="res://scenes/Items/testItem.tscn" id="5_gubc5"]
-[ext_resource type="PackedScene" uid="uid://dlcf2wjcvi7ct" path="res://scenes/enemy.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://dlcf2wjcvi7ct" path="res://scenes/Enemy/enemy.tscn" id="8_18nlu"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="9_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="10_4w45t"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="10_6wevv"]
 [ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="10_e1cbu"]
-[ext_resource type="PackedScene" path="res://scenes/health_pickup.tscn" id="10_mngbo"]
-[ext_resource type="PackedScene" path="res://scenes/Rails/lever.tscn" id="11_e1cbu"]
+[ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="10_mngbo"]
+[ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="11_e1cbu"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -76,6 +76,7 @@ priority = 2
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("8_18nlu")]
 position = Vector2(185, 10)
+motion_mode = 1
 player_ref = NodePath("../Player")
 cart_ref = NodePath("../Cart")
 

@@ -13,3 +13,13 @@ static func cubic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2, t: 
 
     var s = r0.lerp(r1, t)
     return s
+
+
+static func vector_iterator(i: int) -> Vector2:
+    match i%4:
+        0:return Vector2(1,0)
+        1:return Vector2(0,1)
+        2:return Vector2(-1,0)
+        3:return Vector2(0,1)
+        _:return Vector2(0,0)
+        

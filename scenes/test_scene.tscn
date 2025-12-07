@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://2i7imvprbpwm"]
+[gd_scene load_steps=13 format=4 uid="uid://2i7imvprbpwm"]
 
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
 [ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="3_ntc4i"]
-[ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="4_u0xbq"]
-[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="5_pln1h"]
+[ext_resource type="Script" uid="uid://6qjwtqs16eud" path="res://scripts/camera_zelda_style.gd" id="4_gthg3"]
+[ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="5_gthg3"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
+[ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="7_6qxox"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="7_hf2sn"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="8_qq5q4"]
 [ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="9_gah1j"]
 [ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="10_ap2hy"]
+[ext_resource type="PackedScene" uid="uid://0fdwsv35bwmc" path="res://scenes/Enemy/enemy_group.tscn" id="12_gthg3"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -30,16 +32,17 @@ position = Vector2(-90, 21)
 motion_mode = 1
 _maxSpeed = 120.0
 
-[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
+[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("player_ref")]
 zoom = Vector2(4, 4)
-script = ExtResource("4_u0xbq")
-_target = NodePath("../Player")
-_decay = 6.5
+script = ExtResource("4_gthg3")
+player_ref = NodePath("../Player")
+_decay = 3.5
+_distance_threshold = 0.01
 metadata/_custom_type_script = "uid://d4k7dceo0v43b"
 
-[node name="QuestManager" parent="." instance=ExtResource("5_pln1h")]
+[node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
 
-[node name="Timer" type="Timer" parent="QuestManager"]
+[node name="Timer" type="Timer" parent="GameManager/QuestManager" index="0"]
 wait_time = 0.1
 one_shot = true
 autostart = true
@@ -48,19 +51,28 @@ autostart = true
 
 [node name="DialogUI" parent="CanvasLayer" instance=ExtResource("6_8gixj")]
 
+[node name="cart_indicator" parent="CanvasLayer" node_paths=PackedStringArray("camera", "player", "cart") instance=ExtResource("7_6qxox")]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+camera = NodePath("../../CameraFollow")
+player = NodePath("../../Player")
+cart = NodePath("../../Cart")
+
 [node name="hud" parent="." instance=ExtResource("7_hf2sn")]
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("8_qq5q4")]
 position = Vector2(-245, 26)
 
 [node name="NPC_spawn_point2" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-9, 97)
+position = Vector2(-32, 49)
 
 [node name="NPC_spawn_point3" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-83, 127)
+position = Vector2(-36, 161)
 
 [node name="NPC_spawn_point4" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-189, 99)
+position = Vector2(-258, 152)
 
 [node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
 position = Vector2(-179, -23)
@@ -71,6 +83,14 @@ position = Vector2(-152, -65)
 [node name="Lever" parent="." instance=ExtResource("10_ap2hy")]
 position = Vector2(-93, -35)
 
+[node name="enemy_group" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("12_gthg3")]
+position = Vector2(-126, 263)
+player_ref = NodePath("../Player")
+cart_ref = NodePath("../Cart")
+_spawn_chance = 100.0
+
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
-[connection signal="timeout" from="QuestManager/Timer" to="QuestManager" method="spawn_NPC"]
+[connection signal="timeout" from="GameManager/QuestManager/Timer" to="GameManager/QuestManager" method="spawn_NPC"]
+
+[editable path="GameManager"]
