@@ -5,12 +5,15 @@
 
 [node name="TestRail" type="Node2D"]
 
-[node name="RailManager" type="Node2D" parent="."]
+[node name="RailManager" type="Node2D" parent="." node_paths=PackedStringArray("rail0", "rail1", "rail2")]
 script = ExtResource("1_11cpi")
+rail0 = NodePath("Area2D")
+rail1 = NodePath("Area2D2")
+rail2 = NodePath("Area2D3")
 metadata/_custom_type_script = "uid://kiviwp4rwpi4"
 
 [node name="Area2D" parent="RailManager" instance=ExtResource("2_86mkn")]
-position = Vector2(-16, 0)
+position = Vector2(17, 0)
 
 [node name="Area2D2" parent="RailManager" instance=ExtResource("2_86mkn")]
 
