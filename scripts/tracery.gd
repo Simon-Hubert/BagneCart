@@ -151,7 +151,7 @@ class Grammar extends RefCounted:
 	var _save_data : Dictionary = {} # The saved data
 	var _expansion_regex : RegEx = null # The expansion regex
 	var _save_symbol_regex : RegEx = null # The save symbol regex
-	
+	var _already_showed : Dictionary[String, Array] = {} # The already showed outputs
 	
 	func _init( rules : Dictionary ):
 		# Expansion regex
@@ -184,7 +184,7 @@ class Grammar extends RefCounted:
 	func flatten( rule : String ) -> String:
 		var expansion_matches = _expansion_regex.search_all( rule )
 		
-		if expansion_matches.empty():
+		if expansion_matches.is_empty():
 			_resolve_save_symbols( rule )
 			
 		for match_result in expansion_matches:
@@ -217,23 +217,53 @@ class Grammar extends RefCounted:
 				
 			# A rule is either an array or a single entry/string
 			if typeof( selected_rule ) == TYPE_ARRAY:
-				var rand_index  = rng.randi() % selected_rule.size()
-				var chosen = selected_rule[ rand_index ] as String
+				var chosen = _find_unique_chosen(selected_rule, match_name)
 				var resolved = flatten( chosen )
-				
 				resolved = _apply_modifiers( resolved, modifiers )
-				
-				rule = rule.replace( match_value, resolved )
+				rule = _replace_first(rule, match_value, resolved)
 			else:
 				var resolved = flatten( selected_rule )
-				
 				resolved = _apply_modifiers( resolved, modifiers )
-				
-				rule = rule.replace( match_value, resolved )
+				rule = _replace_first(rule, match_value, resolved)
 				
 		# Done
 		return rule
+	
+	
+	##Prevent to return the same output if sentence is reacreated sevral times
+	func _find_unique_chosen(selected_rule : Array, match_name : String) -> String:		
+		var chosen = selected_rule[ rng.randi() % selected_rule.size() ] as String
 		
+		#Get new output (that isn't in the _already_showed list)
+		if _already_showed.has(match_name):
+			while _already_showed[match_name].has(chosen):
+				chosen = selected_rule[ rng.randi() % selected_rule.size() ] as String
+		else :
+			_already_showed[match_name] = []
+		_already_showed[match_name].append(chosen)
+		
+		#Reset list if every possible output where chosen
+		if selected_rule.size() <= _already_showed[match_name].size():
+			_already_showed.erase(match_name)
+			#Recreate array to take into account the last chosen
+			_already_showed[match_name] = []
+			_already_showed[match_name].append(chosen)
+			
+		return chosen
+		
+	##Replace the FIRST INSTANCE of the word "match_value" with "resolved" inside "rule"
+	##Better than replace, which replace EVERY OCCURANCES
+	func _replace_first(rule: String, match_value: String, resolved: String) -> String:
+		var index : int = rule.find(match_value)
+		if index == -1:
+			push_warning("Could not find " + match_value + " inside : " + rule)
+			return rule
+		return rule.substr(0, index) + resolved + rule.substr(index + match_value.length())
+		
+	##Allow to set manually a save data
+	##Value can be a tag " #whatever# "
+	func set_save_data(key : String, value : String):
+		_save_data[ key ] = flatten(value)
 		
 	func _resolve_save_symbols( rule : String ) -> void:
 		var save_matches = _save_symbol_regex.search_all( rule )
@@ -256,7 +286,7 @@ class Grammar extends RefCounted:
 				
 	func _get_modifiers( symbol : String ) -> Array:
 		var modifiers = symbol.replace( "#", "" ).split( "." )
-		modifiers.remove( 0 )
+		modifiers.remove_at(0)
 		return modifiers
 		
 		
