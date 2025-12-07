@@ -22,7 +22,9 @@ func _process(delta: float) -> void:
 		return
 	#Move camera until reach target
 	global_position = math.exponential_decay(position, _target_camera_position, _decay, delta)
+	print(global_position.distance_to(_target_camera_position))
 	if global_position.distance_to(_target_camera_position) <= _distance_threshold:
+		global_position = _target_camera_position
 		_is_cam_moving = false
 	
 ##Find player and follow it (like in the popular dungeon sequence of the ledgend of Zelda)
@@ -39,5 +41,7 @@ func _follow_player() -> void:
 	
 ##To respect DRY (Don't Repeat Yourself), set camera movement parameters here
 func set_camera_movement(dir : Vector2):
+	if _is_cam_moving:
+		push_warning("Camera is already moving ! Might cause offset errors")
 	_is_cam_moving = true
 	_target_camera_position = global_position + camera_offset * dir

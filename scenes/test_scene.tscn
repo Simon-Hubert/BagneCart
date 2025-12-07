@@ -36,8 +36,8 @@ _maxSpeed = 120.0
 zoom = Vector2(4, 4)
 script = ExtResource("4_gthg3")
 player_ref = NodePath("../Player")
-_decay = 3.5
-_distance_threshold = 0.01
+_decay = 7.0
+_distance_threshold = 1.0
 metadata/_custom_type_script = "uid://d4k7dceo0v43b"
 
 [node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
