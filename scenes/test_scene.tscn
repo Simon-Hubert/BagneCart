@@ -84,7 +84,7 @@ position = Vector2(-152, -65)
 position = Vector2(-93, -35)
 
 [node name="enemy_group" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("12_gthg3")]
-position = Vector2(-126, 263)
+position = Vector2(-42, 348)
 player_ref = NodePath("../Player")
 cart_ref = NodePath("../Cart")
 _spawn_chance = 100.0

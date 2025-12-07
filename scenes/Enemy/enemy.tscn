@@ -254,6 +254,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_dqkch")
 }
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -8, 16, 16)
+
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
@@ -262,3 +265,5 @@ libraries = {
 [connection signal="body_exited" from="RangeAttackArea" to="." method="_on_range_attack_area_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_reset_attack"]
 [connection signal="timeout" from="CartCooldownTimer" to="." method="_on_cart_cooldown_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_activate_enemy"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_deactivate_enemy"]

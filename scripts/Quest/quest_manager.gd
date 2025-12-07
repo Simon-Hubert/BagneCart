@@ -66,7 +66,10 @@ func spawn_NPC() -> void:
 	if npc_spawn_point_list.size() <= 0:
 		push_error("No spawn point added !")
 		return
-	
+	if npc_spawn_point_list.size() < npc_number * 2:
+		push_error("Not enough spawn point for NPC's AND quest items !")
+		return
+			
 	var quest_item_name_list : Array[String]	
 	#Spawn NPC
 	for i in range(npc_number):
@@ -119,7 +122,6 @@ func check_validate_quest() -> bool:
 	#Check every item if one of them is valid
 	for item in quest_item_list:
 		if item.is_correct_item(current_quest_item):
-			on_quest_finished.emit()
 			has_quest = false
 			
 			#Remove and destroy item 
@@ -130,6 +132,9 @@ func check_validate_quest() -> bool:
 			number_quest_completed +=1
 			if number_quest_completed >= npc_number:
 				on_all_quest_completed.emit()
+			#else just play regular quest finished
+			else:
+				on_quest_finished.emit()
 			
 			return true;
 	return false;
