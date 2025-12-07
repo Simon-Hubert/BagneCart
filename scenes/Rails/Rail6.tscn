@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://delg4ih0i2e02"]
 
-[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rail.gd" id="1_ho4as"]
+[ext_resource type="Script" uid="uid://ck0vokuhjlovk" path="res://scripts/Rails/Rail.gd" id="1_ho4as"]
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_fka5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
