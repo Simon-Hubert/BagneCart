@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://b36ypy26k4yad"
 [sub_resource type="Resource" id="Resource_8qclf"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("4_8qclf")
+is_shooting = false
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_w8i8w"]
@@ -44,6 +45,7 @@ script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("7_wtq4b")
 speed = 7.0
 max_accel = 14.0
+is_shooting = false
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_j0cyh"]
@@ -51,6 +53,7 @@ script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("8_j0cyh")
 speed = 7.0
 max_accel = 14.0
+is_shooting = false
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_614tr"]
