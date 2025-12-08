@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bwvqhbrs3ii0g"]
+[gd_scene load_steps=4 format=4 uid="uid://bwvqhbrs3ii0g"]
 
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_sqigp"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="2_yjrh8"]
+[ext_resource type="PackedScene" uid="uid://0fdwsv35bwmc" path="res://scenes/Enemy/enemy_group.tscn" id="3_cfco2"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +13,23 @@ tile_set = ExtResource("1_sqigp")
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("2_yjrh8")]
 position = Vector2(124, -65)
+
+[node name="enemy_group" parent="." instance=ExtResource("3_cfco2")]
+position = Vector2(121, -114)
+
+[node name="spawn_1" parent="enemy_group" index="0"]
+position = Vector2(-49, -54)
+
+[node name="spawn_2" parent="enemy_group" index="1"]
+position = Vector2(-50, 17)
+
+[node name="spawn_3" parent="enemy_group" index="2"]
+position = Vector2(32, -46)
+
+[node name="spawn_4" parent="enemy_group" index="3"]
+position = Vector2(-7, -12)
+
+[node name="spawn_5" parent="enemy_group" index="4"]
+position = Vector2(59, 45)
+
+[editable path="enemy_group"]
