@@ -83,10 +83,19 @@ func _generate_map(dungeon: Array[RoomData]):
 		var instance = packed.instantiate()
 		instance.position = room.grid_pos * ROOMSIZE
 		add_child(instance)	
+		
+		#spawn player & cam (if first room)
+		if !previous_room:
+			var spawn_position : Vector2 = instance.position
+			spawn_position.x += ROOMSIZE * .5
+			spawn_position.y -= ROOMSIZE * .5
+			game_manager.Instance.spawn_player_and_camera(spawn_position)	
+			
 		generate_rails_for_room(instance, room, previous_room)
 		previous_room = room
 		print("Valide room scene for key: %s" % key)
 	
+	#Spawn NPC & quest item
 	quest_manager.Instance.spawn_NPC()
 		
 func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
@@ -222,7 +231,7 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 		if(room.doors[i]):
 			var dir = possible[i]
 			var dest = roomCenter + Vector2(dir) * (ROOMSIZE/2.0)
-			var step : int = (roomCenter - dest).length()/ RAILSIZE 
+			var step : int = (roomCenter - dest).length()/ RAILSIZE as int
 			var previous_rail : Rail = center
 			
 			for j in range(1, step+1):

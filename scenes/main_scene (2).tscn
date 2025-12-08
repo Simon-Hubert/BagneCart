@@ -1,0 +1,50 @@
+[gd_scene load_steps=19 format=3 uid="uid://b27ktsbkckqb3"]
+
+[ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="1_36eke"]
+[ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="2_7v46j"]
+[ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="3_2mds5"]
+[ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="4_vhck1"]
+[ext_resource type="PackedScene" uid="uid://wmpcy5d8qmwt" path="res://scenes/RoomTest/Left.tscn" id="5_gr3sx"]
+[ext_resource type="PackedScene" uid="uid://cquytq2ql140g" path="res://scenes/RoomTest/Horizontal.tscn" id="6_pj1gy"]
+[ext_resource type="PackedScene" uid="uid://dox68r0se2ig1" path="res://scenes/RoomTest/Top.tscn" id="7_v6sat"]
+[ext_resource type="PackedScene" uid="uid://j251lx6olbcu" path="res://scenes/RoomTest/RightTop.tscn" id="8_74gn5"]
+[ext_resource type="PackedScene" uid="uid://darq3wmdm48vp" path="res://scenes/RoomTest/LeftTop.tscn" id="9_twxtq"]
+[ext_resource type="PackedScene" uid="uid://bwvqhbrs3ii0g" path="res://scenes/RoomTest/TopHorizontal.tscn" id="10_6l4tg"]
+[ext_resource type="PackedScene" uid="uid://b8i78tp7c6hs7" path="res://scenes/RoomTest/Bottom.tscn" id="11_8bv7m"]
+[ext_resource type="PackedScene" uid="uid://llcpyu6xoonj" path="res://scenes/RoomTest/RightBottom.tscn" id="12_vt87o"]
+[ext_resource type="PackedScene" uid="uid://da7ar0hnooib0" path="res://scenes/RoomTest/LeftBottom.tscn" id="13_32mn2"]
+[ext_resource type="PackedScene" uid="uid://cautijrhju3ue" path="res://scenes/RoomTest/BotoomHorizontal.tscn" id="14_2r0o3"]
+[ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="15_u3qx5"]
+[ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="16_n00t7"]
+[ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="17_46q0l"]
+[ext_resource type="PackedScene" uid="uid://c8amxjugcsslc" path="res://scenes/RoomTest/FullDoors.tscn" id="18_4dus3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_36eke")]
+
+[node name="Dungeon" type="Node" parent="."]
+process_priority = -1
+script = ExtResource("2_7v46j")
+_rail = ExtResource("3_2mds5")
+_rooms = Dictionary[String, PackedScene]({
+"0001": ExtResource("4_vhck1"),
+"0010": ExtResource("5_gr3sx"),
+"0011": ExtResource("6_pj1gy"),
+"0100": ExtResource("7_v6sat"),
+"0101": ExtResource("8_74gn5"),
+"0110": ExtResource("9_twxtq"),
+"0111": ExtResource("10_6l4tg"),
+"1000": ExtResource("11_8bv7m"),
+"1001": ExtResource("12_vt87o"),
+"1010": ExtResource("13_32mn2"),
+"1011": ExtResource("14_2r0o3"),
+"1100": ExtResource("15_u3qx5"),
+"1101": ExtResource("16_n00t7"),
+"1110": ExtResource("17_46q0l"),
+"1111": ExtResource("18_4dus3")
+})
+ROOMSIZE = 241
+RAILSIZE = 16
+NumberOfRooms = 15
+extra_doors_probability = 10.0

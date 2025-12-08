@@ -3,8 +3,8 @@
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
 [ext_resource type="PackedScene" uid="uid://b3fny6dmp5oob" path="res://scenes/player.tscn" id="3_ntc4i"]
-[ext_resource type="Script" uid="uid://6qjwtqs16eud" path="res://scripts/camera_zelda_style.gd" id="4_gthg3"]
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="5_gthg3"]
+[ext_resource type="PackedScene" uid="uid://cm1niru8bivs2" path="res://scenes/camera.tscn" id="5_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
 [ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="7_6qxox"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="7_hf2sn"]
@@ -40,13 +40,7 @@ position = Vector2(-90, 21)
 motion_mode = 1
 _maxSpeed = 120.0
 
-[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("player_ref")]
-zoom = Vector2(4, 4)
-script = ExtResource("4_gthg3")
-player_ref = NodePath("../Player")
-_decay = 7.0
-_distance_threshold = 1.0
-metadata/_custom_type_script = "uid://d4k7dceo0v43b"
+[node name="CameraFollow" parent="." instance=ExtResource("5_ntc4i")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -57,7 +51,7 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
-camera = NodePath("../../CameraFollow")
+camera = NodePath("")
 player = NodePath("../../Player")
 cart = NodePath("../../Cart")
 

@@ -16,6 +16,7 @@
 radius = 19.0
 
 [node name="quest_item" type="Area2D"]
+z_index = 5
 script = ExtResource("1_s2hee")
 item_to_sprite = Dictionary[String, Texture2D]({
 "le Saint Graal": ExtResource("5_c2jpk"),

@@ -8,7 +8,7 @@ const _tile_set_diagonal_offset : float = 128.0
 @onready var _sprite : Sprite2D = $Sprite2D
 @onready var _animation_player : AnimationPlayer = $AnimationPlayer
 
-@export var _player: Player
+@export var player: Player
 @export var _radius: float
 @export var _max_accel: float
 @export var _friction: float
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			centered = collider.collider.get_side_force(position)/2
 			break
 	
-	var toPlayer := _player.position - position
+	var toPlayer := player.position - position
 	var p := inverse_lerp(_radius, 0, (toPlayer).length()) # la puissance normalisée de l'impac
 	p = clamp(p, 0, 1)
 
