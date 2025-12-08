@@ -5,7 +5,8 @@ const MAIN_SCENE_PATH : String = ""
 @onready var animation : AnimationPlayer = $CanvasLayer/AnimationPlayer
 
 func _ready() -> void:
-	animation.play("Happy")
+	if !animation:
+		animation.play("Happy")
 	
 ##Restart the game
 func _on_restart_button():
