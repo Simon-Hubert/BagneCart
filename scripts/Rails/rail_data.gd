@@ -49,6 +49,10 @@ static func c_to_shape(owner: Rail, c0: Rail, c1: Rail) -> RailShape:
     return RailShape.LEFT_RIGHT
 
 func get_sprite_coords_single_connection(owner: Rail, c0: Rail) -> Vector2:
-    #TODO implement
+    var a = (c0.position - owner.position).normalized()
+    if a.dot(Vector2.UP) > error: return Vector2(128,80)
+    if a.dot(Vector2.DOWN) > error: return Vector2(112,80)
+    if a.dot(Vector2.LEFT) > error: return Vector2(128,96)
+    if a.dot(Vector2.RIGHT) > error: return Vector2(112,96)
     return Vector2(0,0)
     

@@ -1,22 +1,41 @@
-class_name RailSwitch extends Interactable
+class_name RailSwitch extends Rail
+var switch_lever : lever_interaction
+var neighbors : Array[Rail]
+var connections: Connexion
 
-@export_group("GD")
-@export var default_switched := false
-@export_group("GP")
-@export var horizontal := true
-@export var default_region_coordinates : Vector2
-@export var other_region_coordinates : Vector2
-@export var rail : Rail
-@export var sprite : Sprite2D
-var switched := false
+func connect_rail(to_connect :Rail):
+	super(to_connect)
+	if neighbors.find(to_connect) == -1:
+		neighbors.append(to_connect)
+		connections.size = neighbors.size()
 
 func _ready():
-	if default_switched :
-		interact(null)
+	if switch_lever != null:
+		switch_lever.player_interact.connect(_on_switch)
+	connections = Connexion.new()
+	
 
-func interact(_player: Player):	
-	print("interacted with switch")
-	sprite.region_rect.position = other_region_coordinates if(not switched) else default_region_coordinates
-	rail.dir = Vector2(-rail.dir.x, rail.dir.y) if horizontal else Vector2(rail.dir.x, -rail.dir.y)
-	rail.flip_normal = not rail.flip_normal
-	switched = not switched
+func _on_switch():
+	var v = connections.next()
+	init_rail(neighbors[v.x], neighbors[v.y])
+	propagate_orientation(dir)
+
+
+class Connexion :
+	var i : int = 0
+	var j : int = 0
+	var size: int = 0
+
+	func next() -> Vector2i:
+
+		j += 1
+		if j >= i:
+			j = 0
+			i += 1
+		if i >= size:
+			i = 0
+		
+		if i!=j:
+			return Vector2i(i,j)
+		else: 
+			return next()
