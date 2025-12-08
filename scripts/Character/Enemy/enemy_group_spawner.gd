@@ -3,10 +3,6 @@ class_name enemy_group_spawner extends Node2D
 const ENEMY_SCENE_PATH : String = "res://scenes/Enemy/enemy.tscn" 
 const ENEMY_SCENE : PackedScene = preload(ENEMY_SCENE_PATH)
 
-@export_category("References")
-@export var player_ref : Player
-@export var cart_ref : Cart
-
 @export_category("Spawner")
 @export var _enemy_spawner_list : Array[Node2D]
 
@@ -40,5 +36,5 @@ func _on_enter_room() -> void:
 		var position_index := rng.randi() % available_point.size()
 		newEnemy.global_position = available_point[position_index].global_position
 		available_point.remove_at(position_index)
-		newEnemy.player_ref = player_ref
-		newEnemy.cart_ref = cart_ref
+		newEnemy.player_ref = game_manager.Instance.player_ref
+		newEnemy.cart_ref = game_manager.Instance.cart_ref
