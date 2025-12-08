@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://8npyicd1iw1n"]
+[gd_scene load_steps=12 format=3 uid="uid://b3fny6dmp5oob"]
 
 [ext_resource type="Script" uid="uid://c0m8leljkyyhw" path="res://scripts/Character/player_character.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dth7tg3o1eeha" path="res://sprites/Characters/Perso.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://q3x1c5svdo83" path="res://scripts/Character/picked_item.gd" id="3_3li8b"]
+[ext_resource type="Texture2D" uid="uid://dh7lr5vcmodie" path="res://sprites/Characters/PersoBras.png" id="3_mdl7e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdl7e"]
 
@@ -158,6 +159,8 @@ script = ExtResource("1_v6fml")
 _maxSpeed = 500.0
 _maxAccel = 750.0
 _knockback_intensity = 100.0
+default_tex = ExtResource("2_g2els")
+picked_item_tex = ExtResource("3_mdl7e")
 metadata/_custom_type_script = "uid://c0m8leljkyyhw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
