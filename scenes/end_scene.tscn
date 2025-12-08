@@ -44,8 +44,9 @@ _data = {
 &"RESET": SubResource("Animation_4835h")
 }
 
-[node name="EndScene" type="Node2D"]
+[node name="EndScene" type="Node2D" node_paths=PackedStringArray("animation")]
 script = ExtResource("1_ojf8p")
+animation = NodePath("CanvasLayer/AnimationPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

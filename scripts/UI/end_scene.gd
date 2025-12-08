@@ -2,7 +2,7 @@ extends Node2D
 
 const MAIN_SCENE_PATH : String = ""
 
-@onready var animation : AnimationPlayer = $CanvasLayer/AnimationPlayer
+@export var animation : AnimationPlayer
 
 func _ready() -> void:
 	if !animation:

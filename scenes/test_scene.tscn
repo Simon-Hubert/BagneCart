@@ -62,7 +62,6 @@ player = NodePath("../../Player")
 cart = NodePath("../../Cart")
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("8_ntc4i")]
-base_timer = 1.0
 
 [node name="hud" parent="." instance=ExtResource("7_hf2sn")]
 
