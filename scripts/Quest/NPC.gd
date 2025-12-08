@@ -1,4 +1,4 @@
-class_name NPC extends Node
+class_name NPC extends Node2D
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
@@ -35,7 +35,7 @@ func _on_trigger_area_player_interact() -> void:
 	
 	#Give new quest
 	if !quest_manager.Instance.has_quest:
-		quest_manager.Instance.accept_new_quest(data)
+		quest_manager.Instance.accept_new_quest(data, global_position)
 		dialog_UI.Instance.display_dialog(data.name, data.quest_dialog)
 		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_ACCEPTED)
 		return	

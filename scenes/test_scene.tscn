@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://2i7imvprbpwm"]
+[gd_scene load_steps=14 format=4 uid="uid://2i7imvprbpwm"]
 
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
 [ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="7_6qxox"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="7_hf2sn"]
+[ext_resource type="PackedScene" uid="uid://o6cdu0ye8mtt" path="res://scenes/UI/Timer.tscn" id="8_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="8_qq5q4"]
 [ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="9_gah1j"]
 [ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="10_ap2hy"]
@@ -59,6 +60,8 @@ offset_bottom = -50.0
 camera = NodePath("../../CameraFollow")
 player = NodePath("../../Player")
 cart = NodePath("../../Cart")
+
+[node name="TimerUI" parent="CanvasLayer" instance=ExtResource("8_ntc4i")]
 
 [node name="hud" parent="." instance=ExtResource("7_hf2sn")]
 

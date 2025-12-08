@@ -24,7 +24,11 @@ func init_item(item_name : String, rng : RandomNumberGenerator):
 	
 ##Check whether the item is the required item AND is on screen
 func is_correct_item(item_name : String) -> bool:
-	return _item_name == item_name && _is_on_screen
+	return is_correct_item_name(item_name) && _is_on_screen
+
+##Check if the item name is correct
+func is_correct_item_name(item_name : String) -> bool:
+	return _item_name == item_name
 
 ##Update that the item is present on screen
 func _on_screen_entered() -> void:
