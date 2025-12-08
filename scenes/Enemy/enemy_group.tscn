@@ -9,6 +9,7 @@ script = ExtResource("1_pnu0x")
 _enemy_spawner_list = [NodePath("spawn_1"), NodePath("spawn_2"), NodePath("spawn_3"), NodePath("spawn_4"), NodePath("spawn_5")]
 
 [node name="spawn_1" type="Area2D" parent="."]
+position = Vector2(0, -40)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
@@ -16,11 +17,11 @@ monitoring = false
 monitorable = false
 
 [node name="circle_debug" type="CollisionShape2D" parent="spawn_1"]
-position = Vector2(0, -39)
 shape = SubResource("CircleShape2D_biaer")
 debug_color = Color(0.97, 0, 0, 0.41960785)
 
 [node name="spawn_2" type="Area2D" parent="."]
+position = Vector2(-41, -21)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
@@ -28,11 +29,11 @@ monitoring = false
 monitorable = false
 
 [node name="circle_debug" type="CollisionShape2D" parent="spawn_2"]
-position = Vector2(-39, -21)
 shape = SubResource("CircleShape2D_biaer")
 debug_color = Color(0.97, 0, 0, 0.41960785)
 
 [node name="spawn_3" type="Area2D" parent="."]
+position = Vector2(43, -22)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
@@ -40,11 +41,11 @@ monitoring = false
 monitorable = false
 
 [node name="circle_debug" type="CollisionShape2D" parent="spawn_3"]
-position = Vector2(42, -22)
 shape = SubResource("CircleShape2D_biaer")
 debug_color = Color(0.97, 0, 0, 0.41960785)
 
 [node name="spawn_4" type="Area2D" parent="."]
+position = Vector2(-25, 19)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
@@ -52,11 +53,11 @@ monitoring = false
 monitorable = false
 
 [node name="circle_debug" type="CollisionShape2D" parent="spawn_4"]
-position = Vector2(-26, 19)
 shape = SubResource("CircleShape2D_biaer")
 debug_color = Color(0.97, 0, 0, 0.41960785)
 
 [node name="spawn_5" type="Area2D" parent="."]
+position = Vector2(24, 19)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
@@ -64,7 +65,6 @@ monitoring = false
 monitorable = false
 
 [node name="circle_debug" type="CollisionShape2D" parent="spawn_5"]
-position = Vector2(25, 19)
 shape = SubResource("CircleShape2D_biaer")
 debug_color = Color(0.97, 0, 0, 0.41960785)
 
