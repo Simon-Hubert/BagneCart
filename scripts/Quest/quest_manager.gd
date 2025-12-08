@@ -132,6 +132,13 @@ func get_nearest_item() -> float:
 	print(_min_distance)
 	return _min_distance
 
+##get current quest item sprite
+func get_current_quest_item_sprite() -> Texture2D:
+	for item in quest_item_list:
+		if item.is_correct_item_name(current_quest_item):
+			return item.sprite.texture
+	return null
+
 ##Look if the current quest is validated
 func check_validate_quest() -> bool:
 	#Check every item if one of them is valid
