@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://btm22glgx8wme"]
+[gd_scene load_steps=19 format=3 uid="uid://btm22glgx8wme"]
 
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="1_lp6jl"]
 [ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="2_qhrk0"]
 [ext_resource type="PackedScene" uid="uid://wmpcy5d8qmwt" path="res://scenes/RoomTest/Left.tscn" id="3_4efwd"]
+[ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="3_k5aj4"]
 [ext_resource type="PackedScene" uid="uid://cquytq2ql140g" path="res://scenes/RoomTest/Horizontal.tscn" id="4_1yf5s"]
 [ext_resource type="PackedScene" uid="uid://dox68r0se2ig1" path="res://scenes/RoomTest/Top.tscn" id="5_ocyvq"]
 [ext_resource type="PackedScene" uid="uid://j251lx6olbcu" path="res://scenes/RoomTest/RightTop.tscn" id="6_jptqu"]
@@ -28,6 +29,7 @@ npc_number = 10
 [node name="Dungeon" type="Node" parent="."]
 process_priority = -1
 script = ExtResource("1_lp6jl")
+_rail = ExtResource("3_k5aj4")
 _rooms = Dictionary[String, PackedScene]({
 "0001": ExtResource("2_qhrk0"),
 "0010": ExtResource("3_4efwd"),
@@ -46,5 +48,6 @@ _rooms = Dictionary[String, PackedScene]({
 "1111": ExtResource("16_8ralk")
 })
 ROOMSIZE = 241
-NumberOfRooms = 25000
+RAILSIZE = 16
+NumberOfRooms = 5000
 extra_doors_probability = 10.0
