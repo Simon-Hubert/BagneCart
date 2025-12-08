@@ -1,9 +1,14 @@
 extends CanvasLayer
 
-@export var heart_scene : PackedScene
 @export var life_container : BoxContainer #= $"LifeContainer"
+@export var quest_failed_container : BoxContainer
+@export var heart_scene : PackedScene
+@export var cross_scene : PackedScene
 
 var previous_life : int
+
+func _ready() -> void:
+	game_manager.Instance.on_quest_failed.connect(_add_cross)
 
 ##Setup a number of lives by default
 func _on_setup_lives(number_lives : int) -> void:
@@ -31,3 +36,8 @@ func _remove_heart() -> void:
 
 	var heart =	life_container.get_child(0)
 	life_container.remove_child(heart)
+
+##Add  quest failed to the UI
+func _add_cross() -> void:
+	var new_cross = cross_scene.instantiate()
+	quest_failed_container.add_child(new_cross)

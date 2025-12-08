@@ -41,6 +41,7 @@ func _ready() -> void:
 	on_player_setup_health.emit(_health)
 	_default_position = global_position
 	game_manager.Instance.on_respawn.connect(_respawn_player)
+	game_manager.Instance.on_game_over.connect(_on_game_over)
 	
 func _process(_delta: float) -> void:
 	get_input()
@@ -145,3 +146,7 @@ func _respawn_player() -> void:
 	_health = _default_health
 	on_player_setup_health.emit(_health)
 	animation_player.play("RESET")
+
+##Stop the player when the player fails
+func _on_game_over() -> void:
+	_can_move = false

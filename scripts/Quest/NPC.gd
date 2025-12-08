@@ -20,6 +20,8 @@ func init_NPC() -> void:
 	data = quest_manager.Instance.create_NPC_data()
 	sprite.texture = sprite_list[quest_manager.Instance.get_rng().randi() % sprite_list.size()]
 	quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
+	#Bind on quest failed
+	game_manager.Instance.on_quest_failed.connect(_reset_quest_indicator)
 	
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
@@ -52,3 +54,8 @@ func _on_trigger_area_player_interact() -> void:
 		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_FINISHED)
 	else:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line())
+
+##Reset quest indicator if quest failed
+func _reset_quest_indicator() -> void:
+	quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
+	

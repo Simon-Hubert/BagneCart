@@ -62,6 +62,7 @@ player = NodePath("../../Player")
 cart = NodePath("../../Cart")
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("8_ntc4i")]
+base_timer = 1.0
 
 [node name="hud" parent="." instance=ExtResource("7_hf2sn")]
 
@@ -76,6 +77,12 @@ position = Vector2(-36, 161)
 
 [node name="NPC_spawn_point4" parent="." instance=ExtResource("8_qq5q4")]
 position = Vector2(-258, 152)
+
+[node name="NPC_spawn_point5" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-34, -156)
+
+[node name="NPC_spawn_point6" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-256, -165)
 
 [node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
 position = Vector2(-179, -23)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://onxdgnitw6n5"]
+
+[ext_resource type="Texture2D" uid="uid://bn23ohi816ymf" path="res://sprites/questFailed.png" id="1_rflhn"]
+
+[node name="Heart" type="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_vertical = 4
+texture = ExtResource("1_rflhn")
