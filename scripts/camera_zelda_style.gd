@@ -9,13 +9,16 @@ class_name camera_zelda_style extends Camera2D
 @export var _decay : float
 @export var _distance_threshold : float
 
+var _default_camera_position : Vector2
 var _target_camera_position : Vector2
 var _is_cam_moving : bool = false
 
 func _ready() -> void:
 	player_ref.on_player_exited_screen.connect(_follow_player)
+	_default_camera_position = global_position
 	_target_camera_position = global_position
-	
+	game_manager.Instance.on_respawn.connect(_reset_camera)
+
 ##Follow player to next room if changed
 func _process(delta: float) -> void:
 	if !_is_cam_moving:
@@ -44,3 +47,8 @@ func set_camera_movement(dir : Vector2) -> void:
 		push_warning("Camera is already moving ! Might cause offset errors")
 	_is_cam_moving = true
 	_target_camera_position = global_position + camera_offset * dir
+
+
+##Reset the camera to the default (spawning) position
+func _reset_camera() -> void:
+	global_position = _default_camera_position

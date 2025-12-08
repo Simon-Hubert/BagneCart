@@ -7,3 +7,9 @@
 script = ExtResource("1_glms7")
 
 [node name="QuestManager" parent="." instance=ExtResource("2_udu3i")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_respawn_timer_ended"]

@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 
 @export_category("Health")
-@export var _health : int = 3
+@export var _default_health : int = 3
 @export var _max_health : int = 5
 
 @export_category("Movement")
@@ -18,23 +18,30 @@ class_name Player extends CharacterBody2D
 @export var _attack_cooldown : float
 @export var _attack_offset : float
 var _can_attack := true
+
 const ATTACK_SCENE_PATH : String = "res://scenes/player_attack.tscn" 
 const ATTACK_SCENE : PackedScene = preload(ATTACK_SCENE_PATH)
 
 var _can_move := true
 var _is_knockbacked := false
 var _input : Vector2 = Vector2(0,0)
+var _health : int
 
 var key_count := 0
 var is_dead := false
+
+var _default_position : Vector2
 
 signal on_player_setup_health(defaultHealth : int)
 signal on_player_update_health(newHealth : int)
 signal on_player_exited_screen
 
 func _ready() -> void:
+	_health = _default_health
 	on_player_setup_health.emit(_health)
-
+	_default_position = global_position
+	game_manager.Instance.on_respawn.connect(_respawn_player)
+	
 func _process(_delta: float) -> void:
 	get_input()
 
@@ -114,6 +121,7 @@ func hit(dir : Vector2) -> void:
 		animation_player.play("Death")
 		_can_move = false
 		is_dead = true
+		game_manager.Instance.respawn_player()
 	else:
 		animation_player.play("Hit")
 
@@ -128,3 +136,12 @@ func pick_item(item: Pickupable) -> void:
 ##Signal when the player exited the screen
 func _on_screen_exited() -> void:
 	on_player_exited_screen.emit()
+
+##Respawn player to the default (spawning) position
+func _respawn_player() -> void:
+	global_position = _default_position
+	is_dead = false
+	_can_move = true
+	_health = _default_health
+	on_player_setup_health.emit(_health)
+	animation_player.play("RESET")

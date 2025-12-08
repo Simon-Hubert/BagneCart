@@ -15,6 +15,13 @@
 
 [node name="MainScene" type="Node2D"]
 
+[node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
+
+[node name="Timer" type="Timer" parent="GameManager/QuestManager" index="0"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, 1)
 tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwABAP3/AQAAAAAAEgA=")
@@ -39,13 +46,6 @@ player_ref = NodePath("../Player")
 _decay = 7.0
 _distance_threshold = 1.0
 metadata/_custom_type_script = "uid://d4k7dceo0v43b"
-
-[node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
-
-[node name="Timer" type="Timer" parent="GameManager/QuestManager" index="0"]
-wait_time = 0.1
-one_shot = true
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -89,8 +89,8 @@ player_ref = NodePath("../Player")
 cart_ref = NodePath("../Cart")
 _spawn_chance = 100.0
 
+[connection signal="timeout" from="GameManager/QuestManager/Timer" to="GameManager/QuestManager" method="spawn_NPC"]
 [connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
 [connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
-[connection signal="timeout" from="GameManager/QuestManager/Timer" to="GameManager/QuestManager" method="spawn_NPC"]
 
 [editable path="GameManager"]
