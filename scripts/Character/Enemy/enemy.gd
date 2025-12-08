@@ -3,7 +3,7 @@ class_name enemy extends CharacterBody2D
 const TILE_SIZE : int = 16
 const CART_AREA_NAME = "CartInteraction"
 
-const PROJECTILE_SCENE_PATH : String = "res://scenes/enemy_projectile.tscn" 
+const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
 @onready var sprite = $Sprite2D
@@ -35,6 +35,7 @@ var can_attack : bool = true
 var can_focus_cart : bool = true
 var is_player_in_range : bool = false
 var is_cart_in_range : bool = false
+var is_active : bool = true
 
 func _ready():
 	#Choose random enemy
@@ -52,8 +53,8 @@ func _setup(data : enemy_data):
 	attack_timer.wait_time = data.attack_cooldown_timer
 
 func _process(_delta: float) -> void:
-	#Check references (and if player didn't died)
-	if !player_ref || !cart_ref:
+	#Check references (and if player didn't died) and if is active
+	if !player_ref || !cart_ref || !is_active:
 		return
 	if player_ref.is_dead:
 		return
@@ -96,7 +97,7 @@ func _process(_delta: float) -> void:
 			
 func _physics_process(delta: float) -> void:
 	#Check references
-	if !player_ref || !cart_ref:
+	if !player_ref || !cart_ref || !is_active:
 		return
 	if player_ref.is_dead:
 		return
@@ -151,3 +152,11 @@ func _on_range_attack_area_body_exited(body: Node2D) -> void:
 ##Reset focus on cart
 func _on_cart_cooldown_timer_timeout() -> void:
 	can_focus_cart = true
+
+##Activate the enemy if is in the room
+func _activate_enemy() -> void:
+	is_active = true
+
+##Activate the enemy if not in the room anymore
+func _deactivate_enemy() -> void:
+	is_active = false

@@ -2,6 +2,7 @@ class_name NPC extends Node
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
+@onready var quest_indicator : NPC_quest_indicator = $QuestIndicator
 
 @export_category("Reference & Data")
 @export var data : NPC_data
@@ -18,6 +19,7 @@ func init_NPC() -> void:
 		return
 	data = quest_manager.Instance.create_NPC_data()
 	sprite.texture = sprite_list[quest_manager.Instance.get_rng().randi() % sprite_list.size()]
+	quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
 	
 ##Event when player interact with NPC
 func _on_trigger_area_player_interact() -> void:
@@ -35,6 +37,7 @@ func _on_trigger_area_player_interact() -> void:
 	if !quest_manager.Instance.has_quest:
 		quest_manager.Instance.accept_new_quest(data)
 		dialog_UI.Instance.display_dialog(data.name, data.quest_dialog)
+		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_ACCEPTED)
 		return	
 	
 	#Can't take two quest at same time
@@ -46,5 +49,6 @@ func _on_trigger_area_player_interact() -> void:
 	if quest_manager.Instance.check_validate_quest():
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_finished_line())
 		is_quest_finished = true
+		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_FINISHED)
 	else:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line())

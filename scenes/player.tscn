@@ -186,4 +186,7 @@ position = Vector2(0, -13)
 script = ExtResource("3_3li8b")
 metadata/_custom_type_script = "uid://q3x1c5svdo83"
 
+[node name="PlayerOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_ended"]
+[connection signal="screen_exited" from="PlayerOnScreen" to="." method="_on_screen_exited"]

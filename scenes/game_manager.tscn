@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4j8e8odqgtyf"]
+
+[ext_resource type="Script" uid="uid://c2mwelhjap5x3" path="res://scripts/game_manager.gd" id="1_glms7"]
+[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="2_udu3i"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_glms7")
+
+[node name="QuestManager" parent="." instance=ExtResource("2_udu3i")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_respawn_timer_ended"]

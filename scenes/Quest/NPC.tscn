@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxfpm7j2xqoel"]
+[gd_scene load_steps=20 format=3 uid="uid://dxfpm7j2xqoel"]
 
 [ext_resource type="Texture2D" uid="uid://bbbn601d1pa0d" path="res://sprites/Characters/CRS1.png" id="2_b7ihd"]
 [ext_resource type="Script" uid="uid://dy0oue4bemaco" path="res://scripts/Quest/NPC.gd" id="2_wvomn"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bd5caa122aiek" path="res://sprites/Characters/Prisonnier4.png" id="8_b0gp1"]
 [ext_resource type="Texture2D" uid="uid://dwn2b3pq4do8c" path="res://sprites/Characters/Prisonnier5.png" id="9_2afgm"]
 [ext_resource type="Texture2D" uid="uid://dbqcgx3amy22u" path="res://sprites/Characters/Prisonnier6.png" id="10_ttery"]
+[ext_resource type="Texture2D" uid="uid://brr4rqm6c13qf" path="res://sprites/QuestIndicator/new_quest.png" id="12_b7ihd"]
+[ext_resource type="Script" uid="uid://jh5omxhwjog8" path="res://scripts/Quest/NPC_quest_indicator.gd" id="13_d304e"]
+[ext_resource type="Texture2D" uid="uid://b54aulg6ck0i5" path="res://sprites/QuestIndicator/validate_quest.png" id="14_ycfk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wowo"]
 size = Vector2(18, 16)
@@ -60,6 +63,7 @@ script = ExtResource("2_wvomn")
 sprite_list = Array[Texture2D]([ExtResource("2_b7ihd"), ExtResource("3_d304e"), ExtResource("4_ycfk0"), ExtResource("5_qrj1q"), ExtResource("6_pxjuw"), ExtResource("7_hgd7x"), ExtResource("8_b0gp1"), ExtResource("9_2afgm"), ExtResource("10_ttery")])
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_b7ihd")
 region_rect = Rect2(0, 112, 16, 16)
 
@@ -78,5 +82,12 @@ shape = SubResource("RectangleShape2D_wvomn")
 libraries = {
 &"": SubResource("AnimationLibrary_d304e")
 }
+
+[node name="QuestIndicator" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
+texture = ExtResource("12_b7ihd")
+script = ExtResource("13_d304e")
+new_quest_sprite = ExtResource("12_b7ihd")
+validate_quest_sprite = ExtResource("14_ycfk0")
 
 [connection signal="player_interact" from="TriggerArea" to="." method="_on_trigger_area_player_interact"]

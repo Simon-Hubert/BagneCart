@@ -61,7 +61,7 @@
 		"ce que je t'ai demandé !",
 		"ce dont on avait parlé !",
 		"ce sur quoi on s'était mis d'accord.",
-        "#questitem#."
+        "#questItem#."
 	],
 	"quest_finished_origin": [
         "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
@@ -147,8 +147,7 @@
 	"quest_object_quest": [
 		"et me le ramener ?",
 		"et l'attraper pour moi ?",
-		", je l'ai perdu hier soir pendant la mutinerie.",
-        ", il me fait vraiment chier."
+		", je l'ai perdu hier soir pendant la mutinerie."
 	],
 	"quest_object_finish": [
 		"Genre, s'il te plaît, j'en ai vraiment besoin.",
@@ -269,7 +268,12 @@
 		"Verstaen",
 		"Sarkozy",
 		"Le Pen",
-        "Parmentier-Ridgway"
+		"Parmentier-Ridgway",
+		"Dalton",
+		"Dalton",
+		"Dalton",
+		"Dalton",
+        "Luke"
 	],
 	"Prenom": [
 		"Fred",
@@ -286,11 +290,17 @@
 		"Baptiste",
 		"Nicolas",
 		"Jean-Marie",
-        "Adrian"
+		"Adrian",
+		"Joe",
+		"Jack",
+		"William",
+		"Averell",
+        "Lucky"
 	],
-	"weapon": [
-		"sword",
-		"axe",
-		"bow"
+	"items": [
+		"une canette de soda",
+		"une canette de boisson gazeuse aromatisée",
+		"un poster",
+		"le Saint Graal"
 	]
 }

@@ -13,6 +13,7 @@
 [sub_resource type="Resource" id="Resource_ipns3"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("3_ipns3")
+is_shooting = false
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_8qclf"]
@@ -23,21 +24,33 @@ metadata/_custom_type_script = "uid://b36ypy26k4yad"
 [sub_resource type="Resource" id="Resource_w8i8w"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("5_w8i8w")
+speed = 15.0
+max_accel = 25.0
+is_shooting = false
+attack_cooldown_timer = 0.5
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_otmr2"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("6_otmr2")
+speed = 15.0
+max_accel = 25.0
+is_shooting = false
+attack_cooldown_timer = 0.5
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_wtq4b"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("7_wtq4b")
+speed = 7.0
+max_accel = 14.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_j0cyh"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("8_j0cyh")
+speed = 7.0
+max_accel = 14.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_614tr"]
@@ -79,7 +92,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_dqkch"]
 resource_name = "Death"
-length = 0.5
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -207,6 +220,8 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_614tr")
 _health = 1
 enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_ipns3"), SubResource("Resource_8qclf"), SubResource("Resource_w8i8w"), SubResource("Resource_otmr2"), SubResource("Resource_wtq4b"), SubResource("Resource_j0cyh")])
@@ -239,6 +254,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_dqkch")
 }
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -8, 16, 16)
+
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
@@ -247,3 +265,5 @@ libraries = {
 [connection signal="body_exited" from="RangeAttackArea" to="." method="_on_range_attack_area_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_reset_attack"]
 [connection signal="timeout" from="CartCooldownTimer" to="." method="_on_cart_cooldown_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_activate_enemy"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_deactivate_enemy"]
