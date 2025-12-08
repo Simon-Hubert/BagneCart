@@ -12,6 +12,10 @@ class_name Player extends CharacterBody2D
 @export var _maxSpeed : float
 @export var _maxAccel : float
 @export var _knockback_intensity : float
+@export var _item_carry_penalty := 0.2
+@export var _person_carry_penalty := 0.5
+
+var _current_penalty := 0.0
 
 
 @export_category("Attack")
@@ -21,6 +25,10 @@ var _can_attack := true
 
 const ATTACK_SCENE_PATH : String = "res://scenes/player_attack.tscn" 
 const ATTACK_SCENE : PackedScene = preload(ATTACK_SCENE_PATH)
+
+@export_category("Anim")
+@export var default_tex : Texture
+@export var picked_item_tex : Texture
 
 var _can_move := true
 var _is_knockbacked := false
@@ -40,8 +48,12 @@ func _ready() -> void:
 	_health = _default_health
 	on_player_setup_health.emit(_health)
 	_default_position = global_position
-	game_manager.Instance.on_respawn.connect(_respawn_player)
-	game_manager.Instance.on_game_over.connect(_on_game_over)
+	if game_manager.Instance != null:
+		game_manager.Instance.on_respawn.connect(_respawn_player)
+		game_manager.Instance.on_game_over.connect(_on_game_over)
+
+	$PickedItem.on_item_picked.connect(_on_item_picked)
+	$PickedItem.on_item_dropped.connect(_on_item_dropped)
 	
 func _process(_delta: float) -> void:
 	get_input()
@@ -49,7 +61,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if (_can_move):
 		if !_is_knockbacked:
-			var targetVelocity = _input * _maxSpeed
+			var targetVelocity = _input * _maxSpeed * (1.0 - _current_penalty)
 			var maxSpeedChange = _maxAccel * delta
 			velocity.x = move_toward(velocity.x, targetVelocity.x, maxSpeedChange)
 			velocity.y = move_toward(velocity.y, targetVelocity.y, maxSpeedChange)
@@ -146,6 +158,18 @@ func _respawn_player() -> void:
 	_health = _default_health
 	on_player_setup_health.emit(_health)
 	animation_player.play("RESET")
+
+func _on_item_picked(item: Pickupable) -> void:
+	$Sprite2D.texture = picked_item_tex
+	if item is quest_item:
+		if item.is_person:
+			_current_penalty = _person_carry_penalty
+	else:
+		_current_penalty = _item_carry_penalty
+
+func _on_item_dropped() -> void:
+	$Sprite2D.texture = default_tex
+	_current_penalty = 0
 
 ##Stop the player when the player fails
 func _on_game_over() -> void:

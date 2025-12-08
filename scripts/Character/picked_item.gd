@@ -6,6 +6,9 @@ var can_put_down := false
 var is_timer_running := false
 var put_down_cooldown := 0.5
 
+signal on_item_picked(Pickupable)
+signal on_item_dropped
+
 func pick_item(item: Pickupable) -> void:
 	if not empty :
 		return
@@ -13,6 +16,7 @@ func pick_item(item: Pickupable) -> void:
 		item.reparent(self)
 		item.position = Vector2(0,0)
 		_current_item = item
+		on_item_picked.emit(item)
 		empty = false
 		can_put_down = false
 		if not is_timer_running:
@@ -29,6 +33,7 @@ func drop_item() -> void:
 	_current_item.global_position = get_parent().global_position
 	_current_item.is_picked_up = false
 	_current_item = null
+	on_item_dropped.emit()
 	empty = true
 
 func transfer_item() -> Pickupable:
@@ -39,4 +44,5 @@ func transfer_item() -> Pickupable:
 	_current_item.is_picked_up = false
 	_current_item = null
 	empty = true
+	on_item_dropped.emit()
 	return to_return

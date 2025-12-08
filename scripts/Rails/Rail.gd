@@ -6,8 +6,9 @@ class_name Rail extends Area2D
 @export var flip_normal: bool
 @export var rail_data: RailData
 
-var connected: Array[Rail]
+var connected: Array[Rail] = [null, null]
 var is_aligned := false
+var is_end_of_line := false
 
 func get_side_force(other_position: Vector2) -> Vector2:
 	var center := position
@@ -24,12 +25,15 @@ func reverse():
 	if is_turning:
 		flip_normal = not flip_normal
 
-
+func connect_rail(to_connect :Rail) :
+	if connected.find(to_connect) != -1 : return
+	connected.append(to_connect)
+	to_connect.connect_rail(self)
+	init_rail(connected[-2], connected[-1])
 
 func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 	if next_rail != null && previous_rail != null:
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords(self, next_rail, previous_rail)
-		connected = [next_rail, previous_rail]
 		dir = (next_rail.position - previous_rail.position).normalized()
 		flip_normal = dir.x < -rail_data.error # le vecteur normal doit toujours pointer ver l'exterieur du virage
 	else:
@@ -37,15 +41,17 @@ func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 		var connected_rail = next_rail if next_rail != null else previous_rail
 		if connected_rail == null : return
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords_single_connection(self, connected_rail)
-		connected = [connected_rail]
 		dir = connected_rail.position - position
 		flip_normal = false
+		is_end_of_line = true
 	
 
 func propagate_orientation(constraint: Vector2):
+	#check for end of line
 	if dir.dot(constraint) < 0:
 		reverse()
 	is_aligned = true
 	for connected_rail in connected:
+		if connected_rail == null : continue
 		if not connected_rail.is_aligned:
 			connected_rail.propagate_orientation(dir)
