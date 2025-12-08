@@ -14,6 +14,10 @@ func _ready():
 	_fix_doors(dungeon, occupied)
 	_generate_map(dungeon)
 	
+	#Setup UI (TODO Remove await & fix setup order)
+	await get_tree().create_timer(0.1).timeout
+	game_manager.Instance.on_setup_UI.emit()
+	
 func _generate_dungeon(count: int) -> Dictionary:
 	#var countRoomsInstantiated = 0
 	var dungeon: Array[RoomData] = []
@@ -106,9 +110,6 @@ func _generate_map(dungeon: Array[RoomData]):
 	for rail in result:
 		if rail is Rail:
 			rail.propagate_orientation(rail.dir)
-	
-	#Setup UI
-	game_manager.Instance.on_setup_UI.emit()
 		
 func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
 	var dirs: Array[Vector2i] = []
