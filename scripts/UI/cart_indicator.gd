@@ -9,8 +9,16 @@ class_name cart_indicator extends Control
 @export var cart : Cart
 
 func _ready() -> void:
+	game_manager.Instance.on_setup_UI.connect(setup_UI)
+
+func setup_UI() -> void:
 	#hide arrow by default
 	arrow.visible = false
+	
+	#Setup references
+	camera = game_manager.Instance.camera_ref
+	cart = game_manager.Instance.cart_ref
+	player = game_manager.Instance.player_ref
 	
 	 #connect to cart signals
 	if !cart :
@@ -20,8 +28,8 @@ func _ready() -> void:
 	cart.on_exit_screen.connect(_show_icon)
 
 func _process(_delta: float) -> void:
-	#Check if arrow is shown
-	if !arrow.visible:
+	#Check if arrow is shown (or if is missing a reference)
+	if !arrow.visible || !cart || ! player || !camera:
 		return
 		
 	#Update rotation

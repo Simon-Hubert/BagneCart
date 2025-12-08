@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b27ktsbkckqb3"]
+[gd_scene load_steps=23 format=3 uid="uid://b27ktsbkckqb3"]
 
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="1_36eke"]
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="2_7v46j"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="16_n00t7"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="17_46q0l"]
 [ext_resource type="PackedScene" uid="uid://c8amxjugcsslc" path="res://scenes/RoomTest/FullDoors.tscn" id="18_4dus3"]
+[ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="19_217xa"]
+[ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="20_ucgw3"]
+[ext_resource type="PackedScene" uid="uid://o6cdu0ye8mtt" path="res://scenes/UI/Timer.tscn" id="21_k3t37"]
+[ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="22_un506"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -48,3 +52,17 @@ ROOMSIZE = 241
 RAILSIZE = 16
 NumberOfRooms = 15
 extra_doors_probability = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUI" parent="CanvasLayer" instance=ExtResource("19_217xa")]
+
+[node name="cart_indicator" parent="CanvasLayer" instance=ExtResource("20_ucgw3")]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+
+[node name="TimerUI" parent="CanvasLayer" instance=ExtResource("21_k3t37")]
+
+[node name="hud" parent="." instance=ExtResource("22_un506")]

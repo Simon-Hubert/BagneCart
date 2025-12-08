@@ -96,6 +96,7 @@ func _generate_map(dungeon: Array[RoomData]):
 	
 	#Spawn NPC & quest item
 	quest_manager.Instance.spawn_NPC()
+	
 	#Propagate cart
 	var space_state = get_world_2d().direct_space_state
 	var point := PhysicsPointQueryParameters2D.new()
@@ -105,6 +106,9 @@ func _generate_map(dungeon: Array[RoomData]):
 	for rail in result:
 		if rail is Rail:
 			rail.propagate_orientation(rail.dir)
+	
+	#Setup UI
+	game_manager.Instance.on_setup_UI.emit()
 		
 func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
 	var dirs: Array[Vector2i] = []
