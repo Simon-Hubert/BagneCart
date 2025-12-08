@@ -1,10 +1,11 @@
 class_name DungeonGenerator extends Node
 
+@export var _rail : PackedScene
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : int
+@export var RAILSIZE : int
 @export var NumberOfRooms : int
 @export var extra_doors_probability : float
-
 
 func _ready():
 	var result = _generate_dungeon(NumberOfRooms)
@@ -47,9 +48,10 @@ func _generate_dungeon(count: int) -> Dictionary:
 
 		var next_room = _random_next_room_from_dir(dir)
 		next_room.grid_pos = current_room.grid_pos + dir
+		next_room.from_dir = - dir
 
-		var next_index = _get_opposite_door_index(dir)
-		var cur_index = _get_opposite_door_index(-dir)
+		var next_index = _get_opposite_door_index_from_dir(dir)
+		var cur_index = _get_opposite_door_index_from_dir(-dir)
 
 		current_room.doors[cur_index] = true
 		next_room.doors[next_index] = true
@@ -68,6 +70,7 @@ func _generate_dungeon(count: int) -> Dictionary:
 	return {"dungeon": dungeon, "occupied": occupied}
 
 func _generate_map(dungeon: Array[RoomData]):
+	var previous_room : RoomData = null
 	for room in dungeon:
 		var key = _get_room_key_from_doors(room.doors)
 		var packed: PackedScene = _rooms.get(key)
@@ -80,6 +83,8 @@ func _generate_map(dungeon: Array[RoomData]):
 		var instance = packed.instantiate()
 		instance.position = room.grid_pos * ROOMSIZE
 		add_child(instance)	
+		generate_rails_for_room(instance, room, previous_room)
+		previous_room = room
 		print("Valide room scene for key: %s" % key)
 	
 	quest_manager.Instance.spawn_NPC()
@@ -143,11 +148,25 @@ func _random_next_room_from_dir(dir: Vector2i) -> RoomData:
 	]
 	
 	return room
-func _get_opposite_door_index(dir: Vector2i) -> int:
+	
+func _get_door_index_from_dir(dir: Vector2i) -> int:
+	if dir == Vector2i(0, -1): return 1 # top
+	if dir == Vector2i(0, 1): return 0 # bottom
+	if dir == Vector2i(1, 0): return 3 # right
+	if dir == Vector2i(-1, 0): return 2 # left
+	return -1
+func _get_opposite_door_index_from_dir(dir: Vector2i) -> int:
 	if dir == Vector2i(0, 1): return 1 # top
 	if dir == Vector2i(0, -1): return 0 # bottom
 	if dir == Vector2i(-1, 0): return 3 # right
 	if dir == Vector2i(1, 0): return 2 # left
+	return -1
+
+func _get_opposite_door_index(index : int) -> int:
+	if index == 0: return 1 # top
+	if index == 1: return 0 # bottom
+	if index == 2: return 3 # right
+	if index == 3: return 2 # left
 	return -1
 
 func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
@@ -179,7 +198,50 @@ func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
 				room.doors[door_index] = false
 				continue
 
-			var opposite = _get_opposite_door_index(dir)
+			var opposite = _get_opposite_door_index_from_dir(dir)
 
 			if !neighbor.doors[opposite]:
 				room.doors[door_index] = false
+
+func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomData):
+	
+	var roomCenter = Vector2(inst.global_position.x + ROOMSIZE / 2.0, inst.global_position.y - ROOMSIZE / 2.0)
+	var possible = [
+		Vector2i(0, 1),
+		Vector2i(0, -1),
+		Vector2i(-1, 0),
+		Vector2i(1, 0)
+	]
+	
+	var center = _rail.instantiate()
+	inst.add_child(center)
+	center.position = Vector2(ROOMSIZE, -ROOMSIZE)/2.0
+	
+	for i in range(0, room.doors.size()):
+		
+		if(room.doors[i]):
+			var dir = possible[i]
+			var dest = roomCenter + Vector2(dir) * (ROOMSIZE/2.0)
+			var step : int = (roomCenter - dest).length()/ RAILSIZE 
+			var previous_rail : Rail = center
+			
+			for j in range(1, step+1):
+				var pos : Vector2 = Vector2(ROOMSIZE, -ROOMSIZE)/2.0 + RAILSIZE * j * Vector2(dir)
+				var instance = _rail.instantiate()
+				inst.add_child(instance)
+				instance.position = pos
+				var rail : Rail = instance as Rail
+				if(previous_rail != null):
+					previous_rail.connect_rail(rail)
+					
+				previous_rail = rail
+				
+				if j == step:
+					room.rails[i] = rail
+					
+	if previous_room != null:
+		var dir = room.from_dir
+		previous_room.rails[_get_opposite_door_index_from_dir(dir)].connect_rail(room.rails[_get_door_index_from_dir(dir)])
+		
+
+	

@@ -6,5 +6,5 @@ class_name RailManager extends Node2D
 @export var rail2 : Rail
 
 func _ready():
-    rail0.connect_rail(rail1)
-    rail1.connect_rail(rail2)
+	rail0.connect_rail(rail1)
+	rail1.connect_rail(rail2)
