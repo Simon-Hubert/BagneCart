@@ -72,7 +72,7 @@ offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 29
-text = "Félicitations ! Vous avez acquis une alternance !!!"
+text = "Félicitations ! Vous avez acquis un CDI !!!"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1

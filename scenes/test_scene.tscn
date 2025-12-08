@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
 [ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
-[ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/player.tscn" id="3_ntc4i"]
+[ext_resource type="PackedScene" uid="uid://b3fny6dmp5oob" path="res://scenes/player.tscn" id="3_ntc4i"]
 [ext_resource type="Script" uid="uid://6qjwtqs16eud" path="res://scripts/camera_zelda_style.gd" id="4_gthg3"]
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="5_gthg3"]
 [ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
