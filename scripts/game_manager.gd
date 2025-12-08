@@ -49,12 +49,13 @@ func spawn_player_and_camera(spawn_position : Vector2) -> void:
 	camera_ref.setup()
 	
 ##Spawn the cart
-func spawn_cart() -> void:
+func spawn_cart(spawn_position : Vector2) -> void:
 	await get_tree().create_timer(.1).timeout
 	#Spawn cart
 	var cart_ref : Cart = CART_SCENE.instantiate()
 	get_tree().current_scene.add_child(cart_ref)
 	#Setup cart
+	cart_ref.position = spawn_position
 	cart_ref.player = _player_ref
 	
 ##Load end scene

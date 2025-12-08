@@ -39,14 +39,14 @@ func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	var point := PhysicsPointQueryParameters2D.new()
 	point.collide_with_areas = true
-	point.position = position
+	point.position = global_position
 	point.exclude = [$CartInteraction]
 	var result = space_state.intersect_point(point)
 
 	for collider in result:
 		if(collider.collider is Rail):
 			_rail_dir = collider.collider.dir.normalized()
-			centered = collider.collider.get_side_force(position)/2
+			centered = collider.collider.get_side_force(global_position)/2
 			break
 	
 	var toPlayer := player.position - position
