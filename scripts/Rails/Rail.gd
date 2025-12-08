@@ -34,22 +34,20 @@ func connect_rail(to_connect :Rail) :
 func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 	if next_rail != null && previous_rail != null:
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords(self, next_rail, previous_rail)
-		dir = (next_rail.position - previous_rail.position).normalized()
+		dir = (next_rail.global_position - previous_rail.global_position).normalized()
 		flip_normal = dir.x < -rail_data.error # le vecteur normal doit toujours pointer ver l'exterieur du virage
 	else:
-		print("single connection")
 		var connected_rail = next_rail if next_rail != null else previous_rail
 		if connected_rail == null : return
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords_single_connection(self, connected_rail)
-		dir = connected_rail.position - position
+		dir = connected_rail.global_position - global_position
 		flip_normal = false
 		is_end_of_line = true
 	
-
 func propagate_orientation(constraint: Vector2):
-	#check for end of line
 	if dir.dot(constraint) < 0:
-		reverse()
+		if not is_end_of_line:
+			reverse()
 	is_aligned = true
 	for connected_rail in connected:
 		if connected_rail == null : continue
