@@ -31,6 +31,7 @@ offset_right = 339.5
 offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_u4r2o")
 theme_override_font_sizes/font_size = 29
 text = "PERDU !"
 horizontal_alignment = 1

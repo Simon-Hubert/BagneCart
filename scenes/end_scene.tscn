@@ -71,6 +71,7 @@ offset_right = 339.5
 offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_fjxr3")
 theme_override_font_sizes/font_size = 29
 text = "Félicitations ! Vous avez acquis un CDI !!!"
 horizontal_alignment = 1
