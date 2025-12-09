@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://b3j3k00t7a2pk"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://b3j3k00t7a2pk"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_vchkl"]
 [ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="2_3t3au"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://delg4ih0i2e02" path="res://scenes/Rails/Rail6.tscn" id="8_3wm5y"]
 [ext_resource type="PackedScene" uid="uid://jnuu6gt17yqg" path="res://scenes/Rails/Rail7.tscn" id="9_vvwo8"]
 [ext_resource type="PackedScene" uid="uid://cogf13na8euvr" path="res://scenes/Rails/Rail1bis.tscn" id="13_6rdsc"]
+[ext_resource type="Texture2D" uid="uid://bjgq0vqub2vxd" path="res://tilesets/decoration.png" id="15_6rdsc"]
 [ext_resource type="Texture2D" uid="uid://dnkgj7teg4kr5" path="res://sprites/Tilemap/Comptoir_tilemap.png" id="15_aogfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jms4"]
@@ -176,6 +177,17 @@ scenes/16/scene = ExtResource("4_g12dk")
 scenes/17/scene = ExtResource("5_aogfk")
 scenes/18/scene = ExtResource("7_g12dk")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6fku4"]
+texture = ExtResource("15_6rdsc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rdsc"]
 texture = ExtResource("15_aogfk")
 0:0/0 = 0
@@ -195,3 +207,5 @@ terrain_set_0/terrain_2/color = Color(0, 0, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_1jms4")
 sources/1 = SubResource("TileSetScenesCollectionSource_dpdtw")
 sources/2 = SubResource("TileSetAtlasSource_6rdsc")
+sources/11 = SubResource("TileSetAtlasSource_6fku4")
+tile_proxies/coords_level = [[3, Vector2i(0, 0)], [11, Vector2i(0, 0)], [4, Vector2i(0, 0)], [11, Vector2i(1, 0)], [5, Vector2i(0, 0)], [11, Vector2i(2, 0)], [6, Vector2i(0, 0)], [11, Vector2i(3, 0)], [7, Vector2i(0, 0)], [11, Vector2i(4, 0)], [8, Vector2i(0, 0)], [11, Vector2i(5, 0)], [9, Vector2i(0, 0)], [11, Vector2i(6, 0)], [10, Vector2i(0, 0)], [11, Vector2i(7, 0)]]
