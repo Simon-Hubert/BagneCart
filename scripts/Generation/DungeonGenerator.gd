@@ -2,7 +2,7 @@ class_name DungeonGenerator extends Node2D
 
 @export var _rail : PackedScene
 @export var _rooms : Dictionary[String, PackedScene]
-@export var ROOMSIZE : int
+@export var ROOMSIZE : Vector2
 @export var RAILSIZE : int
 @export var NumberOfRooms : int
 @export var extra_doors_probability : float
@@ -84,14 +84,14 @@ func _generate_map(dungeon: Array[RoomData]):
 			continue
 
 		var instance = packed.instantiate()
-		instance.position = room.grid_pos * ROOMSIZE
+		instance.position = Vector2(room.grid_pos.x * ROOMSIZE.x, room.grid_pos.y * ROOMSIZE.y)
 		add_child(instance)	
 		
 		#spawn player & cam (if first room)
 		if !previous_room:
 			var spawn_position : Vector2 = instance.position
-			spawn_position.x += ROOMSIZE * .5
-			spawn_position.y -= ROOMSIZE * .5 + 20
+			spawn_position.x += ROOMSIZE.x * .5
+			spawn_position.y -= ROOMSIZE.y * .5 + 20
 			game_manager.Instance.spawn_player_and_camera(spawn_position)	
 			
 		generate_rails_for_room(instance, room, previous_room, !previous_room)
@@ -105,7 +105,7 @@ func _generate_map(dungeon: Array[RoomData]):
 	var space_state = get_world_2d().direct_space_state
 	var point := PhysicsPointQueryParameters2D.new()
 	point.collide_with_areas = true
-	point.position = Vector2(ROOMSIZE, -ROOMSIZE)/2.0
+	point.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
 	var result = space_state.intersect_point(point)
 	for rail in result:
 		if rail is Rail:
@@ -227,7 +227,7 @@ func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
 
 func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomData, spawn_cart : bool):
 	
-	var roomCenter = Vector2(inst.global_position.x + ROOMSIZE / 2.0, inst.global_position.y - ROOMSIZE / 2.0)
+	var roomCenter = Vector2(inst.global_position.x + ROOMSIZE.x / 2.0, inst.global_position.y - ROOMSIZE.y / 2.0)
 	var possible = [
 		Vector2i(0, 1),
 		Vector2i(0, -1),
@@ -237,7 +237,7 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 	
 	var center = _rail.instantiate()
 	inst.add_child(center)
-	center.position = Vector2(ROOMSIZE, -ROOMSIZE)/2.0
+	center.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
 	
 	if spawn_cart:
 		game_manager.Instance.spawn_cart(center.position)
@@ -251,7 +251,7 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 			var previous_rail : Rail = center
 			
 			for j in range(1, step+1):
-				var pos : Vector2 = Vector2(ROOMSIZE, -ROOMSIZE)/2.0 + RAILSIZE * j * Vector2(dir)
+				var pos : Vector2 = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0 + RAILSIZE * j * Vector2(dir)
 				var instance = _rail.instantiate()
 				inst.add_child(instance)
 				instance.position = pos
