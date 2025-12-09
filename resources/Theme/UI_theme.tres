@@ -1,3 +1,10 @@
-[gd_resource type="Theme" format=3 uid="uid://cqp6s2yqay6hu"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cqp6s2yqay6hu"]
+
+[ext_resource type="FontFile" uid="uid://bbdxpx5gpavq1" path="res://Font/InkbitThree.ttf" id="1_3f168"]
 
 [resource]
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("1_3f168")
+Label/fonts/font = ExtResource("1_3f168")
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/normal_font = ExtResource("1_3f168")

@@ -71,8 +71,10 @@ offset_right = 339.5
 offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_fjxr3")
 theme_override_font_sizes/font_size = 29
 text = "Félicitations ! Vous avez acquis un CDI !!!"
+horizontal_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -87,6 +89,7 @@ offset_bottom = -54.144043
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_85q8e")
+stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
@@ -94,18 +97,29 @@ libraries = {
 }
 
 [node name="RestartButton" type="Button" parent="CanvasLayer"]
-offset_left = 193.0
-offset_top = 534.0
-offset_right = 381.0
-offset_bottom = 599.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -150.0
+offset_right = 288.0
+offset_bottom = -85.0
+grow_vertical = 0
 theme = ExtResource("4_fjxr3")
 text = "Recommencer"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer"]
-offset_left = 728.0
-offset_top = 544.0
-offset_right = 916.0
-offset_bottom = 609.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -150.0
+offset_right = -100.0
+offset_bottom = -85.0
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("4_fjxr3")
 text = "Quitter"
 

@@ -202,7 +202,7 @@ texture_filter = 1
 layout_mode = 1
 offset_left = 25.0
 offset_top = -30.0
-offset_right = 325.0
+offset_right = 466.0
 texture = ExtResource("2_hebjp")
 patch_margin_left = 3
 patch_margin_top = 3
@@ -229,7 +229,7 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.5
 one_shot = true
 
 [node name="ArrowAnimation" type="AnimationPlayer" parent="."]

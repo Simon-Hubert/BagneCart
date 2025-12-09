@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			centered = collider.collider.get_side_force(global_position)/2
 			break
 	
-	var toPlayer := player.position - position
+	var toPlayer := player.global_position - global_position
 	var p := inverse_lerp(_radius, 0, (toPlayer).length()) # la puissance normalisée de l'impac
 	p = clamp(p, 0, 1)
 
