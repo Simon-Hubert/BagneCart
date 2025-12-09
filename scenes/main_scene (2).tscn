@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://b27ktsbkckqb3"]
+[gd_scene load_steps=24 format=3 uid="uid://b27ktsbkckqb3"]
 
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="1_36eke"]
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="2_7v46j"]
 [ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="3_2mds5"]
+[ext_resource type="PackedScene" uid="uid://b1k565ctu48tc" path="res://scenes/Rails/rail_switch0.tscn" id="4_ucgw3"]
 [ext_resource type="PackedScene" uid="uid://rdk2x2d802c4" path="res://scenes/RoomTest/Right.tscn" id="4_vhck1"]
 [ext_resource type="PackedScene" uid="uid://wmpcy5d8qmwt" path="res://scenes/RoomTest/Left.tscn" id="5_gr3sx"]
 [ext_resource type="PackedScene" uid="uid://cquytq2ql140g" path="res://scenes/RoomTest/Horizontal.tscn" id="6_pj1gy"]
@@ -23,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://o6cdu0ye8mtt" path="res://scenes/UI/Timer.tscn" id="21_k3t37"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="22_un506"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_36eke")]
 
@@ -31,6 +32,7 @@
 process_priority = -1
 script = ExtResource("2_7v46j")
 _rail = ExtResource("3_2mds5")
+_switch = ExtResource("4_ucgw3")
 _rooms = Dictionary[String, PackedScene]({
 "0001": ExtResource("4_vhck1"),
 "0010": ExtResource("5_gr3sx"),
@@ -51,7 +53,7 @@ _rooms = Dictionary[String, PackedScene]({
 ROOMSIZE = Vector2(336, 192)
 RAILSIZE = 16
 NumberOfRooms = 15
-extra_doors_probability = 10.0
+extra_doors_probability = 100.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
