@@ -46,7 +46,6 @@ signal on_player_exited_screen
 
 func _ready() -> void:
 	_health = _default_health
-	on_player_setup_health.emit(_health)
 	_default_position = global_position
 	if game_manager.Instance != null:
 		game_manager.Instance.on_respawn.connect(_respawn_player)

@@ -35,6 +35,10 @@ func _process(_delta: float) -> void:
 		set_tile_set_X_offset(_tile_set_horizontal_offset)
 		
 func _physics_process(delta: float) -> void:
+	#Check reference
+	if !player:
+		return
+	
 	var centered : Vector2
 	var space_state = get_world_2d().direct_space_state
 	var point := PhysicsPointQueryParameters2D.new()

@@ -45,7 +45,8 @@ func _follow_player() -> void:
 ##To respect DRY (Don't Repeat Yourself), set camera movement parameters here
 func set_camera_movement(dir : Vector2) -> void:
 	if _is_cam_moving:
-		push_warning("Camera is already moving ! Might cause offset errors")
+		#push_warning("Camera is already moving ! Might cause offset errors")
+		global_position = _target_camera_position
 	_is_cam_moving = true
 	_target_camera_position = global_position + camera_offset * dir
 

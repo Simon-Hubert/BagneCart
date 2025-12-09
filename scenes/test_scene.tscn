@@ -18,6 +18,9 @@
 
 [node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
 
+[node name="QuestManager" parent="GameManager" index="0"]
+npc_number = 1
+
 [node name="Timer" type="Timer" parent="GameManager/QuestManager" index="0"]
 wait_time = 0.1
 one_shot = true
@@ -28,12 +31,8 @@ position = Vector2(0, 1)
 tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwABAP3/AQAAAAAAEgA=")
 tile_set = ExtResource("1_6qxox")
 
-[node name="Cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_gthg3")]
+[node name="Cart" parent="." instance=ExtResource("2_gthg3")]
 position = Vector2(24, 16)
-_player = NodePath("../Player")
-_radius = 16.0
-_max_accel = 10000.0
-_friction = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_ntc4i")]
 position = Vector2(-90, 21)
@@ -46,12 +45,11 @@ _maxSpeed = 120.0
 
 [node name="DialogUI" parent="CanvasLayer" instance=ExtResource("6_8gixj")]
 
-[node name="cart_indicator" parent="CanvasLayer" node_paths=PackedStringArray("camera", "player", "cart") instance=ExtResource("7_6qxox")]
+[node name="cart_indicator" parent="CanvasLayer" node_paths=PackedStringArray("player", "cart") instance=ExtResource("7_6qxox")]
 offset_left = 50.0
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
-camera = NodePath("")
 player = NodePath("../../Player")
 cart = NodePath("../../Cart")
 
@@ -60,22 +58,10 @@ cart = NodePath("../../Cart")
 [node name="hud" parent="." instance=ExtResource("7_hf2sn")]
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-245, 26)
+position = Vector2(-59, 82)
 
 [node name="NPC_spawn_point2" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-32, 49)
-
-[node name="NPC_spawn_point3" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-36, 161)
-
-[node name="NPC_spawn_point4" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-258, 152)
-
-[node name="NPC_spawn_point5" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-34, -156)
-
-[node name="NPC_spawn_point6" parent="." instance=ExtResource("8_qq5q4")]
-position = Vector2(-256, -165)
+position = Vector2(-45, -81)
 
 [node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
 position = Vector2(-179, -23)

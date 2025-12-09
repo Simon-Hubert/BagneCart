@@ -20,7 +20,12 @@ const CAMERA_SCENE : PackedScene = preload(CAMERA_SCENE_PATH)
 @export var _maximum_quest_failed : int = 3
 
 var _number_quest_failed : int = 0
-var _player_ref : Player
+var player_ref : Player
+var cart_ref : Cart
+var camera_ref : camera_zelda_style
+
+@warning_ignore("unused_signal") #Is call in another script
+signal on_setup_UI
 signal on_respawn
 signal on_quest_failed
 signal on_game_over
@@ -37,14 +42,14 @@ func _ready() -> void:
 func spawn_player_and_camera(spawn_position : Vector2) -> void:
 	await get_tree().create_timer(.1).timeout
 	#Spawn player and camera
-	var camera_ref : camera_zelda_style = CAMERA_SCENE.instantiate()
+	camera_ref = CAMERA_SCENE.instantiate()
 	get_tree().current_scene.add_child(camera_ref)
-	_player_ref = PLAYER_SCENE.instantiate()
-	get_tree().current_scene.add_child(_player_ref)
-	_player_ref.position = spawn_position
+	player_ref = PLAYER_SCENE.instantiate()
+	get_tree().current_scene.add_child(player_ref)
+	player_ref.position = spawn_position
 
 	#Setup camera
-	camera_ref.player_ref = _player_ref
+	camera_ref.player_ref = player_ref
 	camera_ref.position = spawn_position
 	camera_ref.setup()
 	
@@ -52,11 +57,11 @@ func spawn_player_and_camera(spawn_position : Vector2) -> void:
 func spawn_cart(spawn_position : Vector2) -> void:
 	await get_tree().create_timer(.1).timeout
 	#Spawn cart
-	var cart_ref : Cart = CART_SCENE.instantiate()
+	cart_ref = CART_SCENE.instantiate()
 	get_tree().current_scene.add_child(cart_ref)
 	#Setup cart
 	cart_ref.position = spawn_position
-	cart_ref.player = _player_ref
+	cart_ref.player = player_ref
 	
 ##Load end scene
 func _load_end_scene() -> void:

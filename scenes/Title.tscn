@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://boq7wly4qy5b7"]
+
+[ext_resource type="Script" uid="uid://dl4vh1hmnxrka" path="res://scripts/UI/end_scene.gd" id="1_iyajp"]
+[ext_resource type="Texture2D" uid="uid://dbic4ckgr6va7" path="res://sprites/UI/fill.png" id="2_aa56r"]
+[ext_resource type="Texture2D" uid="uid://dpwj2yepr2rn6" path="res://sprites/UI/Title.png" id="3_iyajp"]
+[ext_resource type="Theme" uid="uid://cqp6s2yqay6hu" path="res://resources/Theme/UI_theme.tres" id="4_mh4yb"]
+
+[node name="EndScene" type="Node2D"]
+script = ExtResource("1_iyajp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.91764706, 0.64705884, 0.42352942, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aa56r")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -315.0
+offset_top = 35.0
+offset_right = 636.0
+offset_bottom = 538.0
+grow_horizontal = 2
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("3_iyajp")
+stretch_mode = 4
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -175.0
+offset_right = 94.0
+offset_bottom = -109.99994
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_mh4yb")
+text = "Commencer"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -99.119995
+offset_right = 94.0
+offset_bottom = -34.119995
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_mh4yb")
+text = "Quitter"
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_restart_button"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button"]
