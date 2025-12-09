@@ -160,6 +160,7 @@ script = ExtResource("1_v6fml")
 _maxSpeed = 250.0
 _maxAccel = 500.0
 _knockback_intensity = 100.0
+_attack_offset = 10.0
 default_tex = ExtResource("2_g2els")
 picked_item_tex = ExtResource("3_mdl7e")
 metadata/_custom_type_script = "uid://c0m8leljkyyhw"
