@@ -17,16 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="14_pmdra"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="15_mmhl1"]
 [ext_resource type="PackedScene" uid="uid://c8amxjugcsslc" path="res://scenes/RoomTest/FullDoors.tscn" id="16_8ralk"]
-[ext_resource type="PackedScene" uid="uid://18v80rexo1ur" path="res://scenes/Quest/quest_manager.tscn" id="17_owapw"]
+[ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="18_k5aj4"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="QuestManager" parent="." instance=ExtResource("17_owapw")]
-npc_number = 10
+[node name="GameManager" parent="." instance=ExtResource("18_k5aj4")]
 
-[node name="Dungeon" type="Node" parent="."]
+[node name="Dungeon" type="Node2D" parent="."]
 process_priority = -1
 script = ExtResource("1_lp6jl")
 _rail = ExtResource("3_k5aj4")
@@ -49,5 +48,5 @@ _rooms = Dictionary[String, PackedScene]({
 })
 ROOMSIZE = 241
 RAILSIZE = 16
-NumberOfRooms = 5000
+NumberOfRooms = 10
 extra_doors_probability = 10.0
