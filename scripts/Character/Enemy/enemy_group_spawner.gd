@@ -4,7 +4,8 @@ const ENEMY_SCENE_PATH : String = "res://scenes/Enemy/enemy.tscn"
 const ENEMY_SCENE : PackedScene = preload(ENEMY_SCENE_PATH)
 
 #Technically, the first enemy spawner is the one in which the player enters
-static var is_first_spawner : bool = true  
+static var _is_first_spawner : bool = true  
+static var _enemy_spawner_proba_modifier : float = 0
 
 @export_category("References")
 @export var player_ref : Player
@@ -17,6 +18,8 @@ static var is_first_spawner : bool = true
 @export var _min_number_of_enemies : int = 1
 @export var _max_number_of_enemies : int = 5
 @export_range(0,100) var _spawn_chance : float = 30
+@export var _enemy_spawn_ponderation : float = 5
+
 
 var _has_spawned_enemies : bool = false
 
@@ -28,15 +31,17 @@ func _on_enter_room() -> void:
 		return
 	_has_spawned_enemies = true
 	#Can't spawn if is in the first room
-	if is_first_spawner:
-		is_first_spawner = false
+	if _is_first_spawner:
+		_is_first_spawner = false
 		return
 	
 	#Random chance of enemies spawning
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	if (rng.randi() % 100) > _spawn_chance:
+	if (rng.randi() % 100) > _spawn_chance + _enemy_spawner_proba_modifier:
+		_enemy_spawner_proba_modifier += _enemy_spawn_ponderation
 		return
+	_enemy_spawner_proba_modifier -= _enemy_spawn_ponderation
 	
 	var available_point : Array[Node2D] = _enemy_spawner_list.duplicate()
 	var number_of_enemies = clampi(rng.randi(), _min_number_of_enemies, _max_number_of_enemies)
