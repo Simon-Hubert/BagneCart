@@ -48,7 +48,7 @@ _rooms = Dictionary[String, PackedScene]({
 "1110": ExtResource("17_46q0l"),
 "1111": ExtResource("18_4dus3")
 })
-ROOMSIZE = 241
+ROOMSIZE = Vector2(336, 192)
 RAILSIZE = 16
 NumberOfRooms = 15
 extra_doors_probability = 10.0
