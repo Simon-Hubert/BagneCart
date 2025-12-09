@@ -3,6 +3,9 @@ class_name enemy_group_spawner extends Node2D
 const ENEMY_SCENE_PATH : String = "res://scenes/Enemy/enemy.tscn" 
 const ENEMY_SCENE : PackedScene = preload(ENEMY_SCENE_PATH)
 
+#Technically, the first enemy spawner is the one in which the player enters
+static var is_first_spawner : bool = false  
+
 @export_category("References")
 @export var player_ref : Player
 @export var cart_ref : Cart
@@ -24,6 +27,10 @@ func _on_enter_room() -> void:
 	if _has_spawned_enemies:
 		return
 	_has_spawned_enemies = true
+	#Can't spawn if is in the first room
+	if is_first_spawner:
+		is_first_spawner = false
+		return
 	
 	#Random chance of enemies spawning
 	var rng = RandomNumberGenerator.new()
