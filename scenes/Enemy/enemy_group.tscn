@@ -8,6 +8,7 @@
 script = ExtResource("1_pnu0x")
 _enemy_spawner_list = [NodePath("spawn_1"), NodePath("spawn_2"), NodePath("spawn_3"), NodePath("spawn_4"), NodePath("spawn_5")]
 _enemy_possibilites = Array[float]([0.0, 0.4, 0.2, 0.2, 0.1, 0.1])
+_spawn_chance = 40.0
 
 [node name="spawn_1" type="Area2D" parent="."]
 position = Vector2(0, -40)
