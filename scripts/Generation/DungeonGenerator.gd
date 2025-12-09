@@ -100,7 +100,7 @@ func _generate_map(dungeon: Array[RoomData]):
 		print("Valide room scene for key: %s" % key)
 	
 	#Spawn NPC & quest item
-	quest_manager.Instance.spawn_NPC()
+	#quest_manager.Instance.spawn_NPC()
 	
 	#Propagate cart
 	var space_state = get_world_2d().direct_space_state

@@ -6,9 +6,6 @@ const CART_AREA_NAME = "CartInteraction"
 const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
-const HEALTH_POTION_SCENE_PATH : String = "res://scenes/health_pickup.tscn"
-const HEALTH_POTION_SCENE : PackedScene = preload(HEALTH_POTION_SCENE_PATH)
-
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
@@ -45,7 +42,7 @@ func _ready():
 	#Choose random enemy
 	var rng = RandomNumberGenerator.new()
 	_setup(enemies_type[rng.randi() % enemies_type.size()])
-
+	
 ##Setup enemy data from an enemy_data resource
 func _setup(data : enemy_data):
 	sprite.texture = data.sprite_texture
@@ -64,6 +61,7 @@ func _process(_delta: float) -> void:
 		return
 	if is_dead:
 		return
+	animation_player.play("Move")
 	
 	#Check which is closer
 	var distance_to_player : float = player_ref.global_position.distance_to(global_position)
@@ -121,9 +119,7 @@ func hit(_dir : Vector2) -> void:
 		is_dead = true
 		#Drop a potion
 		if quest_manager.Instance.rng.randf() <= _health_potion_drop_rate:
-			var health_potion : Node2D = HEALTH_POTION_SCENE.instantiate()
-			get_tree().current_scene.add_child(health_potion)
-			health_potion.global_position = global_position
+			game_manager.Instance.spawn_health_potion(global_position)
 	else:
 		animation_player.play("Hit")
 
