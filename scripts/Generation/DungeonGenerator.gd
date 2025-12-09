@@ -1,6 +1,7 @@
 class_name DungeonGenerator extends Node2D
 
 @export var _rail : PackedScene
+@export var _switch : PackedScene
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : Vector2
 @export var RAILSIZE : int
@@ -234,8 +235,16 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 		Vector2i(-1, 0),
 		Vector2i(1, 0)
 	]
+	var count = 0
 	
-	var center = _rail.instantiate()
+	for i in range(room.doors.size()):
+		if room.doors[i] == true:
+			count += 1
+	var center	
+	if count > 2:
+		center = _switch.instantiate()
+	else:
+		center = _rail.instantiate()
 	inst.add_child(center)
 	center.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
 	
