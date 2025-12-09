@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7w55ff2i6ewm"]
+[gd_scene load_steps=16 format=3 uid="uid://b7w55ff2i6ewm"]
 
 [ext_resource type="Script" uid="uid://5rvty0ex8uva" path="res://scripts/Quest/quest_item.gd" id="1_s2hee"]
 [ext_resource type="Texture2D" uid="uid://d32g8jwcv6arl" path="res://sprites/QuestItem/Item1.png" id="2_cjogr"]
@@ -12,9 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://dwn2b3pq4do8c" path="res://sprites/Characters/Prisonnier5.png" id="10_qjvkp"]
 [ext_resource type="Texture2D" uid="uid://dbqcgx3amy22u" path="res://sprites/Characters/Prisonnier6.png" id="11_fj4is"]
 [ext_resource type="Theme" uid="uid://cqp6s2yqay6hu" path="res://resources/Theme/UI_theme.tres" id="12_itfww"]
+[ext_resource type="Shader" uid="uid://wd40mho05hoa" path="res://scripts/Shader/outline.gdshader" id="12_q7dh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cvv4"]
 radius = 19.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2n4ft"]
+shader = ExtResource("12_q7dh3")
 
 [node name="quest_item" type="Area2D"]
 z_index = 5
@@ -31,6 +35,12 @@ metadata/_custom_type_script = "uid://bvbdjmqimwhvw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1cvv4")
+
+[node name="Outline" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_2n4ft")
+scale = Vector2(1.1, 1.1)
+region_rect = Rect2(112, 144, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
