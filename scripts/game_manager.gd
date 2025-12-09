@@ -24,6 +24,7 @@ var player_ref : Player
 var cart_ref : Cart
 var camera_ref : camera_zelda_style
 
+@warning_ignore("unused_signal") #Is call in another script
 signal on_setup_UI
 signal on_respawn
 signal on_quest_failed

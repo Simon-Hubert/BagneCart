@@ -14,7 +14,7 @@ func _ready() -> void:
 func setup_UI() -> void:
 	game_manager.Instance.player_ref.on_player_setup_health.connect(_on_setup_lives)
 	game_manager.Instance.player_ref.on_player_update_health.connect(_on_life_changed)
-	game_manager.Instance.player_ref.on_player_setup_health.emit()
+	game_manager.Instance.player_ref.on_player_setup_health.emit(game_manager.Instance.player_ref._health)
 	
 ##Setup a number of lives by default
 func _on_setup_lives(number_lives : int) -> void:

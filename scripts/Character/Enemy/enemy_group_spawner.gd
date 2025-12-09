@@ -47,5 +47,5 @@ func _on_enter_room() -> void:
 		var position_index := rng.randi() % available_point.size()
 		newEnemy.global_position = available_point[position_index].global_position
 		available_point.remove_at(position_index)
-		newEnemy.player_ref = player_ref
-		newEnemy.cart_ref = cart_ref
+		newEnemy.player_ref = game_manager.Instance.player_ref
+		newEnemy.cart_ref = game_manager.Instance.cart_ref
