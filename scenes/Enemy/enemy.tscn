@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://b36ypy26k4yad"
 [sub_resource type="Resource" id="Resource_8qclf"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("4_8qclf")
+attack_cooldown_timer = 2.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_w8i8w"]
