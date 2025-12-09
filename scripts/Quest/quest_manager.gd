@@ -27,6 +27,7 @@ var number_quest_completed : int = 0
 
 var has_quest : bool = false
 var current_quest_giver_name : String = ""
+var current_quest_giver_position : Vector2
 var current_quest_type : QUEST_TYPE
 var current_quest_item : String = ""
 var npc_spawn_point_list : Array[Vector2]
@@ -108,14 +109,35 @@ func create_NPC_data() -> NPC_data:
 	return newData
 
 ##Accept a quest from an NPC
-func accept_new_quest(data : NPC_data) -> void:
+func accept_new_quest(data : NPC_data, NPC_position : Vector2) -> void:
 	if !has_quest:
 		has_quest = true
 		current_quest_giver_name = data.name
+		current_quest_giver_position = NPC_position
 		_quest_tracery_grammar.set_save_data("questItem", data.quest_item_to_get) #get quest item from data
 		current_quest_type = data.quest_type
 		current_quest_item = data.quest_item_to_get
 		on_quest_recieved.emit()
+
+##Get the nearest item from current accepted quest NPC
+func get_nearest_item() -> float:
+	var _min_distance : float = -1
+	#Check through all items which is correct
+	for item in quest_item_list:
+		if !item.is_correct_item_name(current_quest_item):
+			continue
+		var distance_to_item : float = current_quest_giver_position.distance_to(item.global_position)
+		if  distance_to_item <= _min_distance || _min_distance == -1:
+			_min_distance = distance_to_item
+	print(_min_distance)
+	return _min_distance
+
+##get current quest item sprite
+func get_current_quest_item_sprite() -> Texture2D:
+	for item in quest_item_list:
+		if item.is_correct_item_name(current_quest_item):
+			return item.sprite.texture
+	return null
 
 ##Look if the current quest is validated
 func check_validate_quest() -> bool:

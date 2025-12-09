@@ -47,8 +47,12 @@ _data = {
 &"RESET": SubResource("Animation_bq08c")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Cart" type="Node2D"]
+z_index = 5
 script = ExtResource("1_2136m")
+_radius = 16.0
+_max_accel = 10000.0
+_friction = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mfx0n")

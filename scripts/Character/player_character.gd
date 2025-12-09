@@ -50,6 +50,8 @@ func _ready() -> void:
 	_default_position = global_position
 	if game_manager.Instance != null:
 		game_manager.Instance.on_respawn.connect(_respawn_player)
+		game_manager.Instance.on_game_over.connect(_on_game_over)
+
 	$PickedItem.on_item_picked.connect(_on_item_picked)
 	$PickedItem.on_item_dropped.connect(_on_item_dropped)
 	
@@ -127,6 +129,11 @@ func hit(dir : Vector2) -> void:
 	_is_knockbacked = true
 	velocity = dir * _knockback_intensity
 	knockback_timer.start()	
+	
+	#Eject from cart if was in there
+	if !_can_move:
+		_interact()
+		
 	#Check player death
 	if _health <= 0:
 		animation_player.play("Death")
@@ -135,7 +142,7 @@ func hit(dir : Vector2) -> void:
 		game_manager.Instance.respawn_player()
 	else:
 		animation_player.play("Hit")
-
+		
 ##Event when timer ended
 func _on_knockback_ended() -> void:
 	_is_knockbacked = false
@@ -168,3 +175,7 @@ func _on_item_picked(item: Pickupable) -> void:
 func _on_item_dropped() -> void:
 	$Sprite2D.texture = default_tex
 	_current_penalty = 0
+
+##Stop the player when the player fails
+func _on_game_over() -> void:
+	_can_move = false

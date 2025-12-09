@@ -2,10 +2,11 @@ extends Node2D
 
 const MAIN_SCENE_PATH : String = ""
 
-@onready var animation : AnimationPlayer = $CanvasLayer/AnimationPlayer
+@export var animation : AnimationPlayer
 
 func _ready() -> void:
-	animation.play("Happy")
+	if !animation:
+		animation.play("Happy")
 	
 ##Restart the game
 func _on_restart_button():

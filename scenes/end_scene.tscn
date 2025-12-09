@@ -44,8 +44,9 @@ _data = {
 &"RESET": SubResource("Animation_4835h")
 }
 
-[node name="EndScene" type="Node2D"]
+[node name="EndScene" type="Node2D" node_paths=PackedStringArray("animation")]
 script = ExtResource("1_ojf8p")
+animation = NodePath("CanvasLayer/AnimationPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -71,7 +72,7 @@ offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 29
-text = "Félicitations ! Vous avez acquis une alternance !!!"
+text = "Félicitations ! Vous avez acquis un CDI !!!"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1

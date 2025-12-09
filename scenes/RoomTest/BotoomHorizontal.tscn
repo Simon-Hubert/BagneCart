@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://cautijrhju3ue"]
+[gd_scene load_steps=4 format=4 uid="uid://cautijrhju3ue"]
 
 [ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_86es6"]
 [ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="2_8qyo3"]
+[ext_resource type="PackedScene" uid="uid://0fdwsv35bwmc" path="res://scenes/Enemy/enemy_group.tscn" id="3_8nbon"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +13,38 @@ tile_set = ExtResource("1_86es6")
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("2_8qyo3")]
 position = Vector2(58, -69)
+
+[node name="enemy_group" parent="." instance=ExtResource("3_8nbon")]
+position = Vector2(123, -111)
+
+[node name="spawn_1" parent="enemy_group" index="0"]
+position = Vector2(13, -37)
+
+[node name="circle_debug" parent="enemy_group/spawn_1" index="0"]
+position = Vector2(0, 0)
+
+[node name="spawn_2" parent="enemy_group" index="1"]
+position = Vector2(-50, -58)
+
+[node name="circle_debug" parent="enemy_group/spawn_2" index="0"]
+position = Vector2(0, 0)
+
+[node name="spawn_3" parent="enemy_group" index="2"]
+position = Vector2(68, -62)
+
+[node name="circle_debug" parent="enemy_group/spawn_3" index="0"]
+position = Vector2(0, 0)
+
+[node name="spawn_4" parent="enemy_group" index="3"]
+position = Vector2(72, 48)
+
+[node name="circle_debug" parent="enemy_group/spawn_4" index="0"]
+position = Vector2(0, 0)
+
+[node name="spawn_5" parent="enemy_group" index="4"]
+position = Vector2(-6, 13)
+
+[node name="circle_debug" parent="enemy_group/spawn_5" index="0"]
+position = Vector2(0, 0)
+
+[editable path="enemy_group"]

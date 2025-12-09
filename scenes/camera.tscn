@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm1niru8bivs2"]
+
+[ext_resource type="Script" uid="uid://6qjwtqs16eud" path="res://scripts/camera_zelda_style.gd" id="1_cvpoc"]
+
+[node name="CameraFollow" type="Camera2D"]
+zoom = Vector2(3, 3)
+script = ExtResource("1_cvpoc")
+screen_limit = Vector2(90, 90)
+camera_offset = Vector2(241, 241)
+_decay = 7.0
+_distance_threshold = 1.0
+metadata/_custom_type_script = "uid://d4k7dceo0v43b"

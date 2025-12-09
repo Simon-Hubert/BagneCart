@@ -16,6 +16,7 @@
 radius = 19.0
 
 [node name="quest_item" type="Area2D"]
+z_index = 5
 script = ExtResource("1_s2hee")
 item_to_sprite = Dictionary[String, Texture2D]({
 "le Saint Graal": ExtResource("5_c2jpk"),
@@ -35,6 +36,24 @@ z_index = 1
 region_rect = Rect2(112, 144, 16, 16)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="NameTag" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -35.0
+offset_right = 23.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "NameTag"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]

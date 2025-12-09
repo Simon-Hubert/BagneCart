@@ -13,7 +13,8 @@ var _default_camera_position : Vector2
 var _target_camera_position : Vector2
 var _is_cam_moving : bool = false
 
-func _ready() -> void:
+##Setup the camera once reference have been set
+func setup() -> void:
 	player_ref.on_player_exited_screen.connect(_follow_player)
 	_default_camera_position = global_position
 	_target_camera_position = global_position
