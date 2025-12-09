@@ -42,6 +42,11 @@ func _follow_player() -> void:
 	elif player_screen_position.x <= -screen_limit.x :
 		set_camera_movement(Vector2(-1,0))
 	
+##Set default position (and reposition camera)
+func set_default_camera_position(new_position : Vector2) -> void :
+	_default_camera_position = new_position
+	position = new_position
+	
 ##To respect DRY (Don't Repeat Yourself), set camera movement parameters here
 func set_camera_movement(dir : Vector2) -> void:
 	if _is_cam_moving:

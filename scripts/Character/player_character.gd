@@ -66,6 +66,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, targetVelocity.y, maxSpeedChange)
 		move_and_slide()
 
+##Set default position (and reposition player)
+func set_default_position(new_position : Vector2):
+	_default_position = new_position
+	position = new_position
+
 func get_input() -> void:
 	_input = Input.get_vector("Left", "Right", "Up", "Down")
 	#flip the sprite relative to the direction

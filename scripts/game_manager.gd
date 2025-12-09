@@ -46,11 +46,11 @@ func spawn_player_and_camera(spawn_position : Vector2) -> void:
 	get_tree().current_scene.add_child(camera_ref)
 	player_ref = PLAYER_SCENE.instantiate()
 	get_tree().current_scene.add_child(player_ref)
-	player_ref.position = spawn_position
+	player_ref.set_default_position(spawn_position)
 
 	#Setup camera
 	camera_ref.player_ref = player_ref
-	camera_ref.position = spawn_position
+	camera_ref.set_default_camera_position(spawn_position)
 	camera_ref.setup()
 	
 ##Spawn the cart
