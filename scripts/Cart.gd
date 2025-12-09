@@ -47,10 +47,13 @@ func _physics_process(delta: float) -> void:
 	point.exclude = [$CartInteraction]
 	var result = space_state.intersect_point(point)
 
+	var rail: Rail
+
 	for collider in result:
 		if(collider.collider is Rail):
 			_rail_dir = collider.collider.dir.normalized()
 			centered = collider.collider.get_side_force(global_position)/2
+			rail = collider.collider
 			break
 	
 	var toPlayer := player.global_position - global_position
@@ -64,7 +67,9 @@ func _physics_process(delta: float) -> void:
 	var speed :=  _lin_speed  * _rail_dir #
 	position += speed*delta
 	position += centered
-
+	math.clamp_cart_pos(self, rail)
+		
+	
 func _on_player_hopped_in() -> void:
 	_no_friction = true
 

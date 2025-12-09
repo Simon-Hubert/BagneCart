@@ -22,4 +22,26 @@ static func vector_iterator(i: int) -> Vector2:
 		2:return Vector2(-1,0)
 		3:return Vector2(0,1)
 		_:return Vector2(0,0)
+
+static func clamp_cart_pos(cart: Cart, rail: Rail) -> void:
+	if rail == null: return
+	if not rail.is_end_of_line: return
+	var a = rail.dir
+
+	if a.dot(Vector2.UP) > 0.01 :
+		if cart.global_position.y > rail.global_position.y:
+			cart.global_position.y = rail.global_position.y
+		return
+	if a.dot(Vector2.DOWN) > 0.01:
+		if cart.global_position.y < rail.global_position.y:
+			cart.global_position.y = rail.global_position.y
+		return
+	if a.dot(Vector2.LEFT) > 0.01:
+		if cart.global_position.x > rail.global_position.x:
+			cart.global_position.x = rail.global_position.x
+		return
+	if a.dot(Vector2.RIGHT) > 0.01:
+		if cart.global_position.x < rail.global_position.x:
+			cart.global_position.x = rail.global_position.x
+		return
 		
