@@ -60,6 +60,7 @@ region_enabled = true
 region_rect = Rect2(112, 64, 16, 16)
 
 [node name="AnimatableBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_2136m")
