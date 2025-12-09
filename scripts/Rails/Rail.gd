@@ -11,12 +11,10 @@ var is_aligned := false
 var is_end_of_line := false
 
 func get_side_force(other_position: Vector2) -> Vector2:
-	var center := position
+	var center := global_position
 	var normal := Vector2(-dir.y, dir.x)
-
 	if (is_turning):
-		center = position + size/4 * normal if (not flip_normal) else position - size/4 * normal
-
+		center = global_position + size/4 * normal if (not flip_normal) else global_position - size/4 * normal
 	var to_other := other_position - center
 	return -to_other.dot(normal) * 0.1 *normal
 
@@ -36,6 +34,7 @@ func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 		$Sprite2D.region_rect.position = rail_data.get_sprite_coords(self, next_rail, previous_rail)
 		dir = (next_rail.global_position - previous_rail.global_position).normalized()
 		flip_normal = dir.x < -rail_data.error # le vecteur normal doit toujours pointer ver l'exterieur du virage
+		is_turning = abs((position - next_rail.position).dot(position - previous_rail.position)) < rail_data.error 
 	else:
 		var connected_rail = next_rail if next_rail != null else previous_rail
 		if connected_rail == null : return
