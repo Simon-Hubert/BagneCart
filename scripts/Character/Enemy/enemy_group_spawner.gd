@@ -4,7 +4,7 @@ const ENEMY_SCENE_PATH : String = "res://scenes/Enemy/enemy.tscn"
 const ENEMY_SCENE : PackedScene = preload(ENEMY_SCENE_PATH)
 
 #Technically, the first enemy spawner is the one in which the player enters
-static var is_first_spawner : bool = false  
+static var is_first_spawner : bool = true  
 
 @export_category("References")
 @export var player_ref : Player
