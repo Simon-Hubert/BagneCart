@@ -39,7 +39,7 @@ shape = SubResource("CircleShape2D_1cvv4")
 [node name="Outline" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_2n4ft")
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.2, 1.2)
 region_rect = Rect2(112, 144, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
