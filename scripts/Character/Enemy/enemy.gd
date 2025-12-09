@@ -6,6 +6,9 @@ const CART_AREA_NAME = "CartInteraction"
 const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
+const HEALTH_POTION_SCENE_PATH : String = "res://scenes/health_pickup.tscn"
+const HEALTH_POTION_SCENE : PackedScene = preload(HEALTH_POTION_SCENE_PATH)
+
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
@@ -25,7 +28,8 @@ var is_dead := false
 @export var enemies_type : Array[enemy_data]
 
 @export_category("Parameter")
-@export var enemy_cart_push : float = 100
+@export var _enemy_cart_push : float = 100
+@export_range(0,1) var _health_potion_drop_rate : float = 0.25
 
 var speed : float = 500
 var max_accel : float = 750
@@ -72,7 +76,7 @@ func _process(_delta: float) -> void:
 
 	if can_attack:
 		if is_cart_in_range && can_focus_cart:
-			cart_ref.push(dir_to_cart, enemy_cart_push)
+			cart_ref.push(dir_to_cart, _enemy_cart_push)
 			cart_cooldown_timer.start()
 			attack_timer.start()
 			can_focus_cart = false
@@ -115,6 +119,11 @@ func hit(_dir : Vector2) -> void:
 	if _health <= 0:
 		animation_player.play("Death")
 		is_dead = true
+		#Drop a potion
+		if quest_manager.Instance.rng.randf() <= _health_potion_drop_rate:
+			var health_potion : Node2D = HEALTH_POTION_SCENE.instantiate()
+			get_tree().current_scene.add_child(health_potion)
+			health_potion.global_position = global_position
 	else:
 		animation_player.play("Hit")
 
