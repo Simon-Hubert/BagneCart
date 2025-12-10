@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5qnk4gpdp4wn"
-path="res://.godot/imported/UI_rect.png-a5fcc5fb2465e6e006cccfd9ae811d17.ctex"
+uid="uid://wwomdcx3p7m5"
+path="res://.godot/imported/Lit_Haut.png-6738cab6c19229b1284d232af53c10b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI_rect.png"
-dest_files=["res://.godot/imported/UI_rect.png-a5fcc5fb2465e6e006cccfd9ae811d17.ctex"]
+source_file="res://sprites/Decoration/Lit_Haut.png"
+dest_files=["res://.godot/imported/Lit_Haut.png-6738cab6c19229b1284d232af53c10b8.ctex"]
 
 [params]
 

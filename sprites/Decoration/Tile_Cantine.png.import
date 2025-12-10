@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn23ohi816ymf"
-path="res://.godot/imported/questFailed.png-8bce93d96605f6df6b9850ca320494c1.ctex"
+uid="uid://cg7170xkrhiet"
+path="res://.godot/imported/Tile_Cantine.png-7ff1501bd1877622cb624b7e57be1362.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/questFailed.png"
-dest_files=["res://.godot/imported/questFailed.png-8bce93d96605f6df6b9850ca320494c1.ctex"]
+source_file="res://sprites/Decoration/Tile_Cantine.png"
+dest_files=["res://.godot/imported/Tile_Cantine.png-7ff1501bd1877622cb624b7e57be1362.ctex"]
 
 [params]
 

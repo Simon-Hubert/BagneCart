@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsps8fndtvnd3"
-path="res://.godot/imported/Projectile.png-46437ac43836edc924936d74292be137.ctex"
+uid="uid://bfr12j2l1m0bl"
+path="res://.godot/imported/canard.png-b3be6be55c1bffb43165635568e9408d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Projectile.png"
-dest_files=["res://.godot/imported/Projectile.png-46437ac43836edc924936d74292be137.ctex"]
+source_file="res://sprites/Decoration/canard.png"
+dest_files=["res://.godot/imported/canard.png-b3be6be55c1bffb43165635568e9408d.ctex"]
 
 [params]
 

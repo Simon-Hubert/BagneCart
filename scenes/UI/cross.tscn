@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://onxdgnitw6n5"]
 
-[ext_resource type="Texture2D" uid="uid://bn23ohi816ymf" path="res://sprites/questFailed.png" id="1_rflhn"]
+[ext_resource type="Texture2D" uid="uid://bn23ohi816ymf" path="res://sprites/Decoration/questFailed.png" id="1_rflhn"]
 
 [sub_resource type="Animation" id="Animation_rflhn"]
 resource_name = "Spawn"

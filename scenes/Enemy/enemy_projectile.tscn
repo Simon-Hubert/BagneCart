@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5cyx65v4s8dx"]
 
 [ext_resource type="Script" uid="uid://doc243psvh6c0" path="res://scripts/ennemy_projectile.gd" id="1_e8ik0"]
-[ext_resource type="Texture2D" uid="uid://bsps8fndtvnd3" path="res://sprites/Projectile.png" id="1_lofwd"]
+[ext_resource type="Texture2D" uid="uid://bsps8fndtvnd3" path="res://sprites/Decoration/Projectile.png" id="1_lofwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8ik0"]
 

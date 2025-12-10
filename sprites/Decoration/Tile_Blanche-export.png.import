@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dke4fjijfidpg"
-path="res://.godot/imported/Lit_Bas.png-e6b12def077bac6dc834910f51006403.ctex"
+uid="uid://che54e3rf6b7j"
+path="res://.godot/imported/Tile_Blanche-export.png-8b13352c0ab075005a01d5c9be357e39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Lit_Bas.png"
-dest_files=["res://.godot/imported/Lit_Bas.png-e6b12def077bac6dc834910f51006403.ctex"]
+source_file="res://sprites/Decoration/Tile_Blanche-export.png"
+dest_files=["res://.godot/imported/Tile_Blanche-export.png-8b13352c0ab075005a01d5c9be357e39.ctex"]
 
 [params]
 

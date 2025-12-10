@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3a7t8l6a2ea3"
-path="res://.godot/imported/boulder.png-a8ff2bedf335ef78871518c7e4515571.ctex"
+uid="uid://112fndb1oh6r"
+path="res://.godot/imported/CANARD_LAQUE.png-20546d7309c60eca7a5472bb52e49836.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/boulder.png"
-dest_files=["res://.godot/imported/boulder.png-a8ff2bedf335ef78871518c7e4515571.ctex"]
+source_file="res://sprites/Decoration/CANARD_LAQUE.png"
+dest_files=["res://.godot/imported/CANARD_LAQUE.png-20546d7309c60eca7a5472bb52e49836.ctex"]
 
 [params]
 

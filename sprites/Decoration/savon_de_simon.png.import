@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6m00ris4ve3"
-path="res://.godot/imported/Tile_Bleue.png-6720312e1c36c28aa7aada5d69c4a8fb.ctex"
+uid="uid://c50p5nofnvaig"
+path="res://.godot/imported/savon_de_simon.png-3aa0aa492820c73e97b86ccb9b8b452e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tile_Bleue.png"
-dest_files=["res://.godot/imported/Tile_Bleue.png-6720312e1c36c28aa7aada5d69c4a8fb.ctex"]
+source_file="res://sprites/Decoration/savon_de_simon.png"
+dest_files=["res://.godot/imported/savon_de_simon.png-3aa0aa492820c73e97b86ccb9b8b452e.ctex"]
 
 [params]
 

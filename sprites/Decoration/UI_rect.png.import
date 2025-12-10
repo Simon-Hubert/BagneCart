@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biyrjqaiwieb2"
-path="res://.godot/imported/Plancher.png-1e042d6e1afb3208ed801cf42e915d96.ctex"
+uid="uid://5qnk4gpdp4wn"
+path="res://.godot/imported/UI_rect.png-e5b3bf2763fe2ca01873e8abdf7605f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Plancher.png"
-dest_files=["res://.godot/imported/Plancher.png-1e042d6e1afb3208ed801cf42e915d96.ctex"]
+source_file="res://sprites/Decoration/UI_rect.png"
+dest_files=["res://.godot/imported/UI_rect.png-e5b3bf2763fe2ca01873e8abdf7605f7.ctex"]
 
 [params]
 

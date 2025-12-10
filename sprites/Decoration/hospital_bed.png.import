@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wwomdcx3p7m5"
-path="res://.godot/imported/Lit_Haut.png-27e01a5138049a3204978315864b72c8.ctex"
+uid="uid://ddcd7uep4d2c1"
+path="res://.godot/imported/hospital_bed.png-1104136806793f26bd3d610f1d9fe119.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Lit_Haut.png"
-dest_files=["res://.godot/imported/Lit_Haut.png-27e01a5138049a3204978315864b72c8.ctex"]
+source_file="res://sprites/Decoration/hospital_bed.png"
+dest_files=["res://.godot/imported/hospital_bed.png-1104136806793f26bd3d610f1d9fe119.ctex"]
 
 [params]
 

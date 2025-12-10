@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg7170xkrhiet"
-path="res://.godot/imported/Tile_Cantine.png-6f5e1aa3b6b2e6c48080554ff01c9e80.ctex"
+uid="uid://dmyiayodcrg74"
+path="res://.godot/imported/evacuation.png-44091341a9b734f514dc900c355af2d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tile_Cantine.png"
-dest_files=["res://.godot/imported/Tile_Cantine.png-6f5e1aa3b6b2e6c48080554ff01c9e80.ctex"]
+source_file="res://sprites/Decoration/evacuation.png"
+dest_files=["res://.godot/imported/evacuation.png-44091341a9b734f514dc900c355af2d5.ctex"]
 
 [params]
 

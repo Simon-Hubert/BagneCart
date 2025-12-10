@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://otppg6kv6p6t"
-path="res://.godot/imported/doctor-export.png-b32f47a4e41b104326828d3c36659e23.ctex"
+uid="uid://pcqb6jjrdgma"
+path="res://.godot/imported/Trucs5.png-e4c96f35a6f195154edc780396f21bc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/doctor-export.png"
-dest_files=["res://.godot/imported/doctor-export.png-b32f47a4e41b104326828d3c36659e23.ctex"]
+source_file="res://tilesets/Trucs5.png"
+dest_files=["res://.godot/imported/Trucs5.png-e4c96f35a6f195154edc780396f21bc7.ctex"]
 
 [params]
 

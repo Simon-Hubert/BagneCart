@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b05sq5d5ukqij"
-path="res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"
+uid="uid://kuhnryjn1i08"
+path="res://.godot/imported/CARRELLAGEZAZZA.png-400bd01d098fe8f4951f6dbdf8b446f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"]
+source_file="res://sprites/Decoration/CARRELLAGEZAZZA.png"
+dest_files=["res://.godot/imported/CARRELLAGEZAZZA.png-400bd01d098fe8f4951f6dbdf8b446f4.ctex"]
 
 [params]
 
