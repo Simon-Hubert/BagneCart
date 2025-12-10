@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8i78tp7c6hs7" path="res://scenes/RoomTest/Bottom.tscn" id="9_8ralk"]
 [ext_resource type="PackedScene" uid="uid://llcpyu6xoonj" path="res://scenes/RoomTest/RightBottom.tscn" id="10_owapw"]
 [ext_resource type="PackedScene" uid="uid://da7ar0hnooib0" path="res://scenes/RoomTest/LeftBottom.tscn" id="11_k5aj4"]
-[ext_resource type="PackedScene" uid="uid://cautijrhju3ue" path="res://scenes/BotoomHorizontal.tscn" id="12_uvlo7"]
+[ext_resource type="PackedScene" uid="uid://bhp5jftc6hts0" path="res://scenes/RoomTest/BottomHorizontal.tscn" id="12_uvlo7"]
 [ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="13_p6o8i"]
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="14_pmdra"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="15_mmhl1"]

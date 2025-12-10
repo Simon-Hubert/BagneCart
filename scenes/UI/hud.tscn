@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b20085rng87fk"]
 
-[ext_resource type="Script" uid="uid://cyig5o1fp3qc6" path="res://scripts/hud.gd" id="1_ftoh2"]
+[ext_resource type="Script" uid="uid://cyig5o1fp3qc6" path="res://scripts/UI/hud.gd" id="1_ftoh2"]
 [ext_resource type="PackedScene" uid="uid://bxb3sh2rsgn4j" path="res://scenes/UI/heart.tscn" id="2_fymyw"]
 [ext_resource type="PackedScene" uid="uid://onxdgnitw6n5" path="res://scenes/UI/cross.tscn" id="3_y5tme"]
 
@@ -12,12 +12,12 @@ heart_scene = ExtResource("2_fymyw")
 cross_scene = ExtResource("3_y5tme")
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
-offset_right = 170.0
-offset_bottom = 50.0
+offset_right = 300.0
+offset_bottom = 100.0
 theme_override_constants/separation = 10
 
 [node name="QuestFailedContainer" type="HBoxContainer" parent="."]
-offset_top = 49.0
-offset_right = 170.0
-offset_bottom = 99.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 200.0
 theme_override_constants/separation = 10

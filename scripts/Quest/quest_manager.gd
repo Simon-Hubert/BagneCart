@@ -96,7 +96,7 @@ func spawn_NPC() -> void:
 		newQuestItem.init_item(item, rng)
 		
 ##Give info about the quest to a new NPC
-func create_NPC_data() -> NPC_data:
+func create_NPC_data(suffix : String) -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
 	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_symbol)
 	newData.quest_type = (rng.randi() % quest_manager.QUEST_TYPE.size()) as quest_manager.QUEST_TYPE
@@ -105,7 +105,7 @@ func create_NPC_data() -> NPC_data:
 		
 	_quest_tracery_grammar.set_save_data("questItem", quest_item_symbol[newData.quest_type]) #define new quest item & save into data
 	newData.quest_item_to_get = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item")
-	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_symbol[newData.quest_type])
+	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_symbol[newData.quest_type] + suffix)
 	return newData
 
 ##Accept a quest from an NPC

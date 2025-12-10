@@ -49,8 +49,10 @@ static func getSentenceFromGrammar(dictionary : Dictionary, grammar : Tracery.Gr
 	if !dictionary:
 		push_error("dictionary is null")
 		return ""
-	if !dictionary[origin]:
-		push_error("dictionary doesn't have" + dictionary[origin])
+	if !dictionary.has(origin):
+		push_error("dictionary doesn't have" + origin)
+		return ""
+		
 	#Get a (random) index from the origin
 	var baseIndex : int = index;
 	if baseIndex <= -1:

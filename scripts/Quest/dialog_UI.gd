@@ -13,6 +13,7 @@ const animation_name = "show_hide_dialog"
 @export var character_text_label : RichTextLabel
 @export var dialog_text_label : RichTextLabel
  
+
 var is_displayed : bool = false
 
 func _ready() -> void:
@@ -27,7 +28,8 @@ func display_dialog(character_name : String, dialog : String, display_icon : Tex
 	character_text_label.text = character_name
 	dialog_text_label.text = dialog
 	animtion_player.play(animation_name)
-	animation_timer.start()
+	if animation_timer:
+		animation_timer.start()
 	is_displayed = true
 	
 	#Setup quest item
