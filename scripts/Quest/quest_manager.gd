@@ -176,3 +176,18 @@ func get_quest_not_finished_line(suffix : String) -> String:
 ##Get a random line when ask the NPC but quest is already finished
 func get_quest_already_finished_line() -> String:
 	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_already_finished)
+
+##Returns the closest item quest from a specific position
+func get_closest_quest_item(player_position : Vector2) -> closest_quest_item_data:
+	var cloest_data : closest_quest_item_data = closest_quest_item_data.new()
+	for item in quest_item_list:
+		if !item.is_correct_item_name(quest_manager.Instance.current_quest_item):
+			continue
+		if cloest_data.distance == -1 || cloest_data.distance > item.global_position.distance_to(player_position):
+			cloest_data.distance = item.global_position.distance_to(player_position)
+			cloest_data.position = item.global_position
+	return cloest_data
+
+class closest_quest_item_data:
+	var position : Vector2
+	var distance : float = -1

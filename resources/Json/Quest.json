@@ -109,39 +109,63 @@
         "#questitem#."
 	],
 
-	
-	"quest_finished_origin": [
-        "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
+
+	"quest_finished_origin_prisonner": [
+        "#quest_finished_header_prisonner# #quest_finished_thank_prisonner# T'#quest_finished_verb_prisonner# #quest_finished_finish_prisonner#"
 	],
-	"quest_finished_header": [
-		"Oh !",
-		"Vraiment?",
-		"Super !",
-		"Ah !",
-        "Oui !!"
+	"quest_finished_origin_guard": [
+        "#quest_finished_header_guard# #quest_finished_thank_guard# #quest_finished_finish_guard#"
 	],
-	"quest_finished_thank": [
-		"Merci !",
-		"Merci beaucoup !!",
-		"Je t'en dois une.",
+	"quest_finished_header_prisonner": [
+		"Oh ! Ça c'est mon gars ça !",
+		"T'es là !!",
+		"Je t'attendais justement !",
+		"Ah mon gars !",
+        "Enfin là !!"
+	],
+	"quest_finished_thank_prisonner": [
+		"Merci tu me sauves.",
+		"Merci beaucoup mon pote.",
+		"Je t'en dois une maintenant.",
 		"Tu l'as vraiment fait !",
-        "Je suis refait que tu aies réussi !"
+        "Merci le frérot ! Je suis refait."
 	],
-	"quest_finished_verb": [
+	"quest_finished_verb_prisonner": [
 		"es vraiment le meilleur !",
-		"es désormais mon ami.",
-		"es l'employé du mois dans mon coeur.",
-		"et le MEILLEUR DE TOUT LES TEMPS !",
-		"es super efficace dis donc !",
-        "as retrouvé #questItem# !"
+		"es le sang de la veine.",
+		"es l'employé du mois dans mon cœur.",
+		"es le GOAT !",
+		"es vraiment ce mec !",
+        "as retrouvé #itemobject#, c'est ça qui me fallait !"
 	],
-	"quest_finished_finish": [
+	"quest_finished_finish_prisonner": [
 		"Prends soin de toi.",
-		"A +.",
-		"On se recroise bientôt.",
-		"Bye !",
-		"Ciao !",
-        "La prochaine fois, compte sur moi."
+		"A + my G.",
+		"On s'recroise bientôt.",
+		"Bye mon concierge préféré.",
+		"Ciao bambino !",
+        "Si t'as besoin d'un truc, je suis là."
+	],
+	"quest_finished_header_guard": [
+		"Oh ! Qui voilà...",
+		"T'en a mis du temps !",
+		"J'allais me plaindre au directeur ! Et te voilà.",
+		"Ah enfin !",
+        "Te voilà !!"
+	],
+	"quest_finished_thank_guard": [
+		"Je te remercie quand même.",
+		"Merci pour ton aide même si c'est ton boulot.",
+		"Bon je t'en dois une j'imagine.",
+		"Mais t'as assuré en vrai !",
+        "Merci de m'avoir apporté #itemobject#."
+	],
+	"quest_finished_finish_guard": [
+		"Je glisserai un mot au directeur.",
+		"J'en parlerai au boss.",
+		"Je dirais rien sur tes bourdes.",
+		"Tu devrais prendre une pause.",
+        "Allez va ! T'as encore beaucoup de boulot."
 	],
 	
 	

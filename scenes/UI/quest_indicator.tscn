@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtdg54jdwbrws"]
+
+[ext_resource type="Script" uid="uid://d3abtd4obq1iu" path="res://scripts/UI/quest_indicator.gd" id="1_qsmnw"]
+[ext_resource type="Texture2D" uid="uid://cyoaa5ug4ij10" path="res://sprites/UI/cart_arrow.png" id="2_weia8"]
+[ext_resource type="Texture2D" uid="uid://c6ol61jvrlghi" path="res://sprites/QuestItem/Item2.png" id="3_qsmnw"]
+
+[node name="Quest_indicator" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsmnw")
+minimum_distance = 150.0
+
+[node name="Arrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_right = -0.3199997
+offset_bottom = -0.1760025
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_weia8")
+
+[node name="Backdrop" type="TextureRect" parent="Arrow"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_weia8")
+
+[node name="CartIcon" type="TextureRect" parent="Arrow"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 30.0
+offset_right = 7.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(7, 8)
+texture = ExtResource("3_qsmnw")

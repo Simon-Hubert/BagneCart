@@ -2,7 +2,7 @@ class_name NPC extends Node2D
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
-@onready var quest_indicator : NPC_quest_indicator = $QuestIndicator
+@onready var npc_quest_indicator : NPC_quest_indicator = $QuestIndicator
 
 @export_category("Reference & Data")
 @export var data : NPC_data
@@ -22,7 +22,7 @@ func init_NPC() -> void:
 	sprite.texture = sprite_list[index].texture
 	_suffix = sprite_list[index].suffix
 	data = quest_manager.Instance.create_NPC_data(_suffix)
-	quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
+	npc_quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
 	#Bind on quest failed
 	game_manager.Instance.on_quest_failed.connect(_reset_quest_indicator)
 	
@@ -42,7 +42,7 @@ func _on_trigger_area_player_interact() -> void:
 	if !quest_manager.Instance.has_quest:
 		quest_manager.Instance.accept_new_quest(data, global_position)
 		dialog_UI.Instance.display_dialog(data.name, data.quest_dialog  + _suffix, quest_manager.Instance.get_current_quest_item_sprite())
-		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_ACCEPTED)
+		npc_quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_ACCEPTED)
 		return	
 	
 	#Can't take two quest at same time
@@ -54,10 +54,10 @@ func _on_trigger_area_player_interact() -> void:
 	if quest_manager.Instance.check_validate_quest():
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_finished_line(_suffix))
 		is_quest_finished = true
-		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_FINISHED)
+		npc_quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_FINISHED)
 	else:
 		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line(""), quest_manager.Instance.get_current_quest_item_sprite())
 
 ##Reset quest indicator if quest failed
 func _reset_quest_indicator() -> void:
-	quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
+	npc_quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.HAS_QUEST)
