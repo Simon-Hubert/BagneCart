@@ -14,7 +14,7 @@ func get_side_force(other_position: Vector2) -> Vector2:
 	var center := global_position
 	var normal := Vector2(-dir.y, dir.x)
 	if (is_turning):
-		center = global_position + size/4 * normal if (not flip_normal) else global_position - size/4 * normal
+		center = global_position - size/4 * normal if (not flip_normal) else global_position + size/4 * normal
 	var to_other := other_position - center
 
 	return -to_other.dot(normal) * 0.1 * normal
@@ -64,4 +64,3 @@ func propagate_orientation(constraint: Vector2):
 		if not connected_rail.is_aligned:
 			connected_rail.propagate_orientation(dir)
 	
-
