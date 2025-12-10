@@ -1,34 +1,47 @@
 {
-	"wrong_NPC_origin": [
-        "#wrong_NPC_header# tu #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
+	"wrong_NPC_origin_prisonner": [
+		"#wrong_NPC_header_prisonner# #wrong_NPC_verb_prisonner# #wrong_NPC_finish# #wrong_NPC_quest_prisonner# #wrong_NPC_comeback_prisonner#",
 	],
-	"wrong_NPC_header": [
+	"wrong_NPC_origin_guard": [
+        "#wrong_NPC_header_guard# #wrong_NPC_verb_guard# #wrong_NPC_finish# #wrong_NPC_quest_guard# #wrong_NPC_comeback_guard#"
+	],
+	"wrong_NPC_header_prisonner": [
 		"Hopopop",
-		"Allô",
+		"Eh oh",
 		"Reste concentré,",
 		"Ne te dissipe pas,",
-        "Eh oh"
+		"Eh,",
+		"Mon gars,",
+		"Ouais Ouais,",
+        "Oh eh mon gars,"
 	],
-	"wrong_NPC_verb": [
-		"devrais d'abord",
-		"dois actuellement",
-		"dois",
-        "devrais"
+	"wrong_NPC_verb_prisonner": [
+		"tu devrais d'abord",
+		"tu dois actuellement",
+		"tu dois",
+		"tu devrais vite",
+		"va d'abord",
+		"va vite",
+        "tu devrais aller"
 	],
 	"wrong_NPC_finish": [
 		"finir",
 		"terminer",
 		"conclure",
-        "remplir"
+		"achever",
+		"compléter",
+		"accomplir",
+        "mener à bien"
 	],
-	"wrong_NPC_quest": [
+	"wrong_NPC_quest_prisonner": [
 		"ta quête.",
 		"la requête.",
 		"ta mission.",
 		"ta tâche !",
-        "ce qu'on t'a ordonné de faire."
+		"ce qu'on t'as ordonné.",
+        "ce qu'on t'as demandé de faire."
 	],
-	"wrong_NPC_comeback": [
+	"wrong_NPC_comeback_prisonner": [
 		"Reviens plus tard.",
 		"Fais moi signe ensuite.",
 		"On parlera après.",
@@ -37,23 +50,55 @@
 		"J'ai à faire avant.",
         "Tu ne peux pas faire deux choses à la fois."
 	],
+	"wrong_NPC_header_guard": [
+		"Allez!",
+		"Qu'est-ce que tu fais encore là ?",
+		"Reste concentré!",
+		"Ne te dissipe pas!",
+        "Eh oh!"
+	],
+	"wrong_NPC_quest_guard": [
+		"ta quête.",
+		"ta requête.",
+		"ta mission.",
+		"ta tâche !",
+		"ce qu'on t'as ordonné de faire.",
+		"ce qu'on t'as demandé.",
+        "ce qu'on t'as dit."
+	],
+	"wrong_NPC_comeback_guard": [
+		"Reviens plus tard.",
+		"On parlera après.",
+		"J'aurais du travail pour toi ensuite.",
+		"Il me faut quelqu'un de pleinement disponible.",
+		"J'ai à faire avant.",
+        "Tu ne peux pas faire deux choses à la fois."
+	],
+	"wrong_NPC_verb_guard": [
+		"Tu dois d'abord",
+		"Tu dois rapidement",
+		"Tu dois",
+		"Va",
+		"Va vite",
+        "Pars maintenant"
+	],
 	
 	
 	"quest_not_finished_origin": [
-        "#quest_not_finished_header# #quest_not_finished_verb# c'est #quest_not_finished_finish#"
+        "#quest_not_finished_header# #quest_not_finished_verb# #quest_not_finished_finish#"
 	],
 	"quest_not_finished_header": [
 		"Mmmh.",
-		"Hum.",
-		"Vraiment ?",
-		"Huh.",
-        "Non, ce n'est pas possible !"
+		"Hum...",
+		"Allez!",
+		"Huh ?",
+        "T'es encore là ?!"
 	],
 	"quest_not_finished_verb": [
-		"Je ne suis pas sûr que",
-		"Je ne vois pas en quoi",
-		"Je ne suis pas convaincu que",
-        "Je ne pense pas que"
+		"Je n'ai toujours pas",
+		"Je ne vois pas dans tes mains",
+		"Va me chercher",
+        "Je ne pense pas que je vois"
 	],
 	"quest_not_finished_finish": [
 		"ce que je voulais.",
@@ -61,8 +106,10 @@
 		"ce que je t'ai demandé !",
 		"ce dont on avait parlé !",
 		"ce sur quoi on s'était mis d'accord.",
-        "#questItem#."
+        "#questitem#."
 	],
+
+	
 	"quest_finished_origin": [
         "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
 	],
@@ -96,6 +143,8 @@
 		"Ciao !",
         "La prochaine fois, compte sur moi."
 	],
+	
+	
 	"quest_person_origin": [
         "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
 	],
@@ -127,6 +176,8 @@
 		"Allez ! Dépêche toi !",
         "Bonne chance."
 	],
+	
+	
 	"quest_object_origin": [
         "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
 	],
@@ -157,6 +208,8 @@
 		"Allez ! Dépêche toi !",
         "Bonne chance."
 	],
+	
+	
 	"idle_header": [
 		"Je suis profondément schizophrène.",
 		"Qu'est-ce qui est jaune et qui attend ?",

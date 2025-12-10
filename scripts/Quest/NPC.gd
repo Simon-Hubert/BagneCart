@@ -35,7 +35,7 @@ func _on_trigger_area_player_interact() -> void:
 	
 	#already finished quest
 	if is_quest_finished:
-		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_already_finished_line() + _suffix)
+		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_already_finished_line())
 		return
 	
 	#Give new quest
@@ -47,16 +47,16 @@ func _on_trigger_area_player_interact() -> void:
 	
 	#Can't take two quest at same time
 	if quest_manager.Instance.current_quest_giver_name != data.name:
-		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_wrong_NPC_line() + _suffix)
+		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_wrong_NPC_line(_suffix))
 		return
 		
 	#Check if quest completed
 	if quest_manager.Instance.check_validate_quest():
-		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_finished_line() + _suffix)
+		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_finished_line(_suffix))
 		is_quest_finished = true
 		quest_indicator.set_quest_sprite(NPC_quest_indicator.QUEST_STATE.QUEST_FINISHED)
 	else:
-		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line() + _suffix, quest_manager.Instance.get_current_quest_item_sprite())
+		dialog_UI.Instance.display_dialog(data.name, quest_manager.Instance.get_quest_not_finished_line(""), quest_manager.Instance.get_current_quest_item_sprite())
 
 ##Reset quest indicator if quest failed
 func _reset_quest_indicator() -> void:

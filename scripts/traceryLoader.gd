@@ -50,7 +50,7 @@ static func getSentenceFromGrammar(dictionary : Dictionary, grammar : Tracery.Gr
 		push_error("dictionary is null")
 		return ""
 	if !dictionary.has(origin):
-		push_error("dictionary doesn't have" + origin)
+		push_error("dictionary doesn't have : " + origin)
 		return ""
 		
 	#Get a (random) index from the origin
