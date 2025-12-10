@@ -21,7 +21,7 @@ func try_interact(player: Player) -> bool:
 		return true
 
 	if not item_in :
-		put_player(player)
+		call_deferred("put_player",player)
 		start_cooldown()
 		return true
 	return false

@@ -17,7 +17,6 @@ class_name Player extends CharacterBody2D
 
 var _current_penalty := 0.0
 
-
 @export_category("Attack")
 @export var _attack_cooldown : float
 @export var _attack_offset : float
@@ -104,7 +103,7 @@ func _interact() -> void:
 		$PickedItem.drop_item()
 
 func _attack() -> void :
-	if !_can_attack || is_carying_object():
+	if !_can_attack || is_carying_object() || is_dead:
 		return
 	_start_attack_cooldown()
 	var new_attack = ATTACK_SCENE.instantiate() as PlayerAttack
