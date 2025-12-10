@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b27ktsbkckqb3"]
+[gd_scene load_steps=26 format=3 uid="uid://b27ktsbkckqb3"]
 
 [ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="1_36eke"]
 [ext_resource type="Script" uid="uid://bogonl838flmh" path="res://scripts/Generation/DungeonGenerator.gd" id="2_7v46j"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b8i78tp7c6hs7" path="res://scenes/RoomTest/Bottom.tscn" id="11_8bv7m"]
 [ext_resource type="PackedScene" uid="uid://llcpyu6xoonj" path="res://scenes/RoomTest/RightBottom.tscn" id="12_vt87o"]
 [ext_resource type="PackedScene" uid="uid://da7ar0hnooib0" path="res://scenes/RoomTest/LeftBottom.tscn" id="13_32mn2"]
-[ext_resource type="PackedScene" uid="uid://bhp5jftc6hts0" path="res://scenes/RoomTest/BottomHorizontal.tscn" id="15_k3t37"]
+[ext_resource type="PackedScene" path="res://scenes/RoomTest/BottomHorizontal.tscn" id="15_k3t37"]
 [ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="15_u3qx5"]
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="16_n00t7"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="17_46q0l"]
@@ -24,8 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="20_ucgw3"]
 [ext_resource type="PackedScene" uid="uid://o6cdu0ye8mtt" path="res://scenes/UI/Timer.tscn" id="21_k3t37"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="22_un506"]
+[ext_resource type="PackedScene" uid="uid://dtdg54jdwbrws" path="res://scenes/UI/quest_indicator.tscn" id="24_un506"]
 
 [node name="Node2D2" type="Node2D"]
+
+[node name="RailManager" type="Node2D" parent="."]
+script = ExtResource("20_k3t37")
+metadata/_custom_type_script = "uid://kiviwp4rwpi4"
 
 [node name="GameManager" parent="." instance=ExtResource("1_36eke")]
 
@@ -56,10 +61,6 @@ RAILSIZE = 16
 NumberOfRooms = 25
 extra_doors_probability = 100.0
 
-[node name="RailManager" type="Node2D" parent="."]
-script = ExtResource("20_k3t37")
-metadata/_custom_type_script = "uid://kiviwp4rwpi4"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUI" parent="CanvasLayer" instance=ExtResource("19_217xa")]
@@ -71,5 +72,7 @@ offset_right = -50.0
 offset_bottom = -50.0
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("21_k3t37")]
+
+[node name="Quest_indicator" parent="CanvasLayer" instance=ExtResource("24_un506")]
 
 [node name="hud" parent="." instance=ExtResource("22_un506")]

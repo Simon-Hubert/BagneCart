@@ -106,6 +106,35 @@ tracks/2/keys = {
 "values": [0.0, 0.17453292519943295, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "Move"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.017453292, -0.034906585, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.034906585, -0.017453292, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
 tracks/0/type = "value"
@@ -169,35 +198,6 @@ tracks/4/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_tuyoq"]
-resource_name = "Move"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.017453292, -0.034906585, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:skew")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.034906585, -0.017453292, 0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
 _data = {
 &"Attack": SubResource("Animation_qlg0r"),
@@ -210,6 +210,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 3
+motion_mode = 1
 script = ExtResource("1_v6fml")
 _maxSpeed = 250.0
 _maxAccel = 500.0
@@ -246,6 +247,9 @@ script = ExtResource("3_3li8b")
 metadata/_custom_type_script = "uid://q3x1c5svdo83"
 
 [node name="PlayerOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_ended"]
 [connection signal="screen_exited" from="PlayerOnScreen" to="." method="_on_screen_exited"]

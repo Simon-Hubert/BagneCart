@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cqp6s2yqay6hu"]
 
-[ext_resource type="FontFile" uid="uid://bbdxpx5gpavq1" path="res://Font/InkbitThree.ttf" id="1_3f168"]
+[ext_resource type="FontFile" uid="uid://bbrgpo7dwibx3" path="res://Font/Pixel Digivolve.otf" id="1_o513f"]
 
 [resource]
 Button/font_sizes/font_size = 26
-Button/fonts/font = ExtResource("1_3f168")
-Label/fonts/font = ExtResource("1_3f168")
+Button/fonts/font = ExtResource("1_o513f")
+Label/fonts/font = ExtResource("1_o513f")
 RichTextLabel/font_sizes/normal_font_size = 25
-RichTextLabel/fonts/normal_font = ExtResource("1_3f168")
+RichTextLabel/fonts/normal_font = ExtResource("1_o513f")

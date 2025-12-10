@@ -1,34 +1,47 @@
 {
-	"wrong_NPC_origin": [
-        "#wrong_NPC_header# tu #wrong_NPC_verb# #wrong_NPC_finish# #wrong_NPC_quest# #wrong_NPC_comeback#"
+	"wrong_NPC_origin_prisonner": [
+		"#wrong_NPC_header_prisonner# #wrong_NPC_verb_prisonner# #wrong_NPC_finish# #wrong_NPC_quest_prisonner# #wrong_NPC_comeback_prisonner#",
 	],
-	"wrong_NPC_header": [
+	"wrong_NPC_origin_guard": [
+        "#wrong_NPC_header_guard# #wrong_NPC_verb_guard# #wrong_NPC_finish# #wrong_NPC_quest_guard# #wrong_NPC_comeback_guard#"
+	],
+	"wrong_NPC_header_prisonner": [
 		"Hopopop",
-		"Allô",
+		"Eh oh",
 		"Reste concentré,",
 		"Ne te dissipe pas,",
-        "Eh oh"
+		"Eh,",
+		"Mon gars,",
+		"Ouais Ouais,",
+        "Oh eh mon gars,"
 	],
-	"wrong_NPC_verb": [
-		"devrais d'abord",
-		"dois actuellement",
-		"dois",
-        "devrais"
+	"wrong_NPC_verb_prisonner": [
+		"tu devrais d'abord",
+		"tu dois actuellement",
+		"tu dois",
+		"tu devrais vite",
+		"va d'abord",
+		"va vite",
+        "tu devrais aller"
 	],
 	"wrong_NPC_finish": [
 		"finir",
 		"terminer",
 		"conclure",
-        "remplir"
+		"achever",
+		"compléter",
+		"accomplir",
+        "mener à bien"
 	],
-	"wrong_NPC_quest": [
+	"wrong_NPC_quest_prisonner": [
 		"ta quête.",
 		"la requête.",
 		"ta mission.",
 		"ta tâche !",
-        "ce qu'on t'a ordonné de faire."
+		"ce qu'on t'as ordonné.",
+        "ce qu'on t'as demandé de faire."
 	],
-	"wrong_NPC_comeback": [
+	"wrong_NPC_comeback_prisonner": [
 		"Reviens plus tard.",
 		"Fais moi signe ensuite.",
 		"On parlera après.",
@@ -37,23 +50,55 @@
 		"J'ai à faire avant.",
         "Tu ne peux pas faire deux choses à la fois."
 	],
+	"wrong_NPC_header_guard": [
+		"Allez!",
+		"Qu'est-ce que tu fais encore là ?",
+		"Reste concentré!",
+		"Ne te dissipe pas!",
+        "Eh oh!"
+	],
+	"wrong_NPC_quest_guard": [
+		"ta quête.",
+		"ta requête.",
+		"ta mission.",
+		"ta tâche !",
+		"ce qu'on t'as ordonné de faire.",
+		"ce qu'on t'as demandé.",
+        "ce qu'on t'as dit."
+	],
+	"wrong_NPC_comeback_guard": [
+		"Reviens plus tard.",
+		"On parlera après.",
+		"J'aurais du travail pour toi ensuite.",
+		"Il me faut quelqu'un de pleinement disponible.",
+		"J'ai à faire avant.",
+        "Tu ne peux pas faire deux choses à la fois."
+	],
+	"wrong_NPC_verb_guard": [
+		"Tu dois d'abord",
+		"Tu dois rapidement",
+		"Tu dois",
+		"Va",
+		"Va vite",
+        "Pars maintenant"
+	],
 	
 	
 	"quest_not_finished_origin": [
-        "#quest_not_finished_header# #quest_not_finished_verb# c'est #quest_not_finished_finish#"
+        "#quest_not_finished_header# #quest_not_finished_verb# #quest_not_finished_finish#"
 	],
 	"quest_not_finished_header": [
 		"Mmmh.",
-		"Hum.",
-		"Vraiment ?",
-		"Huh.",
-        "Non, ce n'est pas possible !"
+		"Hum...",
+		"Allez!",
+		"Huh ?",
+        "T'es encore là ?!"
 	],
 	"quest_not_finished_verb": [
-		"Je ne suis pas sûr que",
-		"Je ne vois pas en quoi",
-		"Je ne suis pas convaincu que",
-        "Je ne pense pas que"
+		"Je n'ai toujours pas",
+		"Je ne vois pas dans tes mains",
+		"Va me chercher",
+        "Je ne pense pas que je vois"
 	],
 	"quest_not_finished_finish": [
 		"ce que je voulais.",
@@ -61,72 +106,135 @@
 		"ce que je t'ai demandé !",
 		"ce dont on avait parlé !",
 		"ce sur quoi on s'était mis d'accord.",
-        "#questItem#."
+        "#questitem#."
 	],
-	"quest_finished_origin": [
-        "#quest_finished_header# #quest_finished_thank# Tu #quest_finished_verb# #quest_finished_finish#"
+
+
+	"quest_finished_origin_prisonner": [
+        "#quest_finished_header_prisonner# #quest_finished_thank_prisonner# T'#quest_finished_verb_prisonner# #quest_finished_finish_prisonner#"
 	],
-	"quest_finished_header": [
-		"Oh !",
-		"Vraiment?",
-		"Super !",
-		"Ah !",
-        "Oui !!"
+	"quest_finished_origin_guard": [
+        "#quest_finished_header_guard# #quest_finished_thank_guard# #quest_finished_finish_guard#"
 	],
-	"quest_finished_thank": [
-		"Merci !",
-		"Merci beaucoup !!",
-		"Je t'en dois une.",
+	"quest_finished_header_prisonner": [
+		"Oh ! Ça c'est mon gars ça !",
+		"T'es là !!",
+		"Je t'attendais justement !",
+		"Ah mon gars !",
+        "Enfin là !!"
+	],
+	"quest_finished_thank_prisonner": [
+		"Merci tu me sauves.",
+		"Merci beaucoup mon pote.",
+		"Je t'en dois une maintenant.",
 		"Tu l'as vraiment fait !",
-        "Je suis refait que tu aies réussi !"
+        "Merci le frérot ! Je suis refait."
 	],
-	"quest_finished_verb": [
+	"quest_finished_verb_prisonner": [
 		"es vraiment le meilleur !",
-		"es désormais mon ami.",
-		"es l'employé du mois dans mon coeur.",
-		"et le MEILLEUR DE TOUT LES TEMPS !",
-		"es super efficace dis donc !",
-        "as retrouvé #questItem# !"
+		"es le sang de la veine.",
+		"es l'employé du mois dans mon cœur.",
+		"es le GOAT !",
+		"es vraiment ce mec !",
+        "as retrouvé #questItem#, c'est ça qui me fallait !"
 	],
-	"quest_finished_finish": [
+	"quest_finished_finish_prisonner": [
 		"Prends soin de toi.",
-		"A +.",
-		"On se recroise bientôt.",
-		"Bye !",
-		"Ciao !",
-        "La prochaine fois, compte sur moi."
+		"A + my G.",
+		"On s'recroise bientôt.",
+		"Bye mon concierge préféré.",
+		"Ciao bambino !",
+        "Si t'as besoin d'un truc, je suis là."
 	],
-	"quest_person_origin": [
-        "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
+	"quest_finished_header_guard": [
+		"Oh ! Qui voilà...",
+		"T'en a mis du temps !",
+		"J'allais me plaindre au directeur ! Et te voilà.",
+		"Ah enfin !",
+        "Te voilà !!"
 	],
-	"quest_person_header": [
-		"Yo, ça va ?",
-		"Hey.",
-		"Mec, viens par là !",
-		"Mon gars  !",
-        "Viens par ici mon ami !!"
+	"quest_finished_thank_guard": [
+		"Je te remercie quand même.",
+		"Merci pour ton aide même si c'est ton boulot.",
+		"Bon je t'en dois une j'imagine.",
+		"Mais t'as assuré en vrai !",
+        "Merci de m'avoir apporté #questItem#."
 	],
-	"quest_person_verb": [
+	"quest_finished_finish_guard": [
+		"Je glisserai un mot au directeur.",
+		"J'en parlerai au boss.",
+		"Je dirais rien sur tes bourdes.",
+		"Tu devrais prendre une pause.",
+        "Allez va ! T'as encore beaucoup de boulot."
+	],
+	
+	
+	"quest_person_origin_guard": [
+        "#quest_person_header_guard# #quest_person_verb_guard# #questItem##quest_person_quest_guard# #quest_person_finish_guard#"
+	],
+	"quest_person_origin_prisonner": [
+        "#quest_person_header_prisonner# #quest_person_verb_prisonner# #questItem##quest_person_quest_prisonner# #quest_person_finish_prisonner#"
+	],
+	"quest_person_header_guard": [
+		"J'ai besoin d'un service.",
+		"Ça se passe ?",
+		"Le concierge viens par là !",
+		"Viens ici deux minutes !",
+        "Eh ! Le concierge !!"
+	],
+	"quest_person_verb_guard": [
 		"Tu peux aller me chercher",
-		"Peux-tu vérifier où se trouve",
+		"Tu peux pas vérifier où se trouve",
 		"Va me chercher",
 		"Tu peux me rapporter",
-        "Pourrais-tu chercher"
+        "Tu pourrais m'amener"
 	],
-	"quest_person_quest": [
-		"et me le ramener ?",
-		"et l'attraper pour moi ?",
+	"quest_person_quest_guard": [
+		" et me le ramener ?",
+		" et l'attraper pour moi ?",
 		", il doit répondre à quelques questions.",
-        ", il me fait vraiment chier."
+		", on le soupçonne de quelque chose.",
+        ", je dois parler d'un truc important avec lui."
 	],
-	"quest_person_finish": [
-		"Genre, s'il te plaît, j'en ai vraiment besoin.",
-		"Si je ne le retrouve pas, je suis un homme mort.",
-		"Et je t'épargnerai.",
-		"Tu auras une superbe récompense à la clé.",
+	"quest_person_finish_guard": [
+		"Faut que je le vois, maintenant.",
+		"Je compte sur toi.",
+		"Si tu fais ça vite, je glisserais quelques mots au directeur.",
+		"Tu auras un petit truc en récompense.",
+		"Allez ! Dépêche toi !",
+        "Et tu me fais ça vite !"
+	],
+	"quest_person_header_prisonner": [
+		"Yo, ça va ?",
+		"Hey, Tranquille ?",
+		"Mec, viens par là !",
+		"Mon gars !",
+        "Eh ! Viens par ici le concierge !!"
+	],
+	"quest_person_verb_prisonner": [
+		"Tu peux aller me chercher",
+		"Tu peux pas vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Tu pourrais m'amener"
+	],
+	"quest_person_quest_prisonner": [
+		" et me le ramener ?",
+		" et l'attraper pour moi ?",
+		", il doit répondre à quelques questions.",
+		", il me fait vraiment chier.",
+        ", je dois parler d'un truc important avec lui."
+	],
+	"quest_person_finish_prisonner": [
+		"Faut que je le vois, maintenant.",
+		"Je compte sur toi.",
+		"Et je te laisserai tranquille.",
+		"Tu auras un petit truc en récompense.",
 		"Allez ! Dépêche toi !",
         "Bonne chance."
 	],
+	
+	
 	"quest_object_origin": [
         "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
 	],
@@ -157,6 +265,8 @@
 		"Allez ! Dépêche toi !",
         "Bonne chance."
 	],
+	
+	
 	"idle_header": [
 		"Je suis profondément schizophrène.",
 		"Qu'est-ce qui est jaune et qui attend ?",

@@ -7,11 +7,14 @@ const _tile_set_diagonal_offset : float = 128.0
 @onready var _cart_interaction = $CartInteraction
 @onready var _sprite : Sprite2D = $Sprite2D
 @onready var _animation_player : AnimationPlayer = $AnimationPlayer
+@onready var _sound_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var player: Player
 @export var _radius: float
 @export var _max_accel: float
 @export var _friction: float
+#minimum speed required to have sound
+@export var _sound_threshold : float = 1
 
 var _lin_speed: float
 var _no_friction := false
@@ -33,7 +36,14 @@ func _process(_delta: float) -> void:
 			_sprite.flip_h = (_rail_dir.x > 0) != (_rail_dir.y > 0)
 	elif _rail_dir.x != 0:
 		set_tile_set_X_offset(_tile_set_horizontal_offset)
-		
+	
+	#Play minecart sound if is moving
+	if _lin_speed >= _sound_threshold :
+		if !_sound_player.playing:
+			_sound_player.play()
+	else:
+		_sound_player.stop()
+			
 func _physics_process(delta: float) -> void:
 	#Check reference
 	if !player:

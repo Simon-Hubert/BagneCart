@@ -98,7 +98,7 @@ func spawn_NPC() -> void:
 ##Give info about the quest to a new NPC
 func create_NPC_data(suffix : String) -> NPC_data:
 	var newData : NPC_data = NPC_data.new()
-	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_symbol)
+	newData.name = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, name_symbol + suffix)
 	newData.quest_type = (rng.randi() % quest_manager.QUEST_TYPE.size()) as quest_manager.QUEST_TYPE
 	if !quest_item_symbol.has(newData.quest_type):
 		push_error("Quest type" + str(newData.quest_type) + "doesn't have any symbol linked")
@@ -161,18 +161,33 @@ func check_validate_quest() -> bool:
 			return true;
 	return false;
 	
-##Get a random line when the wrong NPC is interacted
-func get_quest_finished_line() -> String:
-	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_finished_symbol[current_quest_type])
-	
 ##Get a random line when the quest is finished
-func get_wrong_NPC_line() -> String:
-	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, wrong_NPC_symbol[current_quest_type])
+func get_quest_finished_line(suffix : String) -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_finished_symbol[current_quest_type] + suffix)
+	
+##Get a random line when the wrong NPC is interacted
+func get_wrong_NPC_line(suffix : String) -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, wrong_NPC_symbol[current_quest_type] + suffix)
 
 ##Get a random line when ask the NPC but quest is not finished	
-func get_quest_not_finished_line() -> String:
-	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_not_finished_symbol[current_quest_type])
+func get_quest_not_finished_line(suffix : String) -> String:
+	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_not_finished_symbol[current_quest_type] + suffix)
 
 ##Get a random line when ask the NPC but quest is already finished
 func get_quest_already_finished_line() -> String:
 	return TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_already_finished)
+
+##Returns the closest item quest from a specific position
+func get_closest_quest_item(player_position : Vector2) -> closest_quest_item_data:
+	var cloest_data : closest_quest_item_data = closest_quest_item_data.new()
+	for item in quest_item_list:
+		if !item.is_correct_item_name(quest_manager.Instance.current_quest_item):
+			continue
+		if cloest_data.distance == -1 || cloest_data.distance > item.global_position.distance_to(player_position):
+			cloest_data.distance = item.global_position.distance_to(player_position)
+			cloest_data.position = item.global_position
+	return cloest_data
+
+class closest_quest_item_data:
+	var position : Vector2
+	var distance : float = -1

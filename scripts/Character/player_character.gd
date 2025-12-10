@@ -3,6 +3,13 @@ class_name Player extends CharacterBody2D
 @onready var knockback_timer = $KnockbackTimer
 @onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
+@onready var _sound_player = $AudioStreamPlayer2D
+
+const HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_by_item.mp3")
+const ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Hit_Broom_Nothing.mp3")
+const PICK_SOUND_FILE : AudioStream = preload("res://Audio/Pickup_item.mp3")
+const DROP_SOUND_FILE: AudioStream = preload("res://Audio/Drop_item.mp3")
+const RECOVER_HEALTH_SOUND_FILE : AudioStream = preload("res://Audio/Life_recover.mp3")
 
 @export_category("Health")
 @export var _default_health : int = 3
@@ -16,7 +23,6 @@ class_name Player extends CharacterBody2D
 @export var _person_carry_penalty := 0.5
 
 var _current_penalty := 0.0
-
 
 @export_category("Attack")
 @export var _attack_cooldown : float
@@ -104,7 +110,7 @@ func _interact() -> void:
 		$PickedItem.drop_item()
 
 func _attack() -> void :
-	if not _can_attack:
+	if !_can_attack || is_carying_object() || is_dead:
 		return
 	_start_attack_cooldown()
 	var new_attack = ATTACK_SCENE.instantiate() as PlayerAttack
@@ -114,7 +120,7 @@ func _attack() -> void :
 	new_attack.direction = dir
 	dir = Vector2(-dir.y, dir.x)
 	new_attack.rotation = atan2(dir.y, dir.x)
-
+	_play_sound(ATTACK_SOUND_FILE)
 
 func _start_attack_cooldown() -> void :
 	_can_attack = false
@@ -124,10 +130,14 @@ func _start_attack_cooldown() -> void :
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
 
+func is_carying_object() -> bool:
+	return _current_penalty != 0
+
 ##Restore one health point
 func restore_health():
 	_health = mini(_health + 1, _max_health)
 	on_player_update_health.emit(_health)
+	_play_sound(RECOVER_HEALTH_SOUND_FILE)
 
 ##Remove one health point
 ##dir = hit direction
@@ -144,13 +154,18 @@ func hit(dir : Vector2) -> void:
 		_interact()
 		
 	#Check player death
-	if _health <= 0 && !is_dead:
+	if is_dead:
+		return
+	
+	if _health <= 0:
 		animation_player.play("Death")
 		_can_move = false
 		is_dead = true
 		game_manager.Instance.respawn_player()
+		_play_sound(HIT_SOUND_FILE)
 	else:
 		animation_player.play("Hit")
+		_play_sound(HIT_SOUND_FILE)
 		
 ##Event when timer ended
 func _on_knockback_ended() -> void:
@@ -180,11 +195,19 @@ func _on_item_picked(item: Pickupable) -> void:
 			_current_penalty = _person_carry_penalty
 	else:
 		_current_penalty = _item_carry_penalty
+	_play_sound(PICK_SOUND_FILE)
 
 func _on_item_dropped() -> void:
 	$Sprite2D.texture = default_tex
 	_current_penalty = 0
-
+	_play_sound(DROP_SOUND_FILE)
+	
 ##Stop the player when the player fails
 func _on_game_over() -> void:
 	_can_move = false
+
+##Load and play a specfic sound
+func _play_sound(sound : AudioStream):
+	_sound_player.stream = sound
+	_sound_player.play()
+	
