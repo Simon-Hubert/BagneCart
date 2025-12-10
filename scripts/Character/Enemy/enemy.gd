@@ -8,13 +8,13 @@ const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
 static var _health_drop_proba_modifier : float = 0
 
-
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
 @onready var attack_timer = $AttackTimer
 @onready var cart_cooldown_timer : Timer = $CartCooldownTimer
 @onready var animation_player = $AnimationPlayer
+@onready var self_collision : CollisionShape2D = $CollisionShape2D
 
 @export_category("Health")
 @export var _health : int = 3
@@ -107,7 +107,10 @@ func _physics_process(delta: float) -> void:
 		return
 	if player_ref.is_dead:
 		return
+	if is_dead:
+		return
 			
+	#Move towards target
 	var targetVelocity = direction * speed
 	var maxSpeedChange = max_accel * delta
 	velocity.x = move_toward(velocity.x, targetVelocity.x, maxSpeedChange)
@@ -121,15 +124,19 @@ func hit(_dir : Vector2) -> void:
 	if _health <= 0:
 		animation_player.play("Death")
 		is_dead = true
+		call_deferred("disable_collision")
 		#Drop a potion
 		if quest_manager.Instance.rng.randf() <= _health_potion_drop_rate + _health_drop_proba_modifier:
-			print("spawn potion")
 			game_manager.Instance.spawn_health_potion(global_position)
 			_health_drop_proba_modifier -= _health_drop_proba_modifier_factor
 		else:
 			_health_drop_proba_modifier += _health_drop_proba_modifier_factor
 	else:
 		animation_player.play("Hit")
+
+##Disable the enemy collision
+func disable_collision() -> void:
+	self_collision.disabled = true
 
 ##Reset attack when timer ends
 func _reset_attack() -> void:

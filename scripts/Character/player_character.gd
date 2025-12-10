@@ -144,7 +144,7 @@ func hit(dir : Vector2) -> void:
 		_interact()
 		
 	#Check player death
-	if _health <= 0:
+	if _health <= 0 && !is_dead:
 		animation_player.play("Death")
 		_can_move = false
 		is_dead = true
