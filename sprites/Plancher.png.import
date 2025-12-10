@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsi85m4bbv6ly"
-path="res://.godot/imported/Trucs.png-9e19d21e5e24705bfd26969113a36f86.ctex"
+uid="uid://biyrjqaiwieb2"
+path="res://.godot/imported/Plancher.png-1e042d6e1afb3208ed801cf42e915d96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Trucs.png"
-dest_files=["res://.godot/imported/Trucs.png-9e19d21e5e24705bfd26969113a36f86.ctex"]
+source_file="res://sprites/Plancher.png"
+dest_files=["res://.godot/imported/Plancher.png-1e042d6e1afb3208ed801cf42e915d96.ctex"]
 
 [params]
 

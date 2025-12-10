@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://b3j3k00t7a2pk"]
+[gd_resource type="TileSet" load_steps=31 format=3 uid="uid://b3j3k00t7a2pk"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="1_vchkl"]
 [ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="2_3t3au"]
@@ -16,7 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://cogf13na8euvr" path="res://scenes/Rails/Rail1bis.tscn" id="13_6rdsc"]
 [ext_resource type="Texture2D" uid="uid://bjgq0vqub2vxd" path="res://tilesets/decoration.png" id="15_6rdsc"]
 [ext_resource type="Texture2D" uid="uid://dnkgj7teg4kr5" path="res://sprites/Tilemap/Comptoir_tilemap.png" id="15_aogfk"]
-[ext_resource type="Texture2D" uid="uid://dsi85m4bbv6ly" path="res://Trucs.png" id="17_6fku4"]
+[ext_resource type="Texture2D" uid="uid://dke4fjijfidpg" path="res://sprites/Lit_Bas.png" id="15_ojv0y"]
+[ext_resource type="Texture2D" uid="uid://wwomdcx3p7m5" path="res://sprites/Lit_Haut.png" id="17_uixgf"]
+[ext_resource type="Texture2D" uid="uid://biyrjqaiwieb2" path="res://sprites/Plancher.png" id="18_ojmcw"]
+[ext_resource type="Texture2D" uid="uid://otppg6kv6p6t" path="res://sprites/doctor-export.png" id="19_538kq"]
+[ext_resource type="Texture2D" uid="uid://dsi85m4bbv6ly" path="res://tilesets/Trucs.png" id="19_v7m8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jms4"]
 texture = ExtResource("1_vchkl")
@@ -197,6 +201,10 @@ scenes/16/scene = ExtResource("4_g12dk")
 scenes/17/scene = ExtResource("5_aogfk")
 scenes/18/scene = ExtResource("7_g12dk")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vb8cf"]
+texture = ExtResource("15_ojv0y")
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6fku4"]
 texture = ExtResource("15_6rdsc")
 0:0/0 = 0
@@ -208,6 +216,10 @@ texture = ExtResource("15_6rdsc")
 6:0/0 = 0
 7:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3e0j"]
+texture = ExtResource("17_uixgf")
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rdsc"]
 texture = ExtResource("15_aogfk")
 0:0/0 = 0
@@ -216,13 +228,21 @@ texture = ExtResource("15_aogfk")
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojmcw"]
-texture = ExtResource("17_6fku4")
+texture = ExtResource("19_v7m8y")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_538kq"]
+texture = ExtResource("18_ojmcw")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5tmit"]
+texture = ExtResource("19_538kq")
+0:0/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 3
@@ -239,4 +259,8 @@ sources/1 = SubResource("TileSetScenesCollectionSource_dpdtw")
 sources/2 = SubResource("TileSetAtlasSource_6rdsc")
 sources/11 = SubResource("TileSetAtlasSource_6fku4")
 sources/7 = SubResource("TileSetAtlasSource_ojmcw")
+sources/8 = SubResource("TileSetAtlasSource_538kq")
+sources/9 = SubResource("TileSetAtlasSource_5tmit")
+sources/10 = SubResource("TileSetAtlasSource_vb8cf")
+sources/12 = SubResource("TileSetAtlasSource_w3e0j")
 tile_proxies/coords_level = [[3, Vector2i(0, 0)], [7, Vector2i(0, 0)], [4, Vector2i(0, 0)], [7, Vector2i(1, 0)], [5, Vector2i(0, 0)], [7, Vector2i(2, 0)], [6, Vector2i(0, 0)], [7, Vector2i(3, 0)], [6, Vector2i(1, 0)], [7, Vector2i(4, 0)], [6, Vector2i(2, 0)], [7, Vector2i(5, 0)], [7, Vector2i(0, 0)], [11, Vector2i(4, 0)], [8, Vector2i(0, 0)], [11, Vector2i(5, 0)], [9, Vector2i(0, 0)], [11, Vector2i(6, 0)], [10, Vector2i(0, 0)], [11, Vector2i(7, 0)]]
