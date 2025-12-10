@@ -7,6 +7,7 @@ const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
 static var _health_drop_proba_modifier : float = 0
+static var _used_enemy_type : Array[int]
 
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
@@ -47,9 +48,17 @@ var is_cart_in_range : bool = false
 var is_active : bool = true
 
 func _ready():
-	#Choose random enemy
-	var rng = RandomNumberGenerator.new()
-	_setup(enemies_type[rng.randi() % enemies_type.size()])
+	
+	#get an unused random enemy type
+	var index : int = quest_manager.Instance.rng.randi() % enemies_type.size()
+	while _used_enemy_type.has(index):
+		index = quest_manager.Instance.rng.randi() % enemies_type.size()
+	_used_enemy_type.append(index)
+	#Reset array if every one werre used
+	if _used_enemy_type.size() >= enemies_type.size():
+		_used_enemy_type.clear()
+		_used_enemy_type.append(index)
+	_setup(enemies_type[index])
 	
 ##Setup enemy data from an enemy_data resource
 func _setup(data : enemy_data):
