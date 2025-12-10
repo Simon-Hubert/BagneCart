@@ -4,7 +4,7 @@ const TILE_SIZE : int = 16
 const CART_AREA_NAME = "CartInteraction"
 
 const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
-const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
+const PROJECTILE_SCENE : PackedScene = preload(.)
 
 static var _health_drop_proba_modifier : float = 0
 
@@ -15,6 +15,7 @@ static var _health_drop_proba_modifier : float = 0
 @onready var cart_cooldown_timer : Timer = $CartCooldownTimer
 @onready var animation_player = $AnimationPlayer
 @onready var self_collision : CollisionShape2D = $CollisionShape2D
+@onready var _sound_player = $AudioStreamPlayer2D
 
 @export_category("Health")
 @export var _health : int = 3
@@ -31,6 +32,10 @@ var is_dead := false
 @export var _enemy_cart_push : float = 100
 @export_range(0,1) var _health_potion_drop_rate : float = 0.25
 @export var _health_drop_proba_modifier_factor : float = 5
+
+@export_category("Sound")
+@export var RANGE_ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Projectile_Launch.mp3")
+@export var HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_enemy_with_broom.mp3")
 
 var speed : float = 500
 var max_accel : float = 750
@@ -92,6 +97,7 @@ func _process(_delta: float) -> void:
 			if is_shooting:
 				#range attack (spawn new projectile)
 				var newProjectile := PROJECTILE_SCENE.instantiate() as ennemy_projectile
+				_play_sound(RANGE_ATTACK_SOUND_FILE)
 				get_tree().current_scene.add_child(newProjectile)
 				newProjectile.position = global_position
 				newProjectile.set_velocity(dir_to_player)
@@ -120,6 +126,7 @@ func _physics_process(delta: float) -> void:
 ##dir for knockback
 func hit(_dir : Vector2) -> void:
 	_health -= 1
+	_play_sound(HIT_SOUND_FILE)
 	#Check death
 	if _health <= 0:
 		animation_player.play("Death")
@@ -180,3 +187,9 @@ func _activate_enemy() -> void:
 ##Activate the enemy if not in the room anymore
 func _deactivate_enemy() -> void:
 	is_active = false
+
+##Load and play a specfic sound
+func _play_sound(sound : AudioStream):
+	_sound_player.stream = sound
+	_sound_player.play()
+	

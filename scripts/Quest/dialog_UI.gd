@@ -7,6 +7,7 @@ const animation_name = "show_hide_dialog"
 @onready var quest_arrow_image : TextureRect = $Fullrect/DialogParent/DialogMargin/DialogBackground/Arrow
 @onready var quest_item_image : TextureRect = $Fullrect/DialogParent/DialogMargin/DialogBackground/QuestItem
 @onready var quest_arrow_animation :AnimationPlayer = $ArrowAnimation
+@onready var _sound_player = $AudioStreamPlayer2D
 
 @export var animtion_player : AnimationPlayer
 @export var animation_timer : Timer
@@ -42,3 +43,8 @@ func display_dialog(character_name : String, dialog : String, display_icon : Tex
 func _on_timer_timeout() -> void:
 	animtion_player.play_backwards(animation_name)
 	is_displayed = false
+
+##Load and play a specfic sound
+func _play_sound(sound : AudioStream):
+	_sound_player.stream = sound
+	_sound_player.play()

@@ -282,6 +282,11 @@ platform_on_leave = 2
 script = ExtResource("1_614tr")
 _health = 1
 enemies_type = Array[ExtResource("2_rsyu2")]([SubResource("Resource_ipns3"), SubResource("Resource_8qclf"), SubResource("Resource_w8i8w"), SubResource("Resource_otmr2"), SubResource("Resource_wtq4b"), SubResource("Resource_j0cyh")])
+_enemy_cart_push = null
+_health_potion_drop_rate = null
+_health_drop_proba_modifier_factor = null
+RANGE_ATTACK_SOUND_FILE = null
+HIT_SOUND_FILE = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("9_ipns3")
@@ -313,6 +318,8 @@ libraries = {
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-8, -8, 16, 16)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
