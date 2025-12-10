@@ -64,12 +64,14 @@ use_texture_padding = false
 0:1/0 = 0
 1:1/next_alternative_id = 7
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/6 = 6
 1:1/6/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/next_alternative_id = 3
 2:1/0 = 0
 3:1/next_alternative_id = 7
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/6 = 6
 3:1/6/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/next_alternative_id = 2
@@ -213,7 +215,8 @@ texture = ExtResource("15_aogfk")
 3:0/0 = 0
 
 [resource]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)

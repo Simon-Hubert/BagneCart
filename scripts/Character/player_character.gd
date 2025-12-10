@@ -66,11 +66,21 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, targetVelocity.y, maxSpeedChange)
 		move_and_slide()
 
+##Set default position (and reposition player)
+func set_default_position(new_position : Vector2):
+	_default_position = new_position
+	position = new_position
+
 func get_input() -> void:
 	_input = Input.get_vector("Left", "Right", "Up", "Down")
 	#flip the sprite relative to the direction
-	if _input.x != 0 && _can_move:
-		sprite.flip_h = _input.x < 0
+	if _can_move:
+		if _input.x != 0:
+			sprite.flip_h = _input.x < 0
+			animation_player.play("Move")
+		else:
+			animation_player.play("RESET")
+			
 	#interact key
 	if(Input.is_action_just_pressed("Interact")):
 		_interact()
@@ -134,7 +144,7 @@ func hit(dir : Vector2) -> void:
 		_interact()
 		
 	#Check player death
-	if _health <= 0:
+	if _health <= 0 && !is_dead:
 		animation_player.play("Death")
 		_can_move = false
 		is_dead = true

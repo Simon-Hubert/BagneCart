@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dlcf2wjcvi7ct"]
+[gd_scene load_steps=25 format=3 uid="uid://dlcf2wjcvi7ct"]
 
 [ext_resource type="Script" uid="uid://c1gg0istwpkjr" path="res://scripts/Character/Enemy/enemy.gd" id="1_614tr"]
 [ext_resource type="Script" uid="uid://b36ypy26k4yad" path="res://scripts/Character/Enemy/enemy_data.gd" id="2_rsyu2"]
@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://b36ypy26k4yad"
 [sub_resource type="Resource" id="Resource_8qclf"]
 script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("4_8qclf")
+attack_cooldown_timer = 2.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_w8i8w"]
@@ -44,6 +45,7 @@ script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("7_wtq4b")
 speed = 7.0
 max_accel = 14.0
+attack_cooldown_timer = 2.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="Resource" id="Resource_j0cyh"]
@@ -51,6 +53,7 @@ script = ExtResource("2_rsyu2")
 sprite_texture = ExtResource("8_j0cyh")
 speed = 7.0
 max_accel = 14.0
+attack_cooldown_timer = 2.0
 metadata/_custom_type_script = "uid://b36ypy26k4yad"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_614tr"]
@@ -172,6 +175,34 @@ tracks/2/keys = {
 "values": [0.0, 0.17453292519943295, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ebm38"]
+resource_name = "Move"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.03490658503988659, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.034906585, -0.03490658503988659, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
 tracks/0/type = "value"
@@ -210,12 +241,37 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
 _data = {
 &"Attack": SubResource("Animation_qlg0r"),
 &"Death": SubResource("Animation_dqkch"),
 &"Hit": SubResource("Animation_g2els"),
+&"Move": SubResource("Animation_ebm38"),
 &"RESET": SubResource("Animation_qhqgy")
 }
 

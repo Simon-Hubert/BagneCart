@@ -95,7 +95,7 @@ func _generate_map(dungeon: Array[RoomData]):
 		if !previous_room:
 			var spawn_position : Vector2 = instance.position
 			spawn_position.x += ROOMSIZE.x * .5
-			spawn_position.y -= ROOMSIZE.y * .5 + 20
+			spawn_position.y -= ROOMSIZE.y * .5
 			game_manager.Instance.spawn_player_and_camera(spawn_position)	
 			
 		generate_rails_for_room(instance, room, !previous_room, rooms)

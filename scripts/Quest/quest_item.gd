@@ -1,6 +1,7 @@
 class_name quest_item extends Pickupable
 
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var outline : Sprite2D = $Outline
 @onready var name_tag : Label = $NameTag
 
 @export_category("Sprites")
@@ -19,7 +20,9 @@ static var used_quest_persons : Array[int] #Store the indexes of the array
 func init_item(item_name : String, rng : RandomNumberGenerator):
 	#Set item sprite
 	is_person = !item_to_sprite.has(item_name)
-	sprite.texture = _get_unique_texture(item_name, rng)
+	var item_texture : Texture2D = _get_unique_texture(item_name, rng)
+	sprite.texture = item_texture
+	outline.texture = item_texture
 	#Set item name
 	name_tag.visible = is_person
 	name_tag.text = item_name
@@ -43,7 +46,7 @@ func _on_screen_exited() -> void:
 
 ##Returns an unique texture (wasn't previously used)
 ##Only works for character as object are linked to the item name
-func _get_unique_texture(item_name : String, rng : RandomNumberGenerator):
+func _get_unique_texture(item_name : String, rng : RandomNumberGenerator) -> Texture2D:
 	if item_to_sprite.has(item_name):
 		return item_to_sprite[item_name]
 	else:

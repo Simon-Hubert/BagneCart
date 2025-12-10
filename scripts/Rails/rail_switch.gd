@@ -14,17 +14,25 @@ func _ready():
 		switch_lever.player_interact.connect(_on_switch)
 	connections = Connexion.new()
 	
-
 func _on_switch():
+	for rail in neighbors:
+		rail.disconnect_rail(self)
 	var v = connections.next()
-	init_rail(neighbors[v.x], neighbors[v.y])
+	connect_rail(neighbors[v.x])
+	connect_rail(neighbors[v.y])
 	propagate_orientation(dir)
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Attack"):
+		_on_switch()
 
 class Connexion :
 	var i : int = 0
 	var j : int = 0
 	var size: int = 0
+
+	func current() -> Vector2i:
+		return Vector2i(i,j)
 
 	func next() -> Vector2i:
 

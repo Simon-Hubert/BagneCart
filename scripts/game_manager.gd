@@ -14,6 +14,9 @@ const CART_SCENE : PackedScene = preload(CART_SCENE_PATH)
 const CAMERA_SCENE_PATH : String = "res://scenes/camera.tscn"
 const CAMERA_SCENE : PackedScene = preload(CAMERA_SCENE_PATH)
 
+const HEALTH_POTION_SCENE_PATH : String = "res://scenes/health_pickup.tscn"
+const HEALTH_POTION_SCENE : PackedScene = preload(HEALTH_POTION_SCENE_PATH)
+
 @onready var _quest_manager : quest_manager = $QuestManager
 @onready var _respawn_timer : Timer = $Timer
 
@@ -46,12 +49,13 @@ func spawn_player_and_camera(spawn_position : Vector2) -> void:
 	get_tree().current_scene.add_child(camera_ref)
 	player_ref = PLAYER_SCENE.instantiate()
 	get_tree().current_scene.add_child(player_ref)
-	player_ref.position = spawn_position
-
 	#Setup camera
 	camera_ref.player_ref = player_ref
-	camera_ref.position = spawn_position
+	camera_ref.set_default_camera_position(spawn_position)
 	camera_ref.setup()
+	#Setup player (with slight offset)
+	spawn_position.y += 20
+	player_ref.set_default_position(spawn_position)
 	
 ##Spawn the cart
 func spawn_cart(spawn_position : Vector2) -> void:
@@ -75,6 +79,12 @@ func respawn_player() -> void:
 func _on_respawn_timer_ended() -> void:
 	on_respawn.emit()
 
+##Spawn a health potion to the designated position
+func spawn_health_potion(spawn_position : Vector2) -> void:
+	var health_potion : Node2D = HEALTH_POTION_SCENE.instantiate()
+	get_tree().current_scene.call_deferred("add_child",health_potion)
+	health_potion.global_position = spawn_position
+ 
 ##Fail a quest, and launch game over if number of tries have expired
 func failed_quest() -> void:
 	_number_quest_failed += 1

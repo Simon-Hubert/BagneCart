@@ -1,18 +1,27 @@
 class_name RailManager extends Node2D
 
 
-@export var up_rail : Rail
-@export var down_rail : Rail
-@export var left_rail : Rail
-@export var right_rail : Rail
-@export var switch : RailSwitch
-
-func _ready():
-	##switch.connect_rail(up_rail)
-	switch.connect_rail(down_rail)
-	switch.connect_rail(left_rail)
-	switch.connect_rail(right_rail)
-
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Attack"):
-		switch._on_switch()
+		#print("TEST")
+		var target := get_global_mouse_position()
+		print(target)
+		var space_state = get_world_2d().direct_space_state
+		var point := PhysicsPointQueryParameters2D.new()
+		point.collide_with_areas = true
+		point.position = target
+		var result = space_state.intersect_point(point)
+		#print(result)
+		for area in result:
+			if area.collider is Rail:
+				print("Name : {0}".format([area.collider]))
+				print(area.collider.dir)
+				print(area.collider.flip_normal)
+				print("position :")
+				print(area.collider.global_position)
+				if area.collider.connected[-1]:
+					print("-1 :")
+					print(area.collider.connected[-1].global_position)
+				if area.collider.connected[-2]:
+					print("-2 :")
+					print(area.collider.connected[-2].global_position)				
