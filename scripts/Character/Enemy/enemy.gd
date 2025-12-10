@@ -17,6 +17,9 @@ static var _health_drop_proba_modifier : float = 0
 @onready var self_collision : CollisionShape2D = $CollisionShape2D
 @onready var _sound_player = $AudioStreamPlayer2D
 
+const RANGE_ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Projectile_Launch.mp3")
+const HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_enemy_with_broom.mp3")
+
 @export_category("Health")
 @export var _health : int = 3
 var is_dead := false
@@ -32,10 +35,6 @@ var is_dead := false
 @export var _enemy_cart_push : float = 100
 @export_range(0,1) var _health_potion_drop_rate : float = 0.25
 @export var _health_drop_proba_modifier_factor : float = 5
-
-@export_category("Sound")
-@export var RANGE_ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Projectile_Launch.mp3")
-@export var HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_enemy_with_broom.mp3")
 
 var speed : float = 500
 var max_accel : float = 750

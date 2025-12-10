@@ -5,6 +5,12 @@ class_name Player extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var _sound_player = $AudioStreamPlayer2D
 
+const HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_by_item.mp3")
+const ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Hit_Broom_Nothing.mp3")
+const PICK_SOUND_FILE : AudioStream = preload("res://Audio/Pickup_item.mp3")
+const DROP_SOUND_FILE: AudioStream = preload("res://Audio/Drop_item.mp3")
+const RECOVER_HEALTH_SOUND_FILE : AudioStream = preload("res://Audio/Life_recover.mp3")
+
 @export_category("Health")
 @export var _default_health : int = 3
 @export var _max_health : int = 5
@@ -29,13 +35,6 @@ const ATTACK_SCENE : PackedScene = preload(ATTACK_SCENE_PATH)
 @export_category("Anim")
 @export var default_tex : Texture
 @export var picked_item_tex : Texture
-
-@export_category("Sound")
-@export var HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_by_item.mp3")
-@export var ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Hit_Broom_Nothing.mp3")
-@export var PICK_SOUND_FILE : AudioStream = preload("res://Audio/Pickup_item.mp3")
-@export var DROP_SOUND_FILE: AudioStream = preload("res://Audio/Drop_item.mp3")
-@export var RECOVER_HEALTH_SOUND_FILE : AudioStream = preload("res://Audio/Life_recover.mp3")
 
 var _can_move := true
 var _is_knockbacked := false
