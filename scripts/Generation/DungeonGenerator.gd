@@ -8,6 +8,8 @@ class_name DungeonGenerator extends Node2D
 @export var NumberOfRooms : int
 @export var extra_doors_probability : float
 
+var _first_rail : Rail
+
 
 func _ready():
 	var result = _generate_dungeon(NumberOfRooms)
@@ -88,7 +90,7 @@ func _generate_map(dungeon: Array[RoomData]):
 
 		var instance = packed.instantiate()
 		instance.position = Vector2(room.grid_pos.x * ROOMSIZE.x, room.grid_pos.y * ROOMSIZE.y)
-		rooms[instance.position] = room
+		rooms[Vector2(instance.global_position.x + ROOMSIZE.x / 2, instance.global_position.y - ROOMSIZE.y / 2)] = room
 		add_child(instance)	
 		
 		#spawn player & cam (if first room)
@@ -102,6 +104,7 @@ func _generate_map(dungeon: Array[RoomData]):
 		previous_room = room
 		print("Valide room scene for key: %s" % key)
 	
+	_first_rail.propagate_orientation(_first_rail.dir)
 	#Spawn NPC & quest item
 	quest_manager.Instance.spawn_NPC()
 	
@@ -249,6 +252,8 @@ func generate_rails_for_room(inst : Node, room : RoomData, spawn_cart : bool, ro
 	else:
 		center = _rail.instantiate()
 	inst.add_child(center)
+	if _first_rail == null:
+		_first_rail = center as Rail
 	center.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
 	
 	if spawn_cart:
@@ -276,14 +281,15 @@ func generate_rails_for_room(inst : Node, room : RoomData, spawn_cart : bool, ro
 				if j == step:
 					room.rails[i] = rail
 					
-		var possible_dir		
-		for k in range(possible.size()):
-			possible_dir = possible[k]
-			var neighbor_pos = center.position + Vector2(ROOMSIZE.x / 2 * possible_dir.x, ROOMSIZE.y / 2 * possible_dir.y)
-			if rooms.find_key(neighbor_pos):
-				var neighbor = rooms[neighbor_pos]
-				if(neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)] != null):
-					neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)].connect_rail(room.rails[_get_door_index_from_dir(possible_dir)])
+	var possible_dir		
+	for k in range(possible.size()):
+		possible_dir = possible[k]
+		var neighbor_pos :  Vector2 = roomCenter + Vector2(ROOMSIZE.x * possible_dir.x, ROOMSIZE.y * possible_dir.y)
+		print(neighbor_pos)
+		if rooms.get(neighbor_pos) != null:
+			var neighbor : RoomData = rooms[neighbor_pos]
+			if(neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)] != null):
+				neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)].connect_rail(room.rails[_get_door_index_from_dir(possible_dir)])	
 		
 
 	
