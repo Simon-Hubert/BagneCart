@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1k565ctu48tc"]
+
+[ext_resource type="Resource" uid="uid://cfdyap7wajq6m" path="res://resources/rail_data.tres" id="2_g6he8"]
+[ext_resource type="Texture2D" uid="uid://dn5ok3eoqtrmu" path="res://sprites/Tilemap/tilemap_packed.png" id="2_tbuo2"]
+[ext_resource type="Script" uid="uid://dsu1qqakf8glh" path="res://scripts/Rails/rail_switch.gd" id="3_tbuo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rqgk"]
+size = Vector2(16, 16)
+
+[node name="RailSwitch" type="Area2D"]
+monitoring = false
+script = ExtResource("3_tbuo2")
+dir = Vector2(1, -1)
+is_turning = true
+rail_data = ExtResource("2_g6he8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3rqgk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tbuo2")
+region_enabled = true
+region_rect = Rect2(144, 80, 16, 16)

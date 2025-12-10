@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=4 uid="uid://db5cfan2a3vjb"]
+
+[ext_resource type="PackedScene" uid="uid://8npyicd1iw1n" path="res://scenes/Player.tscn" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://d4k7dceo0v43b" path="res://scripts/camera_follow.gd" id="2_liovv"]
+[ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="3_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="4_gubc5"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAP3/AQAAAAAACwABAP7/AQAAAAAACwABAP//AQAAAAAACwABAAAAAQAAAAAACwABAAEAAQAAAAAACwABAAIAAQAAAAAACwABAAMAAQAAAAAACwABAPz/AQAAAAAADAACAPz/AQAAAAAADQA=")
+tile_set = ExtResource("3_7ykc4")
+
+[node name="Cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_gubc5")]
+position = Vector2(24, 16)
+_radius = 20.0
+_player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_pw63i")]
+motion_mode = 1
+
+[node name="CameraFollow" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
+zoom = Vector2(4, 4)
+script = ExtResource("2_liovv")
+_target = NodePath("../Player")
+_decay = 6.5
+metadata/_custom_type_script = "uid://d4k7dceo0v43b"

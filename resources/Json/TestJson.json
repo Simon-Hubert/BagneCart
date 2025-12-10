@@ -1,0 +1,42 @@
+{
+	"name": [
+		"Bertram",
+		"Arabella",
+		"Cecil"
+	],
+	"occupation": [
+		"baker",
+		"wizard",
+		"soldier"
+	],
+	"adj": [
+		"great",
+		"bald",
+		"strong",
+		"weak",
+		"stupid",
+		"weird"
+	],
+	"weapon": [
+		"sword",
+		"axe",
+		"bow"
+	],
+	"origin": [
+		"#name# the #adj# #occupation#",
+		"#name# the #occupation#"
+	],
+	"quest_item" : [ "#questItem#" ],
+	"quest": [
+		"Hey ! I need #questItem#, can you get that ?"
+	],
+	"quest_finished": [
+		"Thanks dude ! I needed my #questItem#"
+	],
+	"quest_not_finished": [
+		"Finish the job first !"	
+	],
+	"wrong_NPC": [
+		"Don't you have another quest to finish"	
+	]
+}

@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=4 uid="uid://2i7imvprbpwm"]
+
+[ext_resource type="TileSet" uid="uid://b3j3k00t7a2pk" path="res://tilesets/Bagnecart.tres" id="1_6qxox"]
+[ext_resource type="PackedScene" uid="uid://cyr3l4epyskld" path="res://scenes/Cart.tscn" id="2_gthg3"]
+[ext_resource type="PackedScene" uid="uid://b3fny6dmp5oob" path="res://scenes/player.tscn" id="3_ntc4i"]
+[ext_resource type="PackedScene" uid="uid://b4j8e8odqgtyf" path="res://scenes/game_manager.tscn" id="5_gthg3"]
+[ext_resource type="PackedScene" uid="uid://cm1niru8bivs2" path="res://scenes/camera.tscn" id="5_ntc4i"]
+[ext_resource type="PackedScene" uid="uid://w8kt0e7fu7cw" path="res://scenes/Quest/dialog_UI.tscn" id="6_8gixj"]
+[ext_resource type="PackedScene" uid="uid://brjtmpmceoxv7" path="res://scenes/UI/cart_indicator.tscn" id="7_6qxox"]
+[ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/UI/hud.tscn" id="7_hf2sn"]
+[ext_resource type="PackedScene" uid="uid://o6cdu0ye8mtt" path="res://scenes/UI/Timer.tscn" id="8_ntc4i"]
+[ext_resource type="PackedScene" uid="uid://d4gtgtxc6bu0q" path="res://scenes/Quest/NPC_spawn_point.tscn" id="8_qq5q4"]
+[ext_resource type="PackedScene" uid="uid://l5jeljoe15c" path="res://scenes/health_pickup.tscn" id="9_gah1j"]
+[ext_resource type="PackedScene" uid="uid://bpnttjm8gbjcm" path="res://scenes/Rails/lever.tscn" id="10_ap2hy"]
+[ext_resource type="PackedScene" uid="uid://0fdwsv35bwmc" path="res://scenes/Enemy/enemy_group.tscn" id="12_gthg3"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("5_gthg3")]
+
+[node name="QuestManager" parent="GameManager" index="0"]
+npc_number = 1
+
+[node name="Timer" type="Timer" parent="GameManager/QuestManager" index="0"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAQABAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAP//AQAAAAAAAQABAP7/AQAAAAAAAQACAPz/AQAAAAAAAQACAPv/AQAAAAAAAQACAP3/AQAAAAAABgADAPr/AQAAAAAABgAEAPn/AQAAAAAABgAFAPj/AQAAAAAABgACAPr/AQAAAAAADgADAPn/AQAAAAAADgAEAPj/AQAAAAAADgAFAPf/AQAAAAAADgAGAPf/AQAAAAAADwAGAPj/AQAAAAAABQAGAPn/AQAAAAAABQAGAPr/AQAAAAAABQAGAPv/AQAAAAAABQAGAPz/AQAAAAAABQAGAP3/AQAAAAAABQAGAP7/AQAAAAAABQABAAMAAQAAAAAAEQACAAMAAQAAAAAAEAADAAIAAQAAAAAAEAAEAAEAAQAAAAAAEAAFAAAAAQAAAAAAEAAGAP//AQAAAAAAEAACAAIAAQAAAAAAAgADAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAFAP//AQAAAAAAAgAAAP3/AQAAAAAABwD///3/AQAAAAAABwD+//3/AQAAAAAABwD9//3/AQAAAAAABwD8//3/AQAAAAAABwABAP3/AQAAAAAAEgA=")
+tile_set = ExtResource("1_6qxox")
+
+[node name="Cart" parent="." instance=ExtResource("2_gthg3")]
+position = Vector2(24, 16)
+
+[node name="Player" parent="." instance=ExtResource("3_ntc4i")]
+position = Vector2(-90, 21)
+motion_mode = 1
+_maxSpeed = 120.0
+
+[node name="CameraFollow" parent="." instance=ExtResource("5_ntc4i")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUI" parent="CanvasLayer" instance=ExtResource("6_8gixj")]
+
+[node name="cart_indicator" parent="CanvasLayer" node_paths=PackedStringArray("player", "cart") instance=ExtResource("7_6qxox")]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+player = NodePath("../../Player")
+cart = NodePath("../../Cart")
+
+[node name="TimerUI" parent="CanvasLayer" instance=ExtResource("8_ntc4i")]
+
+[node name="hud" parent="." instance=ExtResource("7_hf2sn")]
+
+[node name="NPC_spawn_point" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-59, 82)
+
+[node name="NPC_spawn_point2" parent="." instance=ExtResource("8_qq5q4")]
+position = Vector2(-45, -81)
+
+[node name="HealthPickup" parent="." instance=ExtResource("9_gah1j")]
+position = Vector2(-179, -23)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("9_gah1j")]
+position = Vector2(-152, -65)
+
+[node name="Lever" parent="." instance=ExtResource("10_ap2hy")]
+position = Vector2(-93, -35)
+
+[node name="enemy_group" parent="." node_paths=PackedStringArray("player_ref", "cart_ref") instance=ExtResource("12_gthg3")]
+position = Vector2(125, 71)
+player_ref = NodePath("../Player")
+cart_ref = NodePath("../Cart")
+_spawn_chance = 100.0
+
+[connection signal="timeout" from="GameManager/QuestManager/Timer" to="GameManager/QuestManager" method="spawn_NPC"]
+[connection signal="on_player_setup_health" from="Player" to="hud" method="_on_setup_lives"]
+[connection signal="on_player_update_health" from="Player" to="hud" method="_on_life_changed"]
+
+[editable path="GameManager"]

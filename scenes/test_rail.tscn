@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c43sq8xy5ej35"]
+
+[ext_resource type="Script" uid="uid://kiviwp4rwpi4" path="res://scripts/Rails/rail_manager.gd" id="1_11cpi"]
+[ext_resource type="PackedScene" uid="uid://2uf5ac8ft38x" path="res://scenes/Rails/Rail0.tscn" id="2_86mkn"]
+[ext_resource type="PackedScene" uid="uid://b1k565ctu48tc" path="res://scenes/Rails/rail_switch0.tscn" id="3_86mkn"]
+[ext_resource type="Resource" uid="uid://cfdyap7wajq6m" path="res://resources/rail_data.tres" id="4_buh8e"]
+
+[node name="TestRail" type="Node2D"]
+
+[node name="RailManager" type="Node2D" parent="." node_paths=PackedStringArray("up_rail", "down_rail", "left_rail", "right_rail", "switch")]
+script = ExtResource("1_11cpi")
+up_rail = NodePath("")
+down_rail = NodePath("Area2D3")
+left_rail = NodePath("Area2D4")
+right_rail = NodePath("Area2D")
+switch = NodePath("RailSwitch")
+metadata/_custom_type_script = "uid://kiviwp4rwpi4"
+
+[node name="Area2D" parent="RailManager" instance=ExtResource("2_86mkn")]
+position = Vector2(16, 0)
+
+[node name="Area2D3" parent="RailManager" instance=ExtResource("2_86mkn")]
+position = Vector2(0, 16)
+
+[node name="Area2D4" parent="RailManager" instance=ExtResource("2_86mkn")]
+position = Vector2(-16, 0)
+
+[node name="RailSwitch" parent="RailManager" instance=ExtResource("3_86mkn")]
+rail_data = ExtResource("4_buh8e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)

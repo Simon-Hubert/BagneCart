@@ -1,0 +1,142 @@
+[gd_scene load_steps=28 format=3 uid="uid://dxfpm7j2xqoel"]
+
+[ext_resource type="Script" uid="uid://cqynsioph0j46" path="res://scripts/Quest/NPC_Skin.gd" id="2_ag80d"]
+[ext_resource type="Texture2D" uid="uid://bbbn601d1pa0d" path="res://sprites/Characters/CRS1.png" id="2_b7ihd"]
+[ext_resource type="Script" uid="uid://dy0oue4bemaco" path="res://scripts/Quest/NPC.gd" id="2_wvomn"]
+[ext_resource type="Script" uid="uid://p5nqout6exbw" path="res://scripts/Quest/NPC_interaction.gd" id="3_su2bb"]
+[ext_resource type="Texture2D" uid="uid://bsyi2mqyn0yqy" path="res://sprites/Characters/Policier1.png" id="4_ycfk0"]
+[ext_resource type="Texture2D" uid="uid://cd0p5bxov0kjm" path="res://sprites/Characters/Prisonnier1.png" id="5_qrj1q"]
+[ext_resource type="Texture2D" uid="uid://c8rnllpi83t11" path="res://sprites/Characters/Prisonnier2.png" id="6_pxjuw"]
+[ext_resource type="Texture2D" uid="uid://b8071n36erhky" path="res://sprites/Characters/Prisonnier3.png" id="7_hgd7x"]
+[ext_resource type="Texture2D" uid="uid://bd5caa122aiek" path="res://sprites/Characters/Prisonnier4.png" id="8_b0gp1"]
+[ext_resource type="Texture2D" uid="uid://dwn2b3pq4do8c" path="res://sprites/Characters/Prisonnier5.png" id="9_2afgm"]
+[ext_resource type="Texture2D" uid="uid://dbqcgx3amy22u" path="res://sprites/Characters/Prisonnier6.png" id="10_ttery"]
+[ext_resource type="Texture2D" uid="uid://brr4rqm6c13qf" path="res://sprites/QuestIndicator/new_quest.png" id="12_b7ihd"]
+[ext_resource type="Script" uid="uid://jh5omxhwjog8" path="res://scripts/Quest/NPC_quest_indicator.gd" id="13_d304e"]
+[ext_resource type="Texture2D" uid="uid://b54aulg6ck0i5" path="res://sprites/QuestIndicator/validate_quest.png" id="14_ycfk0"]
+
+[sub_resource type="Resource" id="Resource_oh3tf"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("5_qrj1q")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_d304e"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("6_pxjuw")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_ycfk0"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("7_hgd7x")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_qrj1q"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("8_b0gp1")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_pxjuw"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("9_2afgm")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_hgd7x"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("10_ttery")
+suffix = "_prisonner"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_b0gp1"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("2_b7ihd")
+suffix = "_guard"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="Resource" id="Resource_2afgm"]
+script = ExtResource("2_ag80d")
+texture = ExtResource("4_ycfk0")
+suffix = "_guard"
+metadata/_custom_type_script = "uid://cqynsioph0j46"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wowo"]
+size = Vector2(18, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvomn"]
+size = Vector2(50, 50)
+
+[sub_resource type="Animation" id="Animation_b7ihd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hsq14"]
+resource_name = "Talk"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d304e"]
+_data = {
+&"RESET": SubResource("Animation_b7ihd"),
+&"Talk": SubResource("Animation_hsq14")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("2_wvomn")
+sprite_list = Array[ExtResource("2_ag80d")]([SubResource("Resource_oh3tf"), SubResource("Resource_d304e"), SubResource("Resource_ycfk0"), SubResource("Resource_qrj1q"), SubResource("Resource_pxjuw"), SubResource("Resource_hgd7x"), SubResource("Resource_b0gp1"), SubResource("Resource_2afgm")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_b7ihd")
+region_rect = Rect2(0, 112, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8wowo")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+disable_mode = 1
+script = ExtResource("3_su2bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wvomn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d304e")
+}
+
+[node name="QuestIndicator" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
+texture = ExtResource("12_b7ihd")
+script = ExtResource("13_d304e")
+new_quest_sprite = ExtResource("12_b7ihd")
+validate_quest_sprite = ExtResource("14_ycfk0")
+
+[connection signal="player_interact" from="TriggerArea" to="." method="_on_trigger_area_player_interact"]
