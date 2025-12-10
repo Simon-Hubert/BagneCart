@@ -8,6 +8,9 @@ class_name DungeonGenerator extends Node2D
 @export var NumberOfRooms : int
 @export var extra_doors_probability : float
 
+var _first_rail : Rail
+
+
 func _ready():
 	var result = _generate_dungeon(NumberOfRooms)
 	var dungeon = result.dungeon
@@ -76,6 +79,7 @@ func _generate_dungeon(count: int) -> Dictionary:
 
 func _generate_map(dungeon: Array[RoomData]):
 	var previous_room : RoomData = null
+	var rooms : Dictionary[Vector2, RoomData]
 	for room in dungeon:
 		var key = _get_room_key_from_doors(room.doors)
 		var packed: PackedScene = _rooms.get(key)
@@ -86,6 +90,7 @@ func _generate_map(dungeon: Array[RoomData]):
 
 		var instance = packed.instantiate()
 		instance.position = Vector2(room.grid_pos.x * ROOMSIZE.x, room.grid_pos.y * ROOMSIZE.y)
+		rooms[Vector2(instance.global_position.x + ROOMSIZE.x / 2, instance.global_position.y - ROOMSIZE.y / 2)] = room
 		add_child(instance)	
 		
 		#spawn player & cam (if first room)
@@ -95,10 +100,11 @@ func _generate_map(dungeon: Array[RoomData]):
 			spawn_position.y -= ROOMSIZE.y * .5
 			game_manager.Instance.spawn_player_and_camera(spawn_position)	
 			
-		generate_rails_for_room(instance, room, previous_room, !previous_room)
+		generate_rails_for_room(instance, room, !previous_room, rooms)
 		previous_room = room
 		print("Valide room scene for key: %s" % key)
 	
+	_first_rail.propagate_orientation(_first_rail.dir)
 	#Spawn NPC & quest item
 	quest_manager.Instance.spawn_NPC()
 	
@@ -226,7 +232,7 @@ func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
 			if !neighbor.doors[opposite]:
 				room.doors[door_index] = false
 
-func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomData, spawn_cart : bool):
+func generate_rails_for_room(inst : Node, room : RoomData, spawn_cart : bool, rooms : Dictionary[Vector2, RoomData]):
 	
 	var roomCenter = Vector2(inst.global_position.x + ROOMSIZE.x / 2.0, inst.global_position.y - ROOMSIZE.y / 2.0)
 	var possible = [
@@ -246,6 +252,8 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 	else:
 		center = _rail.instantiate()
 	inst.add_child(center)
+	if _first_rail == null:
+		_first_rail = center as Rail
 	center.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
 	
 	if spawn_cart:
@@ -273,9 +281,15 @@ func generate_rails_for_room(inst : Node, room : RoomData, previous_room : RoomD
 				if j == step:
 					room.rails[i] = rail
 					
-	if previous_room != null:
-		var dir = room.from_dir
-		previous_room.rails[_get_opposite_door_index_from_dir(dir)].connect_rail(room.rails[_get_door_index_from_dir(dir)])
+	var possible_dir		
+	for k in range(possible.size()):
+		possible_dir = possible[k]
+		var neighbor_pos :  Vector2 = roomCenter + Vector2(ROOMSIZE.x * possible_dir.x, ROOMSIZE.y * possible_dir.y)
+		print(neighbor_pos)
+		if rooms.get(neighbor_pos) != null:
+			var neighbor : RoomData = rooms[neighbor_pos]
+			if(neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)] != null):
+				neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)].connect_rail(room.rails[_get_door_index_from_dir(possible_dir)])	
 		
 
 	

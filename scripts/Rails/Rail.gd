@@ -56,8 +56,7 @@ func init_rail(next_rail: Rail, previous_rail: Rail) -> void:
 	
 func propagate_orientation(constraint: Vector2):
 	if dir.dot(constraint) < 0:
-		if not is_end_of_line:
-			reverse()
+		reverse()
 	is_aligned = true
 	for connected_rail in connected:
 		if connected_rail == null : continue
