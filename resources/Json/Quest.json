@@ -136,7 +136,7 @@
 		"es l'employé du mois dans mon cœur.",
 		"es le GOAT !",
 		"es vraiment ce mec !",
-        "as retrouvé #itemobject#, c'est ça qui me fallait !"
+        "as retrouvé #questItem#, c'est ça qui me fallait !"
 	],
 	"quest_finished_finish_prisonner": [
 		"Prends soin de toi.",
@@ -158,7 +158,7 @@
 		"Merci pour ton aide même si c'est ton boulot.",
 		"Bon je t'en dois une j'imagine.",
 		"Mais t'as assuré en vrai !",
-        "Merci de m'avoir apporté #itemobject#."
+        "Merci de m'avoir apporté #questItem#."
 	],
 	"quest_finished_finish_guard": [
 		"Je glisserai un mot au directeur.",
@@ -169,34 +169,67 @@
 	],
 	
 	
-	"quest_person_origin": [
-        "#quest_person_header# #quest_person_verb# #questItem# #quest_person_quest# #quest_person_finish#"
+	"quest_person_origin_guard": [
+        "#quest_person_header_guard# #quest_person_verb_guard# #questItem##quest_person_quest_guard# #quest_person_finish_guard#"
 	],
-	"quest_person_header": [
-		"Yo, ça va ?",
-		"Hey.",
-		"Mec, viens par là !",
-		"Mon gars  !",
-        "Viens par ici mon ami !!"
+	"quest_person_origin_prisonner": [
+        "#quest_person_header_prisonner# #quest_person_verb_prisonner# #questItem##quest_person_quest_prisonner# #quest_person_finish_prisonner#"
 	],
-	"quest_person_verb": [
+	"quest_person_header_guard": [
+		"J'ai besoin d'un service.",
+		"Ça se passe ?",
+		"Le concierge viens par là !",
+		"Viens ici deux minutes !",
+        "Eh ! Le concierge !!"
+	],
+	"quest_person_verb_guard": [
 		"Tu peux aller me chercher",
-		"Peux-tu vérifier où se trouve",
+		"Tu peux pas vérifier où se trouve",
 		"Va me chercher",
 		"Tu peux me rapporter",
-        "Pourrais-tu chercher"
+        "Tu pourrais m'amener"
 	],
-	"quest_person_quest": [
-		"et me le ramener ?",
-		"et l'attraper pour moi ?",
+	"quest_person_quest_guard": [
+		" et me le ramener ?",
+		" et l'attraper pour moi ?",
 		", il doit répondre à quelques questions.",
-        ", il me fait vraiment chier."
+		", on le soupçonne de quelque chose.",
+        ", je dois parler d'un truc important avec lui."
 	],
-	"quest_person_finish": [
-		"Genre, s'il te plaît, j'en ai vraiment besoin.",
-		"Si je ne le retrouve pas, je suis un homme mort.",
-		"Et je t'épargnerai.",
-		"Tu auras une superbe récompense à la clé.",
+	"quest_person_finish_guard": [
+		"Faut que je le vois, maintenant.",
+		"Je compte sur toi.",
+		"Si tu fais ça vite, je glisserais quelques mots au directeur.",
+		"Tu auras un petit truc en récompense.",
+		"Allez ! Dépêche toi !",
+        "Et tu me fais ça vite !"
+	],
+	"quest_person_header_prisonner": [
+		"Yo, ça va ?",
+		"Hey, Tranquille ?",
+		"Mec, viens par là !",
+		"Mon gars !",
+        "Eh ! Viens par ici le concierge !!"
+	],
+	"quest_person_verb_prisonner": [
+		"Tu peux aller me chercher",
+		"Tu peux pas vérifier où se trouve",
+		"Va me chercher",
+		"Tu peux me rapporter",
+        "Tu pourrais m'amener"
+	],
+	"quest_person_quest_prisonner": [
+		" et me le ramener ?",
+		" et l'attraper pour moi ?",
+		", il doit répondre à quelques questions.",
+		", il me fait vraiment chier.",
+        ", je dois parler d'un truc important avec lui."
+	],
+	"quest_person_finish_prisonner": [
+		"Faut que je le vois, maintenant.",
+		"Je compte sur toi.",
+		"Et je te laisserai tranquille.",
+		"Tu auras un petit truc en récompense.",
 		"Allez ! Dépêche toi !",
         "Bonne chance."
 	],
