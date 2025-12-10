@@ -103,21 +103,12 @@ func _generate_map(dungeon: Array[RoomData]):
 		generate_rails_for_room(instance, room, !previous_room, rooms)
 		previous_room = room
 		print("Valide room scene for key: %s" % key)
-	
+
+	RailManager.instance.on_start()	
 	_first_rail.propagate_orientation(_first_rail.dir)
 	#Spawn NPC & quest item
 	quest_manager.Instance.spawn_NPC()
-	
-	#Propagate cart
-	var space_state = get_world_2d().direct_space_state
-	var point := PhysicsPointQueryParameters2D.new()
-	point.collide_with_areas = true
-	point.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0
-	var result = space_state.intersect_point(point)
-	for rail in result:
-		if rail is Rail:
-			rail.propagate_orientation(rail.dir)
-		
+
 func _get_available_dirs_for_room(room: RoomData, occupied: Dictionary) -> Array[Vector2i]:
 	var dirs: Array[Vector2i] = []
 	var possible = [

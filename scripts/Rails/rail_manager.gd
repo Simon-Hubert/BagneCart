@@ -1,27 +1,30 @@
 class_name RailManager extends Node2D
 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("Attack"):
-		#print("TEST")
-		var target := get_global_mouse_position()
-		print(target)
-		var space_state = get_world_2d().direct_space_state
-		var point := PhysicsPointQueryParameters2D.new()
-		point.collide_with_areas = true
-		point.position = target
-		var result = space_state.intersect_point(point)
-		#print(result)
-		for area in result:
-			if area.collider is Rail:
-				print("Name : {0}".format([area.collider]))
-				print(area.collider.dir)
-				print(area.collider.flip_normal)
-				print("position :")
-				print(area.collider.global_position)
-				if area.collider.connected[-1]:
-					print("-1 :")
-					print(area.collider.connected[-1].global_position)
-				if area.collider.connected[-2]:
-					print("-2 :")
-					print(area.collider.connected[-2].global_position)				
+static var instance : RailManager	
+
+var rails : Array[Rail]
+var switchs : Array[RailSwitch]
+
+func _ready():
+	if instance != null:
+		print("NTM")
+		queue_free()
+	instance = self
+
+func on_start():
+	for switch in switchs:
+		switch._on_switch()
+
+func add_rail(rail: Rail):
+	if rails.find(rail) == -1:
+		rails.append(rail)
+
+func add_switch(switch : RailSwitch):
+	if switchs.find(switch) == -1:
+		switchs.append(switch)
+		switch._on_switch_signal.connect(_reset_align)
+
+func _reset_align():
+	for rail in rails:
+		rail.is_aligned = false

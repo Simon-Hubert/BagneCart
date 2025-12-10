@@ -210,6 +210,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 3
+motion_mode = 1
 script = ExtResource("1_v6fml")
 _maxSpeed = 150.0
 _maxAccel = 150.0
