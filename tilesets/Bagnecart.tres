@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cogf13na8euvr" path="res://scenes/Rails/Rail1bis.tscn" id="13_6rdsc"]
 [ext_resource type="Texture2D" uid="uid://bjgq0vqub2vxd" path="res://tilesets/decoration.png" id="15_6rdsc"]
 [ext_resource type="Texture2D" uid="uid://dnkgj7teg4kr5" path="res://sprites/Tilemap/Comptoir_tilemap.png" id="15_aogfk"]
-[ext_resource type="Texture2D" uid="uid://c8uxc7dy0cmru" path="res://sprites/Tilemap/Salles.png" id="17_6fku4"]
+[ext_resource type="Texture2D" uid="uid://dsi85m4bbv6ly" path="res://Trucs.png" id="17_6fku4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jms4"]
 texture = ExtResource("1_vchkl")
@@ -220,6 +220,9 @@ texture = ExtResource("17_6fku4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 3
@@ -235,5 +238,5 @@ sources/0 = SubResource("TileSetAtlasSource_1jms4")
 sources/1 = SubResource("TileSetScenesCollectionSource_dpdtw")
 sources/2 = SubResource("TileSetAtlasSource_6rdsc")
 sources/11 = SubResource("TileSetAtlasSource_6fku4")
-sources/6 = SubResource("TileSetAtlasSource_ojmcw")
-tile_proxies/coords_level = [[3, Vector2i(0, 0)], [6, Vector2i(0, 0)], [4, Vector2i(0, 0)], [6, Vector2i(1, 0)], [5, Vector2i(0, 0)], [6, Vector2i(2, 0)], [6, Vector2i(0, 0)], [11, Vector2i(3, 0)], [7, Vector2i(0, 0)], [11, Vector2i(4, 0)], [8, Vector2i(0, 0)], [11, Vector2i(5, 0)], [9, Vector2i(0, 0)], [11, Vector2i(6, 0)], [10, Vector2i(0, 0)], [11, Vector2i(7, 0)]]
+sources/7 = SubResource("TileSetAtlasSource_ojmcw")
+tile_proxies/coords_level = [[3, Vector2i(0, 0)], [7, Vector2i(0, 0)], [4, Vector2i(0, 0)], [7, Vector2i(1, 0)], [5, Vector2i(0, 0)], [7, Vector2i(2, 0)], [6, Vector2i(0, 0)], [7, Vector2i(3, 0)], [6, Vector2i(1, 0)], [7, Vector2i(4, 0)], [6, Vector2i(2, 0)], [7, Vector2i(5, 0)], [7, Vector2i(0, 0)], [11, Vector2i(4, 0)], [8, Vector2i(0, 0)], [11, Vector2i(5, 0)], [9, Vector2i(0, 0)], [11, Vector2i(6, 0)], [10, Vector2i(0, 0)], [11, Vector2i(7, 0)]]
