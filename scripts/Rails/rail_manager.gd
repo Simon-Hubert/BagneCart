@@ -6,9 +6,9 @@ static var instance : RailManager
 var rails : Array[Rail]
 var switchs : Array[RailSwitch]
 
-func _ready():
+func _init():
 	if instance != null:
-		print("NTM")
+		print("c'est vraiment pas cool d'instancier deux fois mon singleton")
 		queue_free()
 	instance = self
 
