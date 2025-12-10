@@ -3,6 +3,8 @@ var switch_lever : lever_interaction
 var neighbors : Array[Rail]
 var connections: Connexion
 
+signal _on_switch_signal
+
 func connect_rail(to_connect :Rail):
 	super(to_connect)
 	if neighbors.find(to_connect) == -1:
@@ -10,6 +12,8 @@ func connect_rail(to_connect :Rail):
 		connections.size = neighbors.size()
 
 func _ready():
+	super()
+	RailManager.instance.add_switch(self)
 	if switch_lever != null:
 		switch_lever.player_interact.connect(_on_switch)
 	connections = Connexion.new()
@@ -20,6 +24,7 @@ func _on_switch():
 	var v = connections.next()
 	connect_rail(neighbors[v.x])
 	connect_rail(neighbors[v.y])
+	_on_switch_signal.emit()
 	propagate_orientation(dir)
 
 func _process(_delta: float) -> void:

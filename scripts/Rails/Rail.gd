@@ -10,6 +10,9 @@ var connected: Array[Rail] = [null, null]
 var is_aligned := false
 var is_end_of_line := false
 
+func _ready():
+	RailManager.instance.add_rail(self)
+
 func get_side_force(other_position: Vector2) -> Vector2:
 	var center := global_position
 	var normal := Vector2(-dir.y, dir.x)
