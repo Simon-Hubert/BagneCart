@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsps8fndtvnd3"
-path="res://.godot/imported/Projectile.png-46437ac43836edc924936d74292be137.ctex"
+uid="uid://dmyiayodcrg74"
+path="res://.godot/imported/evacuation.png-44091341a9b734f514dc900c355af2d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Projectile.png"
-dest_files=["res://.godot/imported/Projectile.png-46437ac43836edc924936d74292be137.ctex"]
+source_file="res://sprites/Decoration/evacuation.png"
+dest_files=["res://.godot/imported/evacuation.png-44091341a9b734f514dc900c355af2d5.ctex"]
 
 [params]
 

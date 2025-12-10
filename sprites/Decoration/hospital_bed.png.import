@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsi85m4bbv6ly"
-path="res://.godot/imported/Trucs.png-9e19d21e5e24705bfd26969113a36f86.ctex"
+uid="uid://ddcd7uep4d2c1"
+path="res://.godot/imported/hospital_bed.png-1104136806793f26bd3d610f1d9fe119.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Trucs.png"
-dest_files=["res://.godot/imported/Trucs.png-9e19d21e5e24705bfd26969113a36f86.ctex"]
+source_file="res://sprites/Decoration/hospital_bed.png"
+dest_files=["res://.godot/imported/hospital_bed.png-1104136806793f26bd3d610f1d9fe119.ctex"]
 
 [params]
 

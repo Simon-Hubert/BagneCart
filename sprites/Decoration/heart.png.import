@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkkti4sg4v785"
-path="res://.godot/imported/tilemapfloor.png-b7cc1bbd52fc4747c0c869901b6d755e.ctex"
+uid="uid://b05sq5d5ukqij"
+path="res://.godot/imported/heart.png-62dcefd0fb43a34db673475a321e423e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tilemapfloor.png"
-dest_files=["res://.godot/imported/tilemapfloor.png-b7cc1bbd52fc4747c0c869901b6d755e.ctex"]
+source_file="res://sprites/Decoration/heart.png"
+dest_files=["res://.godot/imported/heart.png-62dcefd0fb43a34db673475a321e423e.ctex"]
 
 [params]
 

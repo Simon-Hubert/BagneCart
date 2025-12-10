@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b05sq5d5ukqij"
-path="res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"
+uid="uid://c50p5nofnvaig"
+path="res://.godot/imported/savon_de_simon.png-3aa0aa492820c73e97b86ccb9b8b452e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"]
+source_file="res://sprites/Decoration/savon_de_simon.png"
+dest_files=["res://.godot/imported/savon_de_simon.png-3aa0aa492820c73e97b86ccb9b8b452e.ctex"]
 
 [params]
 

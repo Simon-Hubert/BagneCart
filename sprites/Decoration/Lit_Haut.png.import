@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ymw2khgs3y1"
-path="res://.godot/imported/Urinal.png-87f66f8541ad41ddaee0cb5da697e9a5.ctex"
+uid="uid://wwomdcx3p7m5"
+path="res://.godot/imported/Lit_Haut.png-6738cab6c19229b1284d232af53c10b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Urinal.png"
-dest_files=["res://.godot/imported/Urinal.png-87f66f8541ad41ddaee0cb5da697e9a5.ctex"]
+source_file="res://sprites/Decoration/Lit_Haut.png"
+dest_files=["res://.godot/imported/Lit_Haut.png-6738cab6c19229b1284d232af53c10b8.ctex"]
 
 [params]
 

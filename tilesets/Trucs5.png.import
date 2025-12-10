@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfqm6gj6kv60y"
-path="res://.godot/imported/Balai.png-3d85e192e71d9b106af174f5dc48c6e1.ctex"
+uid="uid://pcqb6jjrdgma"
+path="res://.godot/imported/Trucs5.png-e4c96f35a6f195154edc780396f21bc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Balai.png"
-dest_files=["res://.godot/imported/Balai.png-3d85e192e71d9b106af174f5dc48c6e1.ctex"]
+source_file="res://tilesets/Trucs5.png"
+dest_files=["res://.godot/imported/Trucs5.png-e4c96f35a6f195154edc780396f21bc7.ctex"]
 
 [params]
 

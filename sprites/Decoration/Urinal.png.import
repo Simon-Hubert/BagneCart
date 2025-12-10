@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bttpc7ye7dh6c"
-path="res://.godot/imported/Urinal-dirty.png-7dfc96184f0501cfa415e7fbedce2403.ctex"
+uid="uid://b2ymw2khgs3y1"
+path="res://.godot/imported/Urinal.png-f76f5772326f656008888c49e059544d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Urinal-dirty.png"
-dest_files=["res://.godot/imported/Urinal-dirty.png-7dfc96184f0501cfa415e7fbedce2403.ctex"]
+source_file="res://sprites/Decoration/Urinal.png"
+dest_files=["res://.godot/imported/Urinal.png-f76f5772326f656008888c49e059544d.ctex"]
 
 [params]
 

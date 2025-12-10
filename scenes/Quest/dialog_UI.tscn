@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cqp6s2yqay6hu" path="res://resources/Theme/UI_theme.tres" id="1_ihf71"]
 [ext_resource type="Script" uid="uid://dxpula0g05k03" path="res://scripts/Quest/dialog_UI.gd" id="1_otvh6"]
-[ext_resource type="Texture2D" uid="uid://5qnk4gpdp4wn" path="res://sprites/UI_rect.png" id="2_hebjp"]
+[ext_resource type="Texture2D" uid="uid://5qnk4gpdp4wn" path="res://sprites/Decoration/UI_rect.png" id="2_hebjp"]
 [ext_resource type="Texture2D" uid="uid://5t220wcxghui" path="res://sprites/QuestItem/Item4.png" id="4_3hcrl"]
 [ext_resource type="Texture2D" uid="uid://cora71agpxtrr" path="res://sprites/questArrow.png" id="5_r6vbc"]
 [ext_resource type="FontFile" uid="uid://bbrgpo7dwibx3" path="res://Font/Pixel Digivolve.otf" id="6_r6vbc"]

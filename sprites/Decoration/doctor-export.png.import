@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cora71agpxtrr"
-path="res://.godot/imported/questArrow.png-b5f4029f5518c63968177ee21f43a0fd.ctex"
+uid="uid://otppg6kv6p6t"
+path="res://.godot/imported/doctor-export.png-727538184118b7a03f3c49ff9d4f434d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/questArrow.png"
-dest_files=["res://.godot/imported/questArrow.png-b5f4029f5518c63968177ee21f43a0fd.ctex"]
+source_file="res://sprites/Decoration/doctor-export.png"
+dest_files=["res://.godot/imported/doctor-export.png-727538184118b7a03f3c49ff9d4f434d.ctex"]
 
 [params]
 

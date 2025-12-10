@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3a7t8l6a2ea3"
-path="res://.godot/imported/boulder.png-a8ff2bedf335ef78871518c7e4515571.ctex"
+uid="uid://dx6m00ris4ve3"
+path="res://.godot/imported/Tile_Bleue.png-7f85ade914800c54b8a33014c054f59e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/boulder.png"
-dest_files=["res://.godot/imported/boulder.png-a8ff2bedf335ef78871518c7e4515571.ctex"]
+source_file="res://sprites/Decoration/Tile_Bleue.png"
+dest_files=["res://.godot/imported/Tile_Bleue.png-7f85ade914800c54b8a33014c054f59e.ctex"]
 
 [params]
 

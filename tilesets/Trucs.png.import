@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs42xue8tfdrj"
-path="res://.godot/imported/bed.png-2bed4e645a7408d894fda80664f0296f.ctex"
+uid="uid://dsi85m4bbv6ly"
+path="res://.godot/imported/Trucs.png-03d4ce8baaceda09b3a291a5b5c64651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bed.png"
-dest_files=["res://.godot/imported/bed.png-2bed4e645a7408d894fda80664f0296f.ctex"]
+source_file="res://tilesets/Trucs.png"
+dest_files=["res://.godot/imported/Trucs.png-03d4ce8baaceda09b3a291a5b5c64651.ctex"]
 
 [params]
 
