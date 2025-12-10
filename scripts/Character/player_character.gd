@@ -104,7 +104,7 @@ func _interact() -> void:
 		$PickedItem.drop_item()
 
 func _attack() -> void :
-	if not _can_attack:
+	if !_can_attack || is_carying_object():
 		return
 	_start_attack_cooldown()
 	var new_attack = ATTACK_SCENE.instantiate() as PlayerAttack
@@ -123,6 +123,9 @@ func _start_attack_cooldown() -> void :
 	
 func set_can_move(can_move: bool)->void:
 	_can_move = can_move
+
+func is_carying_object() -> bool:
+	return _current_penalty != 0
 
 ##Restore one health point
 func restore_health():
