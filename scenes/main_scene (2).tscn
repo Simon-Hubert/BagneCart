@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b8i78tp7c6hs7" path="res://scenes/RoomTest/Bottom.tscn" id="11_8bv7m"]
 [ext_resource type="PackedScene" uid="uid://llcpyu6xoonj" path="res://scenes/RoomTest/RightBottom.tscn" id="12_vt87o"]
 [ext_resource type="PackedScene" uid="uid://da7ar0hnooib0" path="res://scenes/RoomTest/LeftBottom.tscn" id="13_32mn2"]
-[ext_resource type="PackedScene" uid="uid://bhp5jftc6hts0" path="res://scenes/RoomTest/BottomHorizontal.tscn" id="15_k3t37"]
+[ext_resource type="PackedScene" path="res://scenes/RoomTest/BottomHorizontal.tscn" id="15_k3t37"]
 [ext_resource type="PackedScene" uid="uid://nfv1pj7tfqgu" path="res://scenes/RoomTest/Vertical.tscn" id="15_u3qx5"]
 [ext_resource type="PackedScene" uid="uid://5hqx1gtar02y" path="res://scenes/RoomTest/RightVertical.tscn" id="16_n00t7"]
 [ext_resource type="PackedScene" uid="uid://tyfo1ko1y6n2" path="res://scenes/RoomTest/LeftVertical.tscn" id="17_46q0l"]
@@ -27,6 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://dtdg54jdwbrws" path="res://scenes/UI/quest_indicator.tscn" id="24_un506"]
 
 [node name="Node2D2" type="Node2D"]
+
+[node name="RailManager" type="Node2D" parent="."]
+script = ExtResource("20_k3t37")
+metadata/_custom_type_script = "uid://kiviwp4rwpi4"
 
 [node name="GameManager" parent="." instance=ExtResource("1_36eke")]
 
@@ -56,10 +60,6 @@ ROOMSIZE = Vector2(336, 208)
 RAILSIZE = 16
 NumberOfRooms = 25
 extra_doors_probability = 100.0
-
-[node name="RailManager" type="Node2D" parent="."]
-script = ExtResource("20_k3t37")
-metadata/_custom_type_script = "uid://kiviwp4rwpi4"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
