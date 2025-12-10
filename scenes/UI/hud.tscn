@@ -12,12 +12,12 @@ heart_scene = ExtResource("2_fymyw")
 cross_scene = ExtResource("3_y5tme")
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
-offset_right = 170.0
-offset_bottom = 50.0
+offset_right = 300.0
+offset_bottom = 100.0
 theme_override_constants/separation = 10
 
 [node name="QuestFailedContainer" type="HBoxContainer" parent="."]
-offset_top = 49.0
-offset_right = 170.0
-offset_bottom = 99.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 200.0
 theme_override_constants/separation = 10

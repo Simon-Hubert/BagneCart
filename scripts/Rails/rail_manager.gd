@@ -19,7 +19,9 @@ func _process(_delta):
 				print(area.collider.flip_normal)
 				print("position :")
 				print(area.collider.global_position)
-				print("-1 :")
-				print(area.collider.connected[-1].global_position)
-				print("-2 :")
-				print(area.collider.connected[-2].global_position)				
+				if area.collider.connected[-1]:
+					print("-1 :")
+					print(area.collider.connected[-1].global_position)
+				if area.collider.connected[-2]:
+					print("-2 :")
+					print(area.collider.connected[-2].global_position)				

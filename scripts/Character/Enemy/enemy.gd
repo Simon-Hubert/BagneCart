@@ -6,6 +6,9 @@ const CART_AREA_NAME = "CartInteraction"
 const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn" 
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
+static var _health_drop_proba_modifier : float = 0
+
+
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
 @onready var range_attack_shape = $RangeAttackArea/CollisionShape2D
@@ -27,6 +30,7 @@ var is_dead := false
 @export_category("Parameter")
 @export var _enemy_cart_push : float = 100
 @export_range(0,1) var _health_potion_drop_rate : float = 0.25
+@export var _health_drop_proba_modifier_factor : float = 5
 
 var speed : float = 500
 var max_accel : float = 750
@@ -118,8 +122,12 @@ func hit(_dir : Vector2) -> void:
 		animation_player.play("Death")
 		is_dead = true
 		#Drop a potion
-		if quest_manager.Instance.rng.randf() <= _health_potion_drop_rate:
+		if quest_manager.Instance.rng.randf() <= _health_potion_drop_rate + _health_drop_proba_modifier:
+			print("spawn potion")
 			game_manager.Instance.spawn_health_potion(global_position)
+			_health_drop_proba_modifier -= _health_drop_proba_modifier_factor
+		else:
+			_health_drop_proba_modifier += _health_drop_proba_modifier_factor
 	else:
 		animation_player.play("Hit")
 
