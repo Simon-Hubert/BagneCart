@@ -11,28 +11,28 @@ tile_map_data = PackedByteArray("AAAAAPf/AAAFAAEAAAAAAPj/AAALAAQAAAAAAPn/BwAEAAA
 tile_set = ExtResource("1_hrlmw")
 
 [node name="Infirmerie" type="TileMapLayer" parent="Floor"]
-tile_map_data = PackedByteArray("AAACAPX/AAABAAYAAAADAPX/AAABAAYAAAAEAPX/AAABAAYAAAAFAPX/AAABAAYAAAAGAPX/AAABAAYAAAAHAPX/AAABAAYAAAAIAPX/AAABAAYAAAAEAPf/AAAAAAYAAAAFAPf/AAAAAAYAAAAGAPf/AAAAAAYAAAACAP7/AAABAAYAAAADAP7/AAABAAYAAAAEAP7/AAABAAYAAAAFAP7/AAABAAYAAAAGAP7/AAABAAYAAAAHAP7/AAABAAYAAAAIAP7/AAABAAYAAAAQAPb/CwACAAAAAAAEAPz/AAAAAAYAAAAFAPz/AAAAAAYAAAAGAPz/AAAAAAYAAAARAPb/AAAAAAYAAAASAPb/AAAAAAYAAAATAPb/CwACAAAAAAASAPX/CwACAAAAAAARAPj/CwACAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAPX/AAABAAYAAAADAPX/AAABAAYAAAAEAPX/AAABAAYAAAAFAPX/AAABAAYAAAAGAPX/AAABAAYAAAAHAPX/AAABAAYAAAAIAPX/AAABAAYAAAAEAPf/AAAAAAYAAAAFAPf/AAAAAAYAAAAGAPf/AAAAAAYAAAACAP7/AAABAAYAAAADAP7/AAABAAYAAAAEAP7/AAABAAYAAAAFAP7/AAABAAYAAAAGAP7/AAABAAYAAAAHAP7/AAABAAYAAAAIAP7/AAABAAYAAAAEAPz/AAAAAAYAAAAFAPz/AAAAAAYAAAAGAPz/AAAAAAYAAAARAP3/DQABAAEAADARAP7/DQAKAAEAADATAP3/DQABAAEAADATAP7/DQAKAAEAADANAP3/DQABAAEAADANAP7/DQAKAAEAADAPAP3/DQABAAEAADAPAP7/DQAKAAEAADAQAPb/DQABAAEAAAAQAPX/DQAKAAEAAAATAPX/DQAKAAEAAAATAPb/DQABAAEAAAARAPX/DQAEAAEAAAASAPX/DQAEAAEAABA=")
 tile_set = ExtResource("1_hrlmw")
 
 [node name="NPC_spawn_point" parent="." instance=ExtResource("2_roe46")]
-position = Vector2(225, -160)
+position = Vector2(208, -162)
 
 [node name="enemy_group" parent="." instance=ExtResource("3_t03hw")]
 position = Vector2(125, -104)
 
 [node name="spawn_1" parent="enemy_group" index="0"]
-position = Vector2(155, 16)
+position = Vector2(158, 24)
 
 [node name="spawn_2" parent="enemy_group" index="1"]
-position = Vector2(-46, 62)
+position = Vector2(11, 56)
 
 [node name="spawn_3" parent="enemy_group" index="2"]
-position = Vector2(57, -2)
+position = Vector2(41, -18)
 
 [node name="spawn_4" parent="enemy_group" index="3"]
-position = Vector2(73, 58)
+position = Vector2(91, 39)
 
 [node name="spawn_5" parent="enemy_group" index="4"]
-position = Vector2(-35, -29)
+position = Vector2(-4, -61)
 
 [editable path="enemy_group"]
