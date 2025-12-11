@@ -9,6 +9,7 @@ enum RoomType
 }
 @export var _rail : PackedScene
 @export var _switch : PackedScene
+@export var _lever : PackedScene
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : Vector2
 @export var RAILSIZE : int
@@ -18,6 +19,9 @@ enum RoomType
 @export var multi_directional_weight : float
 @export var uni_directional_weight : float
 @export var no_direction_weight : float
+
+@export_category("Spawn lever")
+@export var lever_distance_to_switch : float = 25
 
 var _first_rail : Rail
 
@@ -263,7 +267,7 @@ func _get_opposite_door_index(index : int) -> int:
 	if index == 3: return 2 # left
 	return -1
 
-func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
+func _fix_doors(dungeon: Array[RoomData], _occupied: Dictionary):
 	for room in dungeon:
 		var pos = room.grid_pos
 
@@ -314,6 +318,15 @@ func generate_rails_for_room(inst : Node, room : RoomData, spawn_cart : bool, ro
 	var center	
 	if count > 2:
 		center = _switch.instantiate()
+		#Spawn corresponding lever
+		var switch_lever : lever = _lever.instantiate() as lever
+		inst.add_child(switch_lever)
+		#Spawn in diagonal to avoid railse
+		switch_lever.position = Vector2(ROOMSIZE.x, -ROOMSIZE.y)/2.0 + Vector2(math.RandomSign(), math.RandomSign()) * lever_distance_to_switch
+		
+		var spawned_switch : RailSwitch = center as RailSwitch
+		switch_lever.on_interacted.connect(spawned_switch._on_switch)
+				
 	else:
 		center = _rail.instantiate()
 	inst.add_child(center)

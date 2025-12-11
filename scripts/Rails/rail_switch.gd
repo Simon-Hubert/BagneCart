@@ -28,10 +28,6 @@ func _on_switch():
 	_on_switch_signal.emit()
 	propagate_orientation(dir)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Attack"):
-		_on_switch()
-
 class Connexion :
 	var i : int = 0
 	var j : int = 0

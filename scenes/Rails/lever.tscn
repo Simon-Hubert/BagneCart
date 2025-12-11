@@ -9,6 +9,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88hkj"]
 size = Vector2(19, 19)
 
+[sub_resource type="Animation" id="Animation_0buwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_qmoel")]
+}
+
 [sub_resource type="Animation" id="Animation_88hkj"]
 resource_name = "Switch"
 length = 0.2
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "values": [ExtResource("1_qmoel"), ExtResource("3_88hkj"), ExtResource("5_0buwj")]
 }
 
-[sub_resource type="Animation" id="Animation_0buwj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_qmoel")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37cy7"]
 _data = {
 &"RESET": SubResource("Animation_0buwj"),
@@ -47,7 +47,7 @@ _data = {
 }
 
 [node name="Lever" type="Sprite2D"]
-z_index = -1
+z_index = 2
 texture = ExtResource("1_qmoel")
 script = ExtResource("2_tmonj")
 
