@@ -8,7 +8,10 @@ radius = 9.0
 
 [node name="PlayerAttack" type="Area2D"]
 z_index = 5
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_2tl33")
+lifetime = 0.5
 metadata/_custom_type_script = "uid://dpftfweguumqp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -20,4 +23,5 @@ position = Vector2(0.5, -8)
 texture = ExtResource("2_pqjam")
 region_rect = Rect2(112, 128, 17, 17)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -29,22 +29,18 @@ static func clamp_cart_pos(cart: Cart, rail: Rail) -> void:
 	var a = rail.dir
 
 	if a.dot(Vector2.UP) > 0.01 :
-		print("UP")
 		if cart.global_position.y > rail.global_position.y:
 			cart.global_position.y = rail.global_position.y
 		return
 	if a.dot(Vector2.DOWN) > 0.01:
-		print("DOWN")
 		if cart.global_position.y < rail.global_position.y:
 			cart.global_position.y = rail.global_position.y
 		return
 	if a.dot(Vector2.LEFT) > 0.01:
-		print("LEFT")
 		if cart.global_position.x > rail.global_position.x:
 			cart.global_position.x = rail.global_position.x
 		return
 	if a.dot(Vector2.RIGHT) > 0.01:
-		print("RIGHT")
 		if cart.global_position.x < rail.global_position.x:
 			cart.global_position.x = rail.global_position.x
 		return

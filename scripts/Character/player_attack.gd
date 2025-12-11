@@ -11,6 +11,17 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body:Node2D) -> void:
+	print(body.name)
 	if body is enemy:
 		body.hit(direction)
 		queue_free()
+	elif body is ennemy_projectile:
+		body.queue_free()
+		queue_free()
+
+func _on_area_entered(area : Area2D) -> void:
+	var proj = area.get_parent()
+	if proj is ennemy_projectile:
+		proj.queue_free()
+		
+
