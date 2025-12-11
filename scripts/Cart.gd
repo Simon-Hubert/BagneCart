@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	
 func _on_player_hopped_in() -> void:
 	_no_friction = true
-	_lin_speed += _ride_boost
+	_lin_speed += _ride_boost * sign(_lin_speed)
 
 func _on_player_hopped_out() -> void:
 	_no_friction = false
@@ -108,3 +108,7 @@ func _on_screen_entered() -> void:
 ##Update if the cart is NOT on screen
 func _on_screen_exited() -> void:
 	on_exit_screen.emit()
+
+##A passthrough function to call "_on_item_picked_up()"
+func dismount_item() -> void:
+	_cart_interaction._on_item_picked_up()

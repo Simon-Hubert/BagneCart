@@ -106,7 +106,7 @@
 		"ce que je t'ai demandé !",
 		"ce dont on avait parlé !",
 		"ce sur quoi on s'était mis d'accord.",
-        "#questitem#."
+        "#questItem#."
 	],
 
 
@@ -253,7 +253,7 @@
 		"Tu peux pas m'apporter",
 		"Va me récupérer",
 		"Tu peux me rapporter",
-        "Tu pourrais m'amener"
+        "Tu pourrais trouver"
 	],
 	"quest_object_quest_prisonner": [
 	   "et me le ramener ?",
@@ -281,7 +281,7 @@
 		"Tu peux pas m'apporter",
 		"Va me récupérer",
 		"Tu peux me rapporter",
-        "Tu pourrais m'amener"
+        "Tu pourrais trouver"
 	],
 	"quest_object_quest_guard": [
 	   "et me le ramener ?",

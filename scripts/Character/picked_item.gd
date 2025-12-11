@@ -9,6 +9,9 @@ var put_down_cooldown := 0.5
 signal on_item_picked(Pickupable)
 signal on_item_dropped
 
+func get_item() -> Pickupable:
+	return _current_item
+
 func pick_item(item: Pickupable) -> void:
 	if not empty :
 		return

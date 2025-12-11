@@ -53,6 +53,7 @@ z_index = 5
 script = ExtResource("1_2136m")
 _radius = 20.0
 _max_accel = 10000.0
+_ride_boost = 100.0
 _friction = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
