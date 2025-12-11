@@ -108,3 +108,7 @@ func _on_screen_entered() -> void:
 ##Update if the cart is NOT on screen
 func _on_screen_exited() -> void:
 	on_exit_screen.emit()
+
+##A passthrough function to call "_on_item_picked_up()"
+func dismount_item() -> void:
+	_cart_interaction._on_item_picked_up()
