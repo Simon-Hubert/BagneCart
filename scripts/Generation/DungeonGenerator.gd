@@ -50,8 +50,12 @@ func _generate_dungeon(count: int) -> Dictionary:
 
 	for i in range(1, count):
 		var available_dirs = _get_available_dirs_for_room(current_room, occupied)
-
+		var counter = 0
 		while available_dirs.is_empty():
+			if counter > 100000:
+				return _generate_dungeon(count)
+			counter += 1
+
 			print("Dead end at ", current_room.grid_pos)
 
 			stack.pop_back()
