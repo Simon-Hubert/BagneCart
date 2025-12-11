@@ -235,35 +235,67 @@
 	],
 	
 	
-	"quest_object_origin": [
-        "#quest_object_header# #quest_object_verb# #questItem# #quest_object_quest# #quest_object_finish#"
+	"quest_object_origin_prisonner": [
+        "#quest_object_header_prisonner# #quest_object_verb_prisonner# #questItem# #quest_object_quest_prisonner# #quest_object_finish_prisonner#"
 	],
-	"quest_object_header": [
+	"quest_object_origin_guard": [
+        "#quest_object_header_guard# #quest_object_verb_guard# #questItem# #quest_object_quest_guard# #quest_object_finish_guard#"
+	],
+	"quest_object_header_prisonner": [
 		"Yo, ça va ?",
-		"Hey.",
+		"Hey, Tranquille ?",
 		"Mec, viens par là !",
-		"Mon gars  !",
-        "Viens par ici mon ami !!"
+		"Mon gars !",
+        "Eh ! Viens par ici le concierge !!"
 	],
-	"quest_object_verb": [
+	"quest_object_verb_prisonner": [
 		"Tu peux aller me chercher",
-		"Peux-tu vérifier où se trouve",
-		"Va me chercher",
+		"Tu peux pas m'apporter",
+		"Va me récupérer",
 		"Tu peux me rapporter",
-        "Pourrais-tu chercher"
+        "Tu pourrais m'amener"
 	],
-	"quest_object_quest": [
-		"et me le ramener ?",
-		"et l'attraper pour moi ?",
-		", je l'ai perdu hier soir pendant la mutinerie."
+	"quest_object_quest_prisonner": [
+	   "et me le ramener ?",
+		"et le ramasser pour moi ?",
+		", je l'ai perdu hier soir pendant la mutinerie.",
+        ", j'en ai besoin."
 	],
-	"quest_object_finish": [
-		"Genre, s'il te plaît, j'en ai vraiment besoin.",
-		"Si je ne le retrouve pas, je suis un homme mort.",
-		"Et je t'épargnerai.",
-		"Tu auras une superbe récompense à la clé.",
+	"quest_object_finish_prisonner": [
+		"Faut que je l'ai, maintenant.",
+		"Je compte sur toi.",
+		"Et je te laisserai tranquille.",
+		"Tu auras un petit truc en récompense.",
 		"Allez ! Dépêche toi !",
         "Bonne chance."
+	],
+	"quest_object_header_guard": [
+		"J'ai besoin d'un service.",
+		"Ça se passe ?",
+		"Le concierge viens par là !",
+		"Viens ici deux minutes !",
+        "Eh ! Le concierge !!"
+	],
+	"quest_object_verb_guard": [
+		"Tu peux aller me chercher",
+		"Tu peux pas m'apporter",
+		"Va me récupérer",
+		"Tu peux me rapporter",
+        "Tu pourrais m'amener"
+	],
+	"quest_object_quest_guard": [
+	   "et me le ramener ?",
+		"et le ramasser pour moi ?",
+		", je l'ai perdu hier soir pendant la mutinerie.",
+        ", j'en ai besoin."
+	],
+	"quest_object_finish_guard": [
+		"Faut que je l'ai, maintenant.",
+		"Je compte sur toi.",
+		"Si tu fais ça vite, je glisserais quelques mots au directeur.",
+		"Tu auras un petit truc en récompense.",
+		"Allez ! Dépêche toi !",
+        "Et tu me fais ça vite !"
 	],
 	
 	

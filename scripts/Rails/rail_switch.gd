@@ -21,6 +21,7 @@ func _ready():
 func _on_switch():
 	for rail in neighbors:
 		rail.disconnect_rail(self)
+		rail.propagate_orientation(rail.dir)
 	var v = connections.next()
 	connect_rail(neighbors[v.x])
 	connect_rail(neighbors[v.y])
