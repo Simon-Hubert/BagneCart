@@ -9,6 +9,7 @@ const DIALOG_SOUND_FILE : AudioStream = preload("res://Audio/Dialogue.mp3")
 @onready var quest_item_image : TextureRect = $Fullrect/DialogParent/DialogMargin/DialogBackground/QuestItem
 @onready var quest_arrow_animation :AnimationPlayer = $ArrowAnimation
 @onready var _sound_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var _bind_timer : Timer = $Timer
 
 @export var animtion_player : AnimationPlayer
 @export var animation_timer : Timer
@@ -41,10 +42,15 @@ func display_dialog(character_name : String, dialog : String, display_icon : Tex
 	
 	#play sound
 	_play_sound(DIALOG_SOUND_FILE)
+	_bind_timer.start()
 	
+##Bind to player interact key
+func bind_close_dialog() -> void:
+	game_manager.Instance.player_ref.on_player_interacted.connect(close_dialog)
 	
 ##Hide animation when ends
-func _on_timer_timeout() -> void:
+func close_dialog() -> void:
+	game_manager.Instance.player_ref.on_player_interacted.disconnect(close_dialog)
 	animtion_player.play_backwards(ANIMATION_NAME)
 	is_displayed = false
 	_sound_player.stop()

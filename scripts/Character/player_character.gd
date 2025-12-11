@@ -48,6 +48,7 @@ var _default_position : Vector2
 
 signal on_player_setup_health(defaultHealth : int)
 signal on_player_update_health(newHealth : int)
+signal on_player_interacted
 signal on_player_exited_screen
 
 func _ready() -> void:
@@ -90,6 +91,7 @@ func get_input() -> void:
 	#interact key
 	if(Input.is_action_just_pressed("Interact")):
 		_interact()
+		on_player_interacted.emit()
 	#attack key
 	if(Input.is_action_just_pressed("Attack")):
 		_attack()
