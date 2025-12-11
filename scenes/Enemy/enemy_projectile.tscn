@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5cyx65v4s8dx"]
+[gd_scene load_steps=6 format=3 uid="uid://b5cyx65v4s8dx"]
 
 [ext_resource type="Script" uid="uid://doc243psvh6c0" path="res://scripts/ennemy_projectile.gd" id="1_e8ik0"]
 [ext_resource type="Texture2D" uid="uid://bsps8fndtvnd3" path="res://sprites/Decoration/Projectile.png" id="1_lofwd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ra1nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8ik0"]
 
@@ -11,13 +13,16 @@ size = Vector2(8, 13)
 [node name="Node2D" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_ra1nf")
 gravity_scale = 0.0
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 150
 angular_velocity = 34.906586
 angular_damp_mode = 1
 script = ExtResource("1_e8ik0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_e8ik0")
 disabled = true
 
@@ -37,6 +42,5 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_e8ik0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="timeout" from="LifeTimeTimer" to="." method="_on_lifetime_ended"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

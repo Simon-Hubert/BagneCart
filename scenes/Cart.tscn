@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ctka518sfn3d3" path="res://Audio/Minecart.mp3" id="4_bq08c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2136m"]
-size = Vector2(8, 8)
+size = Vector2(18, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq08c"]
 radius = 17.0
@@ -51,7 +51,7 @@ _data = {
 [node name="Cart" type="Node2D"]
 z_index = 5
 script = ExtResource("1_2136m")
-_radius = 16.0
+_radius = 20.0
 _max_accel = 10000.0
 _friction = 2.0
 

@@ -59,7 +59,6 @@ _rooms = Dictionary[String, PackedScene]({
 ROOMSIZE = Vector2(336, 208)
 RAILSIZE = 16
 NumberOfRooms = 25
-extra_doors_probability = 100.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
