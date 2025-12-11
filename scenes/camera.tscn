@@ -5,7 +5,7 @@
 [node name="CameraFollow" type="Camera2D"]
 zoom = Vector2(6, 6)
 script = ExtResource("1_cvpoc")
-screen_limit = Vector2(90, 90)
+screen_limit = Vector2(90, 80)
 camera_offset = Vector2(336, 208)
 _decay = 7.0
 _distance_threshold = 1.0
