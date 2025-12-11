@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpnttjm8gbjcm"]
+[gd_scene load_steps=11 format=3 uid="uid://bpnttjm8gbjcm"]
 
 [ext_resource type="Texture2D" uid="uid://ccekuaj8ex1p1" path="res://sprites/Lever/Levier_0.png" id="1_qmoel"]
 [ext_resource type="Script" uid="uid://dwakpp3bxbd6v" path="res://scripts/lever.gd" id="2_tmonj"]
 [ext_resource type="Texture2D" uid="uid://ce0ou2p7nybtu" path="res://sprites/Lever/Levier_1.png" id="3_88hkj"]
 [ext_resource type="Script" uid="uid://md84t7gmw7wx" path="res://scripts/lever_interactable.gd" id="3_tmonj"]
 [ext_resource type="Texture2D" uid="uid://bytjmguwolltt" path="res://sprites/Lever/Levier_2.png" id="5_0buwj"]
+[ext_resource type="AudioStream" uid="uid://rhqdjiknva0t" path="res://Audio/clank1-91862.mp3" id="6_37cy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88hkj"]
 size = Vector2(19, 19)
@@ -63,5 +64,8 @@ shape = SubResource("RectangleShape2D_88hkj")
 libraries = {
 &"": SubResource("AnimationLibrary_37cy7")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_37cy7")
 
 [connection signal="player_interact" from="Interactable" to="." method="_on_interactable_player_interact"]
