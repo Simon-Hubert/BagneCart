@@ -31,16 +31,21 @@ func _process(_delta: float) -> void:
 	arrow.visible = quest_manager.Instance.has_quest
 	if !arrow.visible || ! player || !camera:
 		return
+		
+	var item_distance : float
+	var item_position : Vector2 
 	
-	#Update rotation
 	var cloest_item_position : quest_manager.closest_quest_item_data = quest_manager.Instance.get_closest_quest_item(player.global_position)
+	item_distance = cloest_item_position.distance
+	item_position = cloest_item_position.position
+	
 	#Check if not too close
-	if minimum_distance >= cloest_item_position.distance:
+	if minimum_distance >= item_distance:
 		arrow.visible = false
 		return
 	
 	#Update rotation
-	var diff : Vector2 = cloest_item_position.position - player.global_position
+	var diff : Vector2 = item_position - player.global_position
 	arrow.rotation_degrees = rad_to_deg(diff.angle()) + 90
 	
 	#Set clamped position
