@@ -153,10 +153,7 @@ func hit(dir : Vector2) -> void:
 	_is_knockbacked = true
 	velocity = dir * _knockback_intensity
 	knockback_timer.start()	
-	
-	#Eject from cart if was in there
-	if !_can_move:
-		_interact()
+
 		
 	#Check player death
 	if is_dead:
@@ -168,6 +165,9 @@ func hit(dir : Vector2) -> void:
 		is_dead = true
 		game_manager.Instance.respawn_player()
 		_play_sound(HIT_SOUND_FILE)
+	#Eject from cart if was in there
+	elif !_can_move:
+		_interact()
 	else:
 		animation_player.play("Hit")
 		_play_sound(HIT_SOUND_FILE)
