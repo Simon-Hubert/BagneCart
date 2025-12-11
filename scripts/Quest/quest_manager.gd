@@ -192,6 +192,13 @@ func get_closest_quest_item(player_position : Vector2) -> closest_quest_item_dat
 			cloest_data.position = item.global_position
 	return cloest_data
 
+##Returns if there's a valid item on the screen
+func is_valid_item_on_screen() -> bool:
+	for item in quest_item_list:
+		if item.is_correct_item(current_quest_item):
+			return true
+	return false
+
 class closest_quest_item_data:
 	var position : Vector2
 	var distance : float = -1

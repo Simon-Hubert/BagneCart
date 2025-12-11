@@ -57,16 +57,12 @@ func _process(_delta: float) -> void:
 	quest_icon.rotation = -arrow.rotation
 
 func _get_indicator_data() -> void:
-	if game_manager.Instance.player_ref.is_carying_object():
-		#Check if player is holding the correct item
-		var held_item : quest_item = game_manager.Instance.player_ref.get_carying_object() as quest_item
-		if !held_item:
-			pass
-		if held_item.is_correct_item_name(quest_manager.Instance.current_quest_item):
-			_item_position = quest_manager.Instance.current_quest_giver_position
-			_item_distance = _item_position.distance_to(game_manager.Instance.player_ref.global_position)
-			quest_icon.texture = npc_indicator_texture
-			return
+	if quest_manager.Instance.is_valid_item_on_screen():
+		#Check if correct item is in the room
+		_item_position = quest_manager.Instance.current_quest_giver_position
+		_item_distance = _item_position.distance_to(game_manager.Instance.player_ref.global_position)
+		quest_icon.texture = npc_indicator_texture
+		return
 						
 	#Else, search nearest item postition
 	var cloest_item_position : quest_manager.closest_quest_item_data = quest_manager.Instance.get_closest_quest_item(player.global_position)
