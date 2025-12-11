@@ -64,6 +64,7 @@ func get_rng() -> RandomNumberGenerator:
 
 ##Spawns NPC's based on the list of positions
 func spawn_NPC() -> void:
+	
 	if npc_spawn_point_list.size() <= 0:
 		push_error("No spawn point added !")
 		return
@@ -73,15 +74,18 @@ func spawn_NPC() -> void:
 			
 	var quest_item_name_list : Array[String]	
 	#Spawn NPC
+	print("Started for")
 	for i in range(npc_number):
 		var newNPC : NPC = NPC_SCENE.instantiate()
 		add_child(newNPC)
 		var position_index := rng.randi() % npc_spawn_point_list.size()
+		print("middle for")
 		newNPC.global_position = npc_spawn_point_list[position_index]
 		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
 		quest_item_name_list.append(newNPC.data.quest_item_to_get)
 		spawned_NPC_position_list.append(newNPC.global_position)
+	print("ended for")
 		
 	#Spawn needed quest item
 	for item in quest_item_name_list:
