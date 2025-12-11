@@ -1,12 +1,23 @@
 class_name DungeonGenerator extends Node2D
-
+enum RoomType
+{
+	NO,
+	BI,
+	UNI,
+	TRI,
+	MULTI
+}
 @export var _rail : PackedScene
 @export var _switch : PackedScene
 @export var _rooms : Dictionary[String, PackedScene]
 @export var ROOMSIZE : Vector2
 @export var RAILSIZE : int
 @export var NumberOfRooms : int
-@export var extra_doors_probability : float
+@export var bi_directional_weight : float
+@export var tri_directional_weight : float
+@export var multi_directional_weight : float
+@export var uni_directional_weight : float
+@export var no_direction_weight : float
 
 var _first_rail : Rail
 
@@ -63,10 +74,6 @@ func _generate_dungeon(count: int) -> Dictionary:
 
 		current_room.doors[cur_index] = true
 		next_room.doors[next_index] = true
-
-		for j in range(4):
-			if j != next_index and randf() < extra_doors_probability / 100:
-				next_room.doors[j] = true
 
 		dungeon.append(next_room)
 		visited.append(next_room)
@@ -153,11 +160,78 @@ func _get_room_keys_from_dir(dir: Vector2i) -> Array[String]:
 	elif dir == Vector2i(1, 0):
 		required_index = 2
 		
-	for key in _rooms.keys():
-		if key[required_index] == "1":
-			valid_keys.append(key)
+	valid_keys = _compute_keys(required_index)
 	
 	return valid_keys
+	
+func _compute_keys(required_index : int) -> Array[String]:
+	var valid_keys: Array[String] = []
+	var weights : Dictionary = {
+		RoomType.NO: no_direction_weight,
+		RoomType.UNI: uni_directional_weight,
+		RoomType.BI: bi_directional_weight,
+		RoomType.TRI: tri_directional_weight,
+		RoomType.MULTI: multi_directional_weight
+	}
+	
+	var total_weight : float = 0.0
+	for weight in weights.values():
+		total_weight += weight	
+		
+	if total_weight <= 0:
+		return _generate_all_valid_keys(required_index)
+		
+	var rng = randf() * total_weight
+	
+	var cumulative_weight : float = 0.0
+	var selected_room_type : RoomType = RoomType.NO
+	
+	for type_key in weights.keys():
+		cumulative_weight += weights[type_key]
+		if rng < cumulative_weight:
+			selected_room_type = type_key
+			break
+
+	valid_keys = _generate_keys_for_type(selected_room_type, required_index)
+	
+	return valid_keys
+func _generate_keys_for_type(room_type : RoomType, required_index : int) -> Array[String]:
+	var keys: Array[String] = []
+	
+	match room_type:
+		RoomType.NO:
+			keys.append("0001")
+			keys.append("0010")
+			keys.append("0100")
+			keys.append("1000")
+		RoomType.BI:
+			keys.append("1001")
+			keys.append("1010")
+			keys.append("0101")
+			keys.append("0110")
+		RoomType.UNI:
+			keys.append("1100")
+			keys.append("0011")
+		RoomType.TRI:
+			keys.append("1110")
+			keys.append("1101")
+			keys.append("1110")
+			keys.append("1101")
+		RoomType.MULTI:
+			keys.append("1111")
+			
+	for key in keys:
+		if key[required_index] == "0":
+			keys.erase(key)
+			
+	return keys
+func _generate_all_valid_keys(required_index) -> Array[String]:
+	var keys: Array[String] = []
+	for key in _rooms.keys():
+		if key[required_index] == "1":
+			keys.append(key)
+			
+	return keys
 	
 func _random_next_room_from_dir(dir: Vector2i) -> RoomData:
 	var possible_keys = _get_room_keys_from_dir(dir)
@@ -213,9 +287,9 @@ func _fix_doors(dungeon: Array[RoomData], occupied: Dictionary):
 			var dir = neighbors[door_index]
 			var neighbor_pos = pos + dir
 
-			if !occupied.has(neighbor_pos):
-				room.doors[door_index] = false
-				continue
+			#if !occupied.has(neighbor_pos):
+				#room.doors[door_index] = false
+				#continue
 
 			var neighbor : RoomData = null
 			for r in dungeon:
@@ -290,6 +364,3 @@ func generate_rails_for_room(inst : Node, room : RoomData, spawn_cart : bool, ro
 			var neighbor : RoomData = rooms[neighbor_pos]
 			if(neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)] != null):
 				neighbor.rails[_get_opposite_door_index_from_dir(possible_dir)].connect_rail(room.rails[_get_door_index_from_dir(possible_dir)])	
-		
-
-	
