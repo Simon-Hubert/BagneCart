@@ -62,11 +62,11 @@ _rooms = Dictionary[String, PackedScene]({
 ROOMSIZE = Vector2(336, 208)
 RAILSIZE = 16
 NumberOfRooms = 25
-bi_directional_weight = 2.5
+bi_directional_weight = 3.0
 tri_directional_weight = 5.0
-multi_directional_weight = 5.0
-uni_directional_weight = 2.5
-no_direction_weight = 2.5
+multi_directional_weight = 6.0
+uni_directional_weight = 3.0
+no_direction_weight = 4.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -79,6 +79,8 @@ offset_right = -50.0
 offset_bottom = -50.0
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("21_k3t37")]
+base_timer = 45.0
+distance_to_timer_modifier = 0.02
 
 [node name="Quest_indicator" parent="CanvasLayer" instance=ExtResource("24_un506")]
 npc_indicator_texture = ExtResource("26_eyu0t")

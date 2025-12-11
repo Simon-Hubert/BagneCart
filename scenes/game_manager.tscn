@@ -7,6 +7,7 @@
 script = ExtResource("1_glms7")
 
 [node name="QuestManager" parent="." instance=ExtResource("2_udu3i")]
+npc_number = 8
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
