@@ -131,7 +131,7 @@ func set_can_move(can_move: bool)->void:
 	_can_move = can_move
 
 func is_carying_object() -> bool:
-	return _current_penalty != 0
+	return !$PickedItem.empty
 
 ##Restore one health point
 func restore_health():

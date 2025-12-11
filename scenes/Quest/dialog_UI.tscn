@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dxpula0g05k03" path="res://scripts/Quest/dialog_UI.gd" id="1_otvh6"]
 [ext_resource type="Texture2D" uid="uid://5qnk4gpdp4wn" path="res://sprites/Decoration/UI_rect.png" id="2_hebjp"]
 [ext_resource type="Texture2D" uid="uid://5t220wcxghui" path="res://sprites/QuestItem/Item4.png" id="4_3hcrl"]
-[ext_resource type="Texture2D" uid="uid://cora71agpxtrr" path="res://sprites/questArrow.png" id="5_r6vbc"]
+[ext_resource type="Texture2D" uid="uid://cora71agpxtrr" path="res://sprites/Decoration/questArrow.png" id="5_r6vbc"]
 [ext_resource type="FontFile" uid="uid://bbrgpo7dwibx3" path="res://Font/Pixel Digivolve.otf" id="6_r6vbc"]
 
 [sub_resource type="Animation" id="Animation_otvh6"]
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.5),
 "update": 0,
-"values": [Vector2(0, 1115)]
+"values": [Vector2(-500, 1150)]
 }
 
 [sub_resource type="Animation" id="Animation_hebjp"]
@@ -127,7 +127,7 @@ anchor_bottom = 1.0
 offset_left = -450.0
 offset_top = 50.0
 offset_right = -450.0
-offset_bottom = 189.99951
+offset_bottom = 189.99915
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.5, 1.5)

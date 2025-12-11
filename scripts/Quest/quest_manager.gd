@@ -146,6 +146,10 @@ func check_validate_quest() -> bool:
 		if item.is_correct_item(current_quest_item):
 			has_quest = false
 			
+			#Dismount item from cart
+			if item.is_in_cart:
+				game_manager.Instance.cart_ref.dismount_item()
+				
 			#Remove and destroy item 
 			quest_item_list.erase(item)
 			item.queue_free()

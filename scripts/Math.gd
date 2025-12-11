@@ -49,3 +49,5 @@ static func clamp_cart_pos(cart: Cart, rail: Rail) -> void:
 			cart.global_position.x = rail.global_position.x
 		return
 		
+static func RandomSign() -> int:
+	return 1 if randi_range(0, 1) == 0 else -1

@@ -73,6 +73,9 @@ func _setup(data : enemy_data):
 func _process(_delta: float) -> void:
 	#Check references (and if player didn't died) and if is active
 	if !player_ref || !cart_ref || !is_active:
+		#find references in game manager
+		player_ref = game_manager.Instance.player_ref
+		cart_ref = game_manager.Instance.cart_ref
 		return
 	if player_ref.is_dead:
 		return
