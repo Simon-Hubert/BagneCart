@@ -193,8 +193,7 @@ func _on_item_picked(item: Pickupable) -> void:
 	if item is quest_item:
 		if item.is_person:
 			_current_penalty = _person_carry_penalty
-	else:
-		_current_penalty = _item_carry_penalty
+	_current_penalty = _item_carry_penalty
 	_play_sound(PICK_SOUND_FILE)
 
 func _on_item_dropped() -> void:
