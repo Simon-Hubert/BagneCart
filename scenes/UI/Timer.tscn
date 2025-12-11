@@ -16,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ggjsi")
+distance_to_timer_modifier = 0.03
 timer_gradiant = SubResource("Gradient_t4qr8")
 
 [node name="Timer" type="Label" parent="."]
