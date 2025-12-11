@@ -10,3 +10,6 @@ camera_offset = Vector2(336, 208)
 _decay = 7.0
 _distance_threshold = 1.0
 metadata/_custom_type_script = "uid://d4k7dceo0v43b"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

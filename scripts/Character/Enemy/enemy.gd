@@ -7,6 +7,7 @@ const PROJECTILE_SCENE_PATH : String = "res://scenes/Enemy/enemy_projectile.tscn
 const PROJECTILE_SCENE : PackedScene = preload(PROJECTILE_SCENE_PATH)
 
 static var _health_drop_proba_modifier : float = 0
+static var _used_enemy_type : Array[int]
 
 @onready var sprite = $Sprite2D
 @onready var attack_shape = $AttackArea/CollisionShape2D
@@ -15,6 +16,10 @@ static var _health_drop_proba_modifier : float = 0
 @onready var cart_cooldown_timer : Timer = $CartCooldownTimer
 @onready var animation_player = $AnimationPlayer
 @onready var self_collision : CollisionShape2D = $CollisionShape2D
+@onready var _sound_player = $AudioStreamPlayer2D
+
+const RANGE_ATTACK_SOUND_FILE : AudioStream = preload("res://Audio/Projectile_Launch.mp3")
+const HIT_SOUND_FILE : AudioStream = preload("res://Audio/Hit_enemy_with_broom.mp3")
 
 @export_category("Health")
 @export var _health : int = 3
@@ -43,9 +48,17 @@ var is_cart_in_range : bool = false
 var is_active : bool = true
 
 func _ready():
-	#Choose random enemy
-	var rng = RandomNumberGenerator.new()
-	_setup(enemies_type[rng.randi() % enemies_type.size()])
+	
+	#get an unused random enemy type
+	var index : int = quest_manager.Instance.rng.randi() % enemies_type.size()
+	while _used_enemy_type.has(index):
+		index = quest_manager.Instance.rng.randi() % enemies_type.size()
+	_used_enemy_type.append(index)
+	#Reset array if every one werre used
+	if _used_enemy_type.size() >= enemies_type.size():
+		_used_enemy_type.clear()
+		_used_enemy_type.append(index)
+	_setup(enemies_type[index])
 	
 ##Setup enemy data from an enemy_data resource
 func _setup(data : enemy_data):
@@ -92,6 +105,7 @@ func _process(_delta: float) -> void:
 			if is_shooting:
 				#range attack (spawn new projectile)
 				var newProjectile := PROJECTILE_SCENE.instantiate() as ennemy_projectile
+				_play_sound(RANGE_ATTACK_SOUND_FILE)
 				get_tree().current_scene.add_child(newProjectile)
 				newProjectile.position = global_position
 				newProjectile.set_velocity(dir_to_player)
@@ -120,6 +134,7 @@ func _physics_process(delta: float) -> void:
 ##dir for knockback
 func hit(_dir : Vector2) -> void:
 	_health -= 1
+	_play_sound(HIT_SOUND_FILE)
 	#Check death
 	if _health <= 0:
 		animation_player.play("Death")
@@ -180,3 +195,9 @@ func _activate_enemy() -> void:
 ##Activate the enemy if not in the room anymore
 func _deactivate_enemy() -> void:
 	is_active = false
+
+##Load and play a specfic sound
+func _play_sound(sound : AudioStream):
+	_sound_player.stream = sound
+	_sound_player.play()
+	

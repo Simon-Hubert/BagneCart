@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 	#Update rotation
 	var diff : Vector2 = cart.position - player.position
 	var angle : float = rad_to_deg(atan2(diff.y, diff.x))
-	arrow.rotation = diff.angle() + 90
+	arrow.rotation_degrees = rad_to_deg(diff.angle()) + 90
 	
 	#Set clamped position
 	var cart_screen_pos: Vector2 = ((cart.global_position - camera.global_position).normalized() * get_viewport_rect().size) + (get_viewport_rect().size / 2)
