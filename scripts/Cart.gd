@@ -12,6 +12,7 @@ const _tile_set_diagonal_offset : float = 128.0
 @export var player: Player
 @export var _radius: float
 @export var _max_accel: float
+@export var _ride_boost := 16.0
 @export var _friction: float
 #minimum speed required to have sound
 @export var _sound_threshold : float = 1
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	
 func _on_player_hopped_in() -> void:
 	_no_friction = true
+	_lin_speed += _ride_boost
 
 func _on_player_hopped_out() -> void:
 	_no_friction = false
