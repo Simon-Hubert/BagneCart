@@ -19,6 +19,8 @@ const _tile_set_diagonal_offset : float = 128.0
 var _lin_speed: float
 var _no_friction := false
 var _rail_dir : Vector2
+var _rail: Rail
+
 
 signal on_exit_screen
 signal on_enter_screen
@@ -54,16 +56,16 @@ func _physics_process(delta: float) -> void:
 	var point := PhysicsPointQueryParameters2D.new()
 	point.collide_with_areas = true
 	point.position = global_position
-	point.exclude = [$CartInteraction]
+	#point.exclude = [$CartInteraction]
 	var result = space_state.intersect_point(point)
 
-	var rail: Rail
 
 	for collider in result:
 		if(collider.collider is Rail):
 			_rail_dir = collider.collider.dir.normalized()
 			centered = collider.collider.get_side_force(global_position)/2
-			rail = collider.collider
+			if _rail != collider.collider:
+				_rail = collider.collider
 			break
 	
 	var toPlayer := player.global_position - global_position
@@ -77,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	var speed :=  _lin_speed  * _rail_dir #
 	position += speed*delta
 	position += centered
-	math.clamp_cart_pos(self, rail)
+	math.clamp_cart_pos(self, _rail)
 		
 	
 func _on_player_hopped_in() -> void:
