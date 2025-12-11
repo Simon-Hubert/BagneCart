@@ -75,18 +75,15 @@ func spawn_NPC() -> void:
 			
 	var quest_item_name_list : Array[String]	
 	#Spawn NPC
-	print("Started for")
 	for i in range(npc_number):
 		var newNPC : NPC = NPC_SCENE.instantiate()
 		add_child(newNPC)
 		var position_index := rng.randi() % npc_spawn_point_list.size()
-		print("middle for")
 		newNPC.global_position = npc_spawn_point_list[position_index]
 		npc_spawn_point_list.remove_at(position_index)
 		newNPC.init_NPC()
 		quest_item_name_list.append(newNPC.data.quest_item_to_get)
 		spawned_NPC_position_list.append(newNPC.global_position)
-	print("ended for")
 		
 	#Spawn needed quest item
 	for item in quest_item_name_list:
@@ -107,7 +104,6 @@ func create_NPC_data(suffix : String) -> NPC_data:
 	newData.quest_type = (rng.randi() % quest_manager.QUEST_TYPE.size()) as quest_manager.QUEST_TYPE
 	if !quest_item_symbol.has(newData.quest_type):
 		push_error("Quest type" + str(newData.quest_type) + "doesn't have any symbol linked")
-		
 	_quest_tracery_grammar.set_save_data("questItem", quest_item_symbol[newData.quest_type]) #define new quest item & save into data
 	newData.quest_item_to_get = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, "quest_item")
 	newData.quest_dialog = TraceryLoader.getSentenceFromGrammar(_quest_tracery_dictionary, _quest_tracery_grammar, quest_dialog_symbol[newData.quest_type] + suffix)
