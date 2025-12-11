@@ -147,13 +147,17 @@ func restore_health():
 ##Remove one health point
 ##dir = hit direction
 func hit(dir : Vector2) -> void:
-	_health -= 1
-	on_player_update_health.emit(_health)
 	#Knockback the player
 	_is_knockbacked = true
 	velocity = dir * _knockback_intensity
 	knockback_timer.start()	
-
+	
+	#Eject from cart if was in there
+	if !_can_move:
+		_interact()
+	else:
+		_health -= 1
+		on_player_update_health.emit(_health)
 		
 	#Check player death
 	if is_dead:
@@ -165,9 +169,6 @@ func hit(dir : Vector2) -> void:
 		is_dead = true
 		game_manager.Instance.respawn_player()
 		_play_sound(HIT_SOUND_FILE)
-	#Eject from cart if was in there
-	elif !_can_move:
-		_interact()
 	else:
 		animation_player.play("Hit")
 		_play_sound(HIT_SOUND_FILE)
