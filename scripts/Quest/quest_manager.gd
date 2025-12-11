@@ -22,6 +22,7 @@ const QUEST_ITEM_SCENE : PackedScene = preload(QUEST_ITEM_SCENE_PATH)
 
 @export_category("Quest")
 @export var npc_number : int = 2
+@export var number_quest_finished : int = 3
 
 var number_quest_completed : int = 0
 
@@ -160,7 +161,7 @@ func check_validate_quest() -> bool:
 			
 			#Check if completed all quest
 			number_quest_completed +=1
-			if number_quest_completed >= npc_number:
+			if number_quest_completed >= number_quest_finished:
 				on_all_quest_completed.emit()
 			#else just play regular quest finished
 			else:
