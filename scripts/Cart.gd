@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	
 func _on_player_hopped_in() -> void:
 	_no_friction = true
-	_lin_speed += _ride_boost
+	_lin_speed += _ride_boost * sign(_lin_speed)
 
 func _on_player_hopped_out() -> void:
 	_no_friction = false

@@ -9,7 +9,12 @@ class_name quest_indicator extends Control
 
 @export_category("Param")
 @export var minimum_distance : float = 10
+@export var npc_indicator_texture : Texture2D
 
+var _indicator_texture : Texture2D
+var _item_distance : float
+var _item_position : Vector2 
+	
 func _ready() -> void:
 	game_manager.Instance.on_setup_UI.connect(setup_UI)
 
@@ -24,7 +29,7 @@ func setup_UI() -> void:
 
 ##Set up the icon once a quest is accpeted
 func _setup_indicator():
-	quest_icon.texture = quest_manager.Instance.get_current_quest_item_sprite()
+	_indicator_texture = quest_manager.Instance.get_current_quest_item_sprite()
 
 func _process(_delta: float) -> void:
 	#Check if arrow is shown (or if is missing a reference)
@@ -32,20 +37,14 @@ func _process(_delta: float) -> void:
 	if !arrow.visible || ! player || !camera:
 		return
 		
-	var item_distance : float
-	var item_position : Vector2 
-	
-	var cloest_item_position : quest_manager.closest_quest_item_data = quest_manager.Instance.get_closest_quest_item(player.global_position)
-	item_distance = cloest_item_position.distance
-	item_position = cloest_item_position.position
-	
+	_get_indicator_data()
 	#Check if not too close
-	if minimum_distance >= item_distance:
+	if minimum_distance >= _item_distance:
 		arrow.visible = false
 		return
 	
 	#Update rotation
-	var diff : Vector2 = item_position - player.global_position
+	var diff : Vector2 = _item_position - player.global_position
 	arrow.rotation_degrees = rad_to_deg(diff.angle()) + 90
 	
 	#Set clamped position
@@ -56,9 +55,27 @@ func _process(_delta: float) -> void:
 	
 	#Set global quest icon rotation
 	quest_icon.rotation = -arrow.rotation
+
+func _get_indicator_data() -> void:
+	if game_manager.Instance.player_ref.is_carying_object():
+		#Check if player is holding the correct item
+		var held_item : quest_item = game_manager.Instance.player_ref.get_carying_object() as quest_item
+		if !held_item:
+			pass
+		if held_item.is_correct_item_name(quest_manager.Instance.current_quest_item):
+			_item_position = quest_manager.Instance.current_quest_giver_position
+			_item_distance = _item_position.distance_to(game_manager.Instance.player_ref.global_position)
+			quest_icon.texture = npc_indicator_texture
+			return
+						
+	#Else, search nearest item postition
+	var cloest_item_position : quest_manager.closest_quest_item_data = quest_manager.Instance.get_closest_quest_item(player.global_position)
+	_item_distance = cloest_item_position.distance
+	_item_position = cloest_item_position.position
+	quest_icon.texture = _indicator_texture
 	
-func _show_icon():
+func _show_icon() -> void:
 	arrow.visible = true
 	
-func _hide_icon():
+func _hide_icon() -> void:
 	arrow.visible = false

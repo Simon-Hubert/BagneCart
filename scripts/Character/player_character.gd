@@ -133,6 +133,9 @@ func set_can_move(can_move: bool)->void:
 func is_carying_object() -> bool:
 	return !$PickedItem.empty
 
+func get_carying_object() -> Pickupable:
+	return $PickedItem.get_item()
+
 ##Restore one health point
 func restore_health():
 	_health = mini(_health + 1, _max_health)
